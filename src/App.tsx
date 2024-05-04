@@ -2,7 +2,7 @@ function App() {
   return (
     <>
       <div>
-        <h1>Clear</h1>
+        <h1>Apresentação - CaixaNaMão</h1>
       </div>
     </>
   );
