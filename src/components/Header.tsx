@@ -1,7 +1,7 @@
 import headerStyle from '../styles/Header.module.css';
 import logoLight from '../assets/logos/light-theme-assets/cnm-logo-light.svg'; 
 import iconModeLight from '../assets/icons/icon-mode-light.svg';
-import iconMenuHamburguer from '../assets/icons/icon-hamburguer-light.svgicon-mode-light.svg';
+import iconMenuHamburguer from '../assets/icons/icon-hamburguer-light.svg';
 
 const Header = () => {
   return (
