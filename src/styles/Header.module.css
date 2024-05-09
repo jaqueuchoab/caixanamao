@@ -5,10 +5,15 @@
   align-items: center;
   justify-content: space-between;
   margin-top: 1rem;
-  background-color: bisque;
 }
 
 .logoLight {
   height: 37px;
   width: 37.12px;
+}
+
+.nav {
+  width: 6rem;
+  display: flex;
+  justify-content: space-between;
 }
