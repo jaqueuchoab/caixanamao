@@ -1,9 +1,9 @@
 // Importando style css
-import style from '../styles/Header.module.css';
+import style from './Header.module.css';
 // Importando imagens
-import logoLight from '../assets/logos/light-theme-assets/cnm-logo-light.svg'; 
-import iconModeLight from '../assets/icons/icon-mode-light.svg';
-import iconMenuHamburguer from '../assets/icons/icon-hamburguer-light.svg';
+import logoLight from '../../assets/logos/light-theme-assets/cnm-logo-light.svg'; 
+import iconModeLight from '../../assets/icons/icon-mode-light.svg';
+import iconMenuHamburguer from '../../assets/icons/icon-hamburguer-light.svg';
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
 

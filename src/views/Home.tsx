@@ -1,5 +1,5 @@
 import React from 'react';
-import TextContent from '../components/Home/TextContent';
+import TextContent from '../components/home/TextContent';
 
 const Home = () => {
   return (
