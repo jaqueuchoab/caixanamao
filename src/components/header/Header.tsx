@@ -1,19 +1,19 @@
 // Importando style css
 import style from './Header.module.css';
 // Importando imagens
-import logoLight from '../../assets/logos/light-theme-assets/cnm-logo-light.svg'; 
-import iconModeLight from '../../assets/icons/icon-mode-light.svg';
-import iconMenuHamburguer from '../../assets/icons/icon-hamburguer-light.svg';
+import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg'; 
+import icon_mode_light from '../../assets/icons/icon-mode-light.svg';
+import icon_hamburguer_light from '../../assets/icons/icon-hamburguer-light.svg';
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
     <header className={style.header}>
-      <Link to="/"><img src={logoLight} alt='logo-mode-light' className={style.logoLight}/></Link>
+      <Link to="/"><img src={cnm_logo_light} alt='logo-mode-light' className={style.logoLight}/></Link>
       <nav className={style.nav}>
-        <button><img src={iconModeLight} alt='icon-mode-light'/></button>
-        <button><img src={iconMenuHamburguer} alt='icon-menu-hamburguer-light'/></button>
+        <button><img src={icon_mode_light} alt='icon-mode-light'/></button>
+        <button><img src={icon_hamburguer_light} alt='icon-menu-hamburguer-light'/></button>
       </nav>
     </header>
   );

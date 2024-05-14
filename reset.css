@@ -18,7 +18,12 @@
 }
 
 .app {
-    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    height: 100vh;
+    padding: 2.5rem 2.5rem 0 2.5rem;
 }
 
 /* Elementos de layout */
