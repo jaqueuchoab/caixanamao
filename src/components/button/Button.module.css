@@ -1,0 +1,12 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20rem;
+  height: 2.5rem;
+  border-radius: 50px;
+  border-width: 1px;
+  border-style: solid;
+  font-size: var(--text-sm);
+}

@@ -1,13 +1,14 @@
 .header {
   height: 4rem;
+  margin-bottom: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logoLight {
-  height: 37px;
-  width: 37.12px;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .nav {

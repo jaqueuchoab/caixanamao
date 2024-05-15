@@ -10,8 +10,10 @@ const Footer = () => {
     <footer>
       <div className={style.contentFooter}>
         <img src={logo_vert_light} alt='logo-mode-light' className={style.logoVertLight}/>
-        <Link to="/login-cadastro"><p className={style.linkActions}>Login / Cadastro</p></Link>
-        <Link to="/vantagens"><p className={style.linkActions}>Vantagens</p></Link>
+        <div className={style.linkActions}>
+          <Link to="/login-cadastro"><p>Login / Cadastro</p></Link>
+          <Link to="/vantagens"><p>Vantagens</p></Link>
+        </div>
       </div>
     </footer>
   )
