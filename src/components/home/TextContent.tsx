@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './styles/TextContent.module.css';
+import style from './TextContent.module.css';
 
 // Tipo que define as propriedades que TextContent pode receber
 type Content = {

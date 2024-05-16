@@ -4,9 +4,10 @@
   justify-content: center;
 
   width: 20rem;
-  height: 2.5rem;
+  height: 2.9rem;
   border-radius: 50px;
   border-width: 1px;
   border-style: solid;
   font-size: var(--text-sm);
+  margin: 1.5rem 0px 0px 0px;
 }

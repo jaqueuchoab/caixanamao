@@ -1,0 +1,22 @@
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 2.5rem 3rem 2.5rem;
+}
+
+.sectionContent:nth-last-child(1) {
+  background-color:#F1FFEA;
+}
+
+
+.sectionContent:nth-last-child(2) {
+  background-color:#EDEDED;
+}
+
+.gradientArrow {
+  width: 9.55rem;
+  height: 9rem;
+  margin-bottom: 2rem;
+}

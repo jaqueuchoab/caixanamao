@@ -1,9 +1,9 @@
 .header {
-  height: 4rem;
-  margin-bottom: 1rem;
+  height: 7rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 3rem 2.5rem 0 2.5rem;
 }
 
 .logoLight {
