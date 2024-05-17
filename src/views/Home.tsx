@@ -48,7 +48,7 @@ const Home = () => {
           texto="Experimente nossa aplicação e descubra como podemos simplificar o fechamento de caixa, proporcionando controle, segurança e uma experiência que impulsiona o sucesso do seu negócio."
         />
 
-        <Link to={'/login-cadastro'}>
+        <Link to={'/login-registration'}>
           <Button
             borderColor="var(--color-green-400)"
             backgroundColor="var(--color-green-200)"
