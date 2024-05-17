@@ -14,8 +14,8 @@ function App() {
           {/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
           <Routes>
             <Route path="/" element = {<Home/>}></Route>
-            <Route path="/login-cadastro" element = {<LoginCadastro/>}></Route>
-            <Route path="/vantagens" element = {<Vantagens/>}></Route>
+            <Route path="/login-registration" element = {<LoginCadastro/>}></Route>
+            <Route path="/benefits" element = {<Vantagens/>}></Route>
           </Routes>
           <Footer/>
         </BrowserRouter>

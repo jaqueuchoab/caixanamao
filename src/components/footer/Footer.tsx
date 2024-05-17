@@ -11,8 +11,8 @@ const Footer = () => {
       <div className={style.contentFooter}>
         <img src={logo_vert_light} alt='logo-mode-light' className={style.logoVertLight}/>
         <div className={style.linkActions}>
-          <Link to="/login-cadastro"><p>Login / Cadastro</p></Link>
-          <Link to="/vantagens"><p>Vantagens</p></Link>
+          <Link to="/login-registration"><p>Login / Cadastro</p></Link>
+          <Link to="/benefits"><p>Vantagens</p></Link>
         </div>
       </div>
     </footer>
