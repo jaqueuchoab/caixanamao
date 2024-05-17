@@ -3,9 +3,9 @@ import TextContent from '../components/home/TextContent';
 import Button from '../components/button/Button';
 import { Link } from 'react-router-dom';
 // Importando imagens
-import cnm_gradient_arrow from '../assets/logos/cnm-gradient-arrow.svg'; 
+import cnm_gradient_arrow from '../assets/logos/cnm-gradient-arrow.svg';
 // Importando estilo
-import style from '../components/home/Home.module.css'
+import style from '../components/home/Home.module.css';
 
 const Home = () => {
   return (
@@ -23,6 +23,13 @@ const Home = () => {
         </Button>
       </section>
       <section className={style.sectionContent}>
+        <div>
+          <img
+            src={cnm_gradient_arrow}
+            alt="cnm_gradient_arrow"
+            className={style.gradientArrow}
+          />
+        </div>
         <TextContent
           titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
           texto="Simplificamos o fechamento de caixa, permitindo que você e seus funcionários realizem as tarefas financeiras de forma rápida e sem complicações."
@@ -30,7 +37,11 @@ const Home = () => {
       </section>
       <section className={style.sectionContent}>
         <div>
-          <img src={cnm_gradient_arrow} alt="cnm_gradient_arrow" className={style.gradientArrow}/>
+          <img
+            src={cnm_gradient_arrow}
+            alt="cnm_gradient_arrow"
+            className={style.gradientArrow}
+          />
         </div>
         <TextContent
           titulo="Experimente Agora e Transforme Sua Gestão Financeira"
