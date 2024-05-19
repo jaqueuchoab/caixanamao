@@ -6,10 +6,12 @@ import { Link } from 'react-router-dom';
 import cnm_gradient_arrow from '../assets/logos/cnm-gradient-arrow.svg';
 // Importando estilo
 import style from '../components/home/Home.module.css';
+import Slide from '../components/slide/Slide';
 
 const Home = () => {
   return (
     <div className={style.mainContent}>
+      <Slide custom_controls={true} slide="normal"/>
       <section className={style.sectionContent}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
