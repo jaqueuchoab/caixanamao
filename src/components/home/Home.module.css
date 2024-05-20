@@ -13,7 +13,9 @@
 
 .sectionContent:nth-last-child(2) {
   background-color:#EDEDED;
+  padding: 3rem 2.5rem 0 2.5rem;
 }
+
 
 .gradientArrow {
   width: 9.55rem;

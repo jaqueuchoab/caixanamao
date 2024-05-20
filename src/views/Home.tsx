@@ -14,12 +14,7 @@ import Slide from '../components/slide/Slide';
 const Home = () => {
   return (
     <div className={style.mainContent}>
-      <Slide
-        customControls={true}
-        slide="carousel"
-        imgThumbs={[cnm_gradient_arrow, cnm_logo_light]}
-        imgSlide={[cnm_logo_light, cnm_logo_dark]}
-      />
+      <Slide slide="carousel" imgSlide={[cnm_logo_light, cnm_logo_dark]} />
       <section className={style.sectionContent}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
@@ -32,17 +27,19 @@ const Home = () => {
           Quero experimentar
         </Button>
       </section>
-      <section className={style.sectionContent}>
-        <div>
-          <img
-            src={cnm_gradient_arrow}
-            alt="cnm_gradient_arrow"
-            className={style.gradientArrow}
+
+      <section style={{ backgroundColor: '#EDEDED' }}>
+        <section className={style.sectionContent}>
+          <TextContent
+            titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
+            texto="Simplificamos o fechamento de caixa, permitindo que você e seus funcionários realizem as tarefas financeiras de forma rápida e sem complicações."
           />
-        </div>
-        <TextContent
-          titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
-          texto="Simplificamos o fechamento de caixa, permitindo que você e seus funcionários realizem as tarefas financeiras de forma rápida e sem complicações."
+        </section>
+        <Slide
+          customControls={true}
+          imgThumbs={[cnm_gradient_arrow, cnm_logo_light]}
+          slide="carousel"
+          imgSlide={[cnm_logo_light, cnm_logo_dark]}
         />
       </section>
       <section className={style.sectionContent}>
