@@ -4,6 +4,9 @@ import Button from '../components/button/Button';
 import { Link } from 'react-router-dom';
 // Importando imagens
 import cnm_gradient_arrow from '../assets/logos/cnm-gradient-arrow.svg';
+import cnm_logo_light from '../assets/logos/light-theme-assets/cnm-logo-light.svg';
+import cnm_logo_dark from '../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
+
 // Importando estilo
 import style from '../components/home/Home.module.css';
 import Slide from '../components/slide/Slide';
@@ -11,7 +14,12 @@ import Slide from '../components/slide/Slide';
 const Home = () => {
   return (
     <div className={style.mainContent}>
-      <Slide custom_controls={true} slide="normal" imgs={['A', 'B']}/>
+      <Slide
+        customControls={true}
+        slide="carousel"
+        imgThumbs={[cnm_gradient_arrow, cnm_logo_light]}
+        imgSlide={[cnm_logo_light, cnm_logo_dark]}
+      />
       <section className={style.sectionContent}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
