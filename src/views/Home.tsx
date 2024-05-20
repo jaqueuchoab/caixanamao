@@ -11,7 +11,7 @@ import Slide from '../components/slide/Slide';
 const Home = () => {
   return (
     <div className={style.mainContent}>
-      <Slide custom_controls={true} slide="normal"/>
+      <Slide custom_controls={true} slide="normal" imgs={['A', 'B']}/>
       <section className={style.sectionContent}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
