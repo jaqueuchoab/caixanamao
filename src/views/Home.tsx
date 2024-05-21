@@ -14,7 +14,7 @@ import Slide from '../components/slide/Slide';
 const Home = () => {
   return (
     <div className={style.mainContent}>
-      <Slide slide="carousel" imgSlide={[cnm_logo_light, cnm_logo_dark]} />
+      <Slide slide="carousel" imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]} />
       <section className={style.sectionContent}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
