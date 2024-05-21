@@ -37,7 +37,8 @@ const Home = () => {
         </section>
         <Slide
           customControls={true}
-          imgThumbs={[cnm_gradient_arrow, cnm_logo_light, cnm_gradient_arrow]}
+          thumbs={{thumbType: 'color', thumbValue: '#93C7EB'}}
+          //thumbs={[cnm_gradient_arrow, cnm_logo_light, cnm_gradient_arrow]}
           slide="carousel"
           imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_gradient_arrow]}
         />

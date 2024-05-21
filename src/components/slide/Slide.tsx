@@ -3,7 +3,10 @@ import style from '../slide/Slide.module.css';
 type SlideProps = {
   customControls?: boolean;
   slide: 'carousel' | 'normal';
-  imgThumbs?: string[];
+  thumbs?: {
+    thumbType: 'color' | 'img';
+    thumbValue: string | string[];
+  };
   imgSlide: string[];
 };
 //configurar o active do customControls
@@ -11,14 +14,12 @@ type SlideProps = {
 const Slide = (props: SlideProps) => {
   return (
     <div>
-      {props.customControls && props.imgThumbs ? (
+      {props.customControls && props.thumbs ? (
         <ul className={style.customControls}>
-          {props.imgThumbs.map((imgThumb, index) => {
-            return (
-              <li key={index}>
-                <img src={imgThumb} alt="image-control" />
-              </li>
-            );
+          {props.thumbs.thumbType === 'color' ? props.imgSlide.map((thumb, index) => {
+            return <li key={index} style={{backgroundColor: `${props.thumbs?.thumbValue}`}}></li>
+          }) : props.imgSlide.map((thumb, index) => {
+            return <li key={index}><img src={thumb} alt="thumb-controls" /></li>
           })}
         </ul>
       ) : null}
@@ -29,8 +30,13 @@ const Slide = (props: SlideProps) => {
         <div className={style.slideWrapper}>
           <ul className={style.slide}>
             {props.imgSlide.map((img, index) => {
-              return <li key={index}><img src={img} alt="img-slide" /></li>
-            })}
+                return (
+                  <li key={index}>
+                    <img src={img} alt="img-slide" />
+                  </li>
+                );
+              })
+            }
           </ul>
         </div>
       )}
