@@ -9,9 +9,14 @@ img {
   max-width: 100%;
 }
 
+.slideWrapper {
+  overflow: hidden;
+}
+
 .slide {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .slide:hover {
@@ -22,6 +27,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 
   flex-shrink: 0;
   width: 100vw;
@@ -34,10 +40,6 @@ img {
   transition: 0.4s;
 }
 
-.slideWrapper {
-  overflow: hidden;
-}
-
 .slide li.active {
   opacity: 1;
   transform: scale(1);
@@ -48,6 +50,7 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  margin-bottom: -10px;
   flex-wrap: wrap;
 }
 

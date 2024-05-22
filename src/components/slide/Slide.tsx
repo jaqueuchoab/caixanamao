@@ -13,7 +13,7 @@ type SlideProps = {
 
 const Slide = (props: SlideProps) => {
   return (
-    <div>
+    <section>
       {props.customControls && props.thumbs ? (
         <ul className={style.customControls}>
           {props.thumbs.thumbType === 'color' ? props.imgSlide.map((thumb, index) => {
@@ -40,7 +40,7 @@ const Slide = (props: SlideProps) => {
           </ul>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

@@ -28,7 +28,7 @@ const Home = () => {
         </Button>
       </section>
 
-      <section style={{ backgroundColor: '#EDEDED' }}>
+      <section style={{ backgroundColor: '#EDEDED', paddingBottom: '25px' }}>
         <section className={style.sectionContent}>
           <TextContent
             titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
