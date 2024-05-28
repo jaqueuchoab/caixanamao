@@ -9,7 +9,7 @@ import cnm_logo_dark from '../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 
 // Importando estilo
 import style from '../components/home/Home.module.css';
-import Slide from '../components/slide/Slide';
+import Slide from '../components/slide/Slide.tsx';
 
 const Home = () => {
   return (
