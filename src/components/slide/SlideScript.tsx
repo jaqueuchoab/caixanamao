@@ -1,9 +1,12 @@
 import debounce from './debounce.tsx';
 
+type EventParams = MouseEvent | TouchEvent;
+
 export class SlideClass {
   // Tipagem dos atributos da class
   slideItem: HTMLUListElement | null;
   slideWrapper: HTMLDivElement | null;
+  slideArray: { element: HTMLElement; position: number; }[];
   dist: {
     finalPosition: number;
     startX: number;
@@ -16,7 +19,7 @@ export class SlideClass {
   constructor(slideItem: string, slideWrapper: string) {
     this.slideItem = document.querySelector(slideItem);
     this.slideWrapper = document.querySelector(slideWrapper);
-
+    this.slideArray = [];
     this.dist = {
       finalPosition: 0,
       startX: 0,
@@ -45,39 +48,38 @@ export class SlideClass {
     return this.dist.finalPosition - this.dist.movement;
   }
   
-  /*
-  onStart(event) {
-    let movetype;
+  onStart(event: EventParams) {
+    let movetype: string;
     if (event.type === 'mousedown') {
       event.preventDefault();
       // O clientX é uma propriedade de leitura da interface MouseEvent que fornece as coordenadas horizontais dentro da área do aplicativo
-      this.dist.startX = event.clientX;
+      this.dist.startX = (event as MouseEvent).clientX;
       movetype = 'mousemove';
     } else {
-      this.dist.startX = event.changedTouches[0].clientX;
+      this.dist.startX = (event as TouchEvent).changedTouches[0].clientX;
       movetype = 'touchmove';
     }
-    this.slideWrapper.addEventListener(movetype, this.onMove);
+    this.slideWrapper?.addEventListener(movetype, () => this.onMove);
     this.transition(false);
   }
-
-  onMove(event) {
+  
+  onMove(event: EventParams) {
     const pointerPosition =
       event.type === 'mousemove'
-        ? event.clientX
-        : event.changedTouches[0].clientX;
+        ? (event as MouseEvent).clientX
+        : (event as TouchEvent).changedTouches[0].clientX;
     const finalPosition = this.updatePosition(pointerPosition);
     this.moveSlide(finalPosition);
   }
 
-  onEnd(event) {
-    let movetype = event.type === 'mouseup' ? 'mousemove' : 'touchmove';
-    this.slideWrapper.removeEventListener(movetype, this.onMove);
+  onEnd(event: EventParams) {
+    const movetype = (event.type === 'mouseup' ? 'mousemove' : 'touchmove');
+    this.slideWrapper?.removeEventListener(movetype, this.onMove);
     this.dist.finalPosition = this.dist.movePosition;
     this.transition(true);
     this.changeSlideonEnd();
   }
-
+  
   changeSlideonEnd() {
     if (this.dist.movement > 120 && this.indexObject.next !== undefined) {
       this.activeNextSlide();
@@ -90,26 +92,41 @@ export class SlideClass {
       this.changeSlide(this.indexObject.active);
     }
   }
-
+  
   addEventSlide() {
-    this.slideWrapper.addEventListener('mousedown', this.onStart);
-    this.slideWrapper.addEventListener('touchstart', this.onStart);
-    this.slideWrapper.addEventListener('mouseup', this.onEnd);
-    this.slideWrapper.addEventListener('touchend', this.onEnd);
+    this.slideWrapper?.addEventListener('mousedown', this.onStart);
+    this.slideWrapper?.addEventListener('touchstart', this.onStart);
+    this.slideWrapper?.addEventListener('mouseup', this.onEnd);
+    this.slideWrapper?.addEventListener('touchend', this.onEnd);
   }
+  
+  slidePosition(slide: HTMLElement) {
+    if (!(slide instanceof HTMLElement)) {
+        throw new Error('O parâmetro slide deve ser um HTMLElement');
+    }
 
-  slidePosition(slide) {
-    const margin = (this.slideWrapper.offsetWidth - slide.offsetWidth) / 2;
+    const wrapperOffSetWidth: number = this.slideWrapper?.offsetWidth ?? 0;
+    const margin = (wrapperOffSetWidth - slide.offsetWidth) / 2;
     return -(slide.offsetLeft - margin);
   }
 
+  
   slideConfig() {
-    this.slideArray = [...this.slideItem.children].map((element) => {
-      const position = this.slidePosition(element);
-      return { element, position };
-    });
+    if (this.slideItem && this.slideItem.children) {
+      const childrenArray = [...this.slideItem.children] as HTMLElement[];
+      this.slideArray = childrenArray.map((element: HTMLElement | null) => {
+        if(!element) throw new Error("element não é válido");
+        
+        const position = this.slidePosition(element);
+        return { element, position };
+      });
+    } else {
+      throw new Error("slideItem e slideItem.children não são válidos (ln: 155)");
+      
+    }
   }
-
+  
+  /*
   slidesIndexNav(index) {
     this.lengthSlideArray = this.slideArray.length - 1;
     this.indexObject = {
