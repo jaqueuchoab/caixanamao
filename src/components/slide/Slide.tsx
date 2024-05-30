@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './style/Slide.module.css';
-import { SlideClass } from './SlideScript.tsx';
+import { SlideNav } from './SlideScript.tsx';
 
 type SlideProps = {
   customControls?: boolean;
@@ -14,7 +14,7 @@ type SlideProps = {
 //configurar o active do customControls
 
 const Slide = (props: SlideProps) => {
-  const slide = new SlideClass('.slide', '.slideWrapper');
+  const slide = new SlideNav('.slide', '.slideWrapper');
 
   return (
     <section>
@@ -42,7 +42,11 @@ const Slide = (props: SlideProps) => {
       {props.slide === 'normal' ? (
         'normal'
       ) : (
-        <div className={`slideWrapper ${style.slideWrapper}`}>
+        <div
+          onTouchStart={(e) => slide.onStart(e)}
+          onTouchEnd={(e) => slide.onStart(e)}
+          className={`slideWrapper ${style.slideWrapper}`}
+        >
           <ul className={`slide ${style.slide}`}>
             {props.imgSlide.map((img, index) => {
               return (
