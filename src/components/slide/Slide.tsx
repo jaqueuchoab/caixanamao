@@ -43,10 +43,6 @@ const Slide = (props: SlideProps) => {
         'normal'
       ) : (
         <div
-          onTouchStart={(e) => slide.onStart(e)}
-          onTouchEnd={(e) => slide.onStart(e)}
-          onMouseDown={(e) => slide.onStart(e)}
-          onMouseUp={(e) => slide.onEnd(e)}
           className={`slideWrapper ${style.slideWrapper}`}
         >
           <ul className={`slide ${style.slide}`}>
