@@ -14,7 +14,7 @@ type SlideProps = {
 //configurar o active do customControls
 
 const Slide = (props: SlideProps) => {
-  const slide = new SlideNav('.slide', '.slideWrapper');
+  //const slide = new SlideNav('.slide', '.slideWrapper');
 
   return (
     <section>
