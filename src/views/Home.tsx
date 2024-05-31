@@ -14,18 +14,16 @@ import Slide from '../components/slide/Slide.tsx';
 const Home = () => {
   return (
     <div className={style.mainContent}>
-      <Slide slide="carousel" imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]} />
+      <Slide
+        slide="carousel"
+        imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]}
+      />
       <section className={style.sectionContent}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
           texto="Gestão financeira com foco na acessibilidade para pequenas empresas."
         />
-        <Button
-          borderColor="var(--color-green-400)"
-          backgroundColor="var(--color-green-200)"
-        >
-          Quero experimentar
-        </Button>
+        <Button>Quero experimentar</Button>
       </section>
 
       <section style={{ backgroundColor: '#EDEDED', paddingBottom: '20px' }}>
@@ -37,7 +35,7 @@ const Home = () => {
         </section>
         <Slide
           customControls={true}
-          thumbs={{thumbType: 'color', thumbValue: '#93C7EB'}}
+          thumbs={{ thumbType: 'color', thumbValue: '#93C7EB' }}
           //thumbs={[cnm_gradient_arrow, cnm_logo_light, cnm_gradient_arrow]}
           slide="carousel"
           imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_gradient_arrow]}
@@ -57,12 +55,7 @@ const Home = () => {
         />
 
         <Link to={'/login-registration'}>
-          <Button
-            borderColor="var(--color-green-400)"
-            backgroundColor="var(--color-green-200)"
-          >
-            Login / Cadastro
-          </Button>
+          <Button>Login / Cadastro</Button>
         </Link>
       </section>
     </div>

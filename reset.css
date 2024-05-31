@@ -1,14 +1,4 @@
 /* Reset CSS */
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
-
-/*Variáveis*/
-:root {
-    --text-sm: 16px;
-    --text-md: 24px;
-    --text-lg: 48px;
-    --color-green-200:#C8FFBF;
-    --color-green-400:#00FB22;
-}
 
 /* Seletores universais */
 *, body, main,

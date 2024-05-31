@@ -26,7 +26,7 @@ export class SlideClass {
   constructor(slideItem: string, slideWrapper: string) {
     this.slideItem = document.querySelector(slideItem);
     this.slideWrapper = document.querySelector(slideWrapper);
-    
+
     this.slideArray = [];
     this.dist = {
       finalPosition: 0,
@@ -47,12 +47,12 @@ export class SlideClass {
   }
 
   transition(active: boolean) {
-    console.log('transition');
-    
-    if (this.slideItem instanceof HTMLUListElement){
+    console.log('transition', this.slideItem instanceof HTMLUListElement);
+
+    if (this.slideItem instanceof HTMLUListElement) {
       this.slideItem.style.transition = active ? 'transform .3s' : '';
     } else {
-      throw new Error("slideItem não é do tipo HTMLUListElement");
+      throw new Error('slideItem não é do tipo HTMLUListElement');
     }
   }
 
@@ -69,7 +69,7 @@ export class SlideClass {
 
   onStart(event: EventParams) {
     console.log('onStart');
-    
+
     let movetype: string;
     if (event.type === 'mousedown') {
       event.preventDefault();
@@ -114,11 +114,11 @@ export class SlideClass {
     }
   }
 
-  addEventSlide() {
+  /*addEventSlide() {
     console.log('addEventSlide');
     this.slideWrapper?.addEventListener('mousedown', this.onStart);
     this.slideWrapper?.addEventListener('mouseup', this.onEnd);
-  }
+  }*/
 
   slidePosition(slide: HTMLElement) {
     if (!(slide instanceof HTMLElement)) {
@@ -132,7 +132,7 @@ export class SlideClass {
 
   slideConfig() {
     console.log('slideConfig');
-    
+
     if (this.slideItem && this.slideItem.children) {
       const childrenArray = [...this.slideItem.children] as HTMLElement[];
       this.slideArray = childrenArray.map((element: HTMLElement | null) => {
@@ -142,9 +142,7 @@ export class SlideClass {
         return { element, position };
       });
     } else {
-      throw new Error(
-        'slideItem e slideItem.children não são válidos',
-      );
+      throw new Error('slideItem e slideItem.children não são válidos');
     }
   }
 
@@ -200,7 +198,7 @@ export class SlideClass {
 
   bindEvents() {
     console.log('bindEvents');
-    
+
     this.onStart = this.onStart.bind(this);
     this.onMove = this.onMove.bind(this);
     this.onEnd = this.onEnd.bind(this);
@@ -232,7 +230,7 @@ export class SlideNav extends SlideClass {
 
     this.prevElement = null;
     this.nextElement = null;
-    this.control = null
+    this.control = null;
     this.controlArray = null;
 
     this.bindEventControl();
