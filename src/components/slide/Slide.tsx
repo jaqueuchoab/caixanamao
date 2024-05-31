@@ -10,7 +10,6 @@ type SlideProps = {
   };
   imgSlide: string[];
 };
-//configurar o active do customControls
 
 const Slide = (props: SlideProps) => {
   return (
