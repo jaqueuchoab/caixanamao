@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import debounce from './debounce.tsx';
 
 type EventParams = React.MouseEvent | React.TouchEvent;
@@ -114,11 +114,11 @@ export class SlideClass {
     }
   }
 
-  /*addEventSlide() {
+  addEventSlide() {
     console.log('addEventSlide');
     this.slideWrapper?.addEventListener('mousedown', this.onStart);
     this.slideWrapper?.addEventListener('mouseup', this.onEnd);
-  }*/
+  }
 
   slidePosition(slide: HTMLElement) {
     if (!(slide instanceof HTMLElement)) {
@@ -296,3 +296,4 @@ export class SlideNav extends SlideClass {
     this.activeControlItem = this.activeControlItem.bind(this);
   }
 }
+*/

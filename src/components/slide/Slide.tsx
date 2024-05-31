@@ -1,6 +1,5 @@
 import React from 'react';
 import style from './style/Slide.module.css';
-import { SlideNav } from './SlideScript.tsx';
 
 type SlideProps = {
   customControls?: boolean;
@@ -14,8 +13,6 @@ type SlideProps = {
 //configurar o active do customControls
 
 const Slide = (props: SlideProps) => {
-  //const slide = new SlideNav('.slide', '.slideWrapper');
-
   return (
     <section>
       {props.customControls && props.thumbs ? (
