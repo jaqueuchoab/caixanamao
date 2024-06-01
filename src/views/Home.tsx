@@ -38,10 +38,9 @@ const Home = () => {
 
       <section
         style={
-          { paddingBottom: '20px' } &&
           (mode === 'light'
-            ? { background: 'var(--color-bg-200)' }
-            : { background: 'var(--color-bg-850)' })
+            ? { background: 'var(--color-bg-200)', paddingBottom: '20px' } 
+            : { background: 'var(--color-bg-850)', paddingBottom: '20px' })
         }
       >
         <section className={style.sectionContent}>
