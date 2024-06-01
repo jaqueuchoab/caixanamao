@@ -26,19 +26,23 @@ function setColorApp(mode: string) {
 
   if (app && themeColor && themeColorApple) {
     mode === 'light'
-      ? (app.style.background = 'var(--color-bg-800)') &&
-        (themeColor.content = 'var(--color-bg-800)') &&
-        (themeColorApple.content = 'var(--color-bg-800)')
-      : (app.style.background = 'var(--color-bg-100)') &&
+      ? (app.style.background = 'var(--color-bg-100)') &&
         (themeColor.content = 'var(--color-bg-100)') &&
-        (themeColorApple.content = 'var(--color-bg-100)');
+        (themeColorApple.content = 'var(--color-bg-100)')
+      : (app.style.background = 'var(--color-bg-800)') &&
+        (themeColor.content = 'var(--color-bg-800)') &&
+        (themeColorApple.content = 'var(--color-bg-800)');
   } else {
     throw new Error('app não existe');
   }
 }
 
 const Header = () => {
-  const { mode, setMode } = useMode();
+  const { mode, setMode, localMode } = useMode();
+
+  React.useEffect(() => {
+    if (localMode) setColorApp(localMode);
+  }, [localMode]);
 
   return (
     <header className={style.header}>
@@ -52,7 +56,6 @@ const Header = () => {
       <nav className={style.nav}>
         <button
           onClick={() => {
-            setColorApp(mode);
             setMode(mode === 'light' ? 'dark' : 'light');
           }}
         >
