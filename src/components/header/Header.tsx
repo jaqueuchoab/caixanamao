@@ -15,6 +15,17 @@ import icon_hamburguer_dark from '../../assets/icons/icon-hamburguer-dark.svg';
 import { Link } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
 
+function setColorApp(mode: string) {
+  const app: HTMLDivElement | null = document.querySelector('.app');
+  if (app)
+    mode === 'light'
+      ? (app.style.background = 'var(--color-bg-800)')
+      : (app.style.background = 'var(--color-bg-100)');
+  else {
+    throw new Error('app não existe');
+  }
+}
+
 const Header = () => {
   const { mode, setMode } = useMode();
 
@@ -28,11 +39,22 @@ const Header = () => {
         />
       </Link>
       <nav className={style.nav}>
-        <button onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}>
-          <img src={mode === 'light' ? icon_mode_light : icon_mode_dark} alt={`icon-mode-${mode}`} />
+        <button onClick={() => {
+          setColorApp(mode);
+          setMode(mode === 'light' ? 'dark' : 'light');
+        }}>
+          <img
+            src={mode === 'light' ? icon_mode_light : icon_mode_dark}
+            alt={`icon-mode-${mode}`}
+          />
         </button>
         <button>
-          <img src={mode === 'light' ? icon_hamburguer_light : icon_hamburguer_dark} alt="icon-menu-hamburguer-light" />
+          <img
+            src={
+              mode === 'light' ? icon_hamburguer_light : icon_hamburguer_dark
+            }
+            alt="icon-menu-hamburguer-light"
+          />
         </button>
       </nav>
     </header>

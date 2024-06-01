@@ -2,6 +2,7 @@
   font-size: var(--text-md);
   font-weight: 700;
   line-height: 30.24px;
+  letter-spacing: 0.04em;
 }
  
 .p {
