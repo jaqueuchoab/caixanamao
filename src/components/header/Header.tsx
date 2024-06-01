@@ -17,12 +17,13 @@ import { useMode } from '../../context/ModeContext';
 
 function setColorApp(mode: string) {
   const app: HTMLDivElement | null = document.querySelector('.app');
-  const html: HTMLElement | null = document.querySelector('.html');
-  if (app && html)
+  const head: HTMLMetaElement | null = document.querySelector('meta[name="theme-color"]');
+
+  if (app && head) {
     mode === 'light'
-      ? (app.style.background = 'var(--color-bg-800)') && (html.style.background = 'var(--color-bg-800)')
-      : (app.style.background = 'var(--color-bg-100)') && (html.style.background = 'var(--color-bg-100)');
-  else {
+      ? (app.style.background = 'var(--color-bg-800)') && (head.content = 'var(--color-bg-800)')
+      : (app.style.background = 'var(--color-bg-100)') && (head.content = 'var(--color-bg-100)');
+  } else {
     throw new Error('app não existe');
   }
 }
@@ -40,10 +41,12 @@ const Header = () => {
         />
       </Link>
       <nav className={style.nav}>
-        <button onClick={() => {
-          setColorApp(mode);
-          setMode(mode === 'light' ? 'dark' : 'light');
-        }}>
+        <button
+          onClick={() => {
+            setColorApp(mode);
+            setMode(mode === 'light' ? 'dark' : 'light');
+          }}
+        >
           <img
             src={mode === 'light' ? icon_mode_light : icon_mode_dark}
             alt={`icon-mode-${mode}`}
