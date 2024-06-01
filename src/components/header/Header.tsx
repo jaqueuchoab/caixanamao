@@ -17,10 +17,11 @@ import { useMode } from '../../context/ModeContext';
 
 function setColorApp(mode: string) {
   const app: HTMLDivElement | null = document.querySelector('.app');
-  if (app)
+  const html: HTMLElement | null = document.querySelector('.html');
+  if (app && html)
     mode === 'light'
-      ? (app.style.background = 'var(--color-bg-800)')
-      : (app.style.background = 'var(--color-bg-100)');
+      ? (app.style.background = 'var(--color-bg-800)') && (html.style.background = 'var(--color-bg-800)')
+      : (app.style.background = 'var(--color-bg-100)') && (html.style.background = 'var(--color-bg-100)');
   else {
     throw new Error('app não existe');
   }
