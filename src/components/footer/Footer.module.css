@@ -14,7 +14,7 @@ footer {
   justify-content: center;
 }
 
-.logoVertLight {
+.logoVert {
   width: 8.7rem;
   margin-bottom: 1.5rem;
 }
@@ -27,5 +27,4 @@ footer {
   gap: 0.5rem;
 
   font-size: var(--text-sm);
-  color: #484848;
 }
