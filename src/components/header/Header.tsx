@@ -57,6 +57,7 @@ const Header = () => {
         <button
           onClick={() => {
             setMode(mode === 'light' ? 'dark' : 'light');
+            if (localMode) setColorApp(localMode);
           }}
         >
           <img
