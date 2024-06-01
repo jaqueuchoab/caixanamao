@@ -6,13 +6,7 @@
   padding: 3rem 2.5rem 3rem 2.5rem;
 }
 
-.sectionContent:nth-last-child(1) {
-  background-color:#F1FFEA;
-}
-
-
 .sectionContent:nth-last-child(2) {
-  background-color:#EDEDED;
   padding: 3rem 2.5rem 0 2.5rem;
 }
 

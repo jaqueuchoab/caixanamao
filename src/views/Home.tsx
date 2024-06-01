@@ -10,15 +10,25 @@ import cnm_logo_dark from '../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 // Importando estilo
 import style from '../components/home/Home.module.css';
 import Slide from '../components/slide/Slide.tsx';
+import { useMode } from '../context/ModeContext.tsx';
 
 const Home = () => {
+  const { mode } = useMode();
+
   return (
     <div className={style.mainContent}>
       <Slide
         slide="carousel"
         imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]}
       />
-      <section className={style.sectionContent}>
+      <section
+        style={
+          mode === 'light'
+            ? { background: 'var(--color-bg-100)' }
+            : { background: 'var(--color-bg-800)' }
+        }
+        className={style.sectionContent}
+      >
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
           texto="Gestão financeira com foco na acessibilidade para pequenas empresas."
@@ -26,7 +36,14 @@ const Home = () => {
         <Button>Quero experimentar</Button>
       </section>
 
-      <section style={{ backgroundColor: '#EDEDED', paddingBottom: '20px' }}>
+      <section
+        style={
+          { paddingBottom: '20px' } &&
+          (mode === 'light'
+            ? { background: 'var(--color-bg-200)' }
+            : { background: 'var(--color-bg-850)' })
+        }
+      >
         <section className={style.sectionContent}>
           <TextContent
             titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
@@ -41,7 +58,14 @@ const Home = () => {
           imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_gradient_arrow]}
         />
       </section>
-      <section className={style.sectionContent}>
+      <section
+        style={
+          mode === 'light'
+            ? { background: 'var(--color-green-100)' }
+            : { background: 'var(--color-green-950)' }
+        }
+        className={style.sectionContent}
+      >
         <div>
           <img
             src={cnm_gradient_arrow}
