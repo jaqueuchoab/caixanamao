@@ -42,7 +42,7 @@ const Header = () => {
 
   React.useEffect(() => {
     if (localMode) setColorApp(localMode);
-  }, [localMode]);
+  }, [mode, localMode]);
 
   return (
     <header className={style.header}>
