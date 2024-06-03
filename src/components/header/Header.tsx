@@ -64,6 +64,7 @@ const Header = () => {
           onClick={() => {
             setMode(mode === 'light' ? 'dark' : 'light');
             localStorage?.setItem('mode', mode)
+            setColorApp(mode)
           }}
         >
           <img
