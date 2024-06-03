@@ -48,7 +48,7 @@ const Header = () => {
     if (localMode) {
       setColorApp(localMode);
     }
-  }, [localMode, setLocalMode]);
+  }, [localMode]);
 
   return (
     <header className={style.header}>
@@ -63,8 +63,8 @@ const Header = () => {
         <button
           onClick={() => {
             setMode(mode === 'light' ? 'dark' : 'light');
-            localStorage?.setItem('mode', mode)
             setColorApp(mode)
+            localStorage?.setItem('mode', mode)
           }}
         >
           <img
