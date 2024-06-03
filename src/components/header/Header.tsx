@@ -41,6 +41,8 @@ const Header = () => {
   const { mode, setMode, localMode } = useMode();
 
   React.useEffect(() => {
+    console.log('efeito');
+    
     if (localMode) setColorApp(localMode);
   }, [mode, localMode]);
 
@@ -57,7 +59,6 @@ const Header = () => {
         <button
           onClick={() => {
             setMode(mode === 'light' ? 'dark' : 'light');
-            if (localMode) setColorApp(localMode);
           }}
         >
           <img
