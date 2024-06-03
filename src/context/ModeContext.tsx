@@ -22,10 +22,13 @@ export const ModeContextProvider = ({ children }: React.PropsWithChildren) => {
   }
 
   const [mode, setMode] = React.useState(localMode ? localMode : 'light');
-  localStorage.setItem('mode', mode);
+
+  React.useEffect(() => {
+    localStorage.setItem('mode', mode);
+  }, [mode, setMode]);
 
   return (
-    <ModeContext.Provider value={{ mode, setMode, localMode}}>
+    <ModeContext.Provider value={{ mode, setMode, localMode }}>
       {children}
     </ModeContext.Provider>
   );

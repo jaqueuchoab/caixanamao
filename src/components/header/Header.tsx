@@ -41,9 +41,13 @@ const Header = () => {
   const { mode, setMode, localMode } = useMode();
 
   React.useEffect(() => {
-    console.log(localStorage.getItem('mode'));
+    console.log('effect' + localMode + 'localStorage' + localStorage.getItem('mode'));
     
-    if (localMode) setColorApp(localMode);
+    if (localMode && localMode === localStorage.getItem('mode')){
+      setColorApp(localMode)
+    } else {
+      setColorApp(mode)
+    }
   }, [mode, setMode, localMode]);
 
   return (
