@@ -41,7 +41,7 @@ const Header = () => {
   const { mode, setMode, localMode } = useMode();
 
   React.useEffect(() => {
-    console.log('efeito');
+    console.log('efeito', localMode);
     
     if (localMode) setColorApp(localMode);
   }, [mode, localMode]);
