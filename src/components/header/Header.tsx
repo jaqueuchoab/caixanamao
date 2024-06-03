@@ -38,10 +38,11 @@ function setColorApp(mode: string) {
 }
 
 const Header = () => {
-  const { mode, setMode, localMode } = useMode();
+  const { mode, setMode, localMode, setLocalMode } = useMode();
 
   React.useEffect(() => {
-    localStorage?.setItem('mode', mode)
+    localStorage?.setItem('mode', mode);
+    setColorApp(mode);
   }, [mode])
 
   React.useEffect(() => {
@@ -66,6 +67,8 @@ const Header = () => {
       <nav className={style.nav}>
         <button
           onClick={() => {
+            console.log(mode);
+            
             setMode(mode === 'light' ? 'dark' : 'light' );
             console.log(mode);
             setColorApp(mode);
