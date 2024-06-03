@@ -64,10 +64,8 @@ const Header = () => {
       <nav className={style.nav}>
         <button
           onClick={() => {
-            setMode(mode === 'light' ? 'dark' : 'light' );
+            setMode(localMode === 'light' ? 'dark' : 'light' );
             console.log(mode);
-            
-            setColorApp(mode)
           }}
         >
           <img
