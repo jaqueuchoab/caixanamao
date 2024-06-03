@@ -38,17 +38,19 @@ function setColorApp(mode: string) {
 }
 
 const Header = () => {
-  const { mode, setMode, localMode } = useMode();
+  const { mode, setMode, localMode, setLocalMode } = useMode();
 
   React.useEffect(() => {
-    console.log('effect' + localMode + 'localStorage' + localStorage.getItem('mode'));
+    console.log('effect ' + localMode + 'localStorage ' + localStorage.getItem('mode'));
     
-    if (localMode && localMode === localStorage.getItem('mode')){
+    if (localMode){
+      setLocalMode(mode)
       setColorApp(localMode)
     } else {
+      setLocalMode(mode)
       setColorApp(mode)
     }
-  }, [mode, setMode, localMode]);
+  }, [mode, localMode, setLocalMode]);
 
   return (
     <header className={style.header}>

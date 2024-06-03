@@ -4,6 +4,7 @@ type IModeContext = {
   mode: string;
   setMode: React.Dispatch<React.SetStateAction<string>>;
   localMode: string | null;
+  setLocalMode: React.Dispatch<React.SetStateAction<string>>;
 };
 
 const ModeContext = React.createContext<IModeContext | null>(null);
@@ -15,20 +16,19 @@ export const useMode = () => {
 };
 
 export const ModeContextProvider = ({ children }: React.PropsWithChildren) => {
-  const localMode = localStorage.getItem('mode');
+  let localModeActive = localStorage.getItem('mode');
+  const [localMode, setLocalMode] = React.useState(localModeActive ? localModeActive : 'light' );
 
-  if (!localMode) {
+  if (!localModeActive) {
     localStorage.setItem('mode', 'light');
+    localModeActive = localStorage.getItem('mode');
+    if(localModeActive) setLocalMode(localModeActive);
   }
 
-  const [mode, setMode] = React.useState(localMode ? localMode : 'light');
-
-  React.useEffect(() => {
-    localStorage.setItem('mode', mode);
-  }, [mode, setMode]);
+  const [mode, setMode] = React.useState(localMode);
 
   return (
-    <ModeContext.Provider value={{ mode, setMode, localMode }}>
+    <ModeContext.Provider value={{ mode, setMode, localMode, setLocalMode }}>
       {children}
     </ModeContext.Provider>
   );
