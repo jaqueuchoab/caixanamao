@@ -48,7 +48,7 @@ const Header = () => {
     if (localMode) {
       setColorApp(localMode);
     }
-  }, [mode, localMode, setLocalMode]);
+  }, [localMode, setLocalMode]);
 
   return (
     <header className={style.header}>
