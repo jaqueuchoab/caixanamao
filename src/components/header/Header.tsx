@@ -41,10 +41,10 @@ const Header = () => {
   const { mode, setMode, localMode } = useMode();
 
   React.useEffect(() => {
-    console.log('efeito', localMode);
+    console.log(localStorage.getItem('mode'));
     
     if (localMode) setColorApp(localMode);
-  }, [mode, localMode]);
+  }, [mode, setMode, localMode]);
 
   return (
     <header className={style.header}>
