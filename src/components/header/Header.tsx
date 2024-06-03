@@ -67,8 +67,6 @@ const Header = () => {
       <nav className={style.nav}>
         <button
           onClick={() => {
-            console.log(mode);
-            
             setMode(mode === 'light' ? 'dark' : 'light' );
             console.log(mode);
             setColorApp(mode);
