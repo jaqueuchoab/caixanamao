@@ -41,6 +41,8 @@ const Header = () => {
   const { mode, setMode, localMode, setLocalMode } = useMode();
 
   React.useEffect(() => {
+    localStorage?.setItem('mode', mode)
+
     console.log(
       'effect ' + localMode + 'localStorage ' + localStorage.getItem('mode'),
     );
@@ -48,7 +50,7 @@ const Header = () => {
     if (localMode) {
       setColorApp(localMode);
     }
-  }, [localMode]);
+  }, [mode, localMode]);
 
   return (
     <header className={style.header}>
@@ -62,9 +64,10 @@ const Header = () => {
       <nav className={style.nav}>
         <button
           onClick={() => {
-            setMode(mode === 'light' ? 'dark' : 'light');
+            setMode(mode === 'light' ? 'dark' : 'light' );
+            console.log(mode);
+            
             setColorApp(mode)
-            localStorage?.setItem('mode', mode)
           }}
         >
           <img
