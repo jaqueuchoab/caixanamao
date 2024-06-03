@@ -41,12 +41,12 @@ const Header = () => {
   const { mode, setMode, localMode, setLocalMode } = useMode();
 
   React.useEffect(() => {
-    console.log('effect ' + localMode + 'localStorage ' + localStorage.getItem('mode'));
-    setLocalMode(mode)
-    
-    if (localMode){
-      
-      setColorApp(localMode)
+    console.log(
+      'effect ' + localMode + 'localStorage ' + localStorage.getItem('mode'),
+    );
+
+    if (localMode) {
+      setColorApp(localMode);
     }
   }, [mode, localMode, setLocalMode]);
 
@@ -63,6 +63,7 @@ const Header = () => {
         <button
           onClick={() => {
             setMode(mode === 'light' ? 'dark' : 'light');
+            localStorage?.setItem('mode', mode)
           }}
         >
           <img
