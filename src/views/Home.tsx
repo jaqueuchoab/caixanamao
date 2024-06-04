@@ -74,7 +74,7 @@ const Home = () => {
         </div>
         <TextContent
           titulo="Experimente Agora e Transforme Sua Gestão Financeira"
-          texto="Experimente nossa aplicação e descubra como podemos simplificar o fechamento de caixa, proporcionando controle, segurança e uma experiência que impulsiona o sucesso do seu negócio."
+          texto="Experimente nossa aplicação hoje mesmo e descubra como podemos simplificar o fechamento de caixa, proporcionando controle total, segurança dos dados e uma experiência que impulsiona o sucesso do seu negócio."
         />
 
         <Link to={'/login-registration'}>
