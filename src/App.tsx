@@ -5,6 +5,7 @@ import Footer from './components/footer/Footer';
 import LoginCadastro from './views/LoginCadastro';
 import Vantagens from './views/Vantagens';
 import { ModeContextProvider } from './context/ModeContext';
+import Fallback from './components/fallback/Fallback';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
                 element={<LoginCadastro />}
               ></Route>
               <Route path="/benefits" element={<Vantagens />}></Route>
+              {/*Rota de teste do fallback*/}
+              <Route path="/fallback" element={<Fallback mode='dark' errorMessage='404: Página nao encontrada.'/>}></Route>
             </Routes>
             <Footer />
           </ModeContextProvider>
