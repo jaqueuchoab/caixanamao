@@ -1,8 +1,9 @@
 import React from 'react';
-import line_break_regular from '../../assets/icons/link-break-regular.svg';
+import { LinkBreak } from 'phosphor-react';
+import style from './Fallback.module.css';
 
 /*
-1- configurar o svg, o fill da path
+1- configurar o svg, o fill da path FEITO
 2- configurar o style padrao, disposiçao dos elemetos na pag
 3- remover cabeçalho e footer (posso alterar o tamanho da div para tomar toda a tela e ou mudar a rota da pag quando o fallback ocorrer)
 */
@@ -15,8 +16,8 @@ type FallbackProps = {
 
 const Fallback = ({ mode, errorMessage }: FallbackProps) => {
   return (
-    <div>
-      <img src={line_break_regular} alt="line-break-regular" />
+    <div className={style.fallback}>
+      <LinkBreak color='#484848' mirrored={true} size={72}/>
       <p
         style={
           mode === 'light'

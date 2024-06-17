@@ -11,12 +11,15 @@ import cnm_logo_dark from '../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 import style from '../components/home/Home.module.css';
 import Slide from '../components/slide/Slide.tsx';
 import { useMode } from '../context/ModeContext.tsx';
+import Header from '../components/header/Header.tsx';
+import Footer from '../components/footer/Footer.tsx';
 
 const Home = () => {
   const { mode } = useMode();
 
   return (
     <div className={style.mainContent}>
+      <Header />
       <Slide
         slide="carousel"
         imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]}
@@ -81,6 +84,7 @@ const Home = () => {
           <Button>Login / Cadastro</Button>
         </Link>
       </section>
+      <Footer />
     </div>
   );
 };

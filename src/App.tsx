@@ -13,7 +13,6 @@ function App() {
       <div className="app">
         <BrowserRouter>
           <ModeContextProvider>
-            <Header />
             {/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
             <Routes>
               <Route path="/" element={<Home />}></Route>
@@ -23,9 +22,8 @@ function App() {
               ></Route>
               <Route path="/benefits" element={<Vantagens />}></Route>
               {/*Rota de teste do fallback*/}
-              <Route path="/fallback" element={<Fallback mode='dark' errorMessage='404: Página nao encontrada.'/>}></Route>
+              <Route path="/fallback" element={<Fallback mode='light' errorMessage='404: Página nao encontrada.'/>}></Route>
             </Routes>
-            <Footer />
           </ModeContextProvider>
         </BrowserRouter>
       </div>
