@@ -1,6 +1,8 @@
 import React from 'react';
 import { LinkBreak } from 'phosphor-react';
 import style from './Fallback.module.css';
+import { Link } from 'react-router-dom';
+import { useMode } from '../../context/ModeContext';
 
 /*
 1- configurar o svg, o fill da path FEITO
@@ -9,16 +11,27 @@ import style from './Fallback.module.css';
 */
 
 type FallbackProps = {
-  mode: string;
   errorMessage: string;
 };
 
+const Fallback = ({ errorMessage }: FallbackProps) => {
+  const { mode } = useMode();
 
-const Fallback = ({ mode, errorMessage }: FallbackProps) => {
   return (
-    <div className={style.fallback}>
-      <LinkBreak color='#484848' mirrored={true} size={72}/>
+    <div
+      className={style.fallback}
+      style={
+        mode === 'light'
+          ? { backgroundColor: 'var(--color-bg-200)' }
+          : { backgroundColor: 'var(--color-bg-800)' }
+      }
+    >
+      <LinkBreak
+        color={mode === 'light' ? 'var(--color-bg-600)' : 'var(--color-bg-300)'}
+        size={120}
+      />
       <p
+        className={style.p}
         style={
           mode === 'light'
             ? { color: 'var(--color-bg-950)' }
@@ -27,10 +40,22 @@ const Fallback = ({ mode, errorMessage }: FallbackProps) => {
       >
         Ops... Página não encontrada.
       </p>
-      <span>
+      <span
+        className={style.span}
+        style={{ backgroundColor: 'var(--color-bg-600)' }}
+      >
         <p>{errorMessage}</p>
       </span>
-      <button>Voltar para a página anterior</button>
+      <Link
+        to={'/'}
+        style={
+          mode === 'light'
+            ? { color: 'var(--color-green-900)', fontSize: '16px' }
+            : { color: 'var(--color-green-300)', fontSize: '16px' }
+        }
+      >
+        Voltar para a página anterior
+      </Link>
     </div>
   );
 };

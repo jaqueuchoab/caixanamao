@@ -22,7 +22,7 @@ function App() {
               ></Route>
               <Route path="/benefits" element={<Vantagens />}></Route>
               {/*Rota de teste do fallback*/}
-              <Route path="/fallback" element={<Fallback mode='light' errorMessage='404: Página nao encontrada.'/>}></Route>
+              <Route path="/fallback" element={<Fallback errorMessage='404: Page not found.'/>}></Route>
             </Routes>
           </ModeContextProvider>
         </BrowserRouter>

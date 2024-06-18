@@ -5,4 +5,17 @@
   flex-direction: column;
   height: 100vh;
   width: 100vw;
+  gap: var(--text-md);
+  font-size: var(--text-sm);
+}
+
+.p {
+  font-weight: 400;
+}
+
+.span {
+  color: var(--color-bg-200);
+  padding: 8px;
+  font-weight: 600;
+  border-radius: 8px;
 }
