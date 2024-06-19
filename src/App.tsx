@@ -1,7 +1,5 @@
-import Header from './components/header/Header';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './views/Home';
-import Footer from './components/footer/Footer';
 import LoginCadastro from './views/LoginCadastro';
 import Vantagens from './views/Vantagens';
 import { ModeContextProvider } from './context/ModeContext';
