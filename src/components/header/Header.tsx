@@ -63,7 +63,7 @@ const Header = () => {
             setMode(mode === 'light' ? 'dark' : 'light');
           }}
         >
-          <CircleHalf color={mode === 'light' ? '#080808' : '#FEFEFE'} size={38} />
+          <CircleHalf color={mode === 'light' ? '#080808' : '#FEFEFE'} size={38} weight="fill"/>
         </button>
       </nav>
     </header>
