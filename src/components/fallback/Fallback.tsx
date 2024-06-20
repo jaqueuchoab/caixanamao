@@ -1,21 +1,15 @@
 import React from 'react';
 import { LinkBreak } from 'phosphor-react';
 import style from './Fallback.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
 
-/*
-1- configurar o svg, o fill da path FEITO
-2- configurar o style padrao, disposiçao dos elemetos na pag
-3- remover cabeçalho e footer (posso alterar o tamanho da div para tomar toda a tela e ou mudar a rota da pag quando o fallback ocorrer)
-*/
 
-type FallbackProps = {
-  errorMessage: string;
-};
-
-const Fallback = ({ errorMessage }: FallbackProps) => {
+const Fallback = () => {
   const { mode } = useMode();
+  const { search } = useLocation();
+  const params = new URLSearchParams(search);
+  const errorMessage = params.get('error') || 'Unknown error';
 
   return (
     <div
