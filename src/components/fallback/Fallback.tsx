@@ -11,6 +11,8 @@ const Fallback = () => {
   const params = new URLSearchParams(search);
   const errorMessage = params.get('error') || 'Unknown error';
 
+  /*teste*/
+
   return (
     <div
       className={style.fallback}
