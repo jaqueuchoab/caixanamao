@@ -4,7 +4,6 @@ import style from './Fallback.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
 
-
 const Fallback = () => {
   const { mode } = useMode();
   const { search } = useLocation();
@@ -14,32 +13,17 @@ const Fallback = () => {
   /*teste*/
 
   return (
-    <div
-      className={style.fallback}
-      style={
-        mode === 'light'
-          ? { backgroundColor: 'var(--color-bg-200)' }
-          : { backgroundColor: 'var(--color-bg-800)' }
-      }
-    >
+    <div className={style.fallback} id={style[mode]}>
       <LinkBreak
-        color={mode === 'light' ? 'var(--color-bg-600)' : 'var(--color-bg-300)'}
+        color={
+          mode === 'light'
+            ? 'var(--color-neutral-600)'
+            : 'var(--color-neutral-300)'
+        }
         size={120}
       />
-      <p
-        className={style.p}
-        style={
-          mode === 'light'
-            ? { color: 'var(--color-bg-950)' }
-            : { color: 'var(--color-bg-100)' }
-        }
-      >
-        Ops... Página não encontrada.
-      </p>
-      <span
-        className={style.span}
-        style={{ backgroundColor: 'var(--color-bg-600)' }}
-      >
+      <p className={style.p}>Ops... Página não encontrada.</p>
+      <span className={style.span}>
         <p>{errorMessage}</p>
       </span>
       <Link

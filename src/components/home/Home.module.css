@@ -20,30 +20,30 @@
   margin-bottom: 2rem;
 }
 
-#light .sectionDivisorOne {
+div#light > section.sectionDivisorOne {
   background-color: var(--background-light-primary);
 }
 
-#dark .sectionDivisorOne {
-  background-color: var(--background-light-primary);
+div#dark > section.sectionDivisorOne {
+  background-color: var(--background-dark-primary);
 }
 
-.sectionDivisorTwo {
+section.sectionDivisorTwo {
   padding-bottom: 20px;
 }
 
-#light .sectionDivisorTwo {
+div#light > section.sectionDivisorTwo {
   background-color: var(--background-light-secondary);
 }
 
-#dark .sectionDivisorTwo {
+div#dark > section.sectionDivisorTwo {
   background-color: var(--background-dark-secondary);
 }
 
-#light .sectionDivisorThree {
+div#light > section.sectionDivisorThree {
   background-color: var(--background-light-quarternary);
 }
 
-#dark .sectionDivisorThree {
+div#dark > section.sectionDivisorThree {
   background-color: var(--background-dark-quarternary);
 }

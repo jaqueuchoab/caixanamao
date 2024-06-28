@@ -15,7 +15,7 @@ import Footer from '../components/footer/Footer.tsx';
 
 const Home = () => {
   const { mode } = useMode();
-
+  
   return (
     <div className={style.mainContent} id={style[mode]}>
       <Header />
@@ -42,16 +42,15 @@ const Home = () => {
           customControls={true}
           thumbs={{
             thumbType: 'color',
-            thumbValue:
-              mode === 'light'
-                ? 'var(--color-blue-300)'
-                : 'var(--color-blue-300)',
+            thumbValue: mode === 'light' ? 'var(--color-blue-300)' : 'var(--color-blue-300)',
           }}
           slide="carousel"
           imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_gradient_arrow]}
         />
       </section>
-      <section className={style.sectionContent + ` sectionDivisorThree`}>
+      <section
+        className={style.sectionContent + " " + style.sectionDivisorThree}
+      >
         <div>
           <img
             src={cnm_gradient_arrow}
