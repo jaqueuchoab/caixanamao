@@ -42,20 +42,16 @@ const Home = () => {
           customControls={true}
           thumbs={{
             thumbType: 'color',
-            thumbValue: mode === 'light' ? 'var(--color-blue-300)' : 'var(--color-blue-300)',
+            thumbValue:
+              mode === 'light'
+                ? 'var(--color-blue-300)'
+                : 'var(--color-blue-300)',
           }}
           slide="carousel"
           imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_gradient_arrow]}
         />
       </section>
-      <section
-        style={
-          mode === 'light'
-            ? { background: 'var(--color-green-100)' }
-            : { background: 'var(--color-green-950)' }
-        }
-        className={style.sectionContent + ` sectionDivisorThree`}
-      >
+      <section className={style.sectionContent + ` sectionDivisorThree`}>
         <div>
           <img
             src={cnm_gradient_arrow}
