@@ -1,5 +1,5 @@
 .h3 {
-  font-size: var(--text-md);
+  font-size: var(--size-md);
   font-weight: 700;
   line-height: 30.24px;
   letter-spacing: 0.04em;
@@ -7,7 +7,23 @@
  
 .p {
   margin-top: 1.5rem;
-  font-size: var(--text-sm);
+  font-size: var(--size-sm);
   font-weight: 400;
   line-height: 20.16px;
+}
+
+#light .h3 {
+  color: var(--color-neutral-950);
+}
+
+#dark .h3 {
+  color: var(--color-neutral-100);
+}
+
+#light .p {
+  color: var(--color-neutral-600);
+}
+
+#dark .p {
+  color: var(--color-neutral-300);
 }

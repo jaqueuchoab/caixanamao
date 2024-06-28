@@ -1,13 +1,10 @@
 import React from 'react';
-
 // Importando style css
 import style from './Header.module.css';
-
 // Importando imagens
 import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
 import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 import CircleHalf from 'phosphor-react/src/icons/CircleHalf';
-
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
@@ -23,30 +20,24 @@ function setColorApp(mode: string) {
 
   if (app && themeColor && themeColorApple) {
     mode === 'light'
-      ? (app.style.background = 'var(--color-bg-100)') &&
-        (themeColor.content = 'var(--color-bg-100)') &&
-        (themeColorApple.content = 'var(--color-bg-100)')
-      : (app.style.background = 'var(--color-bg-800)') &&
-        (themeColor.content = 'var(--color-bg-800)') &&
-        (themeColorApple.content = 'var(--color-bg-800)');
+      ? (app.style.background = 'var(--color-neutral-100)') &&
+        (themeColor.content = 'var(--color-neutral-100)') &&
+        (themeColorApple.content = 'var(--color-neutral-100)')
+      : (app.style.background = 'var(--color-neutral-800)') &&
+        (themeColor.content = 'var(--color-neutral-800)') &&
+        (themeColorApple.content = 'var(--color-neutral-800)');
   } else {
     throw new Error('app não existe');
   }
 }
 
 const Header = () => {
-  const { mode, setMode, localMode } = useMode();
+  const { mode, setMode } = useMode();
 
   React.useEffect(() => {
     localStorage?.setItem('mode', mode);
     setColorApp(mode);
   }, [mode]);
-
-  React.useEffect(() => {
-    if (localMode) {
-      setColorApp(localMode);
-    }
-  }, [localMode]);
 
   return (
     <header className={style.header}>
@@ -63,7 +54,15 @@ const Header = () => {
             setMode(mode === 'light' ? 'dark' : 'light');
           }}
         >
-          <CircleHalf color={mode === 'light' ? '#080808' : '#FEFEFE'} size={38} weight="fill"/>
+          <CircleHalf
+            color={
+              mode === 'light'
+                ? 'var(--color-neutral-950)'
+                : 'var(--color-neutral-100)'
+            }
+            size={38}
+            weight="fill"
+          />
         </button>
       </nav>
     </header>

@@ -8,6 +8,19 @@
   border-radius: 12px;
   border-width: 1px;
   border-style: solid;
-  font-size: var(--text-sm);
+  font-size: var(--size-sm);
   margin: 1.5rem 0px 0px 0px;
+}
+
+#light {
+  color: var(--color-neutral-950);
+  border-color: var(--color-green-400); 
+  background-color: var(--color-green-200);
+}
+
+
+#dark {
+  color: var(--color-neutral-100);
+  border-color: var(--color-green-800); 
+  background-color: var(--color-green-900);
 }

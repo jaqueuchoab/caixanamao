@@ -26,5 +26,15 @@ footer {
   justify-content: center;
   gap: 0.5rem;
 
-  font-size: var(--text-sm);
+  font-size: var(--size-sm);
+}
+
+#light {
+  background: var(--color-neutral-100);
+  color: var(--color-neutral-600);
+}
+
+#dark {
+  background: var(--color-neutral-800);
+  color: var(--color-neutral-300);
 }

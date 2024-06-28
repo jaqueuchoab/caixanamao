@@ -19,3 +19,31 @@
   height: 9rem;
   margin-bottom: 2rem;
 }
+
+#light .sectionDivisorOne {
+  background-color: var(--background-light-primary);
+}
+
+#dark .sectionDivisorOne {
+  background-color: var(--background-light-primary);
+}
+
+.sectionDivisorTwo {
+  padding-bottom: 20px;
+}
+
+#light .sectionDivisorTwo {
+  background-color: var(--background-light-secondary);
+}
+
+#dark .sectionDivisorTwo {
+  background-color: var(--background-dark-secondary);
+}
+
+#light .sectionDivisorThree {
+  background-color: var(--background-light-quarternary);
+}
+
+#dark .sectionDivisorThree {
+  background-color: var(--background-dark-quarternary);
+}

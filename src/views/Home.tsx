@@ -1,4 +1,3 @@
-import React from 'react';
 import TextContent from '../components/home/TextContent';
 import Button from '../components/button/Button';
 import { Link } from 'react-router-dom';
@@ -18,20 +17,13 @@ const Home = () => {
   const { mode } = useMode();
 
   return (
-    <div className={style.mainContent}>
+    <div className={style.mainContent} id={style[mode]}>
       <Header />
       <Slide
         slide="carousel"
         imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]}
       />
-      <section
-        style={
-          mode === 'light'
-            ? { background: 'var(--color-bg-100)' }
-            : { background: 'var(--color-bg-800)' }
-        }
-        className={style.sectionContent}
-      >
+      <section className={style.sectionContent + ` sectionDivisorOne`}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
           texto="Gestão financeira com foco na acessibilidade para pequenas empresas."
@@ -39,13 +31,7 @@ const Home = () => {
         <Button>Quero experimentar</Button>
       </section>
 
-      <section
-        style={
-          mode === 'light'
-            ? { background: 'var(--color-bg-200)', paddingBottom: '20px' }
-            : { background: 'var(--color-bg-850)', paddingBottom: '20px' }
-        }
-      >
+      <section className={style.sectionDivisorTwo}>
         <section className={style.sectionContent}>
           <TextContent
             titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
@@ -56,9 +42,8 @@ const Home = () => {
           customControls={true}
           thumbs={{
             thumbType: 'color',
-            thumbValue: mode === 'light' ? '#93C7EB' : '#00538F',
+            thumbValue: mode === 'light' ? 'var(--color-blue-300)' : 'var(--color-blue-300)',
           }}
-          //thumbs={[cnm_gradient_arrow, cnm_logo_light, cnm_gradient_arrow]}
           slide="carousel"
           imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_gradient_arrow]}
         />
@@ -69,7 +54,7 @@ const Home = () => {
             ? { background: 'var(--color-green-100)' }
             : { background: 'var(--color-green-950)' }
         }
-        className={style.sectionContent}
+        className={style.sectionContent + ` sectionDivisorThree`}
       >
         <div>
           <img
