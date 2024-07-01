@@ -15,6 +15,9 @@ import Footer from '../components/footer/Footer.tsx';
 
 const Home = () => {
   const { mode } = useMode();
+
+  throw new Error("Error");
+  
   
   return (
     <div className={style.mainContent} id={style[mode]}>
