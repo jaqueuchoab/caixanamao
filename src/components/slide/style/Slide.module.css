@@ -1,71 +1,73 @@
-ul {
-  padding: 0px;
-  margin: 0px;
-  list-style: none;
-}
+@media (max-width: 430px) {
+  ul {
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+  }
 
-img {
-  display: block;
-  max-width: 100%;
-}
+  img {
+    display: block;
+    max-width: 100%;
+  }
 
-.slideWrapper {
-  overflow: hidden;
-}
+  .slideWrapper {
+    overflow: hidden;
+  }
 
-.slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+  .slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-.slide:hover {
-  will-change: transform;
-}
+  .slide:hover {
+    will-change: transform;
+  }
 
-.slide li {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  .slide li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 
-  flex-shrink: 0;
-  width: 100vw;
+    flex-shrink: 0;
+    width: 100vw;
 
-  border-radius: 24px;
-  overflow: hidden;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  opacity: 0.8;
-  transform: scale(0.8);
-  transition: 0.4s;
-}
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    opacity: 0.8;
+    transform: scale(0.8);
+    transition: 0.4s;
+  }
 
-.slide li.active {
-  opacity: 1;
-  transform: scale(1);
-}
+  .slide li.active {
+    opacity: 1;
+    transform: scale(1);
+  }
 
-/*estilo do customControls*/
-.customControls {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: -10px;
-  flex-wrap: wrap;
-}
+  /*estilo do customControls*/
+  .customControls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: -10px;
+    flex-wrap: wrap;
+  }
 
-.customControls li {
-  opacity: 0.8;
-  transform: scale(0.8);
-  transition: 0.4s;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 5px;
-}
+  .customControls li {
+    opacity: 0.8;
+    transform: scale(0.8);
+    transition: 0.4s;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 5px;
+  }
 
-.customControls li.active {
-  opacity: 1;
-  transform: scale(1);
+  .customControls li.active {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

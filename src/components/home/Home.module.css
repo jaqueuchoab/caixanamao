@@ -1,49 +1,51 @@
-.sectionContent {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0 2rem 3rem 2rem;
-}
+@media (max-width: 430px) {
+  .sectionContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem 3rem 2rem;
+  }
 
-.sectionContent:nth-last-child(2) {
-  padding: 3rem 2rem 3rem 2rem;
-}
+  .sectionContent:nth-last-child(2) {
+    padding: 3rem 2rem 3rem 2rem;
+  }
 
-.sectionContent:nth-last-child(3) {
-  padding: 0 2rem 3rem 2rem;
-}
+  .sectionContent:nth-last-child(3) {
+    padding: 0 2rem 3rem 2rem;
+  }
 
-.gradientArrow {
-  width: 9.55rem;
-  height: 9rem;
-  margin-bottom: 2rem;
-}
+  .gradientArrow {
+    width: 9.55rem;
+    height: 9rem;
+    margin-bottom: 2rem;
+  }
 
-div#light > section.sectionDivisorOne {
-  background-color: var(--background-light-primary);
-}
+  div#light > section.sectionDivisorOne {
+    background-color: var(--background-light-primary);
+  }
 
-div#dark > section.sectionDivisorOne {
-  background-color: var(--background-dark-primary);
-}
+  div#dark > section.sectionDivisorOne {
+    background-color: var(--background-dark-primary);
+  }
 
-section.sectionDivisorTwo {
-  padding-bottom: 20px;
-}
+  section.sectionDivisorTwo {
+    padding-bottom: 20px;
+  }
 
-div#light > section.sectionDivisorTwo {
-  background-color: var(--background-light-secondary);
-}
+  div#light > section.sectionDivisorTwo {
+    background-color: var(--background-light-secondary);
+  }
 
-div#dark > section.sectionDivisorTwo {
-  background-color: var(--background-dark-secondary);
-}
+  div#dark > section.sectionDivisorTwo {
+    background-color: var(--background-dark-secondary);
+  }
 
-div#light > section.sectionDivisorThree {
-  background-color: var(--background-light-quarternary);
-}
+  div#light > section.sectionDivisorThree {
+    background-color: var(--background-light-quarternary);
+  }
 
-div#dark > section.sectionDivisorThree {
-  background-color: var(--background-dark-quarternary);
+  div#dark > section.sectionDivisorThree {
+    background-color: var(--background-dark-quarternary);
+  }
 }
