@@ -1,9 +1,8 @@
 @media (max-width: 430px) {
   .h3 {
     font-size: var(--size-md);
-    font-weight: 700;
-    line-height: 30.24px;
-    letter-spacing: 0.04em;
+    font-weight: 600;
+    letter-spacing: 0.24px;
   }
 
   .p {
