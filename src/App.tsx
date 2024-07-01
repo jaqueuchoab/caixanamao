@@ -23,7 +23,7 @@ function App() {
                 <Route path="/benefits" element={<Vantagens />}></Route>
                 {/*Rota coringa*/}
                 <Route
-                  path="*"
+                  path="/fallback*"
                   element={<Fallback/>}
                 ></Route>
               </Routes>
