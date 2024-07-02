@@ -10,7 +10,7 @@
     border-width: 1px;
     border-style: solid;
     font-size: var(--size-sm);
-    margin: 1.5rem 0px 0px 0px;
+    margin-top: var(--size-md);
   }
 
   #light {

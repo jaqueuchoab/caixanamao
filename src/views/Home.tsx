@@ -23,7 +23,7 @@ const Home = () => {
         slide="carousel"
         imgSlide={[cnm_logo_light, cnm_logo_dark, cnm_logo_light]}
       />
-      <section className={style.sectionContent + ` sectionDivisorOne`}>
+      <section className={style.sectionContent  + " " + style.sectionDivisorOne}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
           texto="Gestão financeira com foco na acessibilidade para pequenas empresas."
