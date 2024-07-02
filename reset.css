@@ -52,6 +52,7 @@ button, input, select, textarea {
     border: none;
     color: inherit;
     background: none;
+    outline: none;
 }
 
 /* Botões */

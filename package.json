@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "phosphor": "^0.7.1",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
