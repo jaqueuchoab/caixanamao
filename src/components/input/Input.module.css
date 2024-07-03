@@ -4,11 +4,23 @@
   height: var(--size-2lg, 48px);
   width: 100%;
   border-radius: var(--size-xs, 12px);
-  border: 1.4px solid var(--placeholder-light, #929292);
-  background: var(--input-default-background, #fefefe);
+  border: 1.4px solid var(--placeholder);
 }
 
 .input {
   height: 100%;
   width: 91%;
+  font-size: var(--size-sm);
+}
+
+.input::placeholder {
+  font-size: var(--size-sm);
+}
+
+.inputContainer#light {
+  background: var(--input-light-default-background);
+}
+
+.inputContainer#dark {
+  background: var(--input-dark-default-background);
 }

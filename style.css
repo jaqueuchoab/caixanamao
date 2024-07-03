@@ -79,7 +79,7 @@
   /*inputs light*/
   --input-light-default-background: var(--color-neutral-100);
   --input-light-secondary-element: var(--color-neutral-400);
-  --placeholder-light: var(--color-neutral-400);
+  --placeholder: var(--color-neutral-400);
   --stroke-light: var(--color-neutral-300);
   --marked-light: var(--color-green-800);
   --error-light: var(--color-red-light);
@@ -88,7 +88,6 @@
   /*inputs dark*/
   --input-dark-default-background: var(--color-neutral-800);
   --input-dark-secondary-element: var(--color-neutral-300);
-  --placeholder-dark: var(--color-neutral-400);
   --stroke-dark: var(--color-neutral-600);
   --marked-dark: var(--color-green-600);
   --error-dark: var(--color-red-dark);

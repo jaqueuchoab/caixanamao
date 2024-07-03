@@ -17,7 +17,7 @@ const LoginCadastro = () => {
         alt="cnm_logohorz"
         style={{ height: 'var(--size-3md)' }}
       />
-      <section className={style.mainContent}>
+      <section className={style.mainContent} id={style[mode]}>
         <h3>Identificação por email</h3>
         <p>
           Entre com sua conta Google ou digite seu email e faremos a
@@ -30,7 +30,7 @@ const LoginCadastro = () => {
           </button>
           <div className={style.divisorInputs}>
             <span className={style.line}></span>
-            <span>ou</span>
+            <span style={{color: 'var(--placeholder)'}}>ou</span>
             <span className={style.line}></span>
           </div>
           <Input type='text' placeholder='Digite seu melhor email'/>

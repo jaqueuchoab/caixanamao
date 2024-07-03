@@ -9,6 +9,8 @@
 }
 
 .mainContent > h3 {
+  font-size: var(--size-md);
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
@@ -25,21 +27,41 @@
   justify-content: stretch;
   height: var(--size-2lg);
   width: 100%;
+  font-size: var(--size-sm);
   gap: var(--size-md);
   padding: 4px var(--size-sm, 16px);
   border-radius: var(--size-xs);
-  border: 1.4px solid var(--inputs-stroke, #c9c9c9);
 }
 
 .line {
   display: inline-flex;
   width: 8.5rem;
   height: 1px;
-  border: 1px #929292 solid
+  border: 1px var(--placeholder) solid
 }
 
 .divisorInputs {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+/*light dark*/ 
+
+.mainContent#light > h3, .mainContent#light > p {
+  color: var(--primary-light-text);
+}
+
+.mainContent#dark > h3, .mainContent#dark > p {
+  color: var(--primary-dark-text);
+}
+
+.mainContent#light > .inputs > button {
+  color: var(--primary-light-text);
+  border: 1.4px solid var(--stroke-light);
+}
+
+.mainContent#dark > .inputs > button {
+  color: var(--primary-dark-text);
+  border: 1.4px solid var(--stroke-dark);
 }
