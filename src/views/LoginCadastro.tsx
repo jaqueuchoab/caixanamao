@@ -9,6 +9,7 @@ import Button from '../components/button/Button';
 
 const LoginCadastro = () => {
   const { mode } = useMode();
+  const [email, setEmail] = React.useState('');
 
   return (
     <div className={style.loginCadastro}>
@@ -33,7 +34,7 @@ const LoginCadastro = () => {
             <span style={{color: 'var(--placeholder)'}}>ou</span>
             <span className={style.line}></span>
           </div>
-          <Input type='text' placeholder='Digite seu melhor email'/>
+          <Input id='email' value={email} setValue={setEmail} placeholder='Digite seu melhor email'/>
         </div>
       </section>
       <Button>Autenticar</Button>

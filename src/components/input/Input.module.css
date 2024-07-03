@@ -24,3 +24,11 @@
 .inputContainer#dark {
   background: var(--input-dark-default-background);
 }
+
+.inputContainer#light > .input {
+  color: var(--primary-light-text);
+}
+
+.inputContainer#dark > .input {
+  color: var(--primary-dark-text);
+}
