@@ -6,10 +6,11 @@ import googleLogo from '../assets/google_g_logo.svg';
 import { useMode } from '../context/ModeContext';
 import Input from '../components/input/Input';
 import Button from '../components/button/Button';
+import useForm from '../hooks/useForm';
 
 const LoginCadastro = () => {
   const { mode } = useMode();
-  const [email, setEmail] = React.useState('');
+  const email = useForm('email');
 
   return (
     <div className={style.loginCadastro}>
@@ -34,7 +35,7 @@ const LoginCadastro = () => {
             <span style={{color: 'var(--placeholder)'}}>ou</span>
             <span className={style.line}></span>
           </div>
-          <Input id='email' value={email} setValue={setEmail} placeholder='Digite seu melhor email'/>
+          <Input id='email' type='text' placeholder='Digite seu melhor email' {...email}/>
         </div>
       </section>
       <Button>Autenticar</Button>
