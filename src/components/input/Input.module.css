@@ -5,6 +5,7 @@
   width: 100%;
   border-radius: var(--size-xs, 12px);
   border: 1.4px solid var(--placeholder);
+  margin-bottom: 8px;
 }
 
 .input {
