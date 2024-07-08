@@ -20,7 +20,7 @@ const Footer = () => {
           className={style.logoVert}
         />
         <div className={style.linkActions}>
-          <Link to="/login-registration">
+          <Link to="/login">
             <p>Login / Cadastro</p>
           </Link>
           <Link to="/benefits">

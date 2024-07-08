@@ -1,14 +1,12 @@
-.loginCadastro {
+.mainContent {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: self-start;
-  height: 100vh;
-  width: 100vw;
-  padding: 5rem var(--size-3md);
+  align-items: center;
+  flex-direction: column;
+  height: 73%;
 }
 
-.mainContent > h3 {
+.mainContent > div > h3 {
   font-size: var(--size-md);
   font-weight: 600;
   margin-bottom: 8px;
@@ -48,20 +46,20 @@
 
 /*light dark*/ 
 
-.mainContent#light > h3, .mainContent#light > p {
+.mainContent#light > div >  h3, .mainContent#light > div> p {
   color: var(--primary-light-text);
 }
 
-.mainContent#dark > h3, .mainContent#dark > p {
+.mainContent#dark > div > h3, .mainContent#dark > div> p {
   color: var(--primary-dark-text);
 }
 
-.mainContent#light > .inputs > button {
+.mainContent#light > div > .inputs > button {
   color: var(--primary-light-text);
   border: 1.4px solid var(--stroke-light);
 }
 
-.mainContent#dark > .inputs > button {
+.mainContent#dark > div > .inputs > button {
   color: var(--primary-dark-text);
   border: 1.4px solid var(--stroke-dark);
 }
