@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: self-start;
-  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
   width: 100vw;
   padding: 5rem var(--size-3md);
 }
