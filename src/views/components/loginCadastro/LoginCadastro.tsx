@@ -1,12 +1,12 @@
 import React from 'react';
-import style from '../components/loginCadastro/loginCadastro.module.css';
-import cnm_logohorz_dark from '../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
-import cnm_logohorz_light from '../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
-import googleLogo from '../assets/google_g_logo.svg';
-import { useMode } from '../context/ModeContext';
-import Input from '../components/input/Input';
-import Button from '../components/button/Button';
-import useForm from '../hooks/useForm';
+import style from './styles/LoginCadastro.module.css';
+import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
+import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
+import googleLogo from '../../assets/google_g_logo.svg';
+import { useMode } from '../../context/ModeContext';
+import Input from '../input/Input';
+import Button from '../button/Button';
+import useForm from '../../hooks/useForm';
 
 const LoginCadastro = () => {
   const { mode } = useMode();

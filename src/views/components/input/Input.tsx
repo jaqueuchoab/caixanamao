@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import style from '../input/Input.module.css';
 import { useMode } from '../../context/ModeContext';
 

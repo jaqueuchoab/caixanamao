@@ -30,8 +30,16 @@ const Fallback = () => {
         to={'/'}
         style={
           mode === 'light'
-            ? { color: 'var(--color-green-900)', fontSize: 'var(--size-2xs)', textDecoration: 'underline'}
-            : { color: 'var(--color-green-300)', fontSize: 'var(--size-2xs)', textDecoration: 'underline'}
+            ? {
+                color: 'var(--color-green-900)',
+                fontSize: 'var(--size-2xs)',
+                textDecoration: 'underline',
+              }
+            : {
+                color: 'var(--color-green-300)',
+                fontSize: 'var(--size-2xs)',
+                textDecoration: 'underline',
+              }
         }
       >
         Voltar para a página anterior

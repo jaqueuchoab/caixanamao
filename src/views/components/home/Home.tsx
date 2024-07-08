@@ -1,17 +1,17 @@
-import TextContent from '../components/home/TextContent';
-import Button from '../components/button/Button';
 import { Link } from 'react-router-dom';
+import Button from '../button/Button.tsx';
 // Importando imagens
-import cnm_gradient_arrow from '../assets/logos/cnm-gradient-arrow.svg';
-import cnm_logo_light from '../assets/logos/light-theme-assets/cnm-logo-light.svg';
-import cnm_logo_dark from '../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
-
+import cnm_gradient_arrow from '../../assets/logos/cnm-gradient-arrow.svg';
+import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
+import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 // Importando estilo
-import style from '../components/home/Home.module.css';
-import Slide from '../components/slide/Slide.tsx';
-import { useMode } from '../context/ModeContext.tsx';
-import Header from '../components/header/Header.tsx';
-import Footer from '../components/footer/Footer.tsx';
+import style from './styles/Home.module.css';
+import { useMode } from '../../context/ModeContext.tsx';
+// Importando componentes
+import TextContent from './HomeTextContent.tsx';
+import Header from '../header/Header.tsx';
+import Footer from '../footer/Footer.tsx';
+import Slide from '../slide/Slide.tsx';
 
 const Home = () => {
   const { mode } = useMode();

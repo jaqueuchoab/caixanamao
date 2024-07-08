@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
-import Home from './views/Home';
-import LoginCadastro from './views/LoginCadastro';
-import Vantagens from './views/Vantagens';
-import { ModeContextProvider } from './context/ModeContext';
-import Fallback from './components/fallback/Fallback';
-import ErrorBoundary from './components/ErrorBoundary';
+import Home from './views/components/home/Home';
+import LoginCadastro from './views/components/loginCadastro/LoginCadastro';
+import Vantagens from './views/components/Vantagens';
+import { ModeContextProvider } from './views/context/ModeContext';
+import Fallback from './views/components/fallback/Fallback';
+import ErrorBoundary from './views/components/ErrorBoundary';
 
 function App() {
   return (

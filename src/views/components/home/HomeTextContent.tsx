@@ -1,4 +1,4 @@
-import style from './TextContent.module.css';
+import style from './styles/HomeTextContent.module.css';
 import { useMode } from '../../context/ModeContext';
 
 // Tipo que define as propriedades que TextContent pode receber
