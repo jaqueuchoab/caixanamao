@@ -5,6 +5,7 @@ import { useMode } from '../../context/ModeContext';
 import Input from '../input/Input';
 import Button from '../button/Button';
 import useForm from '../../hooks/useForm';
+import { Link } from 'react-router-dom';
 
 const LoginEmail = () => {
   const { mode } = useMode();
@@ -36,7 +37,13 @@ const LoginEmail = () => {
           />
         </div>
       </div>
-      <Button>Autenticar</Button>
+      <Link style={{ width: '100%' }} to={'password'}>
+        {email.error === null && email.value.length > 0 ? (
+          <Button>Autenticar</Button>
+        ) : (
+          <Button disabledButton={true}>Autenticar</Button>
+        )}
+      </Link>
     </section>
   );
 };

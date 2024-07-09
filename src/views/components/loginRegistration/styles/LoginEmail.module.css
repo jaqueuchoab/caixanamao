@@ -9,7 +9,7 @@
 .mainContent > div > h3 {
   font-size: var(--size-md);
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: var(--size-md);
 }
 
 .inputs {

@@ -7,6 +7,9 @@
   }
 
   .sectionDivisorOne {
+    display: flex;
+    flex-direction: column;
+    gap: var(--size-md);
     padding: 0 var(--size-3md) var(--size-xl) var(--size-3md);
   }
 

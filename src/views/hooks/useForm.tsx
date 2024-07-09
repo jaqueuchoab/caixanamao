@@ -28,8 +28,6 @@ const useForm = (type: string) => {
       setError('Preencha um valor.');
       return false;
     } else if (types[type] && !types[type].regex.test(value.toString())) {
-      console.log(types[type].message, value);
-
       setError(types[type].message);
       return false;
     } else {

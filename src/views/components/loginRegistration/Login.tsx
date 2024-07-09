@@ -10,7 +10,7 @@ import style from './styles/Login.module.css';
 const Login = () => {
   const { mode } = useMode();
   return (
-    <div className={style.loginRegistration}>
+    <div className={style.loginRegistration} id={style[mode]}>
       <img
         src={mode === 'light' ? cnm_logohorz_light : cnm_logohorz_dark}
         alt="cnm_logohorz"

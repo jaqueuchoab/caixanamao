@@ -69,12 +69,12 @@
   /*text light*/
   --primary-light-text: var(--color-neutral-950);
   --secondary-light-text: var(--color-neutral-600);
-  --light-light-highlight: var(--color-green-900);
+  --light-highlight: var(--color-green-900);
 
   /*text dark*/
   --primary-dark-text: var(--color-neutral-100);
   --secondary-dark-text: var(--color-neutral-300);
-  --light-dark-highlight: var(--color-green-300);
+  --dark-highlight: var(--color-green-300);
 
   /*inputs light*/
   --input-light-default-background: var(--color-neutral-100);

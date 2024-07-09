@@ -7,9 +7,6 @@ import ErrorBoundary from './views/components/ErrorBoundary';
 import Login from './views/components/loginRegistration/Login';
 
 function App() {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`)
-
   return (
     <>
       <div className="app">
