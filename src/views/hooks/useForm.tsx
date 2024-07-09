@@ -16,6 +16,10 @@ const types: typesInput = {
     regex: /^\d+$/,
     message: 'Apenas números são aceitos.',
   },
+  password_login: {
+    regex: /^.{8,}$/,
+    message: 'Senha incorreta, tente novamente'
+  }
 };
 
 const useForm = (type: string) => {

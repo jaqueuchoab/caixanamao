@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
 
 const LoginPassword = () => {
-  const password = useForm('password');
+  const password = useForm('password_login');
   const { mode } = useMode();
 
   return (

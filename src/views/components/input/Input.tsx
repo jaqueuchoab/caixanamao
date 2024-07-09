@@ -25,15 +25,17 @@ const Input = ({
 }: InputProps) => {
   const { mode } = useMode();
 
-  function errorConfig(error: string, className: string, mode: string) {
-    const input = document.querySelector<HTMLInputElement>(className);
-    if (input) input.style.border = `1.4px solid var(--error-${mode})`;
-    return <span style={{color: `var(--error-${mode})`}}>{error}</span>;
+  function errorConfig(error: string, mode: string) {
+    return <span style={{ color: `var(--error-${mode})` }}>{error}</span>;
   }
 
   return (
     <div>
-      <div id={style[mode]} className={style.inputContainer}>
+      <div
+        id={style[mode]}
+        className={`containerEmail ${style.inputContainer}`}
+        style={error ? { border: `1.4px solid var(--error-${mode})`} : {border: ''}}
+      >
         <input
           id={id}
           type={type}
@@ -46,8 +48,8 @@ const Input = ({
         />
       </div>
       {error && error?.length !== 0
-          ? errorConfig(error, style.inputContainer, mode)
-          : null}
+        ? errorConfig(error, mode)
+        : null}
     </div>
   );
 };
