@@ -1,11 +1,13 @@
 .inputContainer {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: var(--size-2lg, 48px);
   width: 100%;
   border-radius: var(--size-xs, 12px);
   border: 1.4px solid var(--placeholder);
   margin-bottom: 8px;
+  padding: 0 8px;
 }
 
 .input {

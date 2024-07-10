@@ -39,7 +39,9 @@ const LoginEmail = () => {
       </div>
       <Link style={{ width: '100%' }} to={'password'}>
         {email.error === null && email.value.length > 0 ? (
-          <Button>Autenticar</Button>
+          <Button onClick={() => localStorage.setItem('email', email.value)}>
+            Autenticar
+          </Button>
         ) : (
           <Button disabledButton={true}>Autenticar</Button>
         )}

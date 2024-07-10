@@ -1,6 +1,7 @@
 import React from 'react';
 import style from '../input/Input.module.css';
 import { useMode } from '../../context/ModeContext';
+import { Password, Lock } from 'phosphor-react';
 
 type InputProps = {
   id: string;
@@ -46,6 +47,7 @@ const Input = ({
           onChange={({ target }) => onChange(target)}
           onBlur={({ target }) => onBlur(target.value)}
         />
+        {type === 'password' && <Password size={24} color={`var(--input-${mode}-secondary-element)`}/>}
       </div>
       {error && error?.length !== 0
         ? errorConfig(error, mode)

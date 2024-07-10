@@ -20,7 +20,7 @@ const LoginPassword = () => {
         </p>
 
         <div className={style.inputs}>
-          <span className={style.emailPrev}>{'jaqueline@gmail.com'}</span>
+          <span className={style.emailPrev}>{localStorage.getItem('email')}</span>
           <Input
             id="password"
             type="password"
