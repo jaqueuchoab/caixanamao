@@ -1,7 +1,8 @@
 import React from 'react';
 import style from '../input/Input.module.css';
 import { useMode } from '../../context/ModeContext';
-import { Password, Lock } from 'phosphor-react';
+import { Eye, EyeClosed, Lock } from 'phosphor-react';
+import { IconProps } from 'phosphor-react/src/lib';
 
 type InputProps = {
   id: string;
@@ -25,9 +26,21 @@ const Input = ({
   onBlur,
 }: InputProps) => {
   const { mode } = useMode();
+  const [visible, setVisible] = React.useState(true);
 
   function errorConfig(error: string, mode: string) {
     return <span style={{ color: `var(--error-${mode})` }}>{error}</span>;
+  }
+
+  function visiblePassword(visible: boolean) {
+    const input = document.querySelector<HTMLInputElement>('#password');
+    if (visible) {
+      input?.setAttribute('type', 'password');
+      return <Eye size={24} color={`var(--input-${mode}-secondary-element)`} />;
+    } else {
+      input?.setAttribute('type', 'text');
+      return <EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />;
+    }
   }
 
   return (
@@ -35,7 +48,11 @@ const Input = ({
       <div
         id={style[mode]}
         className={`containerEmail ${style.inputContainer}`}
-        style={error ? { border: `1.4px solid var(--error-${mode})`} : {border: ''}}
+        style={
+          error
+            ? { border: `1.4px solid var(--error-${mode})` }
+            : { border: '' }
+        }
       >
         <input
           id={id}
@@ -47,11 +64,15 @@ const Input = ({
           onChange={({ target }) => onChange(target)}
           onBlur={({ target }) => onBlur(target.value)}
         />
-        {type === 'password' && <Password size={24} color={`var(--input-${mode}-secondary-element)`}/>}
+        {type === 'password' ? (
+          <a onClick={() => setVisible(!visible)}>
+            {visiblePassword(visible)}
+          </a>
+        ) : (
+          ''
+        )}
       </div>
-      {error && error?.length !== 0
-        ? errorConfig(error, mode)
-        : null}
+      {error && error?.length !== 0 ? errorConfig(error, mode) : null}
     </div>
   );
 };
