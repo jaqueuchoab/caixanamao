@@ -5,7 +5,7 @@
   align-items: self-start;
   height: 100vh;  
   width: 100vw;
-  padding: 4rem var(--size-3md);
+  padding: 5rem var(--size-3md);
   overflow: hidden;
 }
 
