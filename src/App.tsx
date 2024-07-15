@@ -4,7 +4,7 @@ import Vantagens from './views/components/Vantagens';
 import { ModeContextProvider } from './views/context/ModeContext';
 import Fallback from './views/components/fallback/Fallback';
 import ErrorBoundary from './views/components/ErrorBoundary';
-import Login from './views/components/loginRegistration/Login';
+import Login from './views/components/login/Login';
 
 function App() {
   return (
