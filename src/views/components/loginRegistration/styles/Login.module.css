@@ -6,7 +6,6 @@
   height: 100vh;  
   width: 100vw;
   padding: 5rem var(--size-3md);
-  overflow: hidden;
 }
 
 #light {
