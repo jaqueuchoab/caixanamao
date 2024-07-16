@@ -1,0 +1,8 @@
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 80%;
+  width: 100%;
+}
