@@ -8,7 +8,7 @@ type InputProps = {
   value: string;
   type: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  placeholder: string;
+  placeholder?: string;
   error: null | string;
   onChange: (target: HTMLInputElement) => void;
   onBlur: (value: string | number) => boolean;

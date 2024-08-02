@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
-  height: 80%;
+  height: 85%;
   width: 100%;
 }
 
@@ -15,4 +15,21 @@
 
 .forms > h3 {
   font-size: var(--size-md);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  border: none;
+}
+
+fieldset > label {
+  font-size: var(--size-2xs);
 }

@@ -65,14 +65,26 @@
   background: #c8ffbf;
 }
 
+.progressDot#light > .numberDot {
+  background: #c8ffbf;
+}
+
 .progressDot#dark > .numberDot {
   background: #c8ffbf;
 }
 
 #light.lineProgress > div {
-  background: #00C318;
+  background: #c9c9c9;
 }
 
 #dark.lineProgress > div {
+  background: #c9c9c9;
+}
+
+#light.password > div {
+  background: #00C318;
+}
+
+#dark.password > div {
   background: #c9c9c9;
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import style from './styles/ProgressIndicator.module.css'
-import { useMode } from '../../context/ModeContext';
+import style from './ProgressIndicator.module.css'
+import { useMode } from '../../../context/ModeContext';
 
-const ProgressIndicator = () => {
+const ProgressIndicatorPassword = () => {
   const {mode} = useMode();
 
   return (
@@ -12,7 +12,7 @@ const ProgressIndicator = () => {
           <span className={style.numberDot}>1</span>
         </a>
       </div>
-      <div className={style.lineProgress} id={style[mode]}>
+      <div className={`password ${style.lineProgress}`} id={style[mode]}>
         <div></div>
       </div>
       <div className={style.containerProgress}>
@@ -25,4 +25,4 @@ const ProgressIndicator = () => {
   );
 };
 
-export default ProgressIndicator;
+export default ProgressIndicatorPassword;
