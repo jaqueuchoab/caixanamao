@@ -30,6 +30,33 @@ fieldset {
   border: none;
 }
 
-fieldset > label {
+label {
   font-size: var(--size-2xs);
+}
+
+.radioList {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  align-self: stretch;
+  gap: var(--size-xs, 12px);
+}
+
+.radioList > label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.radioList > label > input {
+  display: flex;
+  width: var(--size-md, 24px);
+  height: var(--size-md, 24px);
+  padding: 8px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50px;
+  border: 2px solid var(--Inputs-placeholder, #929292);
 }

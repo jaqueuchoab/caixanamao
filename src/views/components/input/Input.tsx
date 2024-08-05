@@ -10,6 +10,7 @@ type InputProps = {
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
   error: null | string;
+  checked? : boolean;
   onChange: (target: HTMLInputElement) => void;
   onBlur: (value: string | number) => boolean;
 };
