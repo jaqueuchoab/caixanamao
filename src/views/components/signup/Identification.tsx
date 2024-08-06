@@ -9,7 +9,7 @@ const Identification = () => {
   const nome = useForm('name');
   const cpf = useForm('cpf');
   const data = useForm('date');
-  const [cargo, setValue] = React.useState('');
+  const [cargo, setCargo] = React.useState('');
 
   return (
     <section className={style.mainContent}>
@@ -48,6 +48,8 @@ const Identification = () => {
                   className={style.radio}
                   type="radio"
                   value={'Administrador'}
+                  checked={cargo === 'Administrador'}
+                  onChange={() => {handleChange}}
                 />
                 Administrador
               </label>
@@ -56,6 +58,8 @@ const Identification = () => {
                   className={style.radio}
                   type="radio"
                   value={'Funcionário'}
+                  checked={cargo === 'Funcionário'}
+                  onChange={() => {handleChange}}
                 />
                 Funcionário
               </label>
