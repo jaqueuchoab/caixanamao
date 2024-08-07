@@ -4,6 +4,7 @@ import style from './styles/Identification.module.css';
 import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
 import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
+import Radio from '../input/Radio';
 
 const Identification = () => {
   const nome = useForm('name');
@@ -43,26 +44,7 @@ const Identification = () => {
           <fieldset>
             <label>Cargo atual:</label>
             <div className={style.radioList}>
-              <label>
-                <input
-                  className={style.radio}
-                  type="radio"
-                  value={'Administrador'}
-                  checked={cargo === 'Administrador'}
-                  onChange={() => {handleChange}}
-                />
-                Administrador
-              </label>
-              <label>
-                <input
-                  className={style.radio}
-                  type="radio"
-                  value={'Funcionário'}
-                  checked={cargo === 'Funcionário'}
-                  onChange={() => {handleChange}}
-                />
-                Funcionário
-              </label>
+              <Radio options={['Administrador', 'Funcionário']} value={cargo} setValue={setCargo}/>
             </div>
           </fieldset>
         </form>
