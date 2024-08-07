@@ -2,15 +2,15 @@ import React from 'react';
 import style from '../input/Input.module.css';
 import { useMode } from '../../context/ModeContext';
 import { Eye, EyeClosed, Lock } from 'phosphor-react';
-import { IconProps } from 'phosphor-react/src/lib';
 
 type InputProps = {
   id: string;
   value: string;
   type: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
-  placeholder: string;
+  placeholder?: string;
   error: null | string;
+  checked? : boolean;
   onChange: (target: HTMLInputElement) => void;
   onBlur: (value: string | number) => boolean;
 };

@@ -1,0 +1,90 @@
+.progressIndicator {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  gap: 8px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.containerProgress {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.progressDot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.numberDot {
+  font-size: var(--size-xs);
+  word-wrap: break-word;
+}
+
+.indicatorStep {
+  font-size: var(--size-2xs);
+  font-family: Sora;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.lineProgress {
+  flex: 1 1 0;
+  background: #c9c9c9;
+  border-radius: 4px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  display: inline-flex;
+}
+
+.lineProgress > div {
+  align-self: stretch;
+  height: 4px;
+  background: #c9c9c9;
+  border-radius: 4px;
+}
+
+.progressDot#light {
+  background: #c8ffbf;
+}
+
+.progressDot#dark {
+  background: #c8ffbf;
+}
+
+.progressDot#light > .numberDot {
+  background: #c8ffbf;
+}
+
+.progressDot#light > .numberDot {
+  background: #c8ffbf;
+}
+
+.progressDot#dark > .numberDot {
+  background: #c8ffbf;
+}
+
+#light.lineProgress > div {
+  background: #c9c9c9;
+}
+
+#dark.lineProgress > div {
+  background: #c9c9c9;
+}
+
+#light.password > div {
+  background: #00C318;
+}
+
+#dark.password > div {
+  background: #c9c9c9;
+}
