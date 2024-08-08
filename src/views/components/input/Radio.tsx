@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './Radio.module.css';
+import style from './styles/Radio.module.css';
 
 type RadioProps = {
   options: string[];

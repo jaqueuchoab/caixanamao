@@ -1,5 +1,5 @@
 import React from 'react';
-import style from '../input/Input.module.css';
+import style from './styles/Input.module.css';
 import { useMode } from '../../context/ModeContext';
 import { Eye, EyeClosed, Lock } from 'phosphor-react';
 
@@ -10,7 +10,6 @@ type InputProps = {
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
   error: null | string;
-  checked? : boolean;
   onChange: (target: HTMLInputElement) => void;
   onBlur: (value: string | number) => boolean;
 };
