@@ -1,8 +1,9 @@
 import React from 'react';
+import style from './styles/DateInput.module.css';
 
 type DateInput = {
   value: Date;
-  setValue: React.Dispatch<React.SetStateAction<Date | undefined>>;
+  setValue: React.Dispatch<React.SetStateAction<Date>>;
 };
 
 export type Date = {
@@ -13,12 +14,12 @@ export type Date = {
 
 const DateInput = ({value, setValue} : DateInput) => {
   return (
-    <div>
-      <input type="text" id="day" value={value.day} />
+    <div className={style.dateInput}>
+      <input type="text" id="day" value={value.day} placeholder='00'/>
       <span>/</span>
-      <input type="text" id="month" value={value.month} />
+      <input type="text" id="month" value={value.month} placeholder='00'/>
       <span>/</span>
-      <input type="text" id="year" value={value.year} />
+      <input type="text" id="year" value={value.year} placeholder='0000'/>
     </div>
   );
 };

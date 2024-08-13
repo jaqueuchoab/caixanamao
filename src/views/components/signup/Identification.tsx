@@ -12,7 +12,11 @@ const Identification = () => {
   const cpf = useForm('cpf');
   const data = useForm('date');
   const [cargo, setCargo] = React.useState('');
-  const [date, setDate] = React.useState<Date>();
+  const [date, setDate] = React.useState<Date>({
+    day: '',
+    month: '',
+    year: '',
+  });
 
   return (
     <section className={style.mainContent}>
@@ -42,12 +46,16 @@ const Identification = () => {
           <fieldset>
             <label>Data de nascimento:</label>
             {/*<Input id="data" type="date" {...data} />*/}
-            <DateInput />
+            <DateInput value={date} setValue={setDate}/>
           </fieldset>
           <fieldset>
             <label>Cargo atual:</label>
             <div className={style.radioList}>
-              <Radio options={['Administrador', 'Funcionário']} value={cargo} setValue={setCargo}/>
+              <Radio
+                options={['Administrador', 'Funcionário']}
+                value={cargo}
+                setValue={setCargo}
+              />
             </div>
           </fieldset>
         </form>
