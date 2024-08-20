@@ -5,12 +5,18 @@ import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
 import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
 import Radio from '../input/Radio';
+import DateInput, { Date } from '../input/DateInput';
 
 const Identification = () => {
   const nome = useForm('name');
   const cpf = useForm('cpf');
   const data = useForm('date');
   const [cargo, setCargo] = React.useState('');
+  const [date, setDate] = React.useState<Date>({
+    day: '',
+    month: '',
+    year: '',
+  });
 
   return (
     <section className={style.mainContent}>
@@ -39,12 +45,17 @@ const Identification = () => {
           </fieldset>
           <fieldset>
             <label>Data de nascimento:</label>
-            <Input id="data" type="date" {...data} />
+            {/*<Input id="data" type="date" {...data} />*/}
+            <DateInput value={date} setValue={setDate}/>
           </fieldset>
           <fieldset>
             <label>Cargo atual:</label>
             <div className={style.radioList}>
-              <Radio options={['Administrador', 'Funcionário']} value={cargo} setValue={setCargo}/>
+              <Radio
+                options={['Administrador', 'Funcionário']}
+                value={cargo}
+                setValue={setCargo}
+              />
             </div>
           </fieldset>
         </form>
