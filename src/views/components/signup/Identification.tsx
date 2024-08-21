@@ -5,17 +5,18 @@ import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
 import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
 import Radio from '../input/Radio';
-import DateInput, { Date } from '../input/DateInput';
+import DateInput, { typeDate } from '../input/DateInput';
 
 const Identification = () => {
-  const nome = useForm('name');
+  const name = useForm('name');
   const cpf = useForm('cpf');
-  const [cargo, setCargo] = React.useState('');
-  const [date, setDate] = React.useState<Date>({
-    day: '',
-    month: '',
-    year: '',
-  });
+  const [position, setPosition] = React.useState('');
+  const [dateOfBirth, setDateOfBirth] = React.useState<typeDate>({day: '', month: '', year: ''});
+
+  function createDate(dateOfBirth: typeDate) {
+    const date = new Date(Number(dateOfBirth.year), (Number(dateOfBirth.month) - 1), Number(dateOfBirth.day));
+    console.log(date);
+  }
 
   return (
     <section className={style.mainContent}>
@@ -30,7 +31,7 @@ const Identification = () => {
               id="nome"
               type="text"
               placeholder="Como devemos te chamar?"
-              {...nome}
+              {...name}
             />
           </fieldset>
           <fieldset>
@@ -44,21 +45,21 @@ const Identification = () => {
           </fieldset>
           <fieldset>
             <label>Data de nascimento:</label>
-            <DateInput value={date} setValue={setDate}/>
+            <DateInput value={dateOfBirth} setValue={setDateOfBirth}/>
           </fieldset>
           <fieldset>
             <label>Cargo atual:</label>
             <div className={style.radioList}>
               <Radio
                 options={['Administrador', 'Funcionário']}
-                value={cargo}
-                setValue={setCargo}
+                value={position}
+                setValue={setPosition}
               />
             </div>
           </fieldset>
         </form>
       </section>
-      <Button>Continuar</Button>
+      <Button onClick={() => {createDate(dateOfBirth)}}>Continuar</Button>
     </section>
   );
 };

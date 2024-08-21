@@ -2,11 +2,11 @@ import React from 'react';
 import style from './styles/DateInput.module.css';
 
 type DateInput = {
-  value: Date;
-  setValue: React.Dispatch<React.SetStateAction<Date>>;
+  value: typeDate;
+  setValue: React.Dispatch<React.SetStateAction<typeDate>>;
 };
 
-export type Date = {
+export type typeDate = {
   day: string;
   month: string;
   year: string;
