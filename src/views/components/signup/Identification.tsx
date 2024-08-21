@@ -10,7 +10,6 @@ import DateInput, { Date } from '../input/DateInput';
 const Identification = () => {
   const nome = useForm('name');
   const cpf = useForm('cpf');
-  const data = useForm('date');
   const [cargo, setCargo] = React.useState('');
   const [date, setDate] = React.useState<Date>({
     day: '',
@@ -45,7 +44,6 @@ const Identification = () => {
           </fieldset>
           <fieldset>
             <label>Data de nascimento:</label>
-            {/*<Input id="data" type="date" {...data} />*/}
             <DateInput value={date} setValue={setDate}/>
           </fieldset>
           <fieldset>
