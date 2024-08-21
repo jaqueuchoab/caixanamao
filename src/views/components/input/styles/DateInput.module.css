@@ -11,7 +11,7 @@
   display: flex;
   height: var(--size-2lg, 48px);
   min-width: 95px;
-  max-width: 110px;
+  max-width: 105px;
   padding: 0px var(--size-xs, 12px);
   justify-content: space-between;
   justify-items: center;
@@ -20,6 +20,8 @@
   border-radius: var(--xs, 12px);
   border: 1.4px solid var(--placeholder, #929292);
   background: var(--input-default-background, #fefefe);
+  font-size: var(--size-sm);
+  text-align: center;
 }
 
 .dateInput > span {
