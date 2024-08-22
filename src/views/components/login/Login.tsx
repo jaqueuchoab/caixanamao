@@ -7,6 +7,12 @@ import LoginPassword from './LoginPassword';
 import { useMode } from '../../context/ModeContext';
 import style from './styles/Login.module.css';
 
+/*
+endpoint LOGIN
+email: string;
+senha: string;
+*/
+
 const Login = () => {
   const { mode } = useMode();
   return (

@@ -7,15 +7,45 @@ import useForm from '../../hooks/useForm';
 import Radio from '../input/Radio';
 import DateInput, { typeDate } from '../input/DateInput';
 
+/*
+endpoint para CREATE_USER
+nome: string;
+cpf: string;
+nasc: string; (year-month-day)
+cargo: boolean;
+
+-esses dados serão coletados em outra página-
+email: string;
+senha: string;
+senhaConfirmacao: string;
+*/
+
 const Identification = () => {
   const name = useForm('name');
   const cpf = useForm('cpf');
   const [position, setPosition] = React.useState('');
-  const [dateOfBirth, setDateOfBirth] = React.useState<typeDate>({day: '', month: '', year: ''});
+  const [dateOfBirth, setDateOfBirth] = React.useState<typeDate>({
+    day: '',
+    month: '',
+    year: '',
+  });
 
+  function dateString(dateOfBirth: typeDate): string {
+    return `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
+  }
+
+  function isAdm(position: string) {
+    return position === 'Administrador' ? true : false;
+  }
+
+  // pode ser utilitaria porquê haverá momentos em ue vamos precisar realizar operações com as datas
   function createDate(dateOfBirth: typeDate) {
-    const date = new Date(Number(dateOfBirth.year), (Number(dateOfBirth.month) - 1), Number(dateOfBirth.day));
-    console.log(date);
+    const date = new Date(
+      Number(dateOfBirth.year),
+      Number(dateOfBirth.month) - 1,
+      Number(dateOfBirth.day),
+    );
+    return date;
   }
 
   return (
@@ -45,7 +75,7 @@ const Identification = () => {
           </fieldset>
           <fieldset>
             <label>Data de nascimento:</label>
-            <DateInput value={dateOfBirth} setValue={setDateOfBirth}/>
+            <DateInput value={dateOfBirth} setValue={setDateOfBirth} />
           </fieldset>
           <fieldset>
             <label>Cargo atual:</label>
@@ -59,7 +89,13 @@ const Identification = () => {
           </fieldset>
         </form>
       </section>
-      <Button onClick={() => {createDate(dateOfBirth)}}>Continuar</Button>
+      <Button
+        onClick={() => {
+          dateString(dateOfBirth);
+        }}
+      >
+        Continuar
+      </Button>
     </section>
   );
 };
