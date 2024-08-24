@@ -57,19 +57,7 @@
   background: #c8ffbf;
 }
 
-.progressDot#dark {
-  background: #c8ffbf;
-}
-
-.progressDot#light > .numberDot {
-  background: #c8ffbf;
-}
-
-.progressDot#light > .numberDot {
-  background: #c8ffbf;
-}
-
-.progressDot#dark > .numberDot {
+.progressDot#light > .numberDot:nth-last-child(2) {
   background: #c8ffbf;
 }
 
@@ -77,14 +65,10 @@
   background: #c9c9c9;
 }
 
-#dark.lineProgress > div {
-  background: #c9c9c9;
-}
-
 #light.password > div {
   background: #00C318;
 }
 
-#dark.password > div {
+#light.progressDot:nth-last-child(1), #light.progressDot.numberDot:nth-last-child(1) {
   background: #c9c9c9;
 }

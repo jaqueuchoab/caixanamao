@@ -5,6 +5,7 @@ import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logoho
 import { useMode } from '../../context/ModeContext';
 import Identification from './Identification';
 import style from './styles/SingUp.module.css'
+import Password from './Password';
 
 const Signup = () => {
   const { mode } = useMode();
@@ -18,7 +19,7 @@ const Signup = () => {
 
       <Routes>
         <Route path="/" element={<Identification/>}></Route>
-        <Route path="/password" element={<Identification/>}></Route>
+        <Route path="/password" element={<Password/>}></Route>
       </Routes>
     </div>
   );

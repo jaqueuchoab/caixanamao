@@ -6,6 +6,7 @@ import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
 import Radio from '../input/Radio';
 import DateInput, { typeDate } from '../input/DateInput';
+import { Link } from 'react-router-dom';
 
 /*
 endpoint para CREATE_USER
@@ -89,13 +90,7 @@ const Identification = () => {
           </fieldset>
         </form>
       </section>
-      <Button
-        onClick={() => {
-          dateString(dateOfBirth);
-        }}
-      >
-        Continuar
-      </Button>
+      <Link style={{ width: '100%' }} to={'password'}><Button>Continuar</Button></Link>
     </section>
   );
 };
