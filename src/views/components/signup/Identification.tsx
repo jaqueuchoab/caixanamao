@@ -31,6 +31,15 @@ const Identification = () => {
     year: '',
   });
 
+  function isEmpty() {
+    return position.length > 0 &&
+      dateOfBirth.day.length > 0 &&
+      dateOfBirth.month.length > 0 &&
+      dateOfBirth.year.length > 0
+      ? true
+      : false;
+  }
+
   function dateString(dateOfBirth: typeDate): string {
     return `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
   }
@@ -90,7 +99,13 @@ const Identification = () => {
           </fieldset>
         </form>
       </section>
-      <Link style={{ width: '100%' }} to={'password'}><Button>Continuar</Button></Link>
+      <Link style={{ width: '100%' }} to={'password'}>
+        {isEmpty() ? (
+          <Button>Continuar</Button>
+        ) : (
+          <Button disabledButton={true}>Continuar</Button>
+        )}
+      </Link>
     </section>
   );
 };
