@@ -14,16 +14,22 @@ export type typeDate = {
   year: string;
 };
 
+function isEmpty(value: typeDate) {
+  return value.day.length > 0 && value.month.length > 0 && value.year.length > 0
+    ? true
+    : false;
+}
+
 function errorConfig(error: string, mode: string) {
   return <span style={{ color: `var(--error-${mode})` }}>{error}</span>;
 }
 
-const DateInput = ({ value, setValue, error }: DateInput) => {
-  const {mode} = useMode();
-  
+const DateInput = ({ value, setValue }: DateInput) => {
+  const { mode } = useMode();
+
   return (
     <div>
-      <div className={style.dateInput}>
+      <div className={style.dateInput} onBlur={() => isEmpty(value)}>
         <input
           type="text"
           id="day"
@@ -58,7 +64,7 @@ const DateInput = ({ value, setValue, error }: DateInput) => {
           }
         />
       </div>
-      {error && error?.length !== 0 ? errorConfig(error, mode) : null}
+      {/*error && error?.length !== 0 ? errorConfig(error, mode) : null*/}
     </div>
   );
 };
