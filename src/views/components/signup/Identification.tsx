@@ -7,7 +7,6 @@ import useForm from '../../hooks/useForm';
 import Radio from '../input/Radio';
 import DateInput, { typeDate } from '../input/DateInput';
 import { Link } from 'react-router-dom';
-
 /*
 endpoint para CREATE_USER
 nome: string;
@@ -70,6 +69,7 @@ const Identification = () => {
             <Input
               id="nome"
               type="text"
+              pattern='[A-Za-zÀ-ÖØ-öø-ÿ\s]+'
               placeholder="Como devemos te chamar?"
               {...name}
             />

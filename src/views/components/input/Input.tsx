@@ -7,6 +7,7 @@ type InputProps = {
   id: string;
   value: string;
   type: string;
+  pattern: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
   error: null | string;
@@ -38,7 +39,9 @@ const Input = ({
       return <Eye size={24} color={`var(--input-${mode}-secondary-element)`} />;
     } else {
       input?.setAttribute('type', 'text');
-      return <EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />;
+      return (
+        <EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />
+      );
     }
   }
 
@@ -64,9 +67,7 @@ const Input = ({
           onBlur={({ target }) => onBlur(target.value)}
         />
         {type === 'password' ? (
-          <a onClick={() => setVisible(!visible)}>
-            {visiblePassword(visible)}
-          </a>
+          <a onClick={() => setVisible(!visible)}>{visiblePassword(visible)}</a>
         ) : (
           ''
         )}

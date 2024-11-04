@@ -19,11 +19,18 @@
   align-self: stretch;
   border-radius: var(--xs, 12px);
   border: 1.4px solid var(--placeholder, #929292);
-  background: var(--input-default-background, #fefefe);
   font-size: var(--size-sm);
   text-align: center;
 }
 
 .dateInput > span {
   color: var(--placeholder, #929292);
+}
+
+.dateInput#light > input#day {
+  background: var(--background-light-primary);
+}
+
+.dateInput#dark > input#day {
+  background: var(--background-dark-primary);
 }

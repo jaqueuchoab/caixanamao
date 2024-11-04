@@ -10,7 +10,7 @@ type typesInput = {
 
 const types: typesInput = {
   name: {
-    regex: /^([A-Za-zÀ-ÖØ-öø-ÿ]+(\s[A-Za-zÀ-ÖØ-öø-ÿ]+){0,4})$/,
+    regex: /^([A-Za-zÀ-ÖØ-öø-ÿ]+(?:\s[A-Za-zÀ-ÖØ-öø-ÿ]+){0,4})$/,
     message: 'Insira um nome válido',
     void: 'Insira seu nome',
   },

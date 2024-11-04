@@ -29,7 +29,7 @@ const DateInput = ({ value, setValue }: DateInput) => {
 
   return (
     <div>
-      <div className={style.dateInput} onBlur={() => isEmpty(value)}>
+      <div className={style.dateInput} id={style[mode]} onBlur={() => isEmpty(value)}>
         <input
           type="text"
           id="day"
