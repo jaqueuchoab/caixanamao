@@ -28,7 +28,7 @@ const Input = ({
   const [visible, setVisible] = React.useState(true);
 
   function errorConfig(error: string, mode: string) {
-    return <span style={{ color: `var(--error-${mode})` }}>{error}</span>;
+    return <span style={{ color: `var(--error-${mode})`, marginBottom: '8px'}}>{error}</span>;
   }
 
   function visiblePassword(visible: boolean) {
