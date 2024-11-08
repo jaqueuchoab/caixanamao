@@ -7,7 +7,6 @@ type InputProps = {
   id: string;
   value: string;
   type: string;
-  pattern: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
   placeholder?: string;
   error: null | string;
