@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 73%;
+  height: 80%;
 }
 
 .mainContent > div > h3 {
@@ -62,4 +62,13 @@
 .mainContent#dark > div > .inputs > button {
   color: var(--primary-dark-text);
   border: 1.4px solid var(--stroke-dark);
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--size-xs);
+  width: 100%;
 }

@@ -2,10 +2,15 @@ import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
 import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
-import LoginEmail from './LoginEmail';
-import LoginPassword from './LoginPassword';
+import LoginEmail from './LoginEmail.tsx';
 import { useMode } from '../../context/ModeContext';
 import style from './styles/Login.module.css';
+
+/*
+endpoint LOGIN
+email: string;
+senha: string;
+*/
 
 const Login = () => {
   const { mode } = useMode();
@@ -19,7 +24,6 @@ const Login = () => {
 
       <Routes>
         <Route path="/" element={<LoginEmail />}></Route>
-        <Route path="/password" element={<LoginPassword />}></Route>
       </Routes>
     </div>
   );

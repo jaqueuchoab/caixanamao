@@ -11,13 +11,17 @@
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
+    "jquery-mask-plugin": "^1.14.16",
     "phosphor": "^0.7.1",
     "phosphor-react": "^1.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-input-mask": "^2.0.4",
     "react-router-dom": "^6.23.0"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "@types/jquery-mask-plugin": "^1.14.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",

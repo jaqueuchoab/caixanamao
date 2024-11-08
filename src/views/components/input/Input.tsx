@@ -28,7 +28,7 @@ const Input = ({
   const [visible, setVisible] = React.useState(true);
 
   function errorConfig(error: string, mode: string) {
-    return <span style={{ color: `var(--error-${mode})` }}>{error}</span>;
+    return <span style={{ color: `var(--error-${mode})`, marginBottom: '8px'}}>{error}</span>;
   }
 
   function visiblePassword(visible: boolean) {
@@ -38,7 +38,9 @@ const Input = ({
       return <Eye size={24} color={`var(--input-${mode}-secondary-element)`} />;
     } else {
       input?.setAttribute('type', 'text');
-      return <EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />;
+      return (
+        <EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />
+      );
     }
   }
 
@@ -64,9 +66,7 @@ const Input = ({
           onBlur={({ target }) => onBlur(target.value)}
         />
         {type === 'password' ? (
-          <a onClick={() => setVisible(!visible)}>
-            {visiblePassword(visible)}
-          </a>
+          <a onClick={() => setVisible(!visible)}>{visiblePassword(visible)}</a>
         ) : (
           ''
         )}
