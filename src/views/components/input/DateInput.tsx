@@ -2,16 +2,16 @@ import React from 'react';
 import style from './styles/DateInput.module.css';
 import { useMode } from '../../context/ModeContext';
 
-type DateInput = {
-  value: typeDate;
-  setValue: React.Dispatch<React.SetStateAction<typeDate>>;
-  error: string;
-};
-
 export type typeDate = {
   day: string;
   month: string;
   year: string;
+};
+
+type DateInput = {
+  value: typeDate;
+  setValue: React.Dispatch<React.SetStateAction<typeDate>>;
+  error?: string;
 };
 
 function isEmpty(value: typeDate) {

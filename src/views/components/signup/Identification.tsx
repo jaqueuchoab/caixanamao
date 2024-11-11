@@ -69,7 +69,6 @@ const Identification = () => {
             <Input
               id="nome"
               type="text"
-              pattern='[A-Za-zÀ-ÖØ-öø-ÿ\s]+'
               placeholder="Como devemos te chamar?"
               {...name}
             />
