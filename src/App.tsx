@@ -6,6 +6,7 @@ import Fallback from './views/components/fallback/Fallback';
 import ErrorBoundary from './views/components/ErrorBoundary';
 import Login from './views/components/login/Login';
 import SignUp from './views/components/signup/SignUp';
+import DashboardHome from './views/components/dashboard/DashboardHome';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
                 <Route path="/" element={<Home />}></Route>
                 <Route path="/login/*" element={<Login />}></Route>
                 <Route path="/signup/*" element={<SignUp />}></Route>
+                <Route path="/dashboard/*" element={<DashboardHome />}></Route>
                 <Route path="/benefits" element={<Vantagens />}></Route>
                 {/*Rota coringa*/}
                 <Route path="/fallback?" element={<Fallback />}></Route>
