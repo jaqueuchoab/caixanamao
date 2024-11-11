@@ -58,7 +58,8 @@ const LoginEmail = () => {
         </div>
       </div>
       <div className={style.buttons}>
-        <Link style={{ width: '100%' }} to={'password-sem-rota-definida'}>
+        {/*verificar se essa forma de navegaçào vai me permitir ter acesso a rotas definidas em dashboard*/}
+        <Link style={{ width: '100%' }} to={'/dashboard'}>
           {email.error === null &&
           email.value.length > 0 &&
           password.error === null &&
