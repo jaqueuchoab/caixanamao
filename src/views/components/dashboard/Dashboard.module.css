@@ -1,0 +1,34 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: self-start;
+  height: 100vh;  
+  width: 100vw;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 144px;
+  width: 100vw;
+  padding: var(--size-2xl) var(--size-3md) var(--size-md) var(--size-3md);
+}
+
+#light > .header {
+  background: var(--background-light-tertiary);
+}
+
+#dark > .header {
+  background: var(--background-dark-tertiary);
+}
+
+.userName {
+  font-size: var(--size-sm);
+  font-weight: 600;
+}
+
+.userOcupation {
+  font-weight: 400;
+}
