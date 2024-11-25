@@ -5,12 +5,16 @@ import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logoho
 import LoginEmail from './LoginEmail.tsx';
 import { useMode } from '../../context/ModeContext';
 import style from './styles/Login.module.css';
+import UserList from '../../../services/UserList.tsx';
 
 /*
 endpoint LOGIN
 email: string;
 senha: string;
 */
+
+console.log('aqui');
+UserList();
 
 const Login = () => {
   const { mode } = useMode();
