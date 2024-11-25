@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
+    "axios": "^1.7.7",
     "jquery-mask-plugin": "^1.14.16",
     "phosphor": "^0.7.1",
     "phosphor-react": "^1.4.1",
