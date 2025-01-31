@@ -1,7 +1,7 @@
-import React from 'react';
 import style from './Dashboard.module.css';
 import { useMode } from '../../context/ModeContext';
-import { List,House, Notepad, Plus, FileText, ChartBar } from 'phosphor-react';
+import { List, House, Notepad, Plus, FileText, ChartBar } from '@phosphor-icons/react';
+
 
 const DashboardHome = () => {
   const { mode } = useMode();
