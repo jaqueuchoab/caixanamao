@@ -7,30 +7,31 @@ import ErrorBoundary from './views/components/ErrorBoundary';
 import Login from './views/components/login/Login';
 import SignUp from './views/components/signup/SignUp';
 import DashboardHome from './views/components/dashboard/DashboardHome';
+import './views/assets/css/style.css';
 
 function App() {
-  return (
-    <>
-      <div className="app">
-        <BrowserRouter>
-          <ModeContextProvider>
-            <ErrorBoundary>
-              {/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
-              <Routes>
-                <Route path="/" element={<Home />}></Route>
-                <Route path="/login/*" element={<Login />}></Route>
-                <Route path="/signup/*" element={<SignUp />}></Route>
-                <Route path="/dashboard/*" element={<DashboardHome />}></Route>
-                <Route path="/benefits" element={<Vantagens />}></Route>
-                {/*Rota coringa*/}
-                <Route path="/fallback?" element={<Fallback />}></Route>
-              </Routes>
-            </ErrorBoundary>
-          </ModeContextProvider>
-        </BrowserRouter>
-      </div>
-    </>
-  );
+	return (
+		<>
+			<div className='app'>
+				<BrowserRouter>
+					<ModeContextProvider>
+						<ErrorBoundary>
+							{/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
+							<Routes>
+								<Route path='/' element={<Home />}></Route>
+								<Route path='/login/*' element={<Login />}></Route>
+								<Route path='/signup/*' element={<SignUp />}></Route>
+								<Route path='/dashboard/*' element={<DashboardHome />}></Route>
+								<Route path='/benefits' element={<Vantagens />}></Route>
+								{/*Rota coringa*/}
+								<Route path='/fallback?' element={<Fallback />}></Route>
+							</Routes>
+						</ErrorBoundary>
+					</ModeContextProvider>
+				</BrowserRouter>
+			</div>
+		</>
+	);
 }
 
 export default App;
