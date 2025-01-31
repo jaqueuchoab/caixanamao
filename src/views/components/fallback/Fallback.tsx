@@ -1,5 +1,4 @@
-import React from 'react';
-import { LinkBreak } from 'phosphor-react';
+import { LinkBreak } from '@phosphor-icons/react';
 import style from './Fallback.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
