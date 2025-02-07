@@ -7,27 +7,24 @@ import 'react-multi-carousel/lib/styles.css';
 const responsive = {
   desktop : { 
     breakpoint : {  max : 3000 ,  min : 1024  } , 
-    items : 3 , 
-    partialVisibilityGutter : 40  // isso é necessário para informar a quantidade de px que deve ser visível. 
+    items : 3 
   } , 
   tablet : { 
     breakpoint : {  max : 1024 ,  min : 464  } , 
-    items : 2 , 
-    partialVisibilityGutter : 30  // isso é necessário para informar a quantidade de px que deve ser visível. 
+    items : 2 
   } , 
   mobile : { 
     breakpoint : {  max : 464 ,  min : 0  } , 
-    items : 1 , 
-    partialVisibilityGutter : 30  // isso é necessário para informar a quantidade de px que deve ser visível. 
+    items : 1 
   } 
 };
 
 
-const CarouselComponent = (images: string[]) => {
+const CarouselComponent = ({ images } : { images: string[] }) => {
   return (
-    <Carousel partialVisible = {true} responsive={responsive}>
+    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} centerMode={true} responsive={responsive}>
       {images.map((image, index) => {
-        <div><img src={image} alt={`image-${index+1}`} /></div>
+        return <div><img style={{width: '100%'}} src={image} alt={`image-${index+1}`} /></div>
       })}
     </Carousel>
   );

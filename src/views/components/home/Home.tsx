@@ -18,7 +18,7 @@ const Home = () => {
   return (
     <div className={style.mainContent} id={style[mode]}>
       <Header />
-      <CarouselComponent images = {cnm_gradient_arrow}/>
+      <CarouselComponent images = {[cnm_gradient_arrow, cnm_gradient_arrow, cnm_gradient_arrow]}/>
       <section className={style.sectionContent  + " " + style.sectionDivisorOne}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
@@ -33,6 +33,7 @@ const Home = () => {
             titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
             texto="Simplificamos o fechamento de caixa, permitindo que você e seus funcionários realizem as tarefas financeiras de forma rápida e sem complicações."
           />
+          <CarouselComponent images = {[cnm_gradient_arrow, cnm_gradient_arrow, cnm_gradient_arrow]}/>
         </section>
       </section>
       <section
