@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import Button from '../button/Button.tsx';
 // Importando imagens
 import cnm_gradient_arrow from '../../assets/logos/cnm-gradient-arrow.svg';
+import cnm_test_carousel from '../../assets/cnm_carousel.jpg';
 // Importando estilo
 import style from './styles/Home.module.css';
 import { useMode } from '../../context/ModeContext.tsx';
@@ -18,7 +19,7 @@ const Home = () => {
   return (
     <div className={style.mainContent} id={style[mode]}>
       <Header />
-      <CarouselComponent images = {[cnm_gradient_arrow, cnm_gradient_arrow, cnm_gradient_arrow]}/>
+      <CarouselComponent images = {[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}/>
       <section className={style.sectionContent  + " " + style.sectionDivisorOne}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
