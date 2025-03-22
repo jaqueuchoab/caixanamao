@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ThemeType } from '../../../@types/themeType';
+import { ThemeType } from '../../themes/themeType';
 
 export const ButtonContainer = styled.button<{
 	variant: string;
@@ -17,7 +17,7 @@ export const ButtonContainer = styled.button<{
 
 	border-radius: 12px;
 	${(props) => {
-        // TODO: Rever padronização dos botões
+		// TODO: Rever padronização dos botões
 		switch (props.variant) {
 			case 'neutral':
 				return css`

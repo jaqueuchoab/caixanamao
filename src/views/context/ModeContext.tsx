@@ -1,7 +1,7 @@
 import { createContext, useContext, useState } from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
-import { ThemeType } from '../../@types/themeType';
+import { ThemeType } from '../themes/themeType';
 
 type IModeContext = {
 	mode: string;
