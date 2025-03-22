@@ -6,7 +6,7 @@ import Fallback from './views/components/fallback/Fallback';
 import ErrorBoundary from './views/components/ErrorBoundary';
 import Login from './views/components/login/Login';
 import SignUp from './views/components/signup/SignUp';
-import DashboardHome from './views/components/dashboard/DashboardHome';
+import { DashboardHome } from './views/components/dashboard/DashboardHome';
 import './views/assets/css/style.css';
 
 function App() {
