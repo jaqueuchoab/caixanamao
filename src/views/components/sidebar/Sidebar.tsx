@@ -40,10 +40,11 @@ export function Sidebar() {
 		setIsOpen((prev) => !prev);
 	}
 
+	// TODO: falta colocar tema
+
 	return (
 		<SidebarContainer
-			textColor={theme.colors.texts.primary}
-			background={theme.colors.backgrounds.tertiary}
+			theme={theme}
 			variants={animationVariants}
 			animate={isOpen ? 'open' : 'closed'}
 			initial='open'
