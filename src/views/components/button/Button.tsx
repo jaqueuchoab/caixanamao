@@ -1,21 +1,30 @@
-import React from 'react';
-import style from './Button.module.css';
-import { useMode } from '../../context/ModeContext';
+import { ButtonHTMLAttributes } from 'react';
+import { ButtonContainer } from './Button.styles';
+import { useTheme } from '../../hooks/useTheme';
 
-type ButtonProps = React.PropsWithChildren & {
-  children: string;
-  disabledButton?: boolean;
-  onClick?: () => unknown;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+	variant?: 'default' | 'neutral' | 'admin' | 'destructive' | 'invisible';
+	fillWidth?: boolean;
+	textAlign?: 'center' | 'left';
 };
 
-const Button = ({ children, disabledButton, onClick }: ButtonProps) => {
-  const { mode } = useMode();
+export function Button({
+	variant = 'default',
+	fillWidth = false,
+	textAlign = 'left',
+	...props
+}: ButtonProps) {
+	const theme = useTheme();
 
-  return (
-    <button className={style.button} id={style[mode]} disabled={disabledButton} onClick={onClick}>
-      {children}
-    </button>
-  );
-};
-
-export default Button;
+	return (
+		<ButtonContainer
+			variant={variant}
+			fillWidth={fillWidth}
+			textAlign={textAlign}
+			theme={theme}
+			{...props}
+		>
+			{props.children}
+		</ButtonContainer>
+	);
+}
