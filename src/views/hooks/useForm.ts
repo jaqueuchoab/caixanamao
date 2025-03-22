@@ -20,7 +20,7 @@ const types: typesInput = {
     void: 'Insira seu CPF'
   },
   date: {
-    regex: /^\d{4}\-\d{2}\-\d{2}$/,
+    regex: /^\d{4}-\d{2}-\d{2}$/, // /^\d{4}\-\d{2}\-\d{2}$/ antes de ser consertado pelo eslint
     message: 'Preencha uma data válida',
     void: 'Insira sua data de nascimento'
   },

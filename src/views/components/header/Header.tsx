@@ -42,7 +42,8 @@ function getLogo(mode: string, width: number | null) {
 const Header = () => {
 	const { mode, setMode } = useMode();
 
-	useEffect(() => {
+	// TODO: acho que da para simplificar essa alteracao de modo
+	React.useEffect(() => {
 		localStorage?.setItem('mode', mode);
 		setColorApp(mode);
 	}, [mode]);
