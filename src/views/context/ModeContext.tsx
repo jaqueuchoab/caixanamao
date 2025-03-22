@@ -1,4 +1,4 @@
-import React from 'react';
+import { createContext, useContext, useState } from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
 import { ThemeType } from '../../@types/themeType';
@@ -11,17 +11,17 @@ type IModeContext = {
 	theme: ThemeType;
 };
 
-const ModeContext = React.createContext<IModeContext | null>(null);
+const ModeContext = createContext<IModeContext | null>(null);
 
 export const useMode = () => {
-	const mode = React.useContext(ModeContext);
+	const mode = useContext(ModeContext);
 	if (!mode) throw new Error('useMode precisa estar em ModeContextProvider');
 	return mode;
 };
 
 export const ModeContextProvider = ({ children }: React.PropsWithChildren) => {
 	let localModeActive = localStorage.getItem('mode');
-	const [localMode, setLocalMode] = React.useState(
+	const [localMode, setLocalMode] = useState(
 		localModeActive ? localModeActive : 'light'
 	);
 
@@ -31,7 +31,8 @@ export const ModeContextProvider = ({ children }: React.PropsWithChildren) => {
 		if (localModeActive) setLocalMode(localModeActive);
 	}
 
-	const [mode, setMode] = React.useState(localMode);
+	// TODO: acho que da para simplificar essa alteracao de modo
+	const [mode, setMode] = useState(localMode);
 	const theme = mode === 'dark' ? darkTheme : lightTheme;
 
 	return (
