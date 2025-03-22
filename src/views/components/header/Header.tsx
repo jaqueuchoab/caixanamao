@@ -36,6 +36,7 @@ function setColorApp(mode: string) {
 const Header = () => {
 	const { mode, setMode } = useMode();
 
+	// TODO: acho que da para simplificar essa alteracao de modo
 	React.useEffect(() => {
 		localStorage?.setItem('mode', mode);
 		setColorApp(mode);
