@@ -58,10 +58,8 @@ export const darkTheme: ThemeType = {
 				disabled: baseColorsDefault.neutral[600],
 			},
 			neutral: {
-				fill: baseColorsDefault.neutral[900],
-				hover: 'transparent',
-				stroke: baseColorsDefault.neutral[600],
-				disabled: baseColorsDefault.neutral[300],
+				fill: 'transparent',
+				hover: baseColorsDefault.neutral[700],
 			},
 			destructive: {
 				fill: baseColorsDefault.red.dark,

@@ -58,9 +58,8 @@ export const lightTheme: ThemeType = {
 				disabled: baseColorsDefault.neutral[600],
 			},
 			neutral: {
-				fill: baseColorsDefault.neutral[100],
-				hover: 'transparent',
-				stroke: baseColorsDefault.neutral[600],
+				fill: 'transparent',
+				hover: baseColorsDefault.neutral[300],
 			},
 			destructive: {
 				fill: baseColorsDefault.red.light,
