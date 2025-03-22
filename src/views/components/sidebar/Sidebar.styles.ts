@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { ThemeType } from '../../themes/themeType';
 
 export const SidebarContainer = styled(motion.nav)<{
-	theme: ThemeType;
+	$theme: ThemeType;
 }>`
 	height: 100dvh;
 	padding: 24px 16px;
@@ -13,18 +13,18 @@ export const SidebarContainer = styled(motion.nav)<{
 	justify-content: space-between;
 	align-items: center;
 
-	color: ${(props) => props.theme.colors.texts.primary};
-	background-color: ${(props) => props.theme.colors.backgrounds.tertiary};
+	color: ${(props) => props.$theme.colors.texts.primary};
+	background-color: ${(props) => props.$theme.colors.backgrounds.tertiary};
 
 	svg {
 		min-width: 24px;
 	}
 `;
 
-export const SidebarHeader = styled.div<{ isOpen: boolean }>`
+export const SidebarHeader = styled.div<{ $is_open: boolean }>`
 	width: 100%;
 	display: flex;
-	justify-content: ${(props) => (props.isOpen ? 'space-between;' : 'center;')}
+	justify-content: ${(props) => (props.$is_open ? 'space-between;' : 'center;')}
 	align-items: center;
 `;
 
