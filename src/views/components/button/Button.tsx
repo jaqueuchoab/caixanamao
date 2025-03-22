@@ -4,24 +4,24 @@ import { useTheme } from '../../hooks/useTheme';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	variant?: 'default' | 'neutral' | 'admin' | 'destructive' | 'invisible';
-	fillWidth?: boolean;
-	textAlign?: 'center' | 'left';
+	fill_width?: boolean;
+	text_align?: 'center' | 'left';
 };
 
 export function Button({
 	variant = 'default',
-	fillWidth = false,
-	textAlign = 'left',
+	fill_width = false,
+	text_align = 'left',
 	...props
 }: ButtonProps) {
 	const theme = useTheme();
 
 	return (
 		<ButtonContainer
-			variant={variant}
-			fillWidth={fillWidth}
-			textAlign={textAlign}
-			theme={theme}
+			$variant={variant}
+			$fill_width={fill_width}
+			$text_align={text_align}
+			$theme={theme}
 			{...props}
 		>
 			{props.children}
