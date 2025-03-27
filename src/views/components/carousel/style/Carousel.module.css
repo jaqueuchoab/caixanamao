@@ -6,6 +6,10 @@
   .img {
     width: 300px;
     border-radius: 20px;
+    margin: 0 16px 0 16px;
+  }
 
+  li > .react-multi-carousel-item {
+    width: auto;
   }
 }

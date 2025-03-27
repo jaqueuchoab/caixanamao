@@ -27,7 +27,6 @@ const CarouselComponent = ({ images }: { images: string[] }) => {
         centerMode={true}
         responsive={responsive}
         infinite
-        containerClass={style.containerCarousel}
       >
         {images.map((image, index) => {
           return (
