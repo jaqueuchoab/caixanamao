@@ -1,15 +1,20 @@
 @media (max-width: 464px) {
-  .containerImg {
-    width: 300px;
+  .carousel {
+    height: 340px;
+    overflow: hidden;
+    margin: var(--size-sm) 0 var(--size-sm) 0;
+  }
+
+  .item {
+    width: 100% !important; 
+    margin: 0 var(--size-sm) 0 var(--size-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .img {
-    width: 300px;
     border-radius: 20px;
-    margin: 0 16px 0 16px;
-  }
-
-  li > .react-multi-carousel-item {
-    width: auto;
+    width: 340px;
   }
 }

@@ -17,6 +17,7 @@ const responsive = {
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
+    partialVisibilityGutter: 70
   },
 };
 
@@ -24,17 +25,19 @@ const CarouselComponent = ({ images }: { images: string[] }) => {
   return (
       <Carousel
         removeArrowOnDeviceType={['tablet', 'mobile']}
-        centerMode={true}
         responsive={responsive}
+        containerClass={style.carousel}
+        itemClass={style.item}
+        partialVisible={true}
         infinite
       >
         {images.map((image, index) => {
           return (
               <img
-              key={index}
-                className={style.img}
+                key={index}
                 src={image}
                 alt={`image-${index + 1}`}
+                className={style.img}
               />
           );
         })}

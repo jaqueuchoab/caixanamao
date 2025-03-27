@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <div className={style.mainContent} id={style[mode]}>
       <Header />
-      <CarouselComponent images = {[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}/>
+      <CarouselComponent images = {[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel,  cnm_test_carousel]}/>
       <section className={style.sectionContent  + " " + style.sectionDivisorOne}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
