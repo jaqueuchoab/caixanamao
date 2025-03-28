@@ -9,7 +9,7 @@ import {
 	WarningOctagon,
 } from '@phosphor-icons/react';
 
-export const DashboardHome = () => {
+export const Dashboard = () => {
 	const theme = useTheme();
 	return (
 		<DashboardContainer>
