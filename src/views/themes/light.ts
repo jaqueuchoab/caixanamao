@@ -5,11 +5,15 @@ export const lightTheme: ThemeType = {
 	colors: {
 		baseColors: baseColorsDefault,
 		backgrounds: {
-			default: baseColorsDefault.neutral[100],
 			primary: baseColorsDefault.neutral[100],
 			secondary: baseColorsDefault.neutral[200],
 			tertiary: baseColorsDefault.neutral[200],
-			quarternary: baseColorsDefault.green[100],
+			navbar: baseColorsDefault.neutral[200],
+			fallback: baseColorsDefault.neutral[100],
+			dashboard: baseColorsDefault.neutral[100],
+			popup: baseColorsDefault.neutral[200],
+			'home-secondcard': baseColorsDefault.neutral[200],
+			'home-thirdcard': baseColorsDefault.green[100],
 		},
 		texts: {
 			primary: baseColorsDefault.neutral[950],
@@ -22,13 +26,13 @@ export const lightTheme: ThemeType = {
 			placeholder: baseColorsDefault.neutral[400],
 			stroke: baseColorsDefault.neutral[300],
 			marked: baseColorsDefault.green[800],
-			error: baseColorsDefault.red.light,
+			error: baseColorsDefault.red[400],
 			label: baseColorsDefault.neutral[600],
 		},
 		iconsColor: baseColorsDefault.neutral[950],
 		ghostElements: {
 			primary: baseColorsDefault.neutral[200],
-			secondary: baseColorsDefault.neutral[250] || '#dbdbdb',
+			secondary: baseColorsDefault.neutral[300],
 		},
 		dotsAndBars: {
 			cardDot: {
@@ -37,7 +41,7 @@ export const lightTheme: ThemeType = {
 			},
 			progressDot: {
 				active: baseColorsDefault.green[200],
-				inactive: baseColorsDefault.neutral[250] || '#dbdbdb',
+				inactive: baseColorsDefault.neutral[300],
 			},
 			progressBar: {
 				active: baseColorsDefault.green[300],
@@ -45,31 +49,36 @@ export const lightTheme: ThemeType = {
 			},
 		},
 		buttons: {
-			default: {
-				fill: baseColorsDefault.green[200],
-				stroke: baseColorsDefault.green[600],
-				hover: baseColorsDefault.green[300],
-				disabled: baseColorsDefault.neutral[200],
+			disabledColor: baseColorsDefault.neutral[300],
+			primary: {
+				text: baseColorsDefault.neutral[100],
+				fill: baseColorsDefault.green[600],
+				hover: baseColorsDefault.green[800],
+				stroke: baseColorsDefault.green[800],
 			},
 			admin: {
-				fill: baseColorsDefault.blue[200],
-				hover: baseColorsDefault.blue[600],
+				text: baseColorsDefault.neutral[100],
+				fill: baseColorsDefault.blue[600],
+				hover: baseColorsDefault.blue[900],
 				stroke: baseColorsDefault.blue[600],
-				disabled: baseColorsDefault.neutral[600],
 			},
 			neutral: {
+				text: baseColorsDefault.neutral[950],
 				fill: 'transparent',
-				hover: baseColorsDefault.neutral[300],
-			},
-			destructive: {
-				fill: baseColorsDefault.red.light,
-				hover: baseColorsDefault.red.light,
-				stroke: baseColorsDefault.red.dark,
-			},
-			invisible: {
-				fill: 'transparent',
-				hover: 'transparent',
+				hover: baseColorsDefault.neutral[100],
 				stroke: baseColorsDefault.neutral[600],
+			},
+			danger: {
+				text: baseColorsDefault.neutral[100],
+				fill: baseColorsDefault.red[400],
+				hover: baseColorsDefault.red[800],
+				stroke: baseColorsDefault.red[200],
+			},
+			link: {
+				text: baseColorsDefault.green[600],
+				fill: 'transparent',
+				hover: baseColorsDefault.green[900],
+				stroke: '',
 			},
 		},
 		register: {

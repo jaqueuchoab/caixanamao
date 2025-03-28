@@ -4,20 +4,20 @@ type ActivityModeColorsType = {
 };
 
 type ButtonColorsType = {
+	text: string;
 	fill: string;
-	hover?: string;
-	stroke?: string;
-	disabled?: string;
+	hover: string;
+	stroke: string;
 };
 
-export type ColorScaleType = {
+export type ColorFullScaleType = {
 	'100': string;
 	'200': string;
-	'250'?: string;
 	'300': string;
 	'400': string;
+	'500': string;
 	'600': string;
-	'700'?: string;
+	'700': string;
 	'800': string;
 	'900': string;
 	'950': string;
@@ -26,38 +26,46 @@ export type ColorScaleType = {
 export type ColorModeType = { light: string; dark: string };
 
 export type BaseColorsType = {
-	neutral: ColorScaleType;
-	green: ColorScaleType;
-	blue: ColorScaleType;
-	red: ColorModeType; // apenas light e dark
+	neutral: ColorFullScaleType;
+	green: ColorFullScaleType;
+	blue: ColorFullScaleType;
+	red: ColorFullScaleType; // apenas light e dark
 };
 
 export type SizesType = {
 	// atualmente em px
+	px: number;
+	'px-plus': number;
 	xs: number;
-	'2xs': number;
+	'xs-plus': number;
 	sm: number;
-	'2sm': number;
+	'sm-plus': number;
+	'sm-x': number;
 	md: number;
-	'2md': number;
-	'3md': number;
-	'4md': number;
+	'md-plus': number;
 	lg: number;
-	'2lg': number;
-	'3lg': number;
 	xl: number;
 	'2xl': number;
+	'3xl': number;
+	'4xl': number;
+	'5xl': number;
+	'6xl': number;
+	'7xl': number;
 };
 
 export type ThemeType = {
 	colors: {
 		baseColors: BaseColorsType;
 		backgrounds: {
-			default: string;
 			primary: string;
 			secondary: string;
 			tertiary: string;
-			quarternary: string;
+			navbar: string;
+			fallback: string;
+			dashboard: string;
+			popup: string;
+			'home-secondcard': string;
+			'home-thirdcard': string;
 		};
 		texts: {
 			primary: string;
@@ -84,11 +92,12 @@ export type ThemeType = {
 			progressBar: ActivityModeColorsType;
 		};
 		buttons: {
-			default: ButtonColorsType;
-			admin: ButtonColorsType;
+			disabledColor: string;
+			primary: ButtonColorsType;
 			neutral: ButtonColorsType;
-			destructive: ButtonColorsType;
-			invisible: ButtonColorsType;
+			admin: ButtonColorsType;
+			danger: ButtonColorsType;
+			link: ButtonColorsType;
 		};
 		register: {
 			itemStroke: string;
