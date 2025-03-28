@@ -22,8 +22,10 @@ import {
 } from './Sidebar.styles';
 import { useTheme } from '../../hooks/useTheme';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Sidebar() {
+	const navigate = useNavigate();
 	const [isOpen, setIsOpen] = useState(true);
 	const theme = useTheme();
 
@@ -34,7 +36,7 @@ export function Sidebar() {
 	return (
 		<SidebarContainer
 			$theme={theme}
-			animate={{ width: isOpen ? 210 : 96 }}
+			animate={{ width: isOpen ? 256 : 96 }}
 			transition={{
 				duration: 0.25,
 				ease: 'easeOut',
@@ -60,10 +62,11 @@ export function Sidebar() {
 
 			<SidebarContent>
 				<SidebarProfile></SidebarProfile>
-				<Button variant='neutral' fill_width text_align='center'>
-					<Plus size={24} color={theme.colors.iconsColor} />
+				<Button variant='primary' fill_width text_align='center'>
+					<Plus size={24} color={theme.colors.buttons.primary.text} />
 					{isOpen && 'Novo registro'}
 				</Button>
+
 				<SidebarActionsList>
 					<Button
 						variant='neutral'
@@ -129,6 +132,7 @@ export function Sidebar() {
 					variant='neutral'
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
+					onClick={() => navigate('/')}
 				>
 					<SignOut size={24} color={theme.colors.iconsColor} />
 					{isOpen && 'Sair'}
