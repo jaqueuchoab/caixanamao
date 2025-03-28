@@ -3,13 +3,13 @@ import { ButtonContainer } from './Button.styles';
 import { useTheme } from '../../hooks/useTheme';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-	variant?: 'default' | 'neutral' | 'admin' | 'destructive' | 'invisible';
+	variant?: 'primary' | 'neutral' | 'admin' | 'danger' | 'link';
 	fill_width?: boolean;
 	text_align?: 'center' | 'left';
 };
 
 export function Button({
-	variant = 'default',
+	variant = 'primary',
 	fill_width = false,
 	text_align = 'left',
 	...props
