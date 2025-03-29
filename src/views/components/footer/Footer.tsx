@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom';
 import { useTheme } from '../../context/ThemeContext';
 
 const Footer = () => {
-	const { mode } = useTheme();
+	const { themeMode } = useTheme();
 
 	return (
-		<footer id={style[mode]}>
+		<footer id={style[themeMode]}>
 			<div className={style.contentFooter}>
 				<img
-					src={mode === 'light' ? logo_vert_light : logo_vert_dark}
-					alt={`logo-mode-${mode}`}
+					src={themeMode === 'light' ? logo_vert_light : logo_vert_dark}
+					alt={`logo-mode-${themeMode}`}
 					className={style.logoVert}
 				/>
 				<div className={style.linkActions}>
