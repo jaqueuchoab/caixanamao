@@ -58,15 +58,15 @@ export const lightTheme: ThemeType = {
 			},
 			admin: {
 				text: baseColorsDefault.neutral[100],
-				fill: baseColorsDefault.blue[600],
-				hover: baseColorsDefault.blue[900],
-				stroke: baseColorsDefault.blue[600],
+				fill: baseColorsDefault.blue[500],
+				hover: baseColorsDefault.blue[600],
+				stroke: baseColorsDefault.blue[800],
 			},
 			neutral: {
 				text: baseColorsDefault.neutral[950],
 				fill: 'transparent',
 				hover: baseColorsDefault.neutral[100],
-				stroke: baseColorsDefault.neutral[600],
+				stroke: baseColorsDefault.neutral[400],
 			},
 			danger: {
 				text: baseColorsDefault.neutral[100],
