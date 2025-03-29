@@ -1,5 +1,4 @@
 import { styled } from 'styled-components';
-import { ThemeType } from '../../themes/themeType';
 
 export const DashboardContainer = styled.div`
 	height: 100vh;
@@ -11,7 +10,7 @@ export const DashboardContainer = styled.div`
 	align-items: self-start;
 `;
 
-export const DashboardContent = styled.main<{ theme: ThemeType }>`
+export const DashboardContent = styled.main`
 	height: 100vh;
 	width: 100%;
 	padding: 0 24px;

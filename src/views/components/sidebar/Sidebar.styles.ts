@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
-import { ThemeType } from '../../themes/themeType';
 
 export const SidebarContainer = styled(motion.nav)`
 	height: 100dvh;
