@@ -66,7 +66,7 @@ export const darkTheme: ThemeType = {
 				text: baseColorsDefault.neutral[100],
 				fill: 'transparent',
 				hover: baseColorsDefault.neutral[950],
-				stroke: baseColorsDefault.neutral[300],
+				stroke: baseColorsDefault.neutral[600],
 			},
 			danger: {
 				text: baseColorsDefault.neutral[100],
