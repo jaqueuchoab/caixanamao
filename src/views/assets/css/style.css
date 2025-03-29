@@ -3,6 +3,12 @@
 
 * {
 	font-family: Sora;
+	transition: background-color 0.2s ease, color 0.2s ease, fill 0.2s ease; /* para transicoes suaves na troca de tema */
+}
+
+*:focus-visible {
+	box-shadow: 0px 0px 16px 0px #42d75872;
+	outline: 2.4px solid #00c318;
 }
 
 /*variáveis*/
