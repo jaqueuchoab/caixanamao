@@ -18,9 +18,4 @@ export const BottomBarContainer = styled.nav`
 	svg {
 		color: inherit;
 	}
-	// box-shadow: 0px -21px 10px -12px rgba(0, 0, 0, 0.16);
-
-	button {
-		padding: 12px 12px;
-	}
 `;

@@ -15,19 +15,19 @@ export function BottomBar() {
 	return (
 		<BottomBarContainer>
 			<Button variant='neutral' fill_width text_align='center'>
-				<House size={32} color={theme.colors.iconsColor} />
+				<House size={28} color={theme.colors.iconsColor} />
 			</Button>
 			<Button variant='neutral' fill_width text_align='center'>
-				<Notepad size={32} color={theme.colors.iconsColor} />
+				<Notepad size={28} color={theme.colors.iconsColor} />
 			</Button>
 			<Button variant='primary' fill_width text_align='center'>
-				<Plus size={32} color={theme.colors.buttons.primary.text} />
+				<Plus size={28} color={theme.colors.buttons.primary.text} />
 			</Button>
 			<Button variant='neutral' fill_width text_align='center'>
-				<FileText size={32} color={theme.colors.iconsColor} />
+				<FileText size={28} color={theme.colors.iconsColor} />
 			</Button>
 			<Button variant='neutral' fill_width text_align='center'>
-				<ChartBar size={32} color={theme.colors.iconsColor} />
+				<ChartBar size={28} color={theme.colors.iconsColor} />
 			</Button>
 		</BottomBarContainer>
 	);
