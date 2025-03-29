@@ -6,7 +6,7 @@ import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light
 import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 // Importando estilo
 import style from './styles/Home.module.css';
-import { useMode } from '../../context/ModeContext.tsx';
+import { useTheme } from '../../context/ThemeContext.tsx';
 // Importando componentes
 import TextContent from './HomeTextContent.tsx';
 import Header from '../header/Header.tsx';
@@ -14,10 +14,10 @@ import Footer from '../footer/Footer.tsx';
 import Slide from '../slide/Slide.tsx';
 
 const Home = () => {
-	const { mode } = useMode();
+	const { themeMode } = useTheme();
 
 	return (
-		<div className={style.mainContent} id={style[mode]}>
+		<div className={style.mainContent} id={style[themeMode]}>
 			<Header />
 			<Slide
 				slide='carousel'
@@ -43,7 +43,7 @@ const Home = () => {
 					thumbs={{
 						thumbType: 'color',
 						thumbValue:
-							mode === 'light'
+							themeMode === 'light'
 								? 'var(--color-blue-300)'
 								: 'var(--color-blue-300)',
 					}}

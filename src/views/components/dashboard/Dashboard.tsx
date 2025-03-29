@@ -1,16 +1,16 @@
 import { Button } from '../button/Button';
 import { Sidebar } from '../sidebar/Sidebar';
 import { DashboardContainer, DashboardContent } from './Dashboard.styles';
-import { useTheme } from '../../hooks/useTheme';
 import {
 	CastleTurret,
 	Hash,
 	Link,
 	WarningOctagon,
 } from '@phosphor-icons/react';
+import { useTheme } from '../../context/ThemeContext';
 
 export const Dashboard = () => {
-	const theme = useTheme();
+	const { theme } = useTheme();
 	return (
 		<DashboardContainer>
 			<Sidebar />

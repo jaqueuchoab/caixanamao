@@ -7,7 +7,7 @@ import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.sv
 import { CircleHalf } from '@phosphor-icons/react';
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
-import { useMode } from '../../context/ModeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 function setColorApp(mode: string) {
 	const app: HTMLDivElement | null = document.querySelector('.app');
@@ -34,32 +34,22 @@ function setColorApp(mode: string) {
 }
 
 const Header = () => {
-	const { mode, setMode } = useMode();
-
-	// TODO: acho que da para simplificar essa alteracao de modo
-	React.useEffect(() => {
-		localStorage?.setItem('mode', mode);
-		setColorApp(mode);
-	}, [mode]);
+	const { themeMode, switchTheme } = useTheme();
 
 	return (
 		<header className={style.header}>
 			<Link to='/'>
 				<img
-					src={mode === 'light' ? cnm_logo_light : cnm_logo_dark}
-					alt={`logo-mode-${mode}`}
+					src={themeMode === 'light' ? cnm_logo_light : cnm_logo_dark}
+					alt={`logo-mode-${themeMode}`}
 					className={style.logoHeader}
 				/>
 			</Link>
 			<nav className={style.nav}>
-				<button
-					onClick={() => {
-						setMode(mode === 'light' ? 'dark' : 'light');
-					}}
-				>
+				<button onClick={switchTheme}>
 					<CircleHalf
 						color={
-							mode === 'light'
+							themeMode === 'light'
 								? 'var(--color-neutral-950)'
 								: 'var(--color-neutral-100)'
 						}

@@ -20,14 +20,14 @@ import {
 	SidebarHeader,
 	SidebarProfile,
 } from './Sidebar.styles';
-import { useTheme } from '../../hooks/useTheme';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 
 export function Sidebar() {
 	const navigate = useNavigate();
 	const [isOpen, setIsOpen] = useState(true);
-	const theme = useTheme();
+	const { theme, switchTheme } = useTheme();
 
 	function handleIsOpen() {
 		setIsOpen((prev) => !prev);
@@ -46,18 +46,17 @@ export function Sidebar() {
 		>
 			<SidebarHeader $is_open={isOpen}>
 				{isOpen && (
-					<CircleHalf
-						weight='fill'
-						size={24}
-						color={theme.colors.iconsColor}
-						onClick={() => {}}
-					/>
+					<Button variant='neutral' onClick={switchTheme}>
+						<CircleHalf
+							weight='fill'
+							size={24}
+							color={theme.colors.iconsColor}
+						/>
+					</Button>
 				)}
-				<List
-					size={24}
-					color={theme.colors.iconsColor}
-					onClick={handleIsOpen}
-				/>
+				<Button variant='neutral' onClick={handleIsOpen}>
+					<List size={24} color={theme.colors.iconsColor} />
+				</Button>
 			</SidebarHeader>
 
 			<SidebarContent>

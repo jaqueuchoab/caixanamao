@@ -1,20 +1,20 @@
 import React from 'react';
 import style from './styles/LoginEmail.module.css';
 import googleLogo from '../../assets/google_g_logo.svg';
-import { useMode } from '../../context/ModeContext';
+import { useTheme } from '../../context/ThemeContext';
 import Input from '../input/Input';
 import { Button } from '../button/Button';
 import useForm from '../../hooks/useForm';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 const LoginEmail = () => {
-	const { mode } = useMode();
+	const { themeMode } = useTheme();
 	const navigate = useNavigate();
 	const email = useForm('email');
 	const password = useForm('password_login');
 
 	return (
-		<section className={style.mainContent} id={style[mode]}>
+		<section className={style.mainContent} id={style[themeMode]}>
 			<div>
 				<h3>Identificação por email</h3>
 				<p>

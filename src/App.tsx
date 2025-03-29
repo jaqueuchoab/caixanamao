@@ -1,20 +1,20 @@
-import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
-import Home from './views/components/home/Home';
-import Vantagens from './views/components/Vantagens';
-import { ModeContextProvider } from './views/context/ModeContext';
-import Fallback from './views/components/fallback/Fallback';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './views/assets/css/style.css';
 import ErrorBoundary from './views/components/ErrorBoundary';
+import Vantagens from './views/components/Vantagens';
+import { Dashboard } from './views/components/dashboard/Dashboard';
+import Fallback from './views/components/fallback/Fallback';
+import Home from './views/components/home/Home';
 import Login from './views/components/login/Login';
 import SignUp from './views/components/signup/SignUp';
-import { Dashboard } from './views/components/dashboard/Dashboard';
-import './views/assets/css/style.css';
+import { ThemeContextProvider } from './views/context/ThemeContext';
 
 function App() {
 	return (
 		<>
 			<div className='app'>
 				<BrowserRouter>
-					<ModeContextProvider>
+					<ThemeContextProvider>
 						<ErrorBoundary>
 							{/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
 							<Routes>
@@ -27,7 +27,7 @@ function App() {
 								<Route path='/fallback?' element={<Fallback />}></Route>
 							</Routes>
 						</ErrorBoundary>
-					</ModeContextProvider>
+					</ThemeContextProvider>
 				</BrowserRouter>
 			</div>
 		</>
