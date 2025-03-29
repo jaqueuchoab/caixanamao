@@ -1,6 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
 import { ButtonContainer } from './Button.styles';
-import { useTheme } from '../../context/ThemeContext';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	variant?: 'primary' | 'neutral' | 'admin' | 'danger' | 'link';
@@ -14,14 +13,11 @@ export function Button({
 	text_align = 'left',
 	...props
 }: ButtonProps) {
-	const { theme } = useTheme();
-
 	return (
 		<ButtonContainer
 			$variant={variant}
 			$fill_width={fill_width}
 			$text_align={text_align}
-			$theme={theme}
 			{...props}
 		>
 			{props.children}

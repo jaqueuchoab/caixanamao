@@ -18,12 +18,12 @@ const Fallback = () => {
 	const errorMessage = params.get('error') || 'Unknown error';
 
 	return (
-		<FallbackContainer theme={theme}>
+		<FallbackContainer>
 			<FallbackContent>
 				<LinkBreak color={theme.colors.texts.secondary} size={64} />
 				<h3>Ops, página não encontrada!</h3>
-				<ErrorBadge theme={theme}>{errorMessage}</ErrorBadge>
-				<CustomLink theme={theme} to={''} onClick={() => window.history.back()}>
+				<ErrorBadge>{errorMessage}</ErrorBadge>
+				<CustomLink to={''} onClick={() => window.history.back()}>
 					Voltar para pagina anterior
 				</CustomLink>
 			</FallbackContent>

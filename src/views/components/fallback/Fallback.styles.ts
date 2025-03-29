@@ -1,8 +1,7 @@
 import { styled } from 'styled-components';
-import { ThemeType } from '../../themes/themeType';
 import { Link } from 'react-router-dom';
 
-export const FallbackContainer = styled.div<{ theme: ThemeType }>`
+export const FallbackContainer = styled.div`
 	height: 100dvh; /* este ajuste eh temporario, o container de 100dvh deveria ser o root
     para todos os containers se adaptarem a ele */
 	width: 100%;
@@ -42,7 +41,7 @@ export const FallbackContent = styled.div`
 	}
 `;
 
-export const ErrorBadge = styled.div<{ theme: ThemeType }>`
+export const ErrorBadge = styled.div`
 	display: flex;
 	padding: 8px;
 	flex-direction: column;
@@ -56,7 +55,7 @@ export const ErrorBadge = styled.div<{ theme: ThemeType }>`
 	color: ${(props) => props.theme.colors.baseColors.neutral[200]};
 `;
 
-export const CustomLink = styled(Link)<{ theme: ThemeType }>`
+export const CustomLink = styled(Link)`
 	color: ${(props) => props.theme.colors.texts.highlight};
 	font-size: var(--2xs, 14px);
 	font-weight: 400;
