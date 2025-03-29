@@ -41,6 +41,10 @@ export const ThemeContextProvider = ({ children }: React.PropsWithChildren) => {
 	 */
 	const theme = themeMode === 'dark' ? darkTheme : lightTheme;
 
+	document.querySelector(
+		'body'
+	)!.style.background = `${theme.colors.backgrounds.navbar}`;
+
 	/**
 	 * @description retorna o theme provider customizado e o theme provider do styled-components, que permite recuperar o tema como prop de cada 
 			styled component inves de usar passagem de prop via hook useTheme (voce ainda pode recuperar
