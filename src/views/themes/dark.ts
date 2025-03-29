@@ -1,4 +1,4 @@
-import { ThemeType } from './themeType';
+import { ThemeType } from '../../@types/theme-types';
 import { baseColorsDefault, sizesDefault } from './defaults';
 
 export const darkTheme: ThemeType = {

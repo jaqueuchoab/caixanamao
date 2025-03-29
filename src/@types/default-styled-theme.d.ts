@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { ThemeType } from '../views/themes/themeType';
+import { ThemeType } from './theme-types';
 
 /**
  * @description sobrescreve o tema padrao que eh prop de todos os styled components
