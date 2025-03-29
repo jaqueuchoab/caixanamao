@@ -11,16 +11,18 @@ export const ButtonContainer = styled.button<{
 }>`
 	display: flex;
 	${(props) => props.$fill_width && 'width: 100%;'}
-	padding: 10px 12px;
+	padding: 10px 13px;
 	justify-content: ${(props) => props.$text_align};
 	align-items: center;
 	gap: 8px;
-	transition: all 0.3s ease;
+	transition: background-color 0.2s ease;
 
 	border-radius: 8px;
+	outline-offset: 4px;
 
 	svg {
-		transition: all 0.3s ease;
+		color: inherit;
+		transition: color 0.2s ease;
 	}
 
 	&:disabled {
@@ -38,10 +40,6 @@ export const ButtonContainer = styled.button<{
 					&:hover {
 						background-color: ${props.$theme.colors.buttons.primary.hover};
 					}
-
-					&:active {
-						outline: ${props.$theme.colors.buttons.primary.stroke};
-					}
 				`;
 			case 'neutral':
 				return css`
@@ -50,10 +48,6 @@ export const ButtonContainer = styled.button<{
 
 					&:hover {
 						background-color: ${props.$theme.colors.buttons.neutral.hover};
-					}
-
-					&:active {
-						outline: ${props.$theme.colors.buttons.neutral.stroke};
 					}
 				`;
 			case 'danger':
@@ -64,10 +58,6 @@ export const ButtonContainer = styled.button<{
 					&:hover {
 						background-color: ${props.$theme.colors.buttons.danger.hover};
 					}
-
-					&:active {
-						outline: ${props.$theme.colors.buttons.danger.stroke};
-					}
 				`;
 			case 'admin':
 				return css`
@@ -76,10 +66,6 @@ export const ButtonContainer = styled.button<{
 
 					&:hover {
 						background-color: ${props.$theme.colors.buttons.admin.hover};
-					}
-
-					&:active {
-						outline: ${props.$theme.colors.buttons.admin.stroke};
 					}
 				`;
 
