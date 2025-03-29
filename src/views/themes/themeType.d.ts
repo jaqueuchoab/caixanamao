@@ -1,3 +1,5 @@
+import styled from 'styled-components';
+
 type ActivityModeColorsType = {
 	active: string;
 	inactive: string;

@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { ThemeType } from '../../themes/themeType';
 
 export const ButtonContainer = styled.button<{
 	$variant: string;
