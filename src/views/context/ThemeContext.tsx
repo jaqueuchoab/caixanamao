@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
 import { ThemeType } from '../themes/themeType';
+import { ThemeProvider } from 'styled-components';
 
 type ThemeContextType = {
 	themeMode: 'light' | 'dark';
@@ -36,13 +37,19 @@ export const ThemeContextProvider = ({ children }: React.PropsWithChildren) => {
 	};
 
 	/**
-	 * retorna a definição do tema correspondendo ao estado
+	 * @description retorna a definição do tema correspondendo ao estado
 	 */
 	const theme = themeMode === 'dark' ? darkTheme : lightTheme;
 
+	/**
+	 * @description retorna o theme provider customizado e o theme provider do styled-components, que permite recuperar o tema como prop de cada 
+			styled component inves de usar passagem de prop via hook useTheme (voce ainda pode recuperar
+			o tema via hook para casos mais especificos do uso de tema na pagina, como coloracao
+			de icones!)
+	 */
 	return (
 		<ThemeContext.Provider value={{ themeMode, theme, switchTheme }}>
-			{children}
+			<ThemeProvider theme={theme}>{children}</ThemeProvider> {/*  */}
 		</ThemeContext.Provider>
 	);
 };

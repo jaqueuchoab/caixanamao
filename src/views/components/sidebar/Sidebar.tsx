@@ -35,7 +35,6 @@ export function Sidebar() {
 
 	return (
 		<SidebarContainer
-			$theme={theme}
 			animate={{ width: isOpen ? 256 : 96 }}
 			transition={{
 				duration: 0.25,

@@ -2,9 +2,7 @@ import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import { ThemeType } from '../../themes/themeType';
 
-export const SidebarContainer = styled(motion.nav)<{
-	$theme: ThemeType;
-}>`
+export const SidebarContainer = styled(motion.nav)`
 	height: 100dvh;
 	padding: 24px 16px;
 
@@ -13,8 +11,8 @@ export const SidebarContainer = styled(motion.nav)<{
 	justify-content: space-between;
 	align-items: center;
 
-	color: ${(props) => props.$theme.colors.texts.primary};
-	background-color: ${(props) => props.$theme.colors.backgrounds.tertiary};
+	color: ${(props) => props.theme.colors.texts.primary};
+	background-color: ${(props) => props.theme.colors.backgrounds.tertiary};
 
 	svg {
 		min-width: 24px;
