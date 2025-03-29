@@ -1,6 +1,6 @@
 import { LinkBreak } from '@phosphor-icons/react';
 import { useLocation } from 'react-router-dom';
-import { useMode } from '../../context/ModeContext';
+import { useTheme } from '../../context/ThemeContext';
 import {
 	ArtworkContainer,
 	CustomLink,
@@ -11,7 +11,7 @@ import {
 import artworkPath from '../../assets/FallbackArtwork.png';
 
 const Fallback = () => {
-	const { theme } = useMode();
+	const { theme } = useTheme();
 
 	const { search } = useLocation();
 	const params = new URLSearchParams(search);

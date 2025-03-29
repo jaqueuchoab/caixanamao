@@ -6,20 +6,20 @@ import logo_vert_light from '../../assets/logos/light-theme-assets/cnm-logovert-
 import logo_vert_dark from '../../assets/logos/dark-theme-assets/cnm-logovert-dark.svg';
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
-import { useMode } from '../../context/ModeContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const Footer = () => {
-	const { mode } = useMode();
+	const { mode } = useTheme();
 
 	return (
 		<footer id={style[mode]}>
-			<div className={style.content}>
+			<div className={style.contentFooter}>
 				<img
 					src={mode === 'light' ? logo_vert_light : logo_vert_dark}
 					alt={`logo-mode-${mode}`}
-					className={style['logo-vert']}
+					className={style.logoVert}
 				/>
-				<div className={style.actions}>
+				<div className={style.linkActions}>
 					<Link to='/login'>
 						<p>Login / Cadastro</p>
 					</Link>

@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react';
 import { ButtonContainer } from './Button.styles';
-import { useTheme } from '../../hooks/useTheme';
+import { useTheme } from '../../context/ThemeContext';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 	variant?: 'primary' | 'neutral' | 'admin' | 'danger' | 'link';
@@ -14,7 +14,7 @@ export function Button({
 	text_align = 'left',
 	...props
 }: ButtonProps) {
-	const theme = useTheme();
+	const { theme } = useTheme();
 
 	return (
 		<ButtonContainer

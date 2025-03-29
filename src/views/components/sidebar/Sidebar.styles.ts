@@ -34,6 +34,12 @@ export const SidebarContent = styled.div`
 	align-items: center;
 	gap: 36px;
 	align-self: stretch;
+
+	button {
+		white-space: nowrap;
+		overflow-x: hidden;
+		text-overflow: ellipsis;
+	}
 `;
 
 export const SidebarProfile = styled.div`
