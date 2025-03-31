@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
 import { ThemeType } from '../../@types/theme-types';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@emotion/react';
 
 type ThemeContextType = {
 	themeMode: 'light' | 'dark';
@@ -46,19 +46,19 @@ export const ThemeContextProvider = ({ children }: React.PropsWithChildren) => {
 	)!.style.background = `${theme.colors.backgrounds.navbar}`;
 
 	/**
-	 * @description retorna o theme provider customizado e o theme provider do styled-components, que permite recuperar o tema como prop de cada 
+	 * @description retorna o theme provider customizado e o theme provider do emotion, que permite recuperar o tema como prop de cada 
 			styled component inves de usar passagem de prop via hook useTheme (voce ainda pode recuperar
 			o tema via hook para casos mais especificos do uso de tema na pagina, como coloracao
 			de icones!)
 	 */
 	return (
 		<ThemeContext.Provider value={{ themeMode, theme, switchTheme }}>
-			<ThemeProvider theme={theme}>{children}</ThemeProvider> {/*  */}
+			<ThemeProvider theme={theme}>{children}</ThemeProvider>
 		</ThemeContext.Provider>
 	);
 };
 
-export const useTheme = () => {
+export const useContextTheme = () => {
 	const context = useContext(ThemeContext);
 	if (!context)
 		throw new Error('useTheme ser chamado dentro de um ThemeContextProvider');

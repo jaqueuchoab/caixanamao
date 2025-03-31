@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const SidebarContainer = styled(motion.nav)`
 	height: 100dvh;
@@ -10,8 +10,8 @@ export const SidebarContainer = styled(motion.nav)`
 	justify-content: space-between;
 	align-items: center;
 
-	color: ${(props) => props.theme.colors.texts.primary};
-	background-color: ${(props) => props.theme.colors.backgrounds.tertiary};
+	color: ${({ theme }) => theme.colors.texts.primary};
+	background-color: ${({ theme }) => theme.colors.backgrounds.tertiary};
 
 	svg {
 		min-width: 24px;
@@ -21,7 +21,7 @@ export const SidebarContainer = styled(motion.nav)`
 export const SidebarHeader = styled.div<{ $is_open: boolean }>`
 	width: 100%;
 	display: flex;
-	justify-content: ${(props) => (props.$is_open ? 'space-between;' : 'center;')}
+	justify-content: ${({ $is_open }) => ($is_open ? 'space-between;' : 'center;')}
 	align-items: center;
 `;
 

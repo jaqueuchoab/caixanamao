@@ -6,7 +6,7 @@ import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logoho
 import { CircleHalfIcon } from '@phosphor-icons/react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 
 function setColorApp(mode: string) {
 	const app: HTMLDivElement | null = document.querySelector('.app');
@@ -39,7 +39,7 @@ function getLogo(mode: string, width: number | null) {
 }
 
 const Header = () => {
-	const { themeMode, switchTheme } = useTheme();
+	const { themeMode, switchTheme } = useContextTheme();
 
 	return (
 		<HeaderContainer>

@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './styles/DateInput.module.css';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 
 export type typeDate = {
 	day: string;
@@ -25,7 +25,7 @@ function errorConfig(error: string, themeMode: string) {
 }
 
 const DateInput = ({ value, setValue }: DateInput) => {
-	const { themeMode } = useTheme();
+	const { themeMode } = useContextTheme();
 
 	return (
 		<div>

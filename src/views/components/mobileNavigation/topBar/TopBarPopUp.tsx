@@ -2,11 +2,11 @@ import { CircleHalf, Gear, Lifebuoy, SignOut } from '@phosphor-icons/react';
 import { Button } from '../../button/Button';
 import { TopBarPopupContainer } from './TopBar.styles';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../../context/ThemeContext';
+import { useContextTheme } from '../../../context/ThemeContext';
 
 export function TopBarPopUp() {
 	const navigate = useNavigate();
-	const { switchTheme } = useTheme();
+	const { switchTheme } = useContextTheme();
 
 	return (
 		<TopBarPopupContainer

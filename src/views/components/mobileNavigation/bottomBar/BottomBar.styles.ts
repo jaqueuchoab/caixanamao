@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const BottomBarContainer = styled.nav`
 	position: fixed;
@@ -13,8 +13,8 @@ export const BottomBarContainer = styled.nav`
 	gap: 12px;
 
 	border-radius: 12px 12px 0px 0px;
-	background: ${(props) => props.theme.colors.backgrounds.navbar};
-	color: ${(props) => props.theme.colors.texts.primary};
+	background: ${({ theme }) => theme.colors.backgrounds.navbar};
+	color: ${({ theme }) => theme.colors.texts.primary};
 	svg {
 		color: inherit;
 	}

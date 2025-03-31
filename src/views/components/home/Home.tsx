@@ -5,7 +5,7 @@ import cnm_gradient_arrow from '../../assets/logos/cnm-gradient-arrow.svg';
 import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
 import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
 import style from './styles/Home.module.css';
-import { useTheme } from '../../context/ThemeContext.tsx';
+import { useContextTheme } from '../../context/ThemeContext.tsx';
 // Importando componentes
 import TextContent from './HomeTextContent.tsx';
 import Header from '../header/Header.tsx';
@@ -13,7 +13,7 @@ import Footer from '../footer/Footer.tsx';
 import Slide from '../slide/Slide.tsx';
 
 const Home = () => {
-	const { themeMode } = useTheme();
+	const { themeMode } = useContextTheme();
 
 	return (
 		<div className={style.mainContent} id={style[themeMode]}>

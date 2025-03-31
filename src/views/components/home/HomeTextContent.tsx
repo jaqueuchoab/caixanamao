@@ -1,5 +1,5 @@
 import style from './styles/HomeTextContent.module.css';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 
 // Tipo que define as propriedades que TextContent pode receber
 type Content = {
@@ -8,7 +8,7 @@ type Content = {
 };
 
 function TextContent({ titulo, texto }: Content) {
-	const { themeMode } = useTheme();
+	const { themeMode } = useContextTheme();
 
 	return (
 		<div className={style.textContent} id={style[themeMode]}>
