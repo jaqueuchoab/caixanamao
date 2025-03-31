@@ -41,7 +41,7 @@ export const ButtonContainer = styled.button<{
 				`;
 			case 'neutral':
 				return css`
-					background-color: 'transparent'
+					background-color: transparent;
 					color: ${props.theme.colors.texts.primary};
 
 					&:hover {
