@@ -38,6 +38,10 @@ export const FallbackContent = styled.div`
 	h3 {
 		font-size: 24px;
 		font-weight: 400;
+
+		@media screen and (width <= 830px) {
+			text-align: center;
+		}
 	}
 `;
 
@@ -53,19 +57,6 @@ export const ErrorBadge = styled.div`
 	border-radius: 8px;
 	background: ${(props) => props.theme.colors.baseColors.neutral[600]};
 	color: ${(props) => props.theme.colors.baseColors.neutral[200]};
-`;
-
-export const CustomLink = styled(Link)`
-	color: ${(props) => props.theme.colors.texts.highlight};
-	font-size: var(--2xs, 14px);
-	font-weight: 400;
-	text-decoration: none;
-	transition: opacity 0.3 ease;
-
-	&:hover {
-		opacity: 0.64;
-		text-decoration: underline;
-	}
 `;
 
 export const ArtworkContainer = styled.div`
