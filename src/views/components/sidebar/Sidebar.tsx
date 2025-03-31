@@ -26,8 +26,8 @@ import { useTheme } from '../../context/ThemeContext';
 
 export function Sidebar() {
 	const navigate = useNavigate();
-	const [isOpen, setIsOpen] = useState(true);
-	const { theme, switchTheme } = useTheme();
+	const [isOpen, setIsOpen] = useState<boolean>(true);
+	const { switchTheme } = useTheme();
 
 	function handleIsOpen() {
 		setIsOpen((prev) => !prev);
@@ -46,22 +46,18 @@ export function Sidebar() {
 			<SidebarHeader $is_open={isOpen}>
 				{isOpen && (
 					<Button variant='neutral' onClick={switchTheme}>
-						<CircleHalf
-							weight='fill'
-							size={24}
-							color={theme.colors.iconsColor}
-						/>
+						<CircleHalf weight='fill' size={24} />
 					</Button>
 				)}
 				<Button variant='neutral' onClick={handleIsOpen}>
-					<List size={24} color={theme.colors.iconsColor} />
+					<List size={24} />
 				</Button>
 			</SidebarHeader>
 
 			<SidebarContent>
 				<SidebarProfile></SidebarProfile>
 				<Button variant='primary' fill_width text_align='center'>
-					<Plus size={24} color={theme.colors.buttons.primary.text} />
+					<Plus size={24} />
 					{isOpen && 'Novo registro'}
 				</Button>
 
@@ -71,7 +67,7 @@ export function Sidebar() {
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 					>
-						<House size={24} color={theme.colors.iconsColor} />
+						<House size={24} />
 						{isOpen && 'Página inicial'}
 					</Button>
 					<Button
@@ -79,7 +75,7 @@ export function Sidebar() {
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 					>
-						<Notepad size={24} color={theme.colors.iconsColor} />
+						<Notepad size={24} />
 						{isOpen && 'Registros'}
 					</Button>
 					<Button
@@ -87,7 +83,7 @@ export function Sidebar() {
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 					>
-						<CastleTurret size={24} color={theme.colors.iconsColor} />
+						<CastleTurret size={24} />
 						{isOpen && 'Administração'}
 					</Button>
 					<Button
@@ -95,7 +91,7 @@ export function Sidebar() {
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 					>
-						<FileText size={24} color={theme.colors.iconsColor} />
+						<FileText size={24} />
 						{isOpen && 'Relatórios'}
 					</Button>
 					<Button
@@ -103,7 +99,7 @@ export function Sidebar() {
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 					>
-						<ChartBar size={24} color={theme.colors.iconsColor} />
+						<ChartBar size={24} />
 						{isOpen && 'Análises'}
 					</Button>
 				</SidebarActionsList>
@@ -115,7 +111,7 @@ export function Sidebar() {
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 				>
-					<Lifebuoy size={24} color={theme.colors.iconsColor} />
+					<Lifebuoy size={24} />
 					{isOpen && 'Ajuda'}
 				</Button>
 				<Button
@@ -123,7 +119,7 @@ export function Sidebar() {
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 				>
-					<Gear size={24} color={theme.colors.iconsColor} />
+					<Gear size={24} />
 					{isOpen && 'Configurações'}
 				</Button>
 				<Button
@@ -132,7 +128,7 @@ export function Sidebar() {
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/')}
 				>
-					<SignOut size={24} color={theme.colors.iconsColor} />
+					<SignOut size={24} />
 					{isOpen && 'Sair'}
 				</Button>
 			</SidebarBottomActions>
