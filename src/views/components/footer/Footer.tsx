@@ -6,10 +6,10 @@ import logo_vert_light from '../../assets/logos/light-theme-assets/cnm-logovert-
 import logo_vert_dark from '../../assets/logos/dark-theme-assets/cnm-logovert-dark.svg';
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 
 const Footer = () => {
-	const { themeMode } = useTheme();
+	const { themeMode } = useContextTheme();
 
 	return (
 		<footer id={style[themeMode]}>

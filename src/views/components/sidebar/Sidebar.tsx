@@ -22,12 +22,12 @@ import {
 } from './Sidebar.styles';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 
 export function Sidebar() {
 	const navigate = useNavigate();
 	const [isOpen, setIsOpen] = useState<boolean>(true);
-	const { switchTheme } = useTheme();
+	const { switchTheme } = useContextTheme();
 
 	function handleIsOpen() {
 		setIsOpen((prev) => !prev);

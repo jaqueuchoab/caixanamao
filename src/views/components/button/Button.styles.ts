@@ -1,16 +1,19 @@
-import styled, { css } from 'styled-components';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
-export const ButtonContainer = styled.button<{
-	$variant: string;
+export type ButtonVariants = 'primary' | 'neutral' | 'danger' | 'admin' | 'link';
+
+interface ButtonProps {
+	$variant: ButtonVariants;
 	$fill_width: boolean;
-	$text_align?: string;
-	/* props passadas para dentro de um styled-component são antecedidas de $ 
-	para o dom ignora-las, removendo um warning */
-}>`
+	$text_align?: 'center' | 'left';
+}
+
+export const ButtonContainer = styled.button<ButtonProps>`
 	display: flex;
-	${(props) => props.$fill_width && 'width: 100%;'}
+	${({ $fill_width }) => $fill_width && 'width: 100%;'}
 	padding: 10px 13px;
-	justify-content: ${(props) => props.$text_align};
+	justify-content: ${({ $text_align }) => $text_align || 'center'};
 	align-items: center;
 	gap: 8px;
 	transition: background-color 0.2s ease;
@@ -24,62 +27,63 @@ export const ButtonContainer = styled.button<{
 	}
 
 	&:disabled {
-		background-color: ${(props) => props.theme.colors.buttons.disabledColor};
-		color: ${(props) => props.theme.colors.texts.primary};
+		background-color: ${({ theme }) => theme.colors.buttons.disabledColor};
+		color: ${({ theme }) => theme.colors.texts.primary};
 	}
 
-	${(props) => {
-		switch (props.$variant) {
+	${({ $variant, theme }) => {
+		switch ($variant) {
 			case 'primary':
 				return css`
-					background-color: ${props.theme.colors.buttons.primary.fill};
-					color: ${props.theme.colors.buttons.primary.text};
+					background-color: ${theme.colors.buttons.primary.fill};
+					color: ${theme.colors.buttons.primary.text};
 
 					&:hover {
-						background-color: ${props.theme.colors.buttons.primary.hover};
+						background-color: ${theme.colors.buttons.primary.hover};
 					}
 				`;
 			case 'neutral':
 				return css`
 					background-color: transparent;
-					color: ${props.theme.colors.texts.primary};
+					color: ${theme.colors.texts.primary};
 
 					&:hover {
-						background-color: ${props.theme.colors.buttons.neutral.hover};
+						background-color: ${theme.colors.buttons.neutral.hover};
 					}
 				`;
 			case 'danger':
 				return css`
-					background-color: ${props.theme.colors.buttons.danger.fill};
-					color: ${props.theme.colors.buttons.danger.text};
+					background-color: ${theme.colors.buttons.danger.fill};
+					color: ${theme.colors.buttons.danger.text};
 
 					&:hover {
-						background-color: ${props.theme.colors.buttons.danger.hover};
+						background-color: ${theme.colors.buttons.danger.hover};
 					}
 				`;
 			case 'admin':
 				return css`
-					background-color: ${props.theme.colors.buttons.admin.fill};
-					color: ${props.theme.colors.buttons.admin.text};
+					background-color: ${theme.colors.buttons.admin.fill};
+					color: ${theme.colors.buttons.admin.text};
 
 					&:hover {
-						background-color: ${props.theme.colors.buttons.admin.hover};
+						background-color: ${theme.colors.buttons.admin.hover};
 					}
 				`;
-
 			case 'link':
 				return css`
-					background-color: ${props.theme.colors.buttons.link.fill};
-					color: ${props.theme.colors.buttons.link.text};
+					background-color: ${theme.colors.buttons.link.fill};
+					color: ${theme.colors.buttons.link.text};
 					text-decoration: underline;
+
 					svg {
-						fill: ${props.theme.colors.buttons.link.text};
+						fill: ${theme.colors.buttons.link.text};
 					}
 
 					&:hover {
-						color: ${props.theme.colors.buttons.link.hover};
+						color: ${theme.colors.buttons.link.hover};
+
 						svg {
-							fill: ${props.theme.colors.buttons.link.hover};
+							fill: ${theme.colors.buttons.link.hover};
 						}
 					}
 				`;

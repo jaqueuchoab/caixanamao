@@ -1,8 +1,8 @@
 import { ButtonHTMLAttributes } from 'react';
-import { ButtonContainer } from './Button.styles';
+import { ButtonContainer, ButtonVariants } from './Button.styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-	variant?: 'primary' | 'neutral' | 'admin' | 'danger' | 'link';
+	variant?: ButtonVariants;
 	fill_width?: boolean;
 	text_align?: 'center' | 'left';
 };

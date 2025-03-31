@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './styles/Input.module.css';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 import { Eye, EyeClosed } from '@phosphor-icons/react';
 
 type InputProps = {
@@ -24,7 +24,7 @@ const Input = ({
 	onChange,
 	onBlur,
 }: InputProps) => {
-	const { themeMode } = useTheme();
+	const { themeMode } = useContextTheme();
 	const [visible, setVisible] = React.useState(true);
 
 	function errorConfig(error: string, themeMode: string) {
@@ -39,11 +39,16 @@ const Input = ({
 		const input = document.querySelector<HTMLInputElement>('#password');
 		if (visible) {
 			input?.setAttribute('type', 'password');
-			return <Eye size={24} color={`var(--input-${themeMode}-secondary-element)`} />;
+			return (
+				<Eye size={24} color={`var(--input-${themeMode}-secondary-element)`} />
+			);
 		} else {
 			input?.setAttribute('type', 'text');
 			return (
-				<EyeClosed size={24} color={`var(--input-${themeMode}-secondary-element)`} />
+				<EyeClosed
+					size={24}
+					color={`var(--input-${themeMode}-secondary-element)`}
+				/>
 			);
 		}
 	}

@@ -1,9 +1,9 @@
 import React from 'react';
 import style from './ProgressIndicator.module.css';
-import { useTheme } from '../../../context/ThemeContext';
+import { useContextTheme } from '../../../context/ThemeContext';
 
 const ProgressIndicator = () => {
-	const { themeMode } = useTheme();
+	const { themeMode } = useContextTheme();
 
 	return (
 		<section className={style.progressIndicator}>

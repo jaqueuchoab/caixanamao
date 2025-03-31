@@ -7,7 +7,7 @@ import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.sv
 import { CircleHalf } from '@phosphor-icons/react';
 // Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
-import { useTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '../../context/ThemeContext';
 
 function setColorApp(mode: string) {
 	const app: HTMLDivElement | null = document.querySelector('.app');
@@ -34,7 +34,7 @@ function setColorApp(mode: string) {
 }
 
 const Header = () => {
-	const { themeMode, switchTheme } = useTheme();
+	const { themeMode, switchTheme } = useContextTheme();
 
 	return (
 		<header className={style.header}>

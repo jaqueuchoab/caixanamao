@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
-import styled from 'styled-components';
 
 export const TopBarContainer = styled.div`
 	position: fixed;
@@ -12,8 +12,8 @@ export const TopBarContainer = styled.div`
 	justify-content: space-between;
 	align-items: center;
 
-	background: ${(props) => props.theme.colors.backgrounds.tertiary};
-	color: ${(props) => props.theme.colors.texts.primary};
+	background: ${({ theme }) => theme.colors.backgrounds.tertiary};
+	color: ${({ theme }) => theme.colors.texts.primary};
 `;
 
 export const TopBarPopupContainer = styled(motion.div)`
@@ -30,7 +30,7 @@ export const TopBarPopupContainer = styled(motion.div)`
 	gap: 8px;
 
 	border-radius: 0px 0px 12px 12px;
-	border-top: 2px solid ${(props) => props.theme.colors.inputs.stroke};
-	background: ${(props) => props.theme.colors.backgrounds.tertiary};
-	color: ${(props) => props.theme.colors.texts.primary};
+	border-top: 2px solid ${({ theme }) => theme.colors.inputs.stroke};
+	background: ${({ theme }) => theme.colors.backgrounds.tertiary};
+	color: ${({ theme }) => theme.colors.texts.primary};
 `;

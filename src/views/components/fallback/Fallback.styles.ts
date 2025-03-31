@@ -1,5 +1,4 @@
-import { styled } from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from '@emotion/styled';
 
 export const FallbackContainer = styled.div`
 	height: 100dvh; /* este ajuste eh temporario, o container de 100dvh deveria ser o root
@@ -12,8 +11,8 @@ export const FallbackContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	background-color: ${(props) => props.theme.colors.backgrounds.tertiary};
-	color: ${(props) => props.theme.colors.texts.primary};
+	background-color: ${({ theme }) => theme.colors.backgrounds.tertiary};
+	color: ${({ theme }) => theme.colors.texts.primary};
 
 	@media screen and (width >= 830px) {
 		& {
@@ -55,8 +54,8 @@ export const ErrorBadge = styled.div`
 
 	font-weight: 600;
 	border-radius: 8px;
-	background: ${(props) => props.theme.colors.baseColors.neutral[600]};
-	color: ${(props) => props.theme.colors.baseColors.neutral[200]};
+	background: ${({ theme }) => theme.colors.baseColors.neutral[600]};
+	color: ${({ theme }) => theme.colors.baseColors.neutral[200]};
 `;
 
 export const ArtworkContainer = styled.div`

@@ -1,4 +1,4 @@
-import { styled } from 'styled-components';
+import styled from '@emotion/styled';
 
 export const DashboardContainer = styled.div`
 	height: 100vh;
@@ -27,6 +27,6 @@ export const DashboardContent = styled.main`
 	align-items: center;
 	gap: 24px;
 
-	background-color: ${(props) => props.theme.colors.backgrounds.dashboard};
-	color: ${(props) => props.theme.colors.texts.secondary};
+	background-color: ${({ theme }) => theme.colors.backgrounds.dashboard};
+	color: ${({ theme }) => theme.colors.texts.secondary};
 `;
