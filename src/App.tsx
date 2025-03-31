@@ -13,7 +13,12 @@ function App() {
 	return (
 		<>
 			<div className='app'>
-				<BrowserRouter>
+				<BrowserRouter
+					future={{
+						v7_startTransition: true,
+						v7_relativeSplatPath: true,
+					}}
+				>
 					<ThemeContextProvider>
 						<ErrorBoundary>
 							{/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
