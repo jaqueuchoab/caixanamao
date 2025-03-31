@@ -7,7 +7,9 @@
     "dev": "vite --host",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch --passWithNoTests"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.7",
@@ -23,6 +25,10 @@
     "styled-components": "^6.1.16"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/jest": "^29.5.14",
+    "@types/jest-axe": "^3.5.9",
     "@types/jquery": "^3.5.32",
     "@types/jquery-mask-plugin": "^1.14.6",
     "@types/react": "^18.2.66",
@@ -34,6 +40,9 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "ts-jest": "^29.3.0",
     "typescript": "^5.2.2",
     "vite": "^6.2.2"
   }
