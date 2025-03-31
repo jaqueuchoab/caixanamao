@@ -7,7 +7,6 @@
 }
 
 *:focus-visible {
-	box-shadow: 0px 0px 16px 0px #42d75872;
 	outline: 2.4px solid #00c318;
 }
 
