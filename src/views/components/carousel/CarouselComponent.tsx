@@ -17,31 +17,41 @@ const responsive = {
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    partialVisibilityGutter: 70
   },
 };
 
 const CarouselComponent = ({ images }: { images: string[] }) => {
+
   return (
-      <Carousel
-        removeArrowOnDeviceType={['tablet', 'mobile']}
-        responsive={responsive}
-        containerClass={style.carousel}
-        itemClass={style.item}
-        partialVisible={true}
-        infinite
-      >
-        {images.map((image, index) => {
-          return (
-              <img
-                key={index}
-                src={image}
-                alt={`image-${index + 1}`}
-                className={style.img}
-              />
-          );
-        })}
-      </Carousel>
+    <Carousel
+      additionalTransfrom={-412}
+      autoPlaySpeed={3000}
+      minimumTouchDrag={382}
+      centerMode={true}
+      draggable
+      infinite
+      keyBoardControl
+      pauseOnHover
+      showDots={false}
+      sliderClass="carousel-slider"
+      slidesToSlide={1}
+      swipeable
+      removeArrowOnDeviceType={['tablet', 'mobile']}
+      responsive={responsive}
+      containerClass={style.carousel}
+      itemClass={style.item}
+    >
+      {images.map((image, index) => {
+        return (
+          <img
+            key={index}
+            src={image}
+            alt={`image-${index + 1}`}
+            className={style.img}
+          />
+        );
+      })}
+    </Carousel>
   );
 };
 
