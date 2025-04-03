@@ -67,6 +67,7 @@ export function Sidebar() {
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
+						onClick={() => navigate('/dashboard/home')}
 					>
 						<House size={24} />
 						{isOpen && 'Página inicial'}
@@ -75,6 +76,7 @@ export function Sidebar() {
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
+						onClick={() => navigate('/dashboard/registers')}
 					>
 						<Notepad size={24} />
 						{isOpen && 'Registros'}
@@ -83,6 +85,7 @@ export function Sidebar() {
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
+						onClick={() => navigate('/dashboard/admin')}
 					>
 						<CastleTurret size={24} />
 						{isOpen && 'Administração'}
@@ -91,6 +94,7 @@ export function Sidebar() {
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
+						onClick={() => navigate('/dashboard/reports')}
 					>
 						<FileText size={24} />
 						{isOpen && 'Relatórios'}
@@ -99,6 +103,7 @@ export function Sidebar() {
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
+						onClick={() => navigate('/dashboard/analysis')}
 					>
 						<ChartBar size={24} />
 						{isOpen && 'Análises'}
@@ -111,6 +116,7 @@ export function Sidebar() {
 					variant='neutral'
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
+					onClick={() => navigate('/dashboard/help')}
 				>
 					<Lifebuoy size={24} />
 					{isOpen && 'Ajuda'}
@@ -119,6 +125,7 @@ export function Sidebar() {
 					variant='neutral'
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
+					onClick={() => navigate('/dashboard/settings')}
 				>
 					<Gear size={24} />
 					{isOpen && 'Configurações'}

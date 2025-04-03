@@ -20,6 +20,7 @@ export const DashboardContent = styled.main`
 	height: 100vh;
 	width: 100%;
 	padding: 24px;
+	overflow: auto;
 
 	display: flex;
 	flex-direction: column;

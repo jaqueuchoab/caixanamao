@@ -3,8 +3,10 @@ import { DashboardContainer, DashboardContent } from './Dashboard.styles';
 import { BottomBar } from '../mobileNavigation/bottomBar/BottomBar';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { TopBar } from '../mobileNavigation/topBar/TopBar';
-import { FileDashed } from '@phosphor-icons/react';
-import { Button } from '../button/Button';
+import { Route, Routes } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+
+import { dashboardRoutes } from '../../../routes/dashboard-routes';
 
 export const Dashboard = () => {
 	const size = useWindowSize();
@@ -16,14 +18,21 @@ export const Dashboard = () => {
 			{isDeviceMobile ? <BottomBar /> : <Sidebar />}
 
 			<DashboardContent>
-				<FileDashed size={81} />
-				<p style={{ maxWidth: 256, textAlign: 'center' }}>
-					Parece que você ainda não fez nenhum registo de caixa, que tal fazer o
-					primeiro?
-				</p>
-				<Button>Primeiro registro</Button>
-
-				{/*Rotas aqui no meio :) */}
+				<AnimatePresence mode='wait'>
+					{/* para animar a montagem/desmontagem de componentes pela rota através de 
+					AnimatePresence siga o mesmo padrão do componente SamplePage */}
+					<Routes>
+						{dashboardRoutes.map((route) => {
+							return (
+								<Route
+									path={route.path}
+									element={route.element}
+									key={route.path}
+								/>
+							);
+						})}
+					</Routes>
+				</AnimatePresence>
 			</DashboardContent>
 		</DashboardContainer>
 	);

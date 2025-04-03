@@ -17,6 +17,7 @@ export const TopBarContainer = styled.div`
 `;
 
 export const TopBarPopupContainer = styled(motion.div)`
+	z-index: 1;
 	position: fixed;
 	top: 96px;
 	left: 0;

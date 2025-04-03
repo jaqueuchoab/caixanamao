@@ -19,11 +19,19 @@ export function TopBarPopUp() {
 				<CircleHalf weight='fill' size={28} />
 				Trocar tema
 			</Button>
-			<Button variant='neutral' fill_width>
+			<Button
+				variant='neutral'
+				fill_width
+				onClick={() => navigate('/dashboard/help')}
+			>
 				<Lifebuoy size={28} />
 				Ajuda
 			</Button>
-			<Button variant='neutral' fill_width>
+			<Button
+				variant='neutral'
+				fill_width
+				onClick={() => navigate('/dashboard/settings')}
+			>
 				<Gear size={28} />
 				Configurações
 			</Button>

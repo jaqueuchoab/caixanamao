@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Button } from '../../button/Button';
 import { TopBarPopUp } from './TopBarPopUp';
 import { AnimatePresence } from 'framer-motion';
+import { Profile } from '../../sidebar/profile/Profile';
 
 export function TopBar() {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -15,7 +16,7 @@ export function TopBar() {
 	return (
 		<>
 			<TopBarContainer>
-				{'<Profile(WIP)/>'}
+				<Profile />
 				<Button variant='neutral' onClick={togglePopUpState}>
 					{isOpen ? <X size={28} /> : <List size={28} />}
 				</Button>
