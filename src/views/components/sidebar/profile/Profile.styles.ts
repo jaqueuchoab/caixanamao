@@ -34,8 +34,12 @@ export const ProfileInfos = styled.div`
 
 		&.user {
 			color: ${({ theme }) => theme.colors.texts.primary};
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 600;
+
+			@media screen and (width > 768px) {
+				font-size: 16px;
+			}
 		}
 
 		&.role {
