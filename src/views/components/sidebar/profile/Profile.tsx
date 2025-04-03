@@ -8,7 +8,7 @@ interface ProfileProps {
 export function Profile({ showInfos }: ProfileProps) {
 	return (
 		<ProfileContainer>
-			<ProfilePhoto /* src={sampleImg} */ />
+			<ProfilePhoto src={sampleImg} />
 			{showInfos && (
 				<ProfileInfos>
 					<span className='user'>Usuário da Silva</span>

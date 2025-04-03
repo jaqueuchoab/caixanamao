@@ -15,7 +15,7 @@ export const ProfilePhoto = styled.img`
 	max-width: 40px;
 	max-height: 40px;
 
-	background-color: ${({ theme }) => theme.colors.iconsColor};
+	outline: 2px solid ${({ theme }) => theme.colors.inputs.stroke};
 	border-radius: 100%;
 `;
 
