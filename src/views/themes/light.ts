@@ -18,7 +18,7 @@ export const lightTheme: ThemeType = {
 		texts: {
 			primary: baseColorsDefault.neutral[950],
 			secondary: baseColorsDefault.neutral[600],
-			highlight: baseColorsDefault.green[900],
+			highlight: baseColorsDefault.green[800],
 		},
 		inputs: {
 			background: baseColorsDefault.neutral[100],
