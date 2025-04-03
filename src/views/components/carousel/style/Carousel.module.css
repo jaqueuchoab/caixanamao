@@ -1,8 +1,4 @@
 @media (max-width: 464px) {
-  .carousel-slider {
-    transform: translate3d(-351.5px, 0px, 0px) !important;
-  }
-
   .carousel {
     height: 340px;
     margin: var(--size-sm) 0 var(--size-sm) 0;
@@ -10,7 +6,7 @@
 
   .item {
     box-sizing: border-box;
-    width: 100% !important; 
+    width: 100% !important;
     margin: 0 var(--size-sm) 0 var(--size-sm);
     display: flex;
     align-items: center;
@@ -21,5 +17,4 @@
     border-radius: 20px;
     width: 340px;
   }
-
 }

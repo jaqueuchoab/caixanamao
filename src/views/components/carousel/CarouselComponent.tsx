@@ -21,12 +21,22 @@ const responsive = {
 };
 
 const CarouselComponent = ({ images }: { images: string[] }) => {
+  const sliderTransform = document.querySelector(".carousel-slider");
+
+  React.useEffect(() => {
+    if (sliderTransform) {
+      const styleSlider = window.getComputedStyle(sliderTransform);
+      const transform = styleSlider.getPropertyValue('transform');
+      const newValue = Number(transform.split(',')[4]) + -414;
+    } else {
+      console.error("Elemento .carousel-slider não encontrado!");
+    }
+  },[])
 
   return (
     <Carousel
-      additionalTransfrom={-412}
+      additionalTransfrom={0}
       autoPlaySpeed={3000}
-      minimumTouchDrag={382}
       centerMode={true}
       draggable
       infinite
