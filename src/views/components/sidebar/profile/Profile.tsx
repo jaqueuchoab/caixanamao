@@ -2,13 +2,14 @@ import { ProfileContainer, ProfileInfos, ProfilePhoto } from './Profile.styles';
 import sampleImg from '../../../assets/FallbackArtwork.png';
 
 interface ProfileProps {
-	showInfos: boolean;
+	showInfos?: boolean;
+	showPhoto?: boolean;
 }
 
-export function Profile({ showInfos }: ProfileProps) {
+export function Profile({ showInfos = true, showPhoto = true }: ProfileProps) {
 	return (
 		<ProfileContainer>
-			<ProfilePhoto src={sampleImg} />
+			{showPhoto && <ProfilePhoto src={sampleImg} />}
 			{showInfos && (
 				<ProfileInfos>
 					<span className='user'>Usuário da Silva</span>
