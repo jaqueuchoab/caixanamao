@@ -18,11 +18,11 @@ import {
 	SidebarContainer,
 	SidebarContent,
 	SidebarHeader,
-	SidebarProfile,
 } from './Sidebar.styles';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useContextTheme } from '../../context/ThemeContext';
+import { Profile } from './profile/Profile';
 
 export function Sidebar() {
 	const navigate = useNavigate();
@@ -55,7 +55,8 @@ export function Sidebar() {
 			</SidebarHeader>
 
 			<SidebarContent>
-				<SidebarProfile></SidebarProfile>
+				<Profile showInfos={isOpen} />
+
 				<Button variant='primary' fill_width text_align='center'>
 					<Plus size={24} />
 					{isOpen && 'Novo registro'}

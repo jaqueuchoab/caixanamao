@@ -39,13 +39,6 @@ export const SidebarContent = styled.div`
 	}
 `;
 
-export const SidebarProfile = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 16px;
-	align-self: stretch;
-`;
-
 export const SidebarActionsList = styled.div`
 	display: flex;
 	flex-direction: column;
