@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import Button from '../button/Button.tsx';
 // Importando imagens
 import cnm_gradient_arrow from '../../assets/logos/cnm-gradient-arrow.svg';
-import cnm_test_carousel from '../../assets/cnm_carousel.jpg';
 // Importando estilo
 import style from './styles/Home.module.css';
 import { useMode } from '../../context/ModeContext.tsx';
@@ -10,8 +9,8 @@ import { useMode } from '../../context/ModeContext.tsx';
 import TextContent from './HomeTextContent.tsx';
 import Header from '../header/Header.tsx';
 import Footer from '../footer/Footer.tsx';
-import CarouselComponent from '../carousel/CarouselComponent.tsx';
-import 'react-multi-carousel/lib/styles.css';
+import cnm_test_carousel from '../../assets/cnm_carousel.jpg';
+import Carousel from '../carousel/slider.tsx';
 
 const Home = () => {
   const { mode } = useMode();
@@ -19,7 +18,7 @@ const Home = () => {
   return (
     <div className={style.mainContent} id={style[mode]}>
       <Header />
-      <CarouselComponent images = {[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}/>
+      <Carousel images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}/>
       <section className={style.sectionContent  + " " + style.sectionDivisorOne}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
@@ -34,7 +33,6 @@ const Home = () => {
             titulo="Transforme Seu Processo Financeiro com Nossa Aplicação"
             texto="Simplificamos o fechamento de caixa, permitindo que você e seus funcionários realizem as tarefas financeiras de forma rápida e sem complicações."
           />
-          <CarouselComponent images = {[cnm_gradient_arrow, cnm_gradient_arrow, cnm_gradient_arrow]}/>
         </section>
       </section>
       <section
