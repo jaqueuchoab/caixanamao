@@ -10,7 +10,7 @@ import TextContent from './HomeTextContent.tsx';
 import Header from '../header/Header.tsx';
 import Footer from '../footer/Footer.tsx';
 import cnm_test_carousel from '../../assets/cnm_carousel.jpg';
-import Carousel from '../carousel/slider.tsx';
+import Carousel from '../carousel/Slider.tsx';
 
 const Home = () => {
   const { mode } = useMode();
@@ -18,8 +18,10 @@ const Home = () => {
   return (
     <div className={style.mainContent} id={style[mode]}>
       <Header />
-      <Carousel images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}/>
-      <section className={style.sectionContent  + " " + style.sectionDivisorOne}>
+      <Carousel
+        images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}
+      />
+      <section className={style.sectionContent + ' ' + style.sectionDivisorOne}>
         <TextContent
           titulo="Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio."
           texto="Gestão financeira com foco na acessibilidade para pequenas empresas."
@@ -34,9 +36,12 @@ const Home = () => {
             texto="Simplificamos o fechamento de caixa, permitindo que você e seus funcionários realizem as tarefas financeiras de forma rápida e sem complicações."
           />
         </section>
+        <Carousel
+            images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}
+          />
       </section>
       <section
-        className={style.sectionContent + " " + style.sectionDivisorThree}
+        className={style.sectionContent + ' ' + style.sectionDivisorThree}
       >
         <div>
           <img
@@ -50,7 +55,10 @@ const Home = () => {
           texto="Experimente nossa aplicação hoje mesmo e descubra como podemos simplificar o fechamento de caixa, proporcionando controle total, segurança dos dados e uma experiência que impulsiona o sucesso do seu negócio."
         />
 
-        <Link style={{width: '100%', marginTop: 'var(--size-md)'}} to={'/login'}>
+        <Link
+          style={{ width: '100%', marginTop: 'var(--size-md)' }}
+          to={'/login'}
+        >
           <Button>Login / Cadastro</Button>
         </Link>
       </section>

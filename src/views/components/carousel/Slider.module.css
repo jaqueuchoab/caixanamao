@@ -1,0 +1,15 @@
+.image {
+  width: 85% !important;
+  height: 85% !important;
+
+  border-radius: 15px;
+}
+
+.item {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.container {
+  margin: 1rem 0 1rem 0;
+}
