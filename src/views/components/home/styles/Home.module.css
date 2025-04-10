@@ -1,4 +1,4 @@
-@media (max-width: 430px) {
+@media (max-width: 480px) {
   .sectionContent {
     display: flex;
     flex-direction: column;
@@ -14,7 +14,7 @@
   }
 
   .sectionDivisorTwo {
-    padding: var(--size-xl) var(--size-3md) 30px var(--size-3md);
+    padding: var(--size-xl) var(--size-3md) 1rem var(--size-3md);
   }
 
   .sectionDivisorThree {

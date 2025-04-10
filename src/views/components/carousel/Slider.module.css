@@ -1,15 +1,18 @@
-.image {
-  width: 85% !important;
-  height: 85% !important;
-
-  border-radius: 15px;
-}
-
-.item {
-  display: flex !important;
-  justify-content: center !important;
-}
-
-.container {
-  margin: 1rem 0 1rem 0;
+@media (max-width: 480px) {
+  .image {
+    border-radius: 15px;
+  }
+  
+  .item {
+    display: flex !important;
+    justify-content: center !important;
+  }
+  
+  .container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: -32px;
+    margin-right: -32px;
+    padding: 0 32px;
+  }
 }

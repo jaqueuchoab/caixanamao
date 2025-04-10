@@ -19,6 +19,7 @@ const Home = () => {
     <div className={style.mainContent} id={style[mode]}>
       <Header />
       <Carousel
+        itemSize="85%"
         images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}
       />
       <section className={style.sectionContent + ' ' + style.sectionDivisorOne}>
@@ -37,8 +38,9 @@ const Home = () => {
           />
         </section>
         <Carousel
-            images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}
-          />
+        itemSize="100%"
+        images={[cnm_test_carousel, cnm_test_carousel, cnm_test_carousel]}
+      />
       </section>
       <section
         className={style.sectionContent + ' ' + style.sectionDivisorThree}
