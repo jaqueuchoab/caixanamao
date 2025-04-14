@@ -7,10 +7,25 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import './Slider.module.css';
 
 type CarouselProps = {
-	images: string[];
+	imagesSrc: string[];
+	options?: {
+		hasArrows?: boolean;
+		hasDots?: boolean;
+		autoplay?: {
+			enabled: boolean;
+			delay?: number;
+		};
+	};
 };
 
-const Carousel = ({ images }: CarouselProps) => {
+const Carousel = ({
+	imagesSrc,
+	options = {
+		hasArrows: false,
+		hasDots: false,
+		autoplay: { enabled: false, delay: 2500 },
+	},
+}: CarouselProps) => {
 	return (
 		<Swiper
 			breakpoints={{
@@ -27,20 +42,24 @@ const Carousel = ({ images }: CarouselProps) => {
 					spaceBetween: 2,
 				},
 			}}
-			centeredSlides={false}
-			autoplay={{
-				delay: 2500,
-				disableOnInteraction: true,
-			}}
-			pagination={{
-				clickable: true,
-				dynamicBullets: true,
-				type: 'bullets',
-			}}
-			navigation={true}
 			modules={[Navigation, Pagination, Autoplay]}
+			centeredSlides={false}
+			autoplay={
+				options.autoplay?.enabled && {
+					delay: options.autoplay?.delay,
+					disableOnInteraction: true,
+				}
+			}
+			pagination={
+				options.hasDots && {
+					clickable: true,
+					dynamicBullets: true,
+					type: 'bullets',
+				}
+			}
+			navigation={options.hasArrows}
 		>
-			{images.map((img, index) => (
+			{imagesSrc.map((img, index) => (
 				<SwiperSlide key={index}>
 					<div style={{ width: '80%', margin: '0 auto' }}>
 						<img

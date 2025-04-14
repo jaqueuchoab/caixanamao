@@ -21,7 +21,7 @@ const Home = () => {
 		<div className={style.mainContent} id={style[mode]}>
 			<Header />
 			<Carousel
-				images={[
+				imagesSrc={[
 					cnm_test_carousel,
 					dark_logo,
 					light_logo,
@@ -31,6 +31,7 @@ const Home = () => {
 					light_logo,
 					cnm_gradient_arrow,
 				]}
+				options={{ autoplay: { enabled: true, delay: 2500 } }}
 			/>
 			<section className={style.sectionContent + ' ' + style.sectionDivisorOne}>
 				<TextContent
@@ -48,7 +49,7 @@ const Home = () => {
 					/>
 				</section>
 				<Carousel
-					images={[
+					imagesSrc={[
 						cnm_test_carousel,
 						dark_logo,
 						light_logo,
@@ -58,6 +59,7 @@ const Home = () => {
 						light_logo,
 						cnm_gradient_arrow,
 					]}
+					options={{ hasDots: true, autoplay: { enabled: true, delay: 2500 } }}
 				/>
 			</section>
 			<section
