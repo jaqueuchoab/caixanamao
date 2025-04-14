@@ -1,74 +1,61 @@
-import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import style from './Slider.module.css';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import './Slider.module.css';
 
 type CarouselProps = {
-  images: string[];
-  itemSize: string;
-  arrows?: boolean | false;
-  padding?: string | undefined;
-  bgColor?: string | undefined;
-  className?: string | undefined;
+	images: string[];
 };
 
-const Carousel = ({ images, itemSize, arrows, bgColor, className }: CarouselProps) => {
-  var settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
-    initialSlide: 0,
-    arrows: arrows,
-    className: className,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
-  return (
-    <div className={style.container}>
-      <Slider {...settings}>
-        {images.map((image, index) => {
-          return (
-            <div key={index} className={style.item}>
-              <img
-                src={image}
-                alt=""
-                className={style.image}
-                style={{ width: itemSize, height: itemSize }}
-              />
-            </div>
-          );
-        })}
-      </Slider>
-    </div>
-  );
+const Carousel = ({ images }: CarouselProps) => {
+	return (
+		<Swiper
+			breakpoints={{
+				320: {
+					slidesPerView: 1,
+					spaceBetween: 2,
+				},
+				640: {
+					slidesPerView: 2,
+					spaceBetween: 2,
+				},
+				1024: {
+					slidesPerView: 4,
+					spaceBetween: 2,
+				},
+			}}
+			centeredSlides={false}
+			autoplay={{
+				delay: 2500,
+				disableOnInteraction: true,
+			}}
+			pagination={{
+				clickable: true,
+				dynamicBullets: true,
+				type: 'bullets',
+			}}
+			navigation={true}
+			modules={[Navigation, Pagination, Autoplay]}
+		>
+			{images.map((img, index) => (
+				<SwiperSlide key={index}>
+					<div style={{ width: '80%', margin: '0 auto' }}>
+						<img
+							src={img}
+							style={{
+								borderRadius: '12px',
+								width: '100%',
+								display: 'block',
+							}}
+						/>
+					</div>
+				</SwiperSlide>
+			))}
+		</Swiper>
+	);
 };
 
 export default Carousel;
