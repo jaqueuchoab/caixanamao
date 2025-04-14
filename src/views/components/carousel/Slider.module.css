@@ -16,11 +16,11 @@
 :global(.swiper-pagination-bullet) {
 	width: 10px;
 	height: 10px;
-	background: #fff;
+	background: grey;
 	opacity: 0.5;
 }
 
 :global(.swiper-pagination-bullet-active) {
-	background: #fff;
+	background: grey;
 	opacity: 1;
 }
