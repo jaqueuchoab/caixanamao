@@ -24,3 +24,12 @@
 	background: grey;
 	opacity: 1;
 }
+
+:global(.swiper-slide) {
+	margin-top: var(--size-md);
+	margin-bottom: var(--size-md);
+}
+
+:global(.swiper-pagination) {
+	padding-top: var(--size-md);
+}
