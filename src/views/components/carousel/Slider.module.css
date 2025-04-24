@@ -1,0 +1,35 @@
+:global(.swiper-button-next),
+:global(.swiper-button-prev) {
+	color: #000;
+	background: rgba(255, 255, 255, 0.8);
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+}
+
+:global(.swiper-button-next)::after,
+:global(.swiper-button-prev)::after {
+	font-size: 16px;
+}
+
+/* Estilização dos dots */
+:global(.swiper-pagination-bullet) {
+	width: 10px;
+	height: 10px;
+	background: grey;
+	opacity: 0.5;
+}
+
+:global(.swiper-pagination-bullet-active) {
+	background: grey;
+	opacity: 1;
+}
+
+:global(.swiper-slide) {
+	margin-top: var(--size-md);
+	margin-bottom: var(--size-md);
+}
+
+:global(.swiper-pagination) {
+	padding-top: var(--size-md);
+}
