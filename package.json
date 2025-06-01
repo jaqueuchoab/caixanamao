@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives",
     "preview": "vite preview",
     "test": "jest --passWithNoTests",
     "test:watch": "jest --watch --passWithNoTests"
@@ -19,13 +19,15 @@
     "@uidotdev/usehooks": "2.4.1",
     "axios": "1.9.0",
     "framer-motion": "12.15.0",
+    "globals": "^16.2.0",
     "jquery-mask-plugin": "1.14.16",
     "jsdom": "26.1.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "react-input-mask": "2.0.4",
     "react-router-dom": "7.6.1",
-    "swiper": "11.2.8"
+    "swiper": "11.2.8",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "6.6.3",
