@@ -1,13 +1,10 @@
 import React from 'react';
-// Importando style css
 import style from './Header.module.css';
-// Importando imagens
 import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
 import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
-import { CircleHalf } from '@phosphor-icons/react';
-// Importando ferramentas para configuração de rotas
 import { Link } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
+import { CircleHalfIcon } from '@phosphor-icons/react';
 
 function setColorApp(mode: string) {
 	const app: HTMLDivElement | null = document.querySelector('.app');
@@ -19,15 +16,13 @@ function setColorApp(mode: string) {
 	);
 
 	if (app && themeColor && themeColorApple) {
-		if (mode === 'light') {
-			app.style.background = 'var(--color-neutral-100)';
-			themeColor.content = 'var(--color-neutral-100)';
-			themeColorApple.content = 'var(--color-neutral-100';
-		} else {
-			app.style.background = 'var(--color-neutral-800)';
-			themeColor.content = 'var(--color-neutral-800)';
-			themeColorApple.content = 'var(--color-neutral-800)';
-		}
+		mode === 'light'
+			? (app.style.background = 'var(--color-neutral-100)') &&
+			  (themeColor.content = 'var(--color-neutral-100)') &&
+			  (themeColorApple.content = 'var(--color-neutral-100)')
+			: (app.style.background = 'var(--color-neutral-800)') &&
+			  (themeColor.content = 'var(--color-neutral-800)') &&
+			  (themeColorApple.content = 'var(--color-neutral-800)');
 	} else {
 		throw new Error('app não existe');
 	}
@@ -56,7 +51,7 @@ const Header = () => {
 						setMode(mode === 'light' ? 'dark' : 'light');
 					}}
 				>
-					<CircleHalf
+					<CircleHalfIcon
 						color={
 							mode === 'light'
 								? 'var(--color-neutral-950)'
