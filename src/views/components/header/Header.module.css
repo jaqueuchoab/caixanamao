@@ -1,19 +1,17 @@
-@media (max-width: 430px) {
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 4rem;
-    padding: 1.5rem var(--size-2lg) 0 var(--size-2lg);
-  }
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 4rem;
+	padding: 1.5rem var(--size-2lg) 0 var(--size-2lg);
+}
 
-  .logoHeader {
-    height: 2.5rem;
-    width: 2.5rem;
-  }
+.logoHeader {
+	height: 2.5rem;
+	width: 2.5rem;
+}
 
-  .nav {
-    display: flex;
-    justify-content: space-between;
-  }
+.nav {
+	display: flex;
+	justify-content: space-between;
 }
