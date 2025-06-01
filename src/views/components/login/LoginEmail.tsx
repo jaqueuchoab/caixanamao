@@ -1,11 +1,10 @@
-import React from 'react';
 import style from './styles/LoginEmail.module.css';
 import googleLogo from '../../assets/google_g_logo.svg';
 import { useContextTheme } from '../../context/ThemeContext';
 import Input from '../input/Input';
 import { Button } from '../button/Button';
 import useForm from '../../hooks/useForm';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LoginEmail = () => {
 	const { themeMode } = useContextTheme();

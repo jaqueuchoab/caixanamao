@@ -1,5 +1,3 @@
-import styled from '@emotion/styled';
-
 type ActivityModeColorsType = {
 	active: string;
 	inactive: string;

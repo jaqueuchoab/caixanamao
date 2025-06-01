@@ -8,7 +8,7 @@ export type typeDate = {
 	year: string;
 };
 
-type DateInput = {
+type DateInputProps = {
 	value: typeDate;
 	setValue: React.Dispatch<React.SetStateAction<typeDate>>;
 	error?: string;
@@ -24,7 +24,7 @@ function errorConfig(error: string, themeMode: string) {
 	return <span style={{ color: `var(--error-${themeMode})` }}>{error}</span>;
 }
 
-const DateInput = ({ value, setValue }: DateInput) => {
+const DateInput = ({ value, setValue }: DateInputProps) => {
 	const { themeMode } = useContextTheme();
 
 	return (
