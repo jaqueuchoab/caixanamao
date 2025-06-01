@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './styles/Input.module.css';
 import { useContextTheme } from '../../context/ThemeContext';
-import { Eye, EyeClosed } from '@phosphor-icons/react';
+import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
 
 type InputProps = {
 	id: string;
@@ -40,12 +40,15 @@ const Input = ({
 		if (visible) {
 			input?.setAttribute('type', 'password');
 			return (
-				<Eye size={24} color={`var(--input-${themeMode}-secondary-element)`} />
+				<EyeIcon
+					size={24}
+					color={`var(--input-${themeMode}-secondary-element)`}
+				/>
 			);
 		} else {
 			input?.setAttribute('type', 'text');
 			return (
-				<EyeClosed
+				<EyeClosedIcon
 					size={24}
 					color={`var(--input-${themeMode}-secondary-element)`}
 				/>

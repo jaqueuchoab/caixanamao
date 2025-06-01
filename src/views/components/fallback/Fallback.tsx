@@ -1,4 +1,4 @@
-import { LinkBreak } from '@phosphor-icons/react';
+import { LinkBreakIcon } from '@phosphor-icons/react';
 import { useLocation } from 'react-router-dom';
 import {
 	ArtworkContainer,
@@ -17,7 +17,7 @@ const Fallback = () => {
 	return (
 		<FallbackContainer>
 			<FallbackContent>
-				<LinkBreak size={64} />
+				<LinkBreakIcon size={64} />
 				<h3>Ops, página não encontrada!</h3>
 				<ErrorBadge>{errorMessage}</ErrorBadge>
 				<Button variant='link' onClick={() => window.history.back()}>
