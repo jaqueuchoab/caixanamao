@@ -6,8 +6,12 @@ import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logoho
 import { CircleHalfIcon } from '@phosphor-icons/react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import { useMode } from '../../context/ModeContext';
 import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
+=======
+import { useContextTheme } from '../../context/ThemeContext';
+>>>>>>> feature/dashboard
 
 function setColorApp(mode: string) {
 	const app: HTMLDivElement | null = document.querySelector('.app');
@@ -40,16 +44,21 @@ function getLogo(mode: string, width: number | null) {
 }
 
 const Header = () => {
+<<<<<<< HEAD
 	const { mode, setMode } = useMode();
 
 	useEffect(() => {
 		localStorage?.setItem('mode', mode);
 		setColorApp(mode);
 	}, [mode]);
+=======
+	const { themeMode, switchTheme } = useContextTheme();
+>>>>>>> feature/dashboard
 
 	return (
 		<HeaderContainer>
 			<Link to='/'>
+<<<<<<< HEAD
 				<HeaderLogo
 					src={(() => getLogo(mode, window.innerWidth))()}
 					alt={`logo-mode-${mode}`}
@@ -62,8 +71,19 @@ const Header = () => {
 					}}
 				>
 					<CircleHalfIcon
+=======
+				<img
+					src={themeMode === 'light' ? cnm_logo_light : cnm_logo_dark}
+					alt={`logo-mode-${themeMode}`}
+					className={style.logoHeader}
+				/>
+			</Link>
+			<nav className={style.nav}>
+				<button onClick={switchTheme}>
+					<CircleHalf
+>>>>>>> feature/dashboard
 						color={
-							mode === 'light'
+							themeMode === 'light'
 								? 'var(--color-neutral-950)'
 								: 'var(--color-neutral-100)'
 						}

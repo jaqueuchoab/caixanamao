@@ -1,33 +1,35 @@
-import { BrowserRouter, Routes, Route, Router } from 'react-router-dom';
-import Home from './views/components/home/Home';
-import Vantagens from './views/components/Vantagens';
-import { ModeContextProvider } from './views/context/ModeContext';
-import Fallback from './views/components/fallback/Fallback';
-import ErrorBoundary from './views/components/ErrorBoundary';
-import Login from './views/components/login/Login';
-import SignUp from './views/components/signup/SignUp';
-import DashboardHome from './views/components/dashboard/DashboardHome';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './views/assets/css/style.css';
+import ErrorBoundary from './views/components/ErrorBoundary';
+import { ThemeContextProvider } from './views/context/ThemeContext';
+
+import { mainRoutes } from './routes/main-routes';
 
 function App() {
 	return (
 		<>
 			<div className='app'>
-				<BrowserRouter>
-					<ModeContextProvider>
+				<BrowserRouter
+					future={{
+						v7_startTransition: true,
+						v7_relativeSplatPath: true,
+					}}
+				>
+					<ThemeContextProvider>
 						<ErrorBoundary>
-							{/*Se existe login, vai direto para a dashboard, se não fica na Home*/}
 							<Routes>
-								<Route path='/' element={<Home />}></Route>
-								<Route path='/login/*' element={<Login />}></Route>
-								<Route path='/signup/*' element={<SignUp />}></Route>
-								<Route path='/dashboard/*' element={<DashboardHome />}></Route>
-								<Route path='/benefits' element={<Vantagens />}></Route>
-								{/*Rota coringa*/}
-								<Route path='/fallback?' element={<Fallback />}></Route>
+								{mainRoutes.map((route) => {
+									return (
+										<Route
+											path={route.path}
+											element={route.element}
+											key={route.path}
+										/>
+									);
+								})}
 							</Routes>
 						</ErrorBoundary>
-					</ModeContextProvider>
+					</ThemeContextProvider>
 				</BrowserRouter>
 			</div>
 		</>
