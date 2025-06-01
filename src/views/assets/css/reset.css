@@ -19,11 +19,6 @@ body {
 	width: 100%;
 }
 
-.app {
-	height: 100%;
-	width: 100%;
-}
-
 /* Elementos de layout */
 html {
 	scroll-behavior: smooth;
