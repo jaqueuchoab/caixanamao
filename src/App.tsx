@@ -9,12 +9,7 @@ function App() {
 	return (
 		<>
 			<div className='app'>
-				<BrowserRouter
-					future={{
-						v7_startTransition: true,
-						v7_relativeSplatPath: true,
-					}}
-				>
+				<BrowserRouter>
 					<ThemeContextProvider>
 						<ErrorBoundary>
 							<Routes>
