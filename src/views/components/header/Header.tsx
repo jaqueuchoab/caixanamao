@@ -1,10 +1,13 @@
-import React from 'react';
-import style from './Header.module.css';
-import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
 import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
+import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
+import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
+import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
+
+import { CircleHalfIcon } from '@phosphor-icons/react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
-import { CircleHalfIcon } from '@phosphor-icons/react';
+import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
 
 function setColorApp(mode: string) {
 	const app: HTMLDivElement | null = document.querySelector('.app');
@@ -28,24 +31,31 @@ function setColorApp(mode: string) {
 	}
 }
 
+function getLogo(mode: string, width: number | null) {
+	if (width && width > 768) {
+		return mode === 'light' ? cnm_logohorz_light : cnm_logohorz_dark;
+	}
+
+	return mode === 'light' ? cnm_logo_light : cnm_logo_dark;
+}
+
 const Header = () => {
 	const { mode, setMode } = useMode();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		localStorage?.setItem('mode', mode);
 		setColorApp(mode);
 	}, [mode]);
 
 	return (
-		<header className={style.header}>
+		<HeaderContainer>
 			<Link to='/'>
-				<img
-					src={mode === 'light' ? cnm_logo_light : cnm_logo_dark}
+				<HeaderLogo
+					src={(() => getLogo(mode, window.innerWidth))()}
 					alt={`logo-mode-${mode}`}
-					className={style.logoHeader}
 				/>
 			</Link>
-			<nav className={style.nav}>
+			<HeaderNav>
 				<button
 					onClick={() => {
 						setMode(mode === 'light' ? 'dark' : 'light');
@@ -57,12 +67,12 @@ const Header = () => {
 								? 'var(--color-neutral-950)'
 								: 'var(--color-neutral-100)'
 						}
-						size={38}
+						size={32}
 						weight='fill'
 					/>
 				</button>
-			</nav>
-		</header>
+			</HeaderNav>
+		</HeaderContainer>
 	);
 };
 
