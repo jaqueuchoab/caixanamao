@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import {
+	createContext,
+	PropsWithChildren,
+	useContext,
+	useEffect,
+	useState,
+} from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
 import { ThemeType } from '../../@types/theme-types';
@@ -12,7 +18,7 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
-export const ThemeContextProvider = ({ children }: React.PropsWithChildren) => {
+export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 	const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
 
 	useEffect(() => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import style from './styles/Input.module.css';
 import { useContextTheme } from '../../context/ThemeContext';
 import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
@@ -7,7 +7,7 @@ type InputProps = {
 	id: string;
 	value: string;
 	type: string;
-	setValue: React.Dispatch<React.SetStateAction<string>>;
+	setValue: Dispatch<SetStateAction<string>>;
 	placeholder?: string;
 	error: null | string;
 	onChange: (target: HTMLInputElement) => void;
@@ -25,7 +25,7 @@ const Input = ({
 	onBlur,
 }: InputProps) => {
 	const { themeMode } = useContextTheme();
-	const [visible, setVisible] = React.useState(true);
+	const [visible, setVisible] = useState(true);
 
 	function errorConfig(error: string, themeMode: string) {
 		return (
