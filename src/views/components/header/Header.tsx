@@ -4,36 +4,10 @@ import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light
 import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
 
 import { CircleHalfIcon } from '@phosphor-icons/react';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-import { useMode } from '../../context/ModeContext';
-import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
-=======
 import { useContextTheme } from '../../context/ThemeContext';
->>>>>>> feature/dashboard
-
-function setColorApp(mode: string) {
-	const app: HTMLDivElement | null = document.querySelector('.app');
-	const themeColor: HTMLMetaElement | null = document.querySelector(
-		'meta[name="theme-color"]'
-	);
-	const themeColorApple: HTMLMetaElement | null = document.querySelector(
-		'meta[name="apple-mobile-web-app-status-bar-style"]'
-	);
-
-	if (app && themeColor && themeColorApple) {
-		mode === 'light'
-			? (app.style.background = 'var(--color-neutral-100)') &&
-			  (themeColor.content = 'var(--color-neutral-100)') &&
-			  (themeColorApple.content = 'var(--color-neutral-100)')
-			: (app.style.background = 'var(--color-neutral-800)') &&
-			  (themeColor.content = 'var(--color-neutral-800)') &&
-			  (themeColorApple.content = 'var(--color-neutral-800)');
-	} else {
-		throw new Error('app não existe');
-	}
-}
+import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
+import { Button } from '../button/Button';
 
 function getLogo(mode: string, width: number | null) {
 	if (width && width > 768) {
@@ -44,44 +18,19 @@ function getLogo(mode: string, width: number | null) {
 }
 
 const Header = () => {
-<<<<<<< HEAD
-	const { mode, setMode } = useMode();
-
-	useEffect(() => {
-		localStorage?.setItem('mode', mode);
-		setColorApp(mode);
-	}, [mode]);
-=======
 	const { themeMode, switchTheme } = useContextTheme();
->>>>>>> feature/dashboard
 
 	return (
 		<HeaderContainer>
 			<Link to='/'>
-<<<<<<< HEAD
 				<HeaderLogo
-					src={(() => getLogo(mode, window.innerWidth))()}
-					alt={`logo-mode-${mode}`}
+					src={(() => getLogo(themeMode, window.innerWidth))()}
+					alt={`logo-mode-${themeMode}`}
 				/>
 			</Link>
 			<HeaderNav>
-				<button
-					onClick={() => {
-						setMode(mode === 'light' ? 'dark' : 'light');
-					}}
-				>
+				<Button variant='neutral' onClick={switchTheme}>
 					<CircleHalfIcon
-=======
-				<img
-					src={themeMode === 'light' ? cnm_logo_light : cnm_logo_dark}
-					alt={`logo-mode-${themeMode}`}
-					className={style.logoHeader}
-				/>
-			</Link>
-			<nav className={style.nav}>
-				<button onClick={switchTheme}>
-					<CircleHalf
->>>>>>> feature/dashboard
 						color={
 							themeMode === 'light'
 								? 'var(--color-neutral-950)'
@@ -90,7 +39,7 @@ const Header = () => {
 						size={32}
 						weight='fill'
 					/>
-				</button>
+				</Button>
 			</HeaderNav>
 		</HeaderContainer>
 	);

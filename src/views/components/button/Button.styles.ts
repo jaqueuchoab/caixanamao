@@ -1,7 +1,12 @@
 import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
-export type ButtonVariants = 'primary' | 'neutral' | 'danger' | 'admin' | 'link';
+export type ButtonVariants =
+	| 'primary'
+	| 'neutral'
+	| 'danger'
+	| 'admin'
+	| 'link';
 
 interface ButtonProps {
 	$variant: ButtonVariants;
@@ -71,7 +76,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
 				`;
 			case 'link':
 				return css`
-					background-color: ${theme.colors.buttons.link.fill};
+					background-color: transparent;
 					color: ${theme.colors.buttons.link.text};
 					text-decoration: underline;
 

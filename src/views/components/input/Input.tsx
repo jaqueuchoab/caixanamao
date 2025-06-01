@@ -1,12 +1,7 @@
 import React from 'react';
 import style from './styles/Input.module.css';
-<<<<<<< HEAD
-import { useMode } from '../../context/ModeContext';
-import { EyeClosedIcon, EyeIcon } from '@phosphor-icons/react';
-=======
 import { useContextTheme } from '../../context/ThemeContext';
-import { Eye, EyeClosed } from '@phosphor-icons/react';
->>>>>>> feature/dashboard
+import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
 
 type InputProps = {
 	id: string;
@@ -45,24 +40,17 @@ const Input = ({
 		if (visible) {
 			input?.setAttribute('type', 'password');
 			return (
-<<<<<<< HEAD
-				<EyeIcon size={24} color={`var(--input-${mode}-secondary-element)`} />
-=======
-				<Eye size={24} color={`var(--input-${themeMode}-secondary-element)`} />
->>>>>>> feature/dashboard
+				<EyeIcon
+					size={24}
+					color={`var(--input-${themeMode}-secondary-element)`}
+				/>
 			);
 		} else {
 			input?.setAttribute('type', 'text');
 			return (
-<<<<<<< HEAD
 				<EyeClosedIcon
 					size={24}
-					color={`var(--input-${mode}-secondary-element)`}
-=======
-				<EyeClosed
-					size={24}
 					color={`var(--input-${themeMode}-secondary-element)`}
->>>>>>> feature/dashboard
 				/>
 			);
 		}
