@@ -1,11 +1,7 @@
 import React from 'react';
 import style from './styles/Input.module.css';
 import { useMode } from '../../context/ModeContext';
-<<<<<<< HEAD
-import { Eye, EyeClosed } from '@phosphor-icons/react';
-=======
 import { EyeClosedIcon, EyeIcon } from '@phosphor-icons/react';
->>>>>>> feature/carousel
 
 type InputProps = {
 	id: string;
@@ -43,13 +39,6 @@ const Input = ({
 		const input = document.querySelector<HTMLInputElement>('#password');
 		if (visible) {
 			input?.setAttribute('type', 'password');
-<<<<<<< HEAD
-			return <Eye size={24} color={`var(--input-${mode}-secondary-element)`} />;
-		} else {
-			input?.setAttribute('type', 'text');
-			return (
-				<EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />
-=======
 			return (
 				<EyeIcon size={24} color={`var(--input-${mode}-secondary-element)`} />
 			);
@@ -60,7 +49,6 @@ const Input = ({
 					size={24}
 					color={`var(--input-${mode}-secondary-element)`}
 				/>
->>>>>>> feature/carousel
 			);
 		}
 	}

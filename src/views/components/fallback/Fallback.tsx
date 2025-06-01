@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import { LinkBreak } from '@phosphor-icons/react';
-=======
->>>>>>> feature/carousel
 import style from './Fallback.module.css';
 import { Link, useLocation } from 'react-router-dom';
 import { useMode } from '../../context/ModeContext';
