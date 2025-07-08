@@ -1,35 +1,38 @@
-import React from 'react';
-// Importando style css
-import style from './Footer.module.css';
-//Importando imagens
 import logo_vert_light from '../../assets/logos/light-theme-assets/cnm-logovert-light.svg';
 import logo_vert_dark from '../../assets/logos/dark-theme-assets/cnm-logovert-dark.svg';
-// Importando ferramentas para configuração de rotas
+
 import { Link } from 'react-router-dom';
-import { useMode } from '../../context/ModeContext';
+import { useContextTheme } from '../../context/ThemeContext';
+import {
+	FooterActions,
+	FooterContainer,
+	FooterContent,
+	FooterLogo,
+} from './Footer.styles';
+import { Button } from '../button/Button';
 
 const Footer = () => {
-  const { mode } = useMode();
+	const { themeMode } = useContextTheme();
 
-  return (
-    <footer id={style[mode]}>
-      <div className={style.contentFooter}>
-        <img
-          src={mode === 'light' ? logo_vert_light : logo_vert_dark}
-          alt={`logo-mode-${mode}`}
-          className={style.logoVert}
-        />
-        <div className={style.linkActions}>
-          <Link to="/login">
-            <p>Login / Cadastro</p>
-          </Link>
-          <Link to="/benefits">
-            <p>Vantagens</p>
-          </Link>
-        </div>
-      </div>
-    </footer>
-  );
+	function getLogo() {
+		return themeMode === 'light' ? logo_vert_light : logo_vert_dark;
+	}
+
+	return (
+		<FooterContainer>
+			<FooterContent>
+				<FooterLogo src={(() => getLogo())()} alt={`logo-mode-${themeMode}`} />
+				<FooterActions>
+					<Link style={{ background: 'transparent' }} to='/login'>
+						<Button variant='link'>Login / Cadastro</Button>
+					</Link>
+					<Link style={{ background: 'transparent' }} to='/benefits'>
+						<Button variant='link'>Vantagens</Button>
+					</Link>
+				</FooterActions>
+			</FooterContent>
+		</FooterContainer>
+	);
 };
 
 export default Footer;

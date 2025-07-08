@@ -1,13 +1,13 @@
-import React from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import style from './styles/Input.module.css';
-import { useMode } from '../../context/ModeContext';
-import { Eye, EyeClosed } from '@phosphor-icons/react';
+import { useContextTheme } from '../../context/ThemeContext';
+import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
 
 type InputProps = {
 	id: string;
 	value: string;
 	type: string;
-	setValue: React.Dispatch<React.SetStateAction<string>>;
+	setValue: Dispatch<SetStateAction<string>>;
 	placeholder?: string;
 	error: null | string;
 	onChange: (target: HTMLInputElement) => void;
@@ -24,12 +24,12 @@ const Input = ({
 	onChange,
 	onBlur,
 }: InputProps) => {
-	const { mode } = useMode();
-	const [visible, setVisible] = React.useState(true);
+	const { themeMode } = useContextTheme();
+	const [visible, setVisible] = useState(true);
 
-	function errorConfig(error: string, mode: string) {
+	function errorConfig(error: string, themeMode: string) {
 		return (
-			<span style={{ color: `var(--error-${mode})`, marginBottom: '8px' }}>
+			<span style={{ color: `var(--error-${themeMode})`, marginBottom: '8px' }}>
 				{error}
 			</span>
 		);
@@ -39,11 +39,19 @@ const Input = ({
 		const input = document.querySelector<HTMLInputElement>('#password');
 		if (visible) {
 			input?.setAttribute('type', 'password');
-			return <Eye size={24} color={`var(--input-${mode}-secondary-element)`} />;
+			return (
+				<EyeIcon
+					size={24}
+					color={`var(--input-${themeMode}-secondary-element)`}
+				/>
+			);
 		} else {
 			input?.setAttribute('type', 'text');
 			return (
-				<EyeClosed size={24} color={`var(--input-${mode}-secondary-element)`} />
+				<EyeClosedIcon
+					size={24}
+					color={`var(--input-${themeMode}-secondary-element)`}
+				/>
 			);
 		}
 	}
@@ -51,11 +59,11 @@ const Input = ({
 	return (
 		<div>
 			<div
-				id={style[mode]}
+				id={style[themeMode]}
 				className={`containerEmail ${style.inputContainer}`}
 				style={
 					error
-						? { border: `1.4px solid var(--error-${mode})` }
+						? { border: `1.4px solid var(--error-${themeMode})` }
 						: { border: '' }
 				}
 			>
@@ -75,7 +83,7 @@ const Input = ({
 					''
 				)}
 			</div>
-			{error && error?.length !== 0 ? errorConfig(error, mode) : null}
+			{error && error?.length !== 0 ? errorConfig(error, themeMode) : null}
 		</div>
 	);
 };
