@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './ProgressIndicator.module.css';
-import { useContextTheme } from '../../../context/ThemeContext';
+import { useContextTheme } from '@context/ThemeContext';
 
 const ProgressIndicator = () => {
 	const { themeMode } = useContextTheme();

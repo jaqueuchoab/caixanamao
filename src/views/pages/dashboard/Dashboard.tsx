@@ -1,8 +1,8 @@
-import { Sidebar } from 'src/views/pages/dashboard/components/sidebar/Sidebar';
+import { Sidebar } from './components/sidebar/Sidebar';
 import { DashboardContainer, DashboardContent } from './Dashboard.styles';
-import { BottomBar } from '@components/mobileNavigation/bottomBar/BottomBar';
+import { BottomBar } from './components/mobileNavigation/bottomBar/BottomBar';
 import { useWindowSize } from '@uidotdev/usehooks';
-import { TopBar } from '@components/mobileNavigation/topBar/TopBar';
+import { TopBar } from './components/mobileNavigation/topBar/TopBar';
 import { AnimatePresence } from '@lib/motion';
 import { SamplePage } from './SamplePage';
 import {

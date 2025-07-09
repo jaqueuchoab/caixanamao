@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from '@components/ui/button/Button';
 import style from './styles/Identification.module.css';
-import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
+import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator';
 import Input from '@components/ui/input/Input';
 import useForm from '../../hooks/useForm';
 import Radio from '@components/ui/input/Radio';

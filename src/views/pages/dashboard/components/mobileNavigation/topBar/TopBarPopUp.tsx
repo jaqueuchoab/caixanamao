@@ -7,7 +7,7 @@ import {
 import { Button } from '@components/ui/button/Button';
 import { TopBarPopupContainer } from './TopBar.styles';
 import { useNavigate } from '@lib/router';
-import { useContextTheme } from '../../../context/ThemeContext';
+import { useContextTheme } from '@context/ThemeContext';
 
 export function TopBarPopUp() {
 	const navigate = useNavigate();

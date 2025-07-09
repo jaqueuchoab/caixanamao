@@ -1,5 +1,5 @@
 import { ProfileContainer, ProfileInfos, ProfilePhoto } from './Profile.styles';
-import sampleImg from '../../../assets/FallbackArtwork.png';
+import sampleImg from '@assets/FallbackArtwork.png';
 
 interface ProfileProps {
 	showInfos?: boolean;
