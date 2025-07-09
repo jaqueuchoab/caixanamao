@@ -11,6 +11,7 @@ export const BottomBarContainer = styled.nav`
 	justify-content: space-around;
 	align-items: center;
 	gap: 12px;
+	z-index: 2;
 
 	border-radius: 12px 12px 0px 0px;
 	background: ${({ theme }) => theme.colors.backgrounds.navbar};
