@@ -3,7 +3,6 @@
 
 * {
 	font-family: Sora;
-	transition: background-color 0.2s ease, color 0.2s ease, fill 0.2s ease; /* para transicoes suaves na troca de tema */
 }
 
 *:focus-visible {
