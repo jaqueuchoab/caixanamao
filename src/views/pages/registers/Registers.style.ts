@@ -1,0 +1,44 @@
+import styled from '@emotion/styled';
+
+export const Container = styled.div`
+	width: 100%;
+
+	display: flex;
+	flex-flow: column;
+	justify-content: start;
+	align-items: start;
+	gap: 32px;
+`;
+
+export const Title = styled.h1`
+	color: ${({ theme }) => theme.colors.texts.primary};
+	font-family: Sora;
+	font-size: 24px;
+	font-weight: 600;
+
+	@media screen and (width > 768px) {
+		font-size: 32px;
+	}
+`;
+
+export const TopActions = styled.div`
+	display: flex;
+	flex-direction: column wrap;
+	align-items: flex-start;
+	align-content: space-between;
+	gap: 12px;
+	align-self: stretch;
+
+	@media screen and (width > 768px) {
+		flex-flow: row wrap;
+	}
+`;
+
+export const RegistersList = styled.div`
+	display: flex;
+	align-items: flex-start;
+	align-content: flex-start;
+	gap: 32px;
+	align-self: stretch;
+	flex-wrap: wrap;
+`;

@@ -5,9 +5,9 @@ import {
 	ChartBar,
 	Plus,
 } from '@phosphor-icons/react';
-import { Button } from '../../button/Button';
+import { Button } from '@components/ui/button/Button';
 import { BottomBarContainer } from './BottomBar.styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'src/lib/router';
 
 export function BottomBar() {
 	const navigate = useNavigate();

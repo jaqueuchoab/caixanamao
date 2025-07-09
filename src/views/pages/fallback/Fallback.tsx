@@ -1,13 +1,13 @@
 import { LinkBreakIcon } from '@phosphor-icons/react';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'src/lib/router';
 import {
 	ArtworkContainer,
 	ErrorBadge,
 	FallbackContainer,
 	FallbackContent,
 } from './Fallback.styles';
-import artworkPath from '../../assets/FallbackArtwork.png';
-import { Button } from '../button/Button';
+import artworkPath from '@assets/FallbackArtwork.png';
+import { Button } from '@components/ui/button/Button';
 
 const Fallback = () => {
 	const { search } = useLocation();

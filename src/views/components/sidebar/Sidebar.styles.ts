@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion } from 'src/lib/motion';
 import styled from '@emotion/styled';
 
 export const SidebarContainer = styled(motion.nav)`
@@ -21,7 +21,8 @@ export const SidebarContainer = styled(motion.nav)`
 export const SidebarHeader = styled.div<{ $is_open: boolean }>`
 	width: 100%;
 	display: flex;
-	justify-content: ${({ $is_open }) => ($is_open ? 'space-between;' : 'center;')}
+	justify-content: ${({ $is_open }) =>
+		$is_open ? 'space-between;' : 'center;'};
 	align-items: center;
 `;
 

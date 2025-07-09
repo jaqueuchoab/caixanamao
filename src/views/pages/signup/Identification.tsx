@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button } from '../button/Button';
+import { Button } from '@components/ui/button/Button';
 import style from './styles/Identification.module.css';
 import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
-import Input from '../input/Input';
+import Input from '@components/ui/input/Input';
 import useForm from '../../hooks/useForm';
-import Radio from '../input/Radio';
-import DateInput, { typeDate } from '../input/DateInput';
-import { Link } from 'react-router-dom';
+import Radio from '@components/ui/input/Radio';
+import DateInput, { typeDate } from '@components/ui/input/DateInput';
+import { Link } from 'src/lib/router';
 /*
 endpoint para CREATE_USER
 nome: string;

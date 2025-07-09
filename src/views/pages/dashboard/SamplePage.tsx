@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Icon } from '@phosphor-icons/react';
-import { motion } from 'framer-motion';
+import { motion } from 'src/lib/motion';
 
 interface SamplePageProps {
 	pageTitle: string;

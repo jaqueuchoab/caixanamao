@@ -20,7 +20,7 @@ import {
 	SidebarHeader,
 } from './Sidebar.styles';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'src/lib/router';
 import { useContextTheme } from '../../context/ThemeContext';
 import { Profile } from './profile/Profile';
 

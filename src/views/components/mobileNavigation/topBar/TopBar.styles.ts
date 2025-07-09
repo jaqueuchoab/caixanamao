@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
+import { motion } from 'src/lib/motion';
 
 export const TopBarContainer = styled.div`
-	position: fixed;
 	top: 0;
 	left: 0;
 

@@ -4,8 +4,8 @@ import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light
 import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
 
 import { CircleHalfIcon } from '@phosphor-icons/react';
-import { Link } from 'react-router-dom';
-import { useContextTheme } from '../../context/ThemeContext';
+import { Link } from 'src/lib/router';
+import { useContextTheme } from '../../../context/ThemeContext';
 import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
 import { Button } from '../button/Button';
 

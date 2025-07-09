@@ -1,10 +1,10 @@
 import { List, X } from '@phosphor-icons/react';
 import { TopBarContainer } from './TopBar.styles';
 import { useState } from 'react';
-import { Button } from '../../button/Button';
+import { Button } from '@components/ui/button/Button';
 import { TopBarPopUp } from './TopBarPopUp';
-import { AnimatePresence } from 'framer-motion';
-import { Profile } from '../../sidebar/profile/Profile';
+import { AnimatePresence } from 'src/lib/motion.ts';
+import { Profile } from '@components/sidebar/profile/Profile';
 
 export function TopBar() {
 	const [isOpen, setIsOpen] = useState<boolean>(false);

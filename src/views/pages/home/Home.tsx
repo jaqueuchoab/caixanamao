@@ -1,15 +1,15 @@
-import { Link } from 'react-router-dom';
-import { Button } from '../button/Button.tsx';
-import Carousel from '../carousel/Slider.tsx';
+import { Button } from '@components/ui/button/Button.tsx';
+import Carousel from '@components/carousel/Slider.tsx';
 
-import cnm_test_carousel from '../../assets/cnm_carousel.jpg';
-import cnm_gradient_arrow from '../../assets/logos/cnm-gradient-arrow.svg';
+import cnm_test_carousel from '@assets/cnm_carousel.jpg';
+import cnm_gradient_arrow from '@assets/logos/cnm-gradient-arrow.svg';
 
 import { useContextTheme } from '../../context/ThemeContext.tsx';
-import Header from '../header/Header.tsx';
+import Header from '@components/ui/header/Header.tsx';
 import TextContent from './HomeTextContent.tsx';
 import style from './styles/Home.module.css';
-import Footer from '../footer/Footer.tsx';
+import Footer from '@components/ui/footer/Footer.tsx';
+import { Link } from 'src/lib/router.ts';
 
 const Home = () => {
 	const { themeMode } = useContextTheme();
