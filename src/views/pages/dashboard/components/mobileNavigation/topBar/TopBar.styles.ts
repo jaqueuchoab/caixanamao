@@ -7,7 +7,7 @@ export const TopBarContainer = styled.div`
 
 	width: 100%;
 	display: flex;
-	padding: 24px 32px;
+	padding: 16px 24px;
 	justify-content: space-between;
 	align-items: center;
 
@@ -18,7 +18,7 @@ export const TopBarContainer = styled.div`
 export const TopBarPopupContainer = styled(motion.div)`
 	z-index: 1;
 	position: fixed;
-	top: 96px;
+	top: 80px;
 	left: 0;
 
 	display: flex;
@@ -33,4 +33,6 @@ export const TopBarPopupContainer = styled(motion.div)`
 	border-top: 2px solid ${({ theme }) => theme.colors.inputs.stroke};
 	background: ${({ theme }) => theme.colors.backgrounds.tertiary};
 	color: ${({ theme }) => theme.colors.texts.primary};
+	box-shadow: 0px 81px 23px 0px rgba(0, 0, 0, 0),
+		0px 29px 17px 0px rgba(0, 0, 0, 0.1), 0px 13px 13px 0px rgba(0, 0, 0, 0.2);
 `;
