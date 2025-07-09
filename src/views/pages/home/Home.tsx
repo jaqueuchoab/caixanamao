@@ -1,5 +1,5 @@
 import { Button } from '@components/ui/button/Button.tsx';
-import Carousel from '@components/carousel/Slider.tsx';
+import Carousel from 'src/views/pages/home/components/carousel/Slider.tsx';
 
 import cnm_test_carousel from '@assets/cnm_carousel.jpg';
 import cnm_gradient_arrow from '@assets/logos/cnm-gradient-arrow.svg';

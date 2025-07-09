@@ -1,4 +1,4 @@
-import { Sidebar } from '@components/sidebar/Sidebar';
+import { Sidebar } from 'src/views/pages/dashboard/components/sidebar/Sidebar';
 import { DashboardContainer, DashboardContent } from './Dashboard.styles';
 import { BottomBar } from '@components/mobileNavigation/bottomBar/BottomBar';
 import { useWindowSize } from '@uidotdev/usehooks';

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Button } from '@components/ui/button/Button';
 import { TopBarPopUp } from './TopBarPopUp';
 import { AnimatePresence } from '@lib/motion.ts';
-import { Profile } from '@components/sidebar/profile/Profile';
+import { Profile } from 'src/views/pages/dashboard/components/sidebar/profile/Profile';
 
 export function TopBar() {
 	const [isOpen, setIsOpen] = useState<boolean>(false);
