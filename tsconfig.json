@@ -22,6 +22,15 @@
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/views/components/*"
+      ],
+      "@assets/*": [
+        "src/views/assets/*"
+      ]
+    }
   },
   "include": [
     "src"
