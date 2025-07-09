@@ -5,5 +5,6 @@ import { ThemeType } from './theme-types';
  * com o tipo personalizado ThemeType, proporcionando autocomplete com a tipagem correta
  */
 declare module '@emotion/react' {
-	export type Theme = ThemeType;
+	// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+	interface Theme extends ThemeType {}
 }
