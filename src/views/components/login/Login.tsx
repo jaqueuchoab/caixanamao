@@ -6,6 +6,7 @@ import LoginEmail from './LoginEmail.tsx';
 import { useContextTheme } from '../../context/ThemeContext.tsx';
 import style from './styles/Login.module.css';
 import { fetchUsersList } from '../../../services/fetchUsersList.ts';
+import { LoginContainer } from './Login.styles.ts';
 
 /*
 endpoint LOGIN
@@ -21,7 +22,7 @@ const Login = () => {
 	}, []);
 
 	return (
-		<div className={style.loginRegistration} id={style[themeMode]}>
+		<LoginContainer>
 			<img
 				src={themeMode === 'light' ? cnm_logohorz_light : cnm_logohorz_dark}
 				alt='cnm_logohorz'
@@ -31,7 +32,7 @@ const Login = () => {
 			<Routes>
 				<Route path='/' element={<LoginEmail />}></Route>
 			</Routes>
-		</div>
+		</LoginContainer>
 	);
 };
 
