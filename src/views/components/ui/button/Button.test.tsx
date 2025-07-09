@@ -1,4 +1,4 @@
-import { renderWithTheme } from '../../../tests/render-with-theme';
+import { renderWithTheme } from '@tests/render-with-theme';
 import { screen } from '@testing-library/react';
 import { Button } from './Button';
 

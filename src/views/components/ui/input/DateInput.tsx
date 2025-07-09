@@ -1,6 +1,6 @@
 import React from 'react';
 import style from './styles/DateInput.module.css';
-import { useContextTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '@context/ThemeContext';
 
 export type typeDate = {
 	day: string;

@@ -4,7 +4,7 @@ import { useContextTheme } from '../../context/ThemeContext';
 import Input from '@components/ui/input/Input';
 import { Button } from '@components/ui/button/Button';
 import useForm from '../../hooks/useForm';
-import { Link, useNavigate } from 'src/lib/router.ts';
+import { Link, useNavigate } from '@lib/router.ts';
 
 const LoginEmail = () => {
 	const { themeMode } = useContextTheme();

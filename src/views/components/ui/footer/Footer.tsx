@@ -1,15 +1,15 @@
-import logo_vert_light from '../../assets/logos/light-theme-assets/cnm-logovert-light.svg';
-import logo_vert_dark from '../../assets/logos/dark-theme-assets/cnm-logovert-dark.svg';
+import logo_vert_light from '@assets/logos/light-theme-assets/cnm-logovert-light.svg';
+import logo_vert_dark from '@assets/logos/dark-theme-assets/cnm-logovert-dark.svg';
 
-import { Link } from 'src/lib/router';
-import { useContextTheme } from '../../../context/ThemeContext';
+import { Link } from '@lib/router';
+import { useContextTheme } from '@context/ThemeContext';
 import {
 	FooterActions,
 	FooterContainer,
 	FooterContent,
 	FooterLogo,
 } from './Footer.styles';
-import { Button } from '../button/Button';
+import { Button } from '@components/ui/button/Button';
 
 const Footer = () => {
 	const { themeMode } = useContextTheme();

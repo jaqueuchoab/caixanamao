@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'src/lib/router';
+import { BrowserRouter, Route, Routes } from '@lib/router';
 import './views/assets/css/style.css';
 import ErrorBoundary from './views/components/ErrorBoundary';
 import { ThemeContextProvider } from './views/context/ThemeContext';

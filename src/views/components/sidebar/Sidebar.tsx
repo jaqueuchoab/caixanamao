@@ -11,7 +11,7 @@ import {
 	Plus,
 	SignOut,
 } from '@phosphor-icons/react';
-import { Button } from '../button/Button';
+import { Button } from '@components/ui/button/Button';
 import {
 	SidebarActionsList,
 	SidebarBottomActions,
@@ -20,8 +20,8 @@ import {
 	SidebarHeader,
 } from './Sidebar.styles';
 import { useState } from 'react';
-import { useNavigate } from 'src/lib/router';
-import { useContextTheme } from '../../context/ThemeContext';
+import { useNavigate } from '@lib/router';
+import { useContextTheme } from '@context/ThemeContext';
 import { Profile } from './profile/Profile';
 
 export function Sidebar() {

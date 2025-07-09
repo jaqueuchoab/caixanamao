@@ -6,7 +6,7 @@ import Input from '@components/ui/input/Input';
 import useForm from '../../hooks/useForm';
 import Radio from '@components/ui/input/Radio';
 import DateInput, { typeDate } from '@components/ui/input/DateInput';
-import { Link } from 'src/lib/router';
+import { Link } from '@lib/router';
 /*
 endpoint para CREATE_USER
 nome: string;

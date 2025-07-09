@@ -6,7 +6,7 @@ import {
 	ReceiptIcon,
 	ReceiptXIcon,
 } from '@phosphor-icons/react';
-import { RegisterItem } from '../carousel/registerItem/RegisterItem';
+import { RegisterItem } from '../registerItem/RegisterItem';
 import { Container, HeadText, Total, Values } from './RegisterCard.styles';
 
 export type RegisterValues = {

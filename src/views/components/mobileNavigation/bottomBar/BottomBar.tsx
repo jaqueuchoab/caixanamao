@@ -7,7 +7,7 @@ import {
 } from '@phosphor-icons/react';
 import { Button } from '@components/ui/button/Button';
 import { BottomBarContainer } from './BottomBar.styles';
-import { useNavigate } from 'src/lib/router';
+import { useNavigate } from '@lib/router';
 
 export function BottomBar() {
 	const navigate = useNavigate();

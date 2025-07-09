@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction, useState } from 'react';
 import style from './styles/Input.module.css';
-import { useContextTheme } from '../../context/ThemeContext';
+import { useContextTheme } from '@context/ThemeContext';
 import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
 
 type InputProps = {

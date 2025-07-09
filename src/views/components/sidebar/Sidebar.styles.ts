@@ -1,4 +1,4 @@
-import { motion } from 'src/lib/motion';
+import { motion } from '@lib/motion';
 import styled from '@emotion/styled';
 
 export const SidebarContainer = styled(motion.nav)`

@@ -9,7 +9,7 @@ import Header from '@components/ui/header/Header.tsx';
 import TextContent from './HomeTextContent.tsx';
 import style from './styles/Home.module.css';
 import Footer from '@components/ui/footer/Footer.tsx';
-import { Link } from 'src/lib/router.ts';
+import { Link } from '@lib/router.ts';
 
 const Home = () => {
 	const { themeMode } = useContextTheme();

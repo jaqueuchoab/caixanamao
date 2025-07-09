@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Route, Routes } from 'src/lib/router';
+import { Route, Routes } from '@lib/router';
 import cnm_logohorz_dark from '@assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
 import cnm_logohorz_light from '@assets/logos/light-theme-assets/cnm-logohorz-light.svg';
 import LoginEmail from './LoginEmail.tsx';

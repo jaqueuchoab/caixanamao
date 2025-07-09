@@ -3,7 +3,7 @@ import { TopBarContainer } from './TopBar.styles';
 import { useState } from 'react';
 import { Button } from '@components/ui/button/Button';
 import { TopBarPopUp } from './TopBarPopUp';
-import { AnimatePresence } from 'src/lib/motion.ts';
+import { AnimatePresence } from '@lib/motion.ts';
 import { Profile } from '@components/sidebar/profile/Profile';
 
 export function TopBar() {

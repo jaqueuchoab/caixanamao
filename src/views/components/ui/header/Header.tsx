@@ -1,13 +1,13 @@
-import cnm_logo_dark from '../../assets/logos/dark-theme-assets/cnm-logo-dark.svg';
-import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
-import cnm_logo_light from '../../assets/logos/light-theme-assets/cnm-logo-light.svg';
-import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
+import cnm_logo_dark from '@assets/logos/dark-theme-assets/cnm-logo-dark.svg';
+import cnm_logohorz_dark from '@assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
+import cnm_logo_light from '@assets/logos/light-theme-assets/cnm-logo-light.svg';
+import cnm_logohorz_light from '@assets/logos/light-theme-assets/cnm-logohorz-light.svg';
 
 import { CircleHalfIcon } from '@phosphor-icons/react';
-import { Link } from 'src/lib/router';
-import { useContextTheme } from '../../../context/ThemeContext';
+import { Link } from '@lib/router';
+import { useContextTheme } from '@context/ThemeContext';
 import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
-import { Button } from '../button/Button';
+import { Button } from '@components/ui/button/Button';
 
 function getLogo(mode: string, width: number | null) {
 	if (width && width > 768) {

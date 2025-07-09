@@ -6,7 +6,7 @@ import {
 } from '@phosphor-icons/react';
 import { Button } from '@components/ui/button/Button';
 import { TopBarPopupContainer } from './TopBar.styles';
-import { useNavigate } from 'src/lib/router';
+import { useNavigate } from '@lib/router';
 import { useContextTheme } from '../../../context/ThemeContext';
 
 export function TopBarPopUp() {

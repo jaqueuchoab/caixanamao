@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { motion } from 'src/lib/motion';
+import { motion } from '@lib/motion';
 
 export const TopBarContainer = styled.div`
 	top: 0;

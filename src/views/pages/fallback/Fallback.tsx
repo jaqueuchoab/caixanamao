@@ -1,5 +1,5 @@
 import { LinkBreakIcon } from '@phosphor-icons/react';
-import { useLocation } from 'src/lib/router';
+import { useLocation } from '@lib/router';
 import {
 	ArtworkContainer,
 	ErrorBadge,

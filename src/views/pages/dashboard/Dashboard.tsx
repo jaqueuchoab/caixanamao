@@ -3,7 +3,7 @@ import { DashboardContainer, DashboardContent } from './Dashboard.styles';
 import { BottomBar } from '@components/mobileNavigation/bottomBar/BottomBar';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { TopBar } from '@components/mobileNavigation/topBar/TopBar';
-import { AnimatePresence } from 'src/lib/motion';
+import { AnimatePresence } from '@lib/motion';
 import { SamplePage } from './SamplePage';
 import {
 	CastleTurretIcon,
@@ -13,8 +13,8 @@ import {
 	GearIcon,
 	HouseIcon,
 } from '@phosphor-icons/react';
-import { Registers } from 'src/views/pages/registers/Registers';
-import { Route, Routes } from 'src/lib/router';
+import { Registers } from '../registers/Registers';
+import { Route, Routes } from '@lib/router';
 
 export const Dashboard = () => {
 	const size = useWindowSize();

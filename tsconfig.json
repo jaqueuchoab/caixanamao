@@ -29,6 +29,15 @@
       ],
       "@assets/*": [
         "src/views/assets/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@context/*": [
+        "src/views/context/*"
+      ],
+      "@tests/*": [
+        "src/tests/*"
       ]
     }
   },
