@@ -42,11 +42,6 @@ export const HeadText = styled.div`
 
 		& .registerCard__editIcon {
 			color: ${({ theme }) => theme.colors.baseColors.blue[500]};
-			transition: opacity 300ms ease;
-
-			&:hover {
-				opacity: 0.4;
-			}
 		}
 	}
 

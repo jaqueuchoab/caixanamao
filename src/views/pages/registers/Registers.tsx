@@ -4,12 +4,20 @@ import {
 	RegisterCard,
 	RegisterValues,
 } from './components/registerCard/RegisterCard';
-import { Container, RegistersList, Title, TopActions } from './Registers.style';
+import {
+	Container,
+	DropdownAction,
+	RegistersList,
+	Title,
+	TopActions,
+} from './Registers.style';
 import {
 	CaretUpDownIcon,
 	FunnelSimpleIcon,
 	PlusIcon,
 } from '@phosphor-icons/react';
+import { useState, useEffect, useRef } from 'react';
+import { RegisterOrderPopup } from './components/registerOrderPopup/RegisterOrderPopup';
 // import { Spinner } from '@components/ui/spinner/Spinner';
 // import { SpinnerOverlay } from '@components/ui/spinner/Spinner.styles';
 // import { AnimatePresence } from '@lib/motion.ts';
@@ -23,8 +31,31 @@ const mockValues: RegisterValues = {
 };
 
 export function Registers() {
+	const [showOrderPopup, setShowOrderPopup] = useState<boolean>(false);
+	const [order, setOrder] = useState<string>('');
+
 	const size = useWindowSize();
 	const isDeviceMobile = size.width! < 768;
+	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (
+				dropdownRef.current &&
+				!dropdownRef.current.contains(event.target as Node)
+			) {
+				setShowOrderPopup(false);
+			}
+		};
+
+		if (showOrderPopup) {
+			document.addEventListener('mousedown', handleClickOutside);
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, [showOrderPopup]);
 
 	return (
 		<Container
@@ -34,10 +65,12 @@ export function Registers() {
 			transition={{ duration: 0.9, ease: 'easeOut', type: 'tween' }}
 		>
 			<Title>Registros</Title>
+
 			<TopActions>
 				<Button text_align='center' fill_width={isDeviceMobile}>
 					<PlusIcon size={16} /> Novo
 				</Button>
+
 				<Button
 					variant='neutral'
 					text_align='center'
@@ -46,14 +79,30 @@ export function Registers() {
 					<FunnelSimpleIcon size={16} />
 					Filtrar
 				</Button>
-				<Button
-					variant='neutral'
-					text_align='center'
-					fill_width={isDeviceMobile}
+
+				<DropdownAction
+					ref={dropdownRef}
+					style={{ width: isDeviceMobile ? '100%' : '240px' }}
 				>
-					<CaretUpDownIcon size={16} />
-					Ordenar
-				</Button>
+					<Button
+						variant='neutral'
+						text_align='center'
+						className={`${order && 'selected'}`}
+						fill_width={isDeviceMobile}
+						onClick={() => setShowOrderPopup((prev) => !prev)}
+					>
+						<CaretUpDownIcon size={16} />
+						{order ? order : 'Ordenar'}
+					</Button>
+
+					{showOrderPopup && (
+						<RegisterOrderPopup
+							order={order}
+							onChangeOrder={setOrder}
+							onClose={() => setShowOrderPopup(false)}
+						/>
+					)}
+				</DropdownAction>
 			</TopActions>
 
 			{/* 

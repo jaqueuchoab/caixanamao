@@ -22,9 +22,20 @@ export const Title = styled.h1`
 	}
 `;
 
+export const DropdownAction = styled.div`
+	position: relative;
+	display: inline-block;
+	transition: color 0.7s ease;
+
+	button.selected {
+		font-weight: 500;
+		color: ${({ theme }) => theme.colors.texts.highlight};
+	}
+`;
+
 export const TopActions = styled.div`
 	display: flex;
-	flex-direction: column wrap;
+	flex-flow: column wrap;
 	align-items: flex-start;
 	align-content: space-between;
 	gap: 12px;
