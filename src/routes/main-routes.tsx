@@ -17,7 +17,7 @@ export const mainRoutes: RouteObject[] = [
 		element: <Home />,
 	},
 	{
-		path: '/login/*',
+		path: '/login',
 		element: <Login />,
 	},
 	{

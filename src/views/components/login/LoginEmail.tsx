@@ -5,6 +5,8 @@ import Input from '../input/Input';
 import { Button } from '../button/Button';
 import useForm from '../../hooks/useForm';
 import { Link, useNavigate } from 'react-router-dom';
+import { Information } from './Login.styles.ts';
+
 
 const LoginEmail = () => {
 	const { themeMode } = useContextTheme();
@@ -15,11 +17,7 @@ const LoginEmail = () => {
 	return (
 		<section className={style.mainContent} id={style[themeMode]}>
 			<div>
-				<h3>Identificação por email</h3>
-				<p>
-					Faça login com Google ou insira e-mail e senha. Não possui conta?
-					Cadastre-se.
-				</p>
+			<Information>Acesse sua Conta ou Cadastre-se</Information>
 				<div className={style.inputs}>
 					<button>
 						<img src={googleLogo} alt='Google logo' />

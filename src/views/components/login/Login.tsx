@@ -1,12 +1,7 @@
-import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
 import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
-import LoginEmail from './LoginEmail.tsx';
 import { useContextTheme } from '../../context/ThemeContext.tsx';
-import style from './styles/Login.module.css';
-import { fetchUsersList } from '../../../services/fetchUsersList.ts';
-import { LoginContainer } from './Login.styles.ts';
+import { Information, LoginContainer, LoginEmail, MultisetContainer, TabsSwitcher } from './Login.styles.ts';
 
 /*
 endpoint LOGIN
@@ -17,10 +12,6 @@ senha: string;
 const Login = () => {
 	const { themeMode } = useContextTheme();
 
-	useEffect(() => {
-		fetchUsersList();
-	}, []);
-
 	return (
 		<LoginContainer>
 			<img
@@ -28,10 +19,12 @@ const Login = () => {
 				alt='cnm_logohorz'
 				style={{ height: 'var(--size-3md)' }}
 			/>
-
-			<Routes>
-				<Route path='/' element={<LoginEmail />}></Route>
-			</Routes>
+			<LoginEmail>
+				<Information>Acesse sua Conta ou Cadastre-se</Information>
+				<MultisetContainer>
+					<TabsSwitcher></TabsSwitcher>
+				</MultisetContainer>
+			</LoginEmail>
 		</LoginContainer>
 	);
 };
