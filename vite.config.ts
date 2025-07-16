@@ -14,6 +14,7 @@ export default defineConfig({
 			'@context': path.resolve(__dirname, './src/views/context'),
 			'@tests': path.resolve(__dirname, './src/tests'),
 			'@services': path.resolve(__dirname, './src/services'),
+			'@models': path.resolve(__dirname, './src/models'),
 		},
 	},
 	ssr: {
