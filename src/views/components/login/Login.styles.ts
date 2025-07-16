@@ -33,9 +33,9 @@ export const LoginEmail = styled.main`
 `;
 
 export const Information = styled.h3`
-  font-size: ${({theme}) => theme.sizes.md};
+  font-size: ${({ theme }) => theme.sizes.lg + "px"};
   font-weight: 600;
-  margin-bottom: ${({theme}) => theme.sizes.md};;
+  color: ${({theme}) => theme.colors.texts.primary};
 `;
 
 export const MultisetContainer = styled.div`
@@ -44,16 +44,31 @@ export const MultisetContainer = styled.div`
   align-items: flex-start;
   gap: 16px;
   align-self: stretch;
-  border-radius: 16px;
+  border-radius: 16px 16px 0px 0px;
   border: 1.6px solid ${({ theme }) => theme.colors.inputs.stroke};
 `;
 
 export const TabsSwitcher = styled.div`
   display: flex;
-  padding: ${({theme}) => theme.sizes['xs-plus']};
+  padding: 8px;
   align-items: flex-start;
-  gap: ${({theme}) => theme.sizes['sm-plus']};
+  gap: 10px;
   align-self: stretch;
   border-radius: 16px 16px 0px 0px;
   background-color: ${({ theme }) => theme.colors.baseColors.neutral[600]};
+`;
+
+export const ButtonSwitcher = styled.button`
+  display: flex;
+  padding: ${({theme}) => `${theme.sizes['sm-plus']}px ${theme.sizes['sm-x']}px`};
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  gap: 8px;
+  flex: 1 0 0;
+  flex-wrap: wrap;
+  border-radius: ${({ theme }) => theme.sizes.sm + "px"};
+  background: ${({theme}) => theme.colors.backgrounds.secondary};
+  color: ${({theme}) => theme.colors.texts.primary};
+  font-size: ${({ theme }) => theme.sizes.md + "px"};
 `;

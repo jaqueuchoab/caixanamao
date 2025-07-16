@@ -29,18 +29,7 @@ const LoginEmail = () => {
 						<span className={style.line}></span>
 					</div>
 					<div className={style.credentials}>
-						<Input
-							id='email'
-							type='text'
-							placeholder='Digite seu email'
-							{...email}
-						/>
-						<Input
-							id='password'
-							type='password'
-							placeholder='No mínimo 8 digitos'
-							{...password}
-						/>
+						
 					</div>
 					<Link
 						style={{
