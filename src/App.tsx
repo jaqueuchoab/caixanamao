@@ -9,22 +9,26 @@ import SignUp from './views/pages/signup/SignUp';
 import { Dashboard } from './views/pages/dashboard/Dashboard';
 import Vantagens from './views/pages/Vantagens';
 import Fallback from './views/pages/fallback/Fallback';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 // TODO: refatorar componentes que usam css modules para styled components
 
 function App() {
+	const queryClient = new QueryClient();
 	return (
 		<BrowserRouter>
 			<ThemeContextProvider>
 				<ErrorBoundary>
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/login/*' element={<Login />} />
-						<Route path='/signup/*' element={<SignUp />} />
-						<Route path='/dashboard/*' element={<Dashboard />} />
-						<Route path='/benefits' element={<Vantagens />} />
-						<Route path='/fallback?' element={<Fallback />} />
-					</Routes>
+					<QueryClientProvider client={queryClient}>
+						<Routes>
+							<Route path='/' element={<Home />} />
+							<Route path='/login/*' element={<Login />} />
+							<Route path='/signup/*' element={<SignUp />} />
+							<Route path='/dashboard/*' element={<Dashboard />} />
+							<Route path='/benefits' element={<Vantagens />} />
+							<Route path='/fallback?' element={<Fallback />} />
+						</Routes>
+					</QueryClientProvider>
 				</ErrorBoundary>
 			</ThemeContextProvider>
 		</BrowserRouter>
