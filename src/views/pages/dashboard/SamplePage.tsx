@@ -8,6 +8,9 @@ interface SamplePageProps {
 }
 
 export const SamplePageContainer = styled(motion.div)`
+	width: 100%;
+	height: 100%;
+
 	display: flex;
 	flex-flow: column;
 	justify-content: center;

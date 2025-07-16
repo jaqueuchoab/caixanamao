@@ -56,8 +56,16 @@ export const TopActions = styled.div`
 	align-content: space-between;
 	gap: 12px;
 
+	& > button {
+		width: 100%;
+	}
+
 	@media screen and (width > 768px) {
 		flex-flow: row nowrap;
+
+		& > button {
+			width: fit-content;
+		}
 	}
 `;
 

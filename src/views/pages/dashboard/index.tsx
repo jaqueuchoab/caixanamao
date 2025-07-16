@@ -1,5 +1,5 @@
 import { Sidebar } from './components/sidebar/Sidebar';
-import { DashboardContainer, DashboardContent } from './Dashboard.styles';
+import { DashboardContainer, DashboardContent } from './styles';
 import { BottomBar } from './components/mobileNavigation/bottomBar/BottomBar';
 import { useWindowSize } from '@uidotdev/usehooks';
 import { TopBar } from './components/mobileNavigation/topBar/TopBar';
@@ -13,10 +13,10 @@ import {
 	GearIcon,
 	HouseIcon,
 } from '@phosphor-icons/react';
-import { Registers } from '../registers/Registers';
+import { RegistersPage } from '../registers';
 import { Route, Routes } from '@lib/router';
 
-export const Dashboard = () => {
+export function DashboardPage() {
 	const size = useWindowSize();
 	const isDeviceMobile = size.width! < 768;
 
@@ -37,9 +37,10 @@ export const Dashboard = () => {
 						/>
 						<Route
 							path='/registers'
-							element={<Registers />}
+							element={<RegistersPage />}
 							key={'/dashboard/registers'}
 						/>
+						{/* TODO: página de novo/editar registro */}
 						<Route
 							path='/admin'
 							element={
@@ -74,4 +75,4 @@ export const Dashboard = () => {
 			</DashboardContent>
 		</DashboardContainer>
 	);
-};
+}

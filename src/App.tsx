@@ -6,7 +6,7 @@ import { ThemeContextProvider } from './views/context/ThemeContext';
 import Home from './views/pages/home/Home';
 import Login from './views/pages/login/Login';
 import SignUp from './views/pages/signup/SignUp';
-import { Dashboard } from './views/pages/dashboard/Dashboard';
+import { DashboardPage } from './views/pages/dashboard';
 import Vantagens from './views/pages/Vantagens';
 import Fallback from './views/pages/fallback/Fallback';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
@@ -24,7 +24,7 @@ function App() {
 							<Route path='/' element={<Home />} />
 							<Route path='/login/*' element={<Login />} />
 							<Route path='/signup/*' element={<SignUp />} />
-							<Route path='/dashboard/*' element={<Dashboard />} />
+							<Route path='/dashboard/*' element={<DashboardPage />} />
 							<Route path='/benefits' element={<Vantagens />} />
 							<Route path='/fallback?' element={<Fallback />} />
 						</Routes>

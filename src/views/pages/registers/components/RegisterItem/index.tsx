@@ -1,5 +1,5 @@
 import { Icon } from '@phosphor-icons/react';
-import { Container, Infos, Value } from './RegisterItem.styles';
+import { Container, Infos, Value } from './styles';
 import { HTMLAttributes } from 'react';
 
 interface RegisterItemProps extends HTMLAttributes<HTMLDivElement> {

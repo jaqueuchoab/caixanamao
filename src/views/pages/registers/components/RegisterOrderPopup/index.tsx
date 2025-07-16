@@ -1,5 +1,5 @@
 import { Button } from '@components/ui/button/Button';
-import { Container, Options, PopupTitle } from './RegisterOrderPopup.styles';
+import { Container, Options, PopupTitle } from './styles';
 import { CheckIcon, XIcon } from '@phosphor-icons/react';
 import { useContextTheme } from '@context/ThemeContext';
 
@@ -11,17 +11,23 @@ const orderNames = [
 ];
 
 interface RegisterOrderPopupProps {
-	order: string;
-	onChangeOrder: (name: string) => void;
+	currentOrder: string;
+	onChangeCurrentOrder: (name: string) => void;
 	onClose: () => void;
 }
 
 export function RegisterOrderPopup({
-	order,
-	onChangeOrder,
+	currentOrder,
+	onChangeCurrentOrder,
 	onClose,
 }: RegisterOrderPopupProps) {
 	const { theme } = useContextTheme();
+
+	function handleOrder(order: string) {
+		if (order === currentOrder) onChangeCurrentOrder('');
+		else onChangeCurrentOrder(order);
+		onClose();
+	}
 
 	return (
 		<Container
@@ -41,20 +47,16 @@ export function RegisterOrderPopup({
 			</PopupTitle>
 
 			<Options>
-				{orderNames.map((item, idx) => (
+				{orderNames.map((order, idx) => (
 					<Button
 						style={{ justifyContent: 'space-between' }}
-						onClick={() => {
-							if (item === order) onChangeOrder('');
-							else onChangeOrder(item);
-							onClose();
-						}}
+						onClick={() => handleOrder(order)}
 						key={idx}
 						variant='neutral'
-						className={`${item === order && 'selected'}`}
+						className={`${order === currentOrder && 'selected'}`}
 					>
-						{item}
-						{item === order && (
+						{order}
+						{order === currentOrder && (
 							<CheckIcon
 								weight='bold'
 								color={theme.colors.texts.highlight}

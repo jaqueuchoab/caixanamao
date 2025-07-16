@@ -6,18 +6,20 @@ import {
 	PopupContent,
 	PopupActions,
 	PopupEmpty,
-} from './RegisterFilterPopup.styles';
+} from './styles';
 import Radio from '@components/ui/input/Radio';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import DateInput from '@components/ui/input/DateInput';
-import { RegisterFilter } from 'src/models/registers/register-filter';
-import { filterTypeMap } from '../../Registers';
+import {
+	filterTypeMap,
+	RegisterFilter,
+} from '@models/registers/register-filter';
 import { Button } from '@components/ui/button/Button';
-import { PopupTitle } from '../RegisterOrderPopup/RegisterOrderPopup.styles';
+import { PopupTitle } from '../RegisterOrderPopup/styles';
 
 interface RegisterFilterPopupProps {
-	filter: RegisterFilter;
-	onChangeFilter: Dispatch<SetStateAction<RegisterFilter>>;
+	currentFilter: RegisterFilter;
+	onChangeCurrentFilter: Dispatch<SetStateAction<RegisterFilter>>;
 	onClose: () => void;
 }
 
@@ -29,12 +31,12 @@ const radioOptions = [
 ];
 
 export function RegisterFilterPopup({
-	filter,
-	onChangeFilter,
+	currentFilter,
+	onChangeCurrentFilter,
 	onClose,
 }: RegisterFilterPopupProps) {
 	function handleClearFilter() {
-		onChangeFilter(() => ({
+		onChangeCurrentFilter(() => ({
 			type: undefined,
 			date: {
 				start: { day: '', month: '', year: '' },
@@ -43,7 +45,9 @@ export function RegisterFilterPopup({
 		}));
 	}
 
-	useEffect(() => console.log(filter), [filter]);
+	function handleFilter() {
+		onClose();
+	}
 
 	return (
 		<Container
@@ -67,14 +71,15 @@ export function RegisterFilterPopup({
 					<Radio
 						options={radioOptions.map((opt) => opt.label)}
 						value={
-							radioOptions.find((opt) => opt.value === filter.type)?.label || ''
+							radioOptions.find((opt) => opt.value === currentFilter.type)
+								?.label || ''
 						}
 						setValue={(selectedLabel) => {
 							const selectedValue = radioOptions.find(
 								(opt) => opt.label === selectedLabel
 							)?.value as RegisterFilter['type'] | undefined;
 							if (selectedValue) {
-								onChangeFilter((prev) => ({
+								onChangeCurrentFilter((prev) => ({
 									...prev,
 									type: selectedValue,
 								}));
@@ -83,16 +88,22 @@ export function RegisterFilterPopup({
 					/>
 				</FilterRadioInputs>
 
-				{filter.type ? (
+				{currentFilter.type ? (
 					<FilterDateInputs>
-						{filter.type === 'interval' ? (
+						{currentFilter.type === 'interval' ? (
 							<>
 								<label>Data inicial:</label>
 								<DateInput
 									dateType='day'
-									value={filter.date?.start || { day: '', month: '', year: '' }}
+									value={
+										currentFilter.date?.start || {
+											day: '',
+											month: '',
+											year: '',
+										}
+									}
 									setValue={(newStartDate) =>
-										onChangeFilter((prev) => ({
+										onChangeCurrentFilter((prev) => ({
 											...prev,
 											date: {
 												...prev.date,
@@ -104,9 +115,11 @@ export function RegisterFilterPopup({
 								<label>Data final:</label>
 								<DateInput
 									dateType='day'
-									value={filter.date?.end || { day: '', month: '', year: '' }}
+									value={
+										currentFilter.date?.end || { day: '', month: '', year: '' }
+									}
 									setValue={(newEndDate) =>
-										onChangeFilter((prev) => ({
+										onChangeCurrentFilter((prev) => ({
 											...prev,
 											date: {
 												...prev.date,
@@ -118,12 +131,18 @@ export function RegisterFilterPopup({
 							</>
 						) : (
 							<>
-								<label>{filterTypeMap[filter.type]}:</label>
+								<label>{filterTypeMap[currentFilter.type]}:</label>
 								<DateInput
-									dateType={filter.type}
-									value={filter.date?.start || { day: '', month: '', year: '' }}
+									dateType={currentFilter.type}
+									value={
+										currentFilter.date?.start || {
+											day: '',
+											month: '',
+											year: '',
+										}
+									}
 									setValue={(newStartDate) =>
-										onChangeFilter((prev) => ({
+										onChangeCurrentFilter((prev) => ({
 											...prev,
 											date: {
 												...prev.date,
@@ -141,7 +160,7 @@ export function RegisterFilterPopup({
 			</PopupContent>
 
 			<PopupActions>
-				{filter.type && (
+				{currentFilter.type && (
 					<Button
 						text_align='center'
 						fill_width
@@ -151,8 +170,13 @@ export function RegisterFilterPopup({
 						Limpar filtros
 					</Button>
 				)}
-				{filter.type && (
-					<Button text_align='center' fill_width variant='primary'>
+				{currentFilter.type && (
+					<Button
+						onClick={handleFilter}
+						text_align='center'
+						fill_width={true}
+						variant='primary'
+					>
 						Filtrar
 					</Button>
 				)}

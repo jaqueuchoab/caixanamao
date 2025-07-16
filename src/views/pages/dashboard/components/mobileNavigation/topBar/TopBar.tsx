@@ -21,7 +21,7 @@ export function TopBar() {
 					{isOpen ? <X size={28} /> : <List size={28} />}
 				</Button>
 			</TopBarContainer>
-			<AnimatePresence>{isOpen && <TopBarPopUp />}</AnimatePresence>
+			<AnimatePresence mode='wait'>{isOpen && <TopBarPopUp />}</AnimatePresence>
 		</>
 	);
 }

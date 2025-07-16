@@ -1,14 +1,13 @@
-import { useWindowSize } from '@uidotdev/usehooks';
 import { useState, useEffect, useRef } from 'react';
 import { Button } from '@components/ui/button/Button';
-import { RegisterCard } from './components/RegisterCard/RegisterCard';
+import { RegisterCard } from './components/RegisterCard';
 import {
 	Container,
 	RelativePopupsContainer,
 	RegistersList,
 	Title,
 	TopActions,
-} from './Registers.style';
+} from './styles';
 import {
 	ArrowsClockwiseIcon,
 	CaretUpDownIcon,
@@ -16,26 +15,19 @@ import {
 	PlusIcon,
 	XIcon,
 } from '@phosphor-icons/react';
-import { RegisterOrderPopup } from './components/RegisterOrderPopup/RegisterOrderPopup';
-import { RegisterFilterPopup } from './components/RegisterFilterPopup/RegisterFilterPopup.index';
-import { RegisterFilter } from 'src/models/registers/register-filter';
+import { RegisterOrderPopup } from './components/RegisterOrderPopup';
+import { RegisterFilterPopup } from './components/RegisterFilterPopup';
+import {
+	emptyFilter,
+	filterTypeMap,
+	RegisterFilter,
+} from '@models/registers/register-filter';
 import { fetchRegisters } from '@services/fetchRegisters';
 import { SpinnerOverlay } from '@components/ui/spinner/Spinner.styles';
 import { Spinner } from '@components/ui/spinner/Spinner';
 import { useQuery } from '@tanstack/react-query';
 
-export const filterTypeMap = {
-	interval: 'Intervalo',
-	day: 'Dia',
-	month: 'Mês',
-	year: 'Ano',
-};
-
-const emptyFilter = {
-	type: undefined,
-} as RegisterFilter;
-
-export function Registers() {
+export function RegistersPage() {
 	const {
 		data: registers,
 		refetch,
@@ -50,12 +42,11 @@ export function Registers() {
 	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
 
 	const [showOrderPopup, setShowOrderPopup] = useState(false);
-	const [order, setOrder] = useState(''); // TODO: funcionalidade de ordenar registros
+	const [currentOrder, setCurrentOrder] = useState(''); // TODO: funcionalidade de ordenar registros
 	const [showFilterPopup, setShowFilterPopup] = useState(false);
-	const [filter, setFilter] = useState<RegisterFilter>(emptyFilter); // TODO: funcionalidade de filtrar temporalmente os registros
+	const [currentFilter, setCurrentFilter] =
+		useState<RegisterFilter>(emptyFilter); // TODO: funcionalidade de filtrar temporalmente os registros
 
-	const size = useWindowSize();
-	const isDeviceMobile = size.width! < 768;
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
 	// fecha popup de ordenação ao clicar fora
@@ -102,7 +93,7 @@ export function Registers() {
 			</Title>
 
 			<TopActions>
-				<Button text_align='center' fill_width={isDeviceMobile}>
+				<Button text_align='center'>
 					<PlusIcon weight='bold' size={16} /> Novo
 				</Button>
 
@@ -110,53 +101,38 @@ export function Registers() {
 					<Button
 						variant='neutral'
 						text_align='center'
-						fill_width={isDeviceMobile}
-						className={order ? 'success' : ''}
+						className={currentOrder ? 'success' : ''}
 						onClick={handleOrderButtonClick}
 					>
-						{order ? (
-							<Button
-								variant='link'
-								style={{ padding: '0px' }}
-								title='Remover ordenação atual'
-							>
-								<XIcon size={16} onClick={() => setOrder('')} />
-							</Button>
+						{currentOrder ? (
+							<XIcon size={16} onClick={() => setCurrentOrder('')} />
 						) : (
 							<CaretUpDownIcon weight='bold' size={16} />
 						)}
-						{order || 'Ordenar'}
+						{currentOrder || 'Ordenar'}
 					</Button>
 
 					<Button
 						variant='neutral'
 						text_align='center'
-						fill_width={isDeviceMobile}
-						className={filter.type ? 'success' : ''}
+						className={currentFilter.type ? 'success' : ''}
 						onClick={handleFilterButtonClick}
 					>
-						{filter.type ? (
-							<Button
-								variant='link'
-								style={{ padding: '0px' }}
-								title='Remover filtro atual'
-							>
-								<XIcon
-									size={16}
-									weight='bold'
-									onClick={() => setFilter(emptyFilter)}
-								/>
-							</Button>
+						{currentFilter.type ? (
+							<XIcon
+								size={16}
+								weight='bold'
+								onClick={() => setCurrentFilter(emptyFilter)}
+							/>
 						) : (
 							<FunnelSimpleIcon weight='bold' size={16} />
 						)}
-						{filter.type ? filterTypeMap[filter.type] : 'Filtrar'}
+						{currentFilter.type ? filterTypeMap[currentFilter.type] : 'Filtrar'}
 					</Button>
 
 					<Button
 						variant='neutral'
 						text_align='center'
-						fill_width={isDeviceMobile}
 						onClick={() => refetch()}
 					>
 						<ArrowsClockwiseIcon
@@ -169,16 +145,16 @@ export function Registers() {
 
 					{showOrderPopup && (
 						<RegisterOrderPopup
-							order={order}
-							onChangeOrder={setOrder}
+							currentOrder={currentOrder}
+							onChangeCurrentOrder={setCurrentOrder}
 							onClose={() => setShowOrderPopup(false)}
 						/>
 					)}
 
 					{showFilterPopup && (
 						<RegisterFilterPopup
-							filter={filter}
-							onChangeFilter={setFilter}
+							currentFilter={currentFilter}
+							onChangeCurrentFilter={setCurrentFilter}
 							onClose={() => setShowFilterPopup(false)}
 						/>
 					)}

@@ -7,8 +7,8 @@ import {
 	ReceiptIcon,
 	ReceiptXIcon,
 } from '@phosphor-icons/react';
-import { RegisterItem } from '../RegisterItem/RegisterItem';
-import { Container, HeadText, Total, Values } from './RegisterCard.styles';
+import { RegisterItem } from '../RegisterItem';
+import { Container, HeadText, Total, Values } from './styles';
 import { Button } from '@components/ui/button/Button';
 import { RegisterType } from 'src/models/registers/register';
 
