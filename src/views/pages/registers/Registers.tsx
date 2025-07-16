@@ -1,61 +1,91 @@
 import { useWindowSize } from '@uidotdev/usehooks';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@components/ui/button/Button';
-import {
-	RegisterCard,
-	RegisterValues,
-} from './components/registerCard/RegisterCard';
+import { RegisterCard } from './components/RegisterCard/RegisterCard';
 import {
 	Container,
-	DropdownAction,
+	RelativePopupsContainer,
 	RegistersList,
 	Title,
 	TopActions,
 } from './Registers.style';
 import {
+	ArrowsClockwiseIcon,
 	CaretUpDownIcon,
 	FunnelSimpleIcon,
 	PlusIcon,
+	XIcon,
 } from '@phosphor-icons/react';
-import { useState, useEffect, useRef } from 'react';
-import { RegisterOrderPopup } from './components/registerOrderPopup/RegisterOrderPopup';
-// import { Spinner } from '@components/ui/spinner/Spinner';
-// import { SpinnerOverlay } from '@components/ui/spinner/Spinner.styles';
-// import { AnimatePresence } from '@lib/motion.ts';
+import { RegisterOrderPopup } from './components/RegisterOrderPopup/RegisterOrderPopup';
+import { RegisterFilterPopup } from './components/RegisterFilterPopup/RegisterFilterPopup.index';
+import { RegisterFilter } from 'src/models/registers/register-filter';
+import { fetchRegisters } from '@services/fetchRegisters';
+import { SpinnerOverlay } from '@components/ui/spinner/Spinner.styles';
+import { Spinner } from '@components/ui/spinner/Spinner';
+import { useQuery } from '@tanstack/react-query';
 
-const mockValues: RegisterValues = {
-	initial: 50,
-	money: 20,
-	creditCard: 200,
-	pix: 75,
-	expenses: 15,
+export const filterTypeMap = {
+	interval: 'Intervalo',
+	day: 'Dia',
+	month: 'Mês',
+	year: 'Ano',
 };
 
+const emptyFilter = {
+	type: undefined,
+} as RegisterFilter;
+
 export function Registers() {
-	const [showOrderPopup, setShowOrderPopup] = useState<boolean>(false);
-	const [order, setOrder] = useState<string>('');
+	const {
+		data: registers,
+		refetch,
+		isLoading,
+		isFetching,
+		dataUpdatedAt,
+	} = useQuery({
+		queryKey: ['registers'],
+		queryFn: fetchRegisters,
+		refetchOnMount: true,
+	});
+	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
+
+	const [showOrderPopup, setShowOrderPopup] = useState(false);
+	const [order, setOrder] = useState(''); // TODO: funcionalidade de ordenar registros
+	const [showFilterPopup, setShowFilterPopup] = useState(false);
+	const [filter, setFilter] = useState<RegisterFilter>(emptyFilter); // TODO: funcionalidade de filtrar temporalmente os registros
 
 	const size = useWindowSize();
 	const isDeviceMobile = size.width! < 768;
 	const dropdownRef = useRef<HTMLDivElement>(null);
 
+	// fecha popup de ordenação ao clicar fora
 	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
+		function handleClickOutside(event: MouseEvent) {
 			if (
 				dropdownRef.current &&
 				!dropdownRef.current.contains(event.target as Node)
 			) {
 				setShowOrderPopup(false);
 			}
-		};
-
+		}
 		if (showOrderPopup) {
 			document.addEventListener('mousedown', handleClickOutside);
 		}
-
 		return () => {
 			document.removeEventListener('mousedown', handleClickOutside);
 		};
 	}, [showOrderPopup]);
+
+	// handlers para garantir que só um popup fique aberto
+	function handleFilterButtonClick() {
+		setShowOrderPopup(false);
+		setShowFilterPopup((prev) => !prev);
+	}
+
+	function handleOrderButtonClick() {
+		setShowFilterPopup(false);
+		setShowOrderPopup((prev) => !prev);
+	}
 
 	return (
 		<Container
@@ -64,35 +94,77 @@ export function Registers() {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.9, ease: 'easeOut', type: 'tween' }}
 		>
-			<Title>Registros</Title>
+			<Title>
+				<h1>Registros</h1>
+				<span className='lastUpdate'>
+					Atualizados pela última vez em {lastUpdate}
+				</span>
+			</Title>
 
 			<TopActions>
 				<Button text_align='center' fill_width={isDeviceMobile}>
-					<PlusIcon size={16} /> Novo
+					<PlusIcon weight='bold' size={16} /> Novo
 				</Button>
 
-				<Button
-					variant='neutral'
-					text_align='center'
-					fill_width={isDeviceMobile}
-				>
-					<FunnelSimpleIcon size={16} />
-					Filtrar
-				</Button>
-
-				<DropdownAction
-					ref={dropdownRef}
-					style={{ width: isDeviceMobile ? '100%' : '240px' }}
-				>
+				<RelativePopupsContainer ref={dropdownRef}>
 					<Button
 						variant='neutral'
 						text_align='center'
-						className={`${order && 'selected'}`}
 						fill_width={isDeviceMobile}
-						onClick={() => setShowOrderPopup((prev) => !prev)}
+						className={order ? 'success' : ''}
+						onClick={handleOrderButtonClick}
 					>
-						<CaretUpDownIcon size={16} />
-						{order ? order : 'Ordenar'}
+						{order ? (
+							<Button
+								variant='link'
+								style={{ padding: '0px' }}
+								title='Remover ordenação atual'
+							>
+								<XIcon size={16} onClick={() => setOrder('')} />
+							</Button>
+						) : (
+							<CaretUpDownIcon weight='bold' size={16} />
+						)}
+						{order || 'Ordenar'}
+					</Button>
+
+					<Button
+						variant='neutral'
+						text_align='center'
+						fill_width={isDeviceMobile}
+						className={filter.type ? 'success' : ''}
+						onClick={handleFilterButtonClick}
+					>
+						{filter.type ? (
+							<Button
+								variant='link'
+								style={{ padding: '0px' }}
+								title='Remover filtro atual'
+							>
+								<XIcon
+									size={16}
+									weight='bold'
+									onClick={() => setFilter(emptyFilter)}
+								/>
+							</Button>
+						) : (
+							<FunnelSimpleIcon weight='bold' size={16} />
+						)}
+						{filter.type ? filterTypeMap[filter.type] : 'Filtrar'}
+					</Button>
+
+					<Button
+						variant='neutral'
+						text_align='center'
+						fill_width={isDeviceMobile}
+						onClick={() => refetch()}
+					>
+						<ArrowsClockwiseIcon
+							weight='bold'
+							size={16}
+							className={isFetching ? 'animate-spin' : ''}
+						/>
+						Atualizar
 					</Button>
 
 					{showOrderPopup && (
@@ -102,23 +174,31 @@ export function Registers() {
 							onClose={() => setShowOrderPopup(false)}
 						/>
 					)}
-				</DropdownAction>
+
+					{showFilterPopup && (
+						<RegisterFilterPopup
+							filter={filter}
+							onChangeFilter={setFilter}
+							onClose={() => setShowFilterPopup(false)}
+						/>
+					)}
+				</RelativePopupsContainer>
 			</TopActions>
 
-			{/* 
-				<SpinnerOverlay> usar quando for carregar
-					<Spinner />
-				</SpinnerOverlay> 
-			*/}
+			{isLoading ||
+				(isFetching && (
+					<SpinnerOverlay>
+						<Spinner />
+					</SpinnerOverlay>
+				))}
 
-			<RegistersList>
-				<RegisterCard values={mockValues} />
-				<RegisterCard values={mockValues} />
-				<RegisterCard values={mockValues} />
-				<RegisterCard values={mockValues} />
-				<RegisterCard values={mockValues} />
-				<RegisterCard values={mockValues} />
-			</RegistersList>
+			{registers && registers.length > 0 && (
+				<RegistersList>
+					{registers.map((data, idx) => (
+						<RegisterCard key={idx} register={data} />
+					))}
+				</RegistersList>
+			)}
 		</Container>
 	);
 }
