@@ -31,4 +31,12 @@ export const Value = styled.div`
 	& .registerItem__currency {
 		font-weight: 600;
 	}
+
+	.registerItem__value.profit {
+		color: ${({ theme }) => theme.colors.texts.highlight};
+	}
+
+	.registerItem__value.loss {
+		color: ${({ theme }) => theme.colors.inputs.error};
+	}
 `;

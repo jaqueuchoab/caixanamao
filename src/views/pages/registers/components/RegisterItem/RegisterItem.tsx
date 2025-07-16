@@ -22,7 +22,9 @@ export function RegisterItem({
 			</Infos>
 			<Value>
 				<span className='registerItem__currency'>R$</span>
-				{value.toFixed(2).replace('.', ',')}
+				<span className='registerItem__value'>
+					{value.toFixed(2).replace('.', ',')}
+				</span>
 			</Value>
 		</Container>
 	);
