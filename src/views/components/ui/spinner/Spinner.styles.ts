@@ -8,7 +8,7 @@ export const SpinnerOverlay = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	z-index: 2;
+	z-index: 999;
 	position: fixed;
 	top: 0;
 	left: 0;
