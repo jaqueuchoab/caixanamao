@@ -42,9 +42,8 @@ export const MultisetContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
   align-self: stretch;
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 16px;
   border: 1.6px solid ${({ theme }) => theme.colors.inputs.stroke};
 `;
 
@@ -71,4 +70,12 @@ export const ButtonSwitcher = styled.button`
   background: ${({theme}) => theme.colors.backgrounds.secondary};
   color: ${({theme}) => theme.colors.texts.primary};
   font-size: ${({ theme }) => theme.sizes.md + "px"};
+`;
+
+export const InputsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({theme}) => theme.sizes['sm-plus'] + "px"};
+  align-self: stretch;
+  padding: ${({theme}) => `${theme.sizes.md}px ${theme.sizes['sm-x']}px ${theme.sizes['sm-plus']}px ${theme.sizes['sm-x']}px` };
 `;
