@@ -6,7 +6,7 @@ export const Container = styled(motion.div)`
 	position: absolute;
 	top: calc(100% + 8px);
 	left: 0;
-	z-index: 1000;
+	z-index: 998;
 
 	display: flex;
 	padding: 16px;
@@ -26,12 +26,12 @@ export const Container = styled(motion.div)`
 		justify-content: space-between;
 		align-items: center;
 		gap: 12px;
-	}
 
-	& h3 {
-		font-size: 16px;
-		text-align: start;
-		font-weight: 600;
+		& h3 {
+			font-size: 16px;
+			text-align: start;
+			font-weight: 600;
+		}
 	}
 
 	button {
@@ -40,6 +40,24 @@ export const Container = styled(motion.div)`
 
 	svg:hover {
 		opacity: 0.6;
+	}
+
+	@media screen and (width >= 768px) {
+		max-width: 390px;
+	}
+`;
+
+export const PopupTitle = styled.span`
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 12px;
+
+	h3 {
+		font-size: 16px;
+		text-align: start;
+		font-weight: 600;
 	}
 `;
 

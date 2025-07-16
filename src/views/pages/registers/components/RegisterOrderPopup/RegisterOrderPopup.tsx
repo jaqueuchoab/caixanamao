@@ -1,5 +1,5 @@
 import { Button } from '@components/ui/button/Button';
-import { Container, Options } from './RegisterOrderPopup.styles';
+import { Container, Options, PopupTitle } from './RegisterOrderPopup.styles';
 import { CheckIcon, XIcon } from '@phosphor-icons/react';
 import { useContextTheme } from '@context/ThemeContext';
 
@@ -30,10 +30,15 @@ export function RegisterOrderPopup({
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.3, ease: 'easeOut', type: 'tween' }}
 		>
-			<span className='popup__title'>
+			<PopupTitle>
 				<h3>Ordenar por</h3>
-				<XIcon size={20} onClick={onClose} style={{ cursor: 'pointer' }} />
-			</span>
+				<XIcon
+					size={20}
+					weight='bold'
+					onClick={onClose}
+					style={{ cursor: 'pointer' }}
+				/>
+			</PopupTitle>
 
 			<Options>
 				{orderNames.map((item, idx) => (
@@ -50,7 +55,11 @@ export function RegisterOrderPopup({
 					>
 						{item}
 						{item === order && (
-							<CheckIcon color={theme.colors.texts.highlight} size={18} />
+							<CheckIcon
+								weight='bold'
+								color={theme.colors.texts.highlight}
+								size={18}
+							/>
 						)}
 					</Button>
 				))}
