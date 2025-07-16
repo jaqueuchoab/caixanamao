@@ -50,7 +50,7 @@ export const HeadText = styled.div`
 		gap: 8px;
 		flex-wrap: wrap;
 
-		font-size: 14px;
+		font-size: 16px;
 
 		& .registerCard__startDate,
 		& .registerCard__endDate {
@@ -79,5 +79,20 @@ export const Total = styled.div`
 	align-self: stretch;
 
 	border-radius: 0px 0px 12px 12px;
-	background: ${({ theme }) => theme.colors.register.backgroundHighlight};
+
+	&[data-category='profit'] {
+		background: linear-gradient(
+			180deg,
+			${({ theme }) => theme.colors.buttons.primary.fill}64 -90%,
+			${({ theme }) => theme.colors.register.background}75 100%
+		);
+	}
+
+	&[data-category='loss'] {
+		background: linear-gradient(
+			180deg,
+			${({ theme }) => theme.colors.buttons.danger.fill}64 -90%,
+			${({ theme }) => theme.colors.register.background}75 100%
+		);
+	}
 `;
