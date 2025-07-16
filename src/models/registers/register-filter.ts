@@ -13,3 +13,17 @@ export type RegisterFilter = {
 		};
 	};
 };
+
+export const emptyFilter = {
+	type: undefined,
+} as RegisterFilter;
+
+export const filterTypeMap: Record<
+	NonNullable<RegisterFilter['type']>,
+	string
+> = {
+	interval: 'Intervalo',
+	day: 'Dia',
+	month: 'Mês',
+	year: 'Ano',
+};
