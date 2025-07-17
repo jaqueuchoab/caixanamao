@@ -129,19 +129,6 @@ export function RegistersPage() {
 						{currentFilter.type ? filterTypeMap[currentFilter.type] : 'Filtrar'}
 					</Button>
 
-					<Button
-						variant='neutral'
-						text_align='center'
-						onClick={() => refetch()}
-					>
-						<ArrowsClockwiseIcon
-							weight='bold'
-							size={16}
-							className={isFetching ? 'animate-spin' : ''}
-						/>
-						Atualizar
-					</Button>
-
 					{showOrderPopup && (
 						<RegisterOrderPopup
 							currentOrder={currentOrder}
@@ -158,14 +145,28 @@ export function RegistersPage() {
 						/>
 					)}
 				</RelativePopupsContainer>
+
+				<Button
+					onClick={() => refetch()}
+					disabled={isFetching}
+					variant='neutral'
+					text_align='center'
+					style={{ backgroundColor: 'transparent' }}
+				>
+					<ArrowsClockwiseIcon
+						weight='bold'
+						size={16}
+						className={isFetching ? 'animate-spin' : ''}
+					/>
+					{isFetching ? 'Atualizando' : 'Atualizar'}
+				</Button>
 			</TopActions>
 
 			<RegistersList>
-				{isLoading ||
-					(isFetching &&
-						Array.from({ length: 3 }, (_, idx) => (
-							<RegisterCardSkeleton key={idx} />
-						)))}
+				{(isLoading || isFetching) &&
+					Array.from({ length: 3 }, (_, idx) => (
+						<RegisterCardSkeleton key={idx} />
+					))}
 
 				{!isFetching &&
 					registers &&

@@ -61,6 +61,8 @@ export const RelativePopupsContainer = styled.div`
 
 export const TopActions = styled.div`
 	width: 100%;
+	position: relative;
+
 	display: flex;
 	flex-flow: column wrap;
 	align-items: flex-start;
