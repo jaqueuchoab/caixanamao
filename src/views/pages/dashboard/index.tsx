@@ -14,7 +14,7 @@ import {
 	HouseIcon,
 } from '@phosphor-icons/react';
 import { RegistersPage } from '../registers';
-import { Route, Routes } from '@lib/router';
+import { Route, Routes, Navigate } from '@lib/router';
 
 export function DashboardPage() {
 	const size = useWindowSize();
@@ -28,6 +28,11 @@ export function DashboardPage() {
 			<DashboardContent>
 				<AnimatePresence mode='wait'>
 					<Routes>
+						<Route
+							path='/'
+							element={<Navigate to={'home'} replace />}
+							key={'/dashboard/'}
+						/>
 						<Route
 							path='/home'
 							element={
