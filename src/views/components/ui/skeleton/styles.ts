@@ -42,7 +42,7 @@ export const RegisterCardSkeleton = styled.div`
 	min-width: 100%;
 
 	height: 100dvh;
-	max-height: 337px;
+	max-height: 330px;
 
 	display: flex;
 	flex-direction: column;
@@ -63,6 +63,6 @@ export const RegisterCardSkeleton = styled.div`
 	@media screen and (width >= 820px) {
 		max-width: 620px;
 		min-width: 240px;
-		max-height: 464px;
+		max-height: 454px;
 	}
 `;
