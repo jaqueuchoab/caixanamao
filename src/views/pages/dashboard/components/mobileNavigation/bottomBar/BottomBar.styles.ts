@@ -7,7 +7,7 @@ export const BottomBarContainer = styled.nav`
 
 	display: flex;
 	width: 100%;
-	padding: 16px 16px;
+	padding: 16px 16px 24px 16px;
 	justify-content: space-around;
 	align-items: center;
 	gap: 12px;

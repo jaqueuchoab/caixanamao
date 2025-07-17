@@ -1,9 +1,9 @@
 import {
-	House,
-	Notepad,
-	FileText,
-	ChartBar,
-	Plus,
+	HouseIcon,
+	NotepadIcon,
+	FileTextIcon,
+	ChartBarIcon,
+	PlusIcon,
 } from '@phosphor-icons/react';
 import { Button } from '@components/ui/button/Button';
 import { BottomBarContainer } from './BottomBar.styles';
@@ -20,7 +20,7 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/home')}
 			>
-				<House size={28} />
+				<HouseIcon size={28} />
 			</Button>
 			<Button
 				variant='neutral'
@@ -28,10 +28,10 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/registers')}
 			>
-				<Notepad size={28} />
+				<NotepadIcon size={28} />
 			</Button>
 			<Button variant='primary' fill_width text_align='center'>
-				<Plus size={28} />
+				<PlusIcon size={28} />
 			</Button>
 			<Button
 				variant='neutral'
@@ -39,7 +39,7 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/reports')}
 			>
-				<FileText size={28} />
+				<FileTextIcon size={28} />
 			</Button>
 			<Button
 				variant='neutral'
@@ -47,7 +47,7 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/analysis')}
 			>
-				<ChartBar size={28} />
+				<ChartBarIcon size={28} />
 			</Button>
 		</BottomBarContainer>
 	);
