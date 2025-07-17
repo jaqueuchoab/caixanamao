@@ -13,7 +13,7 @@ import {
 	GearIcon,
 	HouseIcon,
 } from '@phosphor-icons/react';
-import { RegistersPage } from '../registers';
+import { RegistersPage } from './registers';
 import { Route, Routes, Navigate } from '@lib/router';
 
 export function DashboardPage() {
@@ -44,6 +44,11 @@ export function DashboardPage() {
 							path='/registers'
 							element={<RegistersPage />}
 							key={'/dashboard/registers'}
+						/>
+						<Route
+							path='/registers'
+							element={<RegistersPage />}
+							key={'/dashboard/registers/new'}
 						/>
 						{/* TODO: página de novo/editar registro */}
 						<Route
