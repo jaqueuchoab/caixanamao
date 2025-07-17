@@ -44,8 +44,19 @@ export const RelativePopupsContainer = styled.div`
 	width: inherit;
 	position: relative;
 	display: flex;
+	flex-flow: wrap;
 	gap: 8px;
 	transition: color 0.7s ease;
+
+	& > button {
+		width: 100%;
+	}
+
+	@media screen and (width > 768px) {
+		& > button {
+			width: fit-content;
+		}
+	}
 `;
 
 export const TopActions = styled.div`
@@ -70,6 +81,7 @@ export const TopActions = styled.div`
 `;
 
 export const RegistersList = styled.div`
+	width: 100%;
 	display: flex;
 	align-items: flex-start;
 	align-content: flex-start;

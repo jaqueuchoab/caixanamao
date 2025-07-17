@@ -1,13 +1,10 @@
-import { useState, useEffect, useRef } from 'react';
 import { Button } from '@components/ui/button/Button';
-import { RegisterCard } from './components/RegisterCard';
+import { RegisterCardSkeleton } from '@components/ui/skeleton/styles';
 import {
-	Container,
-	RelativePopupsContainer,
-	RegistersList,
-	Title,
-	TopActions,
-} from './styles';
+	emptyFilter,
+	filterTypeMap,
+	RegisterFilter,
+} from '@models/registers/register-filter';
 import {
 	ArrowsClockwiseIcon,
 	CaretUpDownIcon,
@@ -15,17 +12,19 @@ import {
 	PlusIcon,
 	XIcon,
 } from '@phosphor-icons/react';
-import { RegisterOrderPopup } from './components/RegisterOrderPopup';
-import { RegisterFilterPopup } from './components/RegisterFilterPopup';
-import {
-	emptyFilter,
-	filterTypeMap,
-	RegisterFilter,
-} from '@models/registers/register-filter';
 import { fetchRegisters } from '@services/fetchRegisters';
-import { SpinnerOverlay } from '@components/ui/spinner/Spinner.styles';
-import { Spinner } from '@components/ui/spinner/Spinner';
 import { useQuery } from '@tanstack/react-query';
+import { useEffect, useRef, useState } from 'react';
+import { RegisterCard } from './components/RegisterCard';
+import { RegisterFilterPopup } from './components/RegisterFilterPopup';
+import { RegisterOrderPopup } from './components/RegisterOrderPopup';
+import {
+	Container,
+	RegistersList,
+	RelativePopupsContainer,
+	Title,
+	TopActions,
+} from './styles';
 
 export function RegistersPage() {
 	const {
@@ -161,20 +160,20 @@ export function RegistersPage() {
 				</RelativePopupsContainer>
 			</TopActions>
 
-			{isLoading ||
-				(isFetching && (
-					<SpinnerOverlay>
-						<Spinner />
-					</SpinnerOverlay>
-				))}
+			<RegistersList>
+				{isLoading ||
+					(isFetching &&
+						Array.from({ length: 3 }, (_, idx) => (
+							<RegisterCardSkeleton key={idx} />
+						)))}
 
-			{registers && registers.length > 0 && (
-				<RegistersList>
-					{registers.map((data, idx) => (
+				{!isFetching &&
+					registers &&
+					registers.length > 0 &&
+					registers.map((data, idx) => (
 						<RegisterCard key={idx} register={data} />
 					))}
-				</RegistersList>
-			)}
+			</RegistersList>
 		</Container>
 	);
 }
