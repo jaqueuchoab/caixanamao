@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 export const SidebarContainer = styled(motion.nav)`
 	height: 100dvh;
-	padding: 24px 16px;
+	padding: 24px;
 
 	display: flex;
 	flex-direction: column;
@@ -11,10 +11,16 @@ export const SidebarContainer = styled(motion.nav)`
 	align-items: center;
 
 	color: ${({ theme }) => theme.colors.texts.primary};
-	background-color: ${({ theme }) => theme.colors.backgrounds.tertiary};
+	background-color: ${({ theme }) => theme.colors.backgrounds.dashboard};
+	border-right: 1px solid ${({ theme }) => theme.colors.register.itemStroke};
 
 	svg {
 		min-width: 24px;
+	}
+
+	& .active {
+		font-weight: 600;
+		color: ${({ theme }) => theme.colors.texts.highlight};
 	}
 `;
 

@@ -1,15 +1,15 @@
 import {
-	CastleTurret,
-	ChartBar,
-	CircleHalf,
-	FileText,
-	Gear,
-	House,
-	Lifebuoy,
-	List,
-	Notepad,
-	Plus,
-	SignOut,
+	CastleTurretIcon,
+	ChartBarIcon,
+	CircleHalfIcon,
+	FileTextIcon,
+	GearIcon,
+	HouseIcon,
+	LifebuoyIcon,
+	ListIcon,
+	NotepadIcon,
+	PlusIcon,
+	SignOutIcon,
 } from '@phosphor-icons/react';
 import { Button } from '@components/ui/button/Button';
 import {
@@ -20,14 +20,15 @@ import {
 	SidebarHeader,
 } from './Sidebar.styles';
 import { useState } from 'react';
-import { useNavigate } from '@lib/router';
+import { useLocation, useNavigate } from '@lib/router';
 import { useContextTheme } from '@context/ThemeContext';
 import { Profile } from './profile/Profile';
 
 export function Sidebar() {
 	const navigate = useNavigate();
-	const [isOpen, setIsOpen] = useState<boolean>(true);
 	const { switchTheme } = useContextTheme();
+	const [isOpen, setIsOpen] = useState<boolean>(true);
+	const { pathname: location } = useLocation();
 
 	function handleIsOpen() {
 		setIsOpen((prev) => !prev);
@@ -45,20 +46,16 @@ export function Sidebar() {
 		>
 			<SidebarHeader $is_open={isOpen}>
 				{isOpen && (
-					<Button variant='neutral' onClick={switchTheme}>
-						<CircleHalf weight='fill' size={24} />
-					</Button>
+					<CircleHalfIcon weight='fill' size={24} onClick={switchTheme} />
 				)}
-				<Button variant='neutral' onClick={handleIsOpen}>
-					<List size={24} />
-				</Button>
+				<ListIcon size={24} onClick={handleIsOpen} />
 			</SidebarHeader>
 
 			<SidebarContent>
 				<Profile showInfos={isOpen} />
 
 				<Button variant='primary' fill_width text_align='center'>
-					<Plus size={24} />
+					<PlusIcon size={24} />
 					{isOpen && 'Novo registro'}
 				</Button>
 
@@ -68,44 +65,53 @@ export function Sidebar() {
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/home')}
+						className={location === '/dashboard/home' ? 'active' : ''}
 					>
-						<House size={24} />
+						<HouseIcon size={24} />
 						{isOpen && 'Página inicial'}
 					</Button>
+
 					<Button
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/registers')}
+						className={location === '/dashboard/registers' ? 'active' : ''}
 					>
-						<Notepad size={24} />
+						<NotepadIcon size={24} />
 						{isOpen && 'Registros'}
 					</Button>
+
 					<Button
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/admin')}
+						className={location === '/dashboard/admin' ? 'active' : ''}
 					>
-						<CastleTurret size={24} />
+						<CastleTurretIcon size={24} />
 						{isOpen && 'Administração'}
 					</Button>
+
 					<Button
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/reports')}
+						className={location === '/dashboard/reports' ? 'active' : ''}
 					>
-						<FileText size={24} />
+						<FileTextIcon size={24} />
 						{isOpen && 'Relatórios'}
 					</Button>
+
 					<Button
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/analysis')}
+						className={location === '/dashboard/analysis' ? 'active' : ''}
 					>
-						<ChartBar size={24} />
+						<ChartBarIcon size={24} />
 						{isOpen && 'Análises'}
 					</Button>
 				</SidebarActionsList>
@@ -117,8 +123,9 @@ export function Sidebar() {
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/dashboard/help')}
+					className={location === '/dashboard/help' ? 'active' : ''}
 				>
-					<Lifebuoy size={24} />
+					<LifebuoyIcon size={24} />
 					{isOpen && 'Ajuda'}
 				</Button>
 				<Button
@@ -126,8 +133,9 @@ export function Sidebar() {
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/dashboard/settings')}
+					className={location === '/dashboard/settings' ? 'active' : ''}
 				>
-					<Gear size={24} />
+					<GearIcon size={24} />
 					{isOpen && 'Configurações'}
 				</Button>
 				<Button
@@ -136,7 +144,7 @@ export function Sidebar() {
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/')}
 				>
-					<SignOut size={24} />
+					<SignOutIcon size={24} />
 					{isOpen && 'Sair'}
 				</Button>
 			</SidebarBottomActions>
