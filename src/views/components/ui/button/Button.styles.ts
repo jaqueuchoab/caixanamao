@@ -17,7 +17,7 @@ interface ButtonProps {
 export const ButtonContainer = styled.button<ButtonProps>`
 	display: flex;
 	${({ $fill_width }) => $fill_width && 'width: 100%;'}
-	padding: 10px 13px;
+	padding: 12px 16px;
 	justify-content: ${({ $text_align }) => $text_align || 'center'};
 	align-items: center;
 	gap: 8px;
@@ -32,7 +32,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
 	}
 
 	&:disabled {
-		background-color: ${({ theme }) => theme.colors.buttons.disabledColor};
+		background-color: ${({ theme }) => theme.colors.buttons.disabledColor}64;
 		color: ${({ theme }) => theme.colors.texts.primary};
 	}
 
