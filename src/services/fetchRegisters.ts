@@ -43,7 +43,7 @@ export async function fetchRegisters(): Promise<RegisterType[] | []> {
 						},
 					},
 				]);
-			}, 300);
+			}, 1200);
 		});
 
 		return response;
