@@ -36,7 +36,7 @@ export function RegistersPage() {
 	} = useQuery({
 		queryKey: ['registers'],
 		queryFn: fetchRegisters,
-		refetchOnMount: true,
+		refetchOnMount: false,
 	});
 	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
 
