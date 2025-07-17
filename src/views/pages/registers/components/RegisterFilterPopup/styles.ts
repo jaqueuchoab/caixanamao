@@ -5,7 +5,6 @@ export const Container = styled(motion.div)`
 	width: 100%;
 	position: absolute;
 	top: calc(100% + 8px);
-	left: 0;
 	z-index: 998;
 
 	display: flex;

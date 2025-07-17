@@ -9,9 +9,6 @@ export const Container = styled.div`
 	align-items: center;
 	flex: 1;
 	gap: 12px;
-
-	border-radius: 8px;
-	border: 2px solid ${({ theme }) => theme.colors.register.itemStroke};
 `;
 
 export const Infos = styled.div`

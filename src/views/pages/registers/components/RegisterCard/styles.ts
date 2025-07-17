@@ -10,7 +10,8 @@ export const Container = styled.div`
 	align-self: stretch;
 
 	border-radius: 12px;
-	background-color: ${({ theme }) => theme.colors.register.background};
+	background-color: ${({ theme }) => theme.colors.register.background}72;
+	border: 1px solid ${({ theme }) => theme.colors.register.itemStroke};
 	color: ${({ theme }) => theme.colors.texts.primary};
 
 	@media screen and (width >= 820px) {
@@ -66,8 +67,12 @@ export const Values = styled.div`
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	gap: 12px;
 	flex-wrap: wrap;
+	gap: 12px;
+
+	& > :not(:last-child) {
+		border-bottom: 1px solid ${({ theme }) => theme.colors.register.itemStroke};
+	}
 `;
 
 export const Total = styled.div`
