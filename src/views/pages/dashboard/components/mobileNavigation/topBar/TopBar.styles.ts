@@ -2,9 +2,6 @@ import styled from '@emotion/styled';
 import { motion } from '@lib/motion';
 
 export const TopBarContainer = styled.div`
-	top: 0;
-	left: 0;
-
 	width: 100%;
 	display: flex;
 	padding: 16px 24px;
