@@ -1,17 +1,12 @@
 import React from 'react';
 import style from './styles/DateInput.module.css';
 import { useContextTheme } from '../../context/ThemeContext';
+import { DateInputContainer, DateInputField } from './DateInput.styles';
 
 export type typeDate = {
 	day: string;
 	month: string;
 	year: string;
-};
-
-type DateInputProps = {
-	value: typeDate;
-	setValue: React.Dispatch<React.SetStateAction<typeDate>>;
-	error?: string;
 };
 
 function isEmpty(value: typeDate) {
@@ -24,50 +19,51 @@ function errorConfig(error: string, themeMode: string) {
 	return <span style={{ color: `var(--error-${themeMode})` }}>{error}</span>;
 }
 
-const DateInput = ({ value, setValue }: DateInputProps) => {
+const DateInput = () => {
 	const { themeMode } = useContextTheme();
+	const [dateOfBirth, setDateOfBirth] = React.useState<typeDate>({
+		day: '',
+		month: '',
+		year: '',
+	});
 
 	return (
 		<div>
-			<div
-				className={style.dateInput}
-				id={style[themeMode]}
-				onBlur={() => isEmpty(value)}
-			>
-				<input
+			<DateInputContainer onBlur={() => isEmpty(dateOfBirth)}>
+				<DateInputField
 					type='text'
 					id='day'
-					value={value.day}
+					value={dateOfBirth.day}
 					placeholder='00'
 					onChange={({ target }) =>
-						setValue({
+						setDateOfBirth({
 							day: target.value,
-							month: value.month,
-							year: value.year,
+							month: dateOfBirth.month,
+							year: dateOfBirth.year,
 						})
 					}
 				/>
 				<span>/</span>
-				<input
+				<DateInputField
 					type='text'
 					id='month'
-					value={value.month}
+					value={dateOfBirth.month}
 					placeholder='00'
 					onChange={({ target }) =>
-						setValue({ day: value.day, month: target.value, year: value.year })
+						setDateOfBirth({ day: dateOfBirth.day, month: target.value, year: dateOfBirth.year })
 					}
 				/>
 				<span>/</span>
-				<input
+				<DateInputField
 					type='text'
 					id='year'
-					value={value.year}
+					value={dateOfBirth.year}
 					placeholder='0000'
 					onChange={({ target }) =>
-						setValue({ day: value.day, month: value.month, year: target.value })
+						setDateOfBirth({ day: dateOfBirth.day, month: dateOfBirth.month, year: target.value })
 					}
 				/>
-			</div>
+			</DateInputContainer>
 			{/*error && error?.length !== 0 ? errorConfig(error, themeMode) : null*/}
 		</div>
 	);

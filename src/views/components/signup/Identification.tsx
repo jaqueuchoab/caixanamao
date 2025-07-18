@@ -43,10 +43,6 @@ const Identification = () => {
 		return `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
 	}
 
-	function isAdm(position: string) {
-		return position === 'Administrador' ? true : false;
-	}
-
 	// pode ser utilitaria porquê haverá momentos em ue vamos precisar realizar operações com as datas
 	function createDate(dateOfBirth: typeDate) {
 		const date = new Date(
@@ -84,15 +80,13 @@ const Identification = () => {
 					</fieldset>
 					<fieldset>
 						<label>Data de nascimento:</label>
-						<DateInput value={dateOfBirth} setValue={setDateOfBirth} />
+						<DateInput  />
 					</fieldset>
 					<fieldset>
 						<label>Cargo atual:</label>
 						<div className={style.radioList}>
 							<Radio
 								options={['Administrador', 'Funcionário']}
-								value={position}
-								setValue={setPosition}
 							/>
 						</div>
 					</fieldset>

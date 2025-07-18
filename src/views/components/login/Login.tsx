@@ -2,20 +2,14 @@ import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz
 import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
 import { useContextTheme } from '../../context/ThemeContext.tsx';
 import Input from '../input/Input.tsx';
-import {
-  ButtonSwitcher,
-  Information,
-  InputsContainer,
-  LoginContainer,
-  LoginEmail,
-  MultisetContainer,
-  TabsSwitcher,
-} from './Login.styles.ts';
+import { Information, LabelInformation, LoginContainer, LoginRegister } from './Login.styles.ts';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import { useState } from 'react';
 import { style } from 'framer-motion/client';
 import FormMultiset from '../formMultiset/FormMultiset.tsx';
+import DateInput from '../input/DateInput.tsx';
+import Radio from '../input/Radio.tsx';
 
 /*
 endpoint LOGIN
@@ -27,8 +21,8 @@ const Login = () => {
   const { themeMode } = useContextTheme();
   const email = useForm('email');
   const password = useForm('password_login');
-  const telefone = useForm('telefone');
-  const cidade = useForm('cidade');
+  const name = useForm('name');
+  const cpf = useForm('cpf');
   const location = useLocation();
   const currentPath = location.pathname;
 
@@ -41,7 +35,7 @@ const Login = () => {
         alt="cnm_logohorz"
         style={{ height: 'var(--size-3md)' }}
       />
-      <LoginEmail>
+      <LoginRegister>
         <Information>Acesse sua Conta ou Cadastre-se</Information>
         <FormMultiset>
           {isLogin ? (
@@ -62,21 +56,27 @@ const Login = () => {
           ) : (
             <>
               <Input
-                id="telefone"
+                id="nome"
                 type="text"
-                placeholder="Digite seu telefone"
-                {...telefone}
+                placeholder="Como devemos te chamar?"
+                {...name}
               />
               <Input
-                id="cidade"
-                type="cidade"
-                placeholder="Digite sua cidade"
-                {...cidade}
+                id="cpf"
+                type="text"
+                placeholder="No formato 000.000.000-00"
+                {...cpf}
               />
+              <LabelInformation>Data de Nascimento: </LabelInformation>
+              <DateInput />
+              <LabelInformation>Cargo atual: </LabelInformation>
+              <Radio
+								options={['Colaborador', 'Administrador']}
+							/>
             </>
           )}
         </FormMultiset>
-      </LoginEmail>
+      </LoginRegister>
     </LoginContainer>
   );
 };

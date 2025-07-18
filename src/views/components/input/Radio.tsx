@@ -1,32 +1,33 @@
+import React from 'react';
 import { Dispatch, SetStateAction } from 'react';
 import style from './styles/Radio.module.css';
+import { RadioContainer, RadioInput, RadioLabel } from './RadioInput.style';
 
 type RadioProps = {
 	options: string[];
-	value: string;
-	setValue: Dispatch<SetStateAction<string>>;
 };
 
-const Radio = ({ options, value, setValue, ...props }: RadioProps) => {
+const Radio = ({ options }: RadioProps) => {
+	const [position, setPosition] = React.useState<string>("");
+
 	return (
-		<>
+		<RadioContainer>
 			{options.map((option) => {
 				return (
-					<label key={option} className={style.radio}>
-						<input
-							{...props}
+					<RadioLabel key={option}>
+						<RadioInput
 							type='radio'
 							value={option}
-							checked={value === option}
+							checked={position === option}
 							onChange={({ target }) => {
-								setValue(target.value);
+								setPosition(target.value);
 							}}
-						/>{' '}
+						/>
 						{option}
-					</label>
+					</RadioLabel>
 				);
 			})}
-		</>
+		</RadioContainer>
 	);
 };
 

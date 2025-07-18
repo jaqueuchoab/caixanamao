@@ -1,4 +1,3 @@
-import { baseColorsDefault } from './../../themes/defaults';
 import styled from '@emotion/styled';
 
 type ButtonSwitcherProps = {
@@ -25,8 +24,8 @@ export const LoginContainer = styled.div`
   color: ${({ theme }) => theme.colors.texts.primary};
 `;
 
-// Estilos para o LoginEmail
-export const LoginEmail = styled.main`
+// Estilos para o LoginRegister
+export const LoginRegister = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,47 +41,6 @@ export const Information = styled.h3`
   color: ${({ theme }) => theme.colors.texts.primary};
 `;
 
-// mexer a partir desse no formmultiset styles
-export const MultisetContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  align-self: stretch;
-  border-radius: 16px;
-  border: 1.6px solid ${({ theme }) => theme.colors.inputs.stroke};
-`;
-
-export const TabsSwitcher = styled.div`
-  display: flex;
-  padding: 8px;
-  align-items: flex-start;
-  gap: 10px;
-  align-self: stretch;
-  border-radius: 16px 16px 0px 0px;
-  background-color: ${({ theme }) => theme.colors.buttons.switcher.fill};
-`;
-
-export const ButtonSwitcher = styled.button<ButtonSwitcherProps>`
-  display: flex;
-  padding: ${({ theme }) =>
-    `${theme.sizes['sm-plus']}px ${theme.sizes['sm-x']}px`};
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  gap: 8px;
-  flex: 1 0 0;
-  flex-wrap: wrap;
-  border-radius: ${({ theme }) => theme.sizes.sm + 'px'};
+export const LabelInformation = styled.label`
   color: ${({ theme }) => theme.colors.texts.primary};
-  font-size: ${({ theme }) => theme.sizes.md + 'px'};
-  ${({theme, active}) => `background-color: ${active ? theme.colors.buttons.switcher.buttonActive : theme.colors.buttons.switcher.buttonInactive};`}
-`;
-
-export const InputsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${({ theme }) => theme.sizes['sm-plus'] + 'px'};
-  align-self: stretch;
-  padding: ${({ theme }) =>
-    `${theme.sizes.md}px ${theme.sizes['sm-x']}px ${theme.sizes['sm-plus']}px ${theme.sizes['sm-x']}px`};
 `;
