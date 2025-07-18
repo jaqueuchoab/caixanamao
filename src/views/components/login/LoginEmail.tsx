@@ -7,7 +7,6 @@ import useForm from '../../hooks/useForm';
 import { Link, useNavigate } from 'react-router-dom';
 import { Information } from './Login.styles.ts';
 
-
 const LoginEmail = () => {
 	const { themeMode } = useContextTheme();
 	const navigate = useNavigate();

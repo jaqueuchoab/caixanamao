@@ -80,6 +80,14 @@ export const lightTheme: ThemeType = {
 				hover: baseColorsDefault.green[900],
 				stroke: '',
 			},
+			switcher: {
+				text: baseColorsDefault.neutral[950],
+				fill: baseColorsDefault.neutral[300],
+				hover: baseColorsDefault.neutral[200],
+				stroke: '',
+				buttonActive: baseColorsDefault.neutral[100],
+				buttonInactive: baseColorsDefault.neutral[300],
+			},
 		},
 		register: {
 			itemStroke: baseColorsDefault.neutral[300],

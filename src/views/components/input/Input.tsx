@@ -3,7 +3,7 @@ import style from './styles/Input.module.css';
 import { useContextTheme } from '../../context/ThemeContext';
 import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
 
-type InputProps = {
+export type InputProps = {
 	id: string;
 	value: string;
 	type: string;

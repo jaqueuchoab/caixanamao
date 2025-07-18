@@ -11,10 +11,11 @@ import {
   MultisetContainer,
   TabsSwitcher,
 } from './Login.styles.ts';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useForm from '../../hooks/useForm';
 import { useState } from 'react';
 import { style } from 'framer-motion/client';
+import FormMultiset from '../formMultiset/FormMultiset.tsx';
 
 /*
 endpoint LOGIN
@@ -26,17 +27,12 @@ const Login = () => {
   const { themeMode } = useContextTheme();
   const email = useForm('email');
   const password = useForm('password_login');
-  const [displayForm, setDisplayForm] = useState<'login' | 'register'>('login');
+  const telefone = useForm('telefone');
+  const cidade = useForm('cidade');
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-  const handleDisplayLoginForm = () => {
-    setDisplayForm('login');
-  };
-
-  const handleDisplayRegisterForm = () => {
-    setDisplayForm('register');
-  };
-
-	// Componentizar esse form e deixar essa mudança de cores nos botões mais dinâmico e robusto
+  const isLogin = currentPath === '/login';
 
   return (
     <LoginContainer>
@@ -47,44 +43,39 @@ const Login = () => {
       />
       <LoginEmail>
         <Information>Acesse sua Conta ou Cadastre-se</Information>
-        <MultisetContainer>
-          <TabsSwitcher>
-            <ButtonSwitcher
-              onClick={handleDisplayLoginForm}
-              style={
-                displayForm === 'register'
-                  ? { backgroundColor: '#606060' }
-                  : { backgroundColor: '#171717' }
-              }
-            >
-              Login
-            </ButtonSwitcher>
-            <ButtonSwitcher
-              onClick={handleDisplayRegisterForm}
-              style={
-                displayForm === 'login'
-                  ? { backgroundColor: '#606060' }
-                  : { backgroundColor: '#171717' }
-              }
-            >
-              Cadastre-se
-            </ButtonSwitcher>
-          </TabsSwitcher>
-          <InputsContainer>
-            <Input
-              id="email"
-              type="text"
-              placeholder="Digite seu email"
-              {...email}
-            />
-            <Input
-              id="password"
-              type="password"
-              placeholder="No mínimo 8 digitos"
-              {...password}
-            />
-          </InputsContainer>
-        </MultisetContainer>
+        <FormMultiset>
+          {isLogin ? (
+            <>
+              <Input
+                id="email"
+                type="text"
+                placeholder="Digite seu email"
+                {...email}
+              />
+              <Input
+                id="password"
+                type="password"
+                placeholder="No mínimo 8 digitos"
+                {...password}
+              />
+            </>
+          ) : (
+            <>
+              <Input
+                id="telefone"
+                type="text"
+                placeholder="Digite seu telefone"
+                {...telefone}
+              />
+              <Input
+                id="cidade"
+                type="cidade"
+                placeholder="Digite sua cidade"
+                {...cidade}
+              />
+            </>
+          )}
+        </FormMultiset>
       </LoginEmail>
     </LoginContainer>
   );

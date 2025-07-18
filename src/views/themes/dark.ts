@@ -80,6 +80,14 @@ export const darkTheme: ThemeType = {
 				hover: baseColorsDefault.green[600],
 				stroke: '',
 			},
+			switcher: {
+				text: baseColorsDefault.neutral[100],
+				fill: baseColorsDefault.neutral[900],
+				hover: baseColorsDefault.neutral[400],
+				stroke: '',
+				buttonActive: baseColorsDefault.neutral[600],
+				buttonInactive: baseColorsDefault.neutral[900],
+			},
 		},
 		register: {
 			itemStroke: baseColorsDefault.neutral[700],

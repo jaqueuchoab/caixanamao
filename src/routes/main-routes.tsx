@@ -21,6 +21,10 @@ export const mainRoutes: RouteObject[] = [
 		element: <Login />,
 	},
 	{
+		path: '/register',
+		element: <Login />,
+	},
+	{
 		path: '/signup/*',
 		element: <SignUp />,
 	},
