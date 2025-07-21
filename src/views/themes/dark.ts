@@ -82,11 +82,11 @@ export const darkTheme: ThemeType = {
 			},
 			switcher: {
 				text: baseColorsDefault.neutral[100],
-				fill: baseColorsDefault.neutral[900],
+				fill: baseColorsDefault.neutral[600],
 				hover: baseColorsDefault.neutral[400],
 				stroke: '',
-				buttonActive: baseColorsDefault.neutral[600],
-				buttonInactive: baseColorsDefault.neutral[900],
+				buttonActive: baseColorsDefault.neutral[900],
+				buttonInactive: baseColorsDefault.neutral[600],
 			},
 		},
 		register: {

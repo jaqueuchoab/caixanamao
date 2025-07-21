@@ -1,83 +1,31 @@
-import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
-import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
-import { useContextTheme } from '../../context/ThemeContext.tsx';
-import Input from '../input/Input.tsx';
-import { Information, LabelInformation, LoginContainer, LoginRegister } from './Login.styles.ts';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React from 'react';
+import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
-import { useState } from 'react';
-import { style } from 'framer-motion/client';
-import FormMultiset from '../formMultiset/FormMultiset.tsx';
-import DateInput from '../input/DateInput.tsx';
-import Radio from '../input/Radio.tsx';
 
-/*
-endpoint LOGIN
-email: string;
-senha: string;
-*/
+type LoginProps = {
+  onValidChange?: (isValid: boolean) => void;
+};
 
-const Login = () => {
-  const { themeMode } = useContextTheme();
+const Login = ({ onValidChange }: LoginProps) => {
   const email = useForm('email');
   const password = useForm('password_login');
-  const name = useForm('name');
-  const cpf = useForm('cpf');
-  const location = useLocation();
-  const currentPath = location.pathname;
 
-  const isLogin = currentPath === '/login';
+  React.useEffect(() => {
+    const isValid = email.validate() && password.validate();
+    onValidChange?.(isValid);
+    localStorage.setItem('email', email.value);
+  }, [email.value, password.value]);
 
   return (
-    <LoginContainer>
-      <img
-        src={themeMode === 'light' ? cnm_logohorz_light : cnm_logohorz_dark}
-        alt="cnm_logohorz"
-        style={{ height: 'var(--size-3md)' }}
+    <>
+      <Input id="email" type="text" placeholder="Digite seu email" {...email} />
+      <Input
+        id="password"
+        type="password"
+        placeholder="No mínimo 8 digitos"
+        {...password}
       />
-      <LoginRegister>
-        <Information>Acesse sua Conta ou Cadastre-se</Information>
-        <FormMultiset>
-          {isLogin ? (
-            <>
-              <Input
-                id="email"
-                type="text"
-                placeholder="Digite seu email"
-                {...email}
-              />
-              <Input
-                id="password"
-                type="password"
-                placeholder="No mínimo 8 digitos"
-                {...password}
-              />
-            </>
-          ) : (
-            <>
-              <Input
-                id="nome"
-                type="text"
-                placeholder="Como devemos te chamar?"
-                {...name}
-              />
-              <Input
-                id="cpf"
-                type="text"
-                placeholder="No formato 000.000.000-00"
-                {...cpf}
-              />
-              <LabelInformation>Data de Nascimento: </LabelInformation>
-              <DateInput />
-              <LabelInformation>Cargo atual: </LabelInformation>
-              <Radio
-								options={['Colaborador', 'Administrador']}
-							/>
-            </>
-          )}
-        </FormMultiset>
-      </LoginRegister>
-    </LoginContainer>
+    </>
   );
 };
 

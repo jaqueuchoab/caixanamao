@@ -4,7 +4,7 @@ type ButtonSwitcherProps = {
   active: boolean;
 };
 
-export const LoginContainer = styled.div`
+export const AuthModeSelectorContainer = styled.div`
   height: 100vh;
   width: 100vw;
 

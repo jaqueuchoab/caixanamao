@@ -23,6 +23,27 @@ export const RadioInput = styled.input`
   justify-content: center;
   align-items: center;
 
-  border-radius: 50px;
+  border-radius: 50%;
   border: 2px solid ${({ theme }) => theme.colors.inputs.stroke};
+
+  // Remover configuração padrão de posiçào e aparência
+  position: relative;
+  appearance: none;
+
+  &:checked {
+    border-color: ${({ theme }) => theme.colors.inputs.marked};
+    background-color: transparent;
+  }
+
+  &:checked::before {
+    content: '';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: ${({ theme }) => theme.sizes.md}px;
+    height: ${({ theme }) => theme.sizes.md}px;
+    background: ${({ theme }) => theme.colors.inputs.marked};
+    border-radius: 50%;
+    position: absolute;
+  }
 `;

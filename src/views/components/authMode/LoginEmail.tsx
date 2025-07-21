@@ -1,11 +1,11 @@
 import style from './styles/LoginEmail.module.css';
 import googleLogo from '../../assets/google_g_logo.svg';
-import { useContextTheme } from '../../context/ThemeContext';
-import Input from '../input/Input';
-import { Button } from '../button/Button';
-import useForm from '../../hooks/useForm';
+import { useContextTheme } from '../../context/ThemeContext.tsx';
+import Input from '../input/Input.tsx';
+import { Button } from '../button/Button.tsx';
+import useForm from '../../hooks/useForm.ts';
 import { Link, useNavigate } from 'react-router-dom';
-import { Information } from './Login.styles.ts';
+import { Information } from './AuthModeSelector.styles.ts';
 
 const LoginEmail = () => {
 	const { themeMode } = useContextTheme();
@@ -56,13 +56,6 @@ const LoginEmail = () => {
 						<Button disabled>Entrar</Button>
 					)}
 				</Link>
-				<Button
-					onClick={() => {
-						navigate('/signup', { replace: true });
-					}}
-				>
-					Cadastrar-se
-				</Button>
 			</div>
 		</section>
 	);
