@@ -1,18 +1,22 @@
 import React from 'react';
 import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
+import { LoginData } from '../../../services/userService';
 
 type LoginProps = {
   onValidChange?: (isValid: boolean) => void;
+  onDataChange?: (data: LoginData) => void;
 };
 
-const Login = ({ onValidChange }: LoginProps) => {
+const Login = ({ onValidChange, onDataChange }: LoginProps) => {
   const email = useForm('email');
   const password = useForm('password_login');
 
   React.useEffect(() => {
     const isValid = email.validate() && password.validate();
     onValidChange?.(isValid);
+    
+    onDataChange?.({ email: email.value, password: password.value });
     localStorage.setItem('email', email.value);
   }, [email.value, password.value]);
 

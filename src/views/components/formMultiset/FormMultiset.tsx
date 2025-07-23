@@ -17,7 +17,7 @@ const FormMultiset = ({ children }: FormMultisetProps) => {
   const location = useLocation();
 
   const displayForm: 'login' | 'register' =
-    location.pathname === '/register' ? 'register' : 'login';
+    location.pathname.includes("login") ? 'login' : 'register';
 
   const handleDisplayLoginForm = () => {
     navigate('/login');
