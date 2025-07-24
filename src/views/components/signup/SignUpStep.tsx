@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { registerRoutes } from '../../../routes/register-routes';
-import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
+import ProgressIndicatorPassword from './ProgressIndicator/ProgressIndicatorPassword';
 
 const SignUpMultiset = () => {
   return (
     <>
-    <ProgressIndicator />
+    <ProgressIndicatorPassword />
       <Routes>
         {registerRoutes.map((route) => {
           return <Route path={route.path} element={route.element} />;

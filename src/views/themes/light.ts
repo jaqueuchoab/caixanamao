@@ -40,11 +40,11 @@ export const lightTheme: ThemeType = {
 				inactive: baseColorsDefault.blue[300],
 			},
 			progressDot: {
-				active: baseColorsDefault.green[200],
+				active: baseColorsDefault.green[600],
 				inactive: baseColorsDefault.neutral[300],
 			},
 			progressBar: {
-				active: baseColorsDefault.green[300],
+				active: baseColorsDefault.green[600],
 				inactive: baseColorsDefault.neutral[300],
 			},
 		},

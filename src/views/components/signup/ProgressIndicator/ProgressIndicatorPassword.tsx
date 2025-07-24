@@ -1,28 +1,34 @@
 import React from 'react';
-import style from './ProgressIndicator.module.css';
-import { useContextTheme } from '../../../context/ThemeContext';
+import {
+  LineIndicator,
+  Progress,
+  ProgressDot,
+} from './ProgressIndicator.style';
+import { useLocation } from 'react-router-dom';
 
 const ProgressIndicatorPassword = () => {
-	const { themeMode } = useContextTheme();
+  const location = useLocation();
+  const currentPath = location.pathname;
 
-	return (
-		<section className={style.progressIndicator}>
-			<div className={style.containerProgress}>
-				<a className={style.progressDot} id={style[themeMode]}>
-					<span className={style.numberDot}>1</span>
-				</a>
-			</div>
-			<div className={`password ${style.lineProgress}`} id={style[themeMode]}>
-				<div></div>
-			</div>
-			<div className={style.containerProgress}>
-				<a className={style.progressDot} id={style[themeMode]}>
-					<span className={style.numberDot}>2</span>
-				</a>
-				<div className={style.indicatorStep}>Senha</div>
-			</div>
-		</section>
-	);
+  const isCredentials = currentPath.includes('credentials');
+	console.log(`Current path: ${currentPath}, isCredentials: ${isCredentials}`);
+	
+
+  return { isCredentials } ? (
+    <Progress>
+      <ProgressDot $active={true}>1</ProgressDot>
+      <LineIndicator $active={true} />
+      <ProgressDot $active={true}>2</ProgressDot>
+			<p>Senha</p>
+    </Progress>
+  ) : (
+		<Progress>
+		<ProgressDot $active={true}>1</ProgressDot>
+		<p>Identificação</p>
+		<LineIndicator $active={false} />
+		<ProgressDot $active={false}>2</ProgressDot>
+	</Progress>
+  );
 };
 
 export default ProgressIndicatorPassword;

@@ -24,7 +24,6 @@ const AuthModeSelector = () => {
   const { themeMode } = useContextTheme();
   const location = useLocation();
   const currentPath = location.pathname;
-  console.log('Current Path:', currentPath);
   
   const navigate = useNavigate();
   const isLogin = currentPath === '/login';
