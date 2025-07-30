@@ -31,7 +31,7 @@ export default defineConfig({
 				'**/*.contract.{ts,tsx}',
 				'**/*.protocol.{ts,tsx}',
 				'**/*.interface.{ts,tsx}',
-				'src/app/**/layout.{ts,tsx}',
+				'src/views/themes/**/*',
 				'**/*.mock.{ts,tsx}',
 				'**/*.mocks.{ts,tsx}',
 				'**/tests/**',
