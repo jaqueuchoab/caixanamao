@@ -10,6 +10,7 @@ import { DashboardPage } from './views/pages/dashboard';
 import Vantagens from './views/pages/Vantagens';
 import Fallback from './views/pages/fallback/Fallback';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { GlobalStyles } from './views/styles/GlobalStyles';
 
 // TODO: refatorar componentes que usam css modules para styled components
 
@@ -20,6 +21,7 @@ function App() {
 			<ThemeContextProvider>
 				<ErrorBoundary>
 					<QueryClientProvider client={queryClient}>
+						<GlobalStyles />
 						<Routes>
 							<Route path='/' element={<Home />} />
 							<Route path='/login/*' element={<Login />} />
