@@ -20,7 +20,11 @@ const Fallback = () => {
 				<LinkBreakIcon size={64} />
 				<h3>Ops, página não encontrada!</h3>
 				<ErrorBadge>{errorMessage}</ErrorBadge>
-				<Button variant='link' onClick={() => window.history.back()}>
+				<Button
+					style={{ padding: '0' }}
+					variant='link'
+					onClick={() => window.history.back()}
+				>
 					Voltar para pagina anterior
 				</Button>
 			</FallbackContent>
