@@ -21,7 +21,12 @@ export const ButtonContainer = styled.button<ButtonProps>`
 	justify-content: ${({ $text_align }) => $text_align || 'center'};
 	align-items: center;
 	gap: 8px;
-	transition: background-color 0.2s ease;
+
+	transition: opacity 0.3s ease;
+
+	&:hover {
+		opacity: 0.64;
+	}
 
 	border-radius: 8px;
 	outline-offset: 4px;
@@ -42,37 +47,21 @@ export const ButtonContainer = styled.button<ButtonProps>`
 				return css`
 					background-color: ${theme.colors.buttons.primary.fill};
 					color: ${theme.colors.buttons.primary.text};
-
-					&:hover {
-						background-color: ${theme.colors.buttons.primary.hover};
-					}
 				`;
 			case 'neutral':
 				return css`
 					background-color: transparent;
 					color: ${theme.colors.texts.primary};
-
-					&:hover {
-						background-color: ${theme.colors.buttons.neutral.hover};
-					}
 				`;
 			case 'danger':
 				return css`
 					background-color: ${theme.colors.buttons.danger.fill};
 					color: ${theme.colors.buttons.danger.text};
-
-					&:hover {
-						background-color: ${theme.colors.buttons.danger.hover};
-					}
 				`;
 			case 'admin':
 				return css`
 					background-color: ${theme.colors.buttons.admin.fill};
 					color: ${theme.colors.buttons.admin.text};
-
-					&:hover {
-						background-color: ${theme.colors.buttons.admin.hover};
-					}
 				`;
 			case 'link':
 				return css`
@@ -85,8 +74,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
 					}
 
 					&:hover {
-						color: ${theme.colors.buttons.link.hover};
-
+						text-decoration: none;
 						svg {
 							fill: ${theme.colors.buttons.link.hover};
 						}
