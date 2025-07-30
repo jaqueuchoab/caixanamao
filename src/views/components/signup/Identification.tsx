@@ -4,10 +4,28 @@ import { LabelInformation } from '../authMode/AuthModeSelector.styles';
 import Radio from '../input/Radio';
 import DateInput from '../input/DateInput';
 import useForm from '../../hooks/useForm';
+import { IdentificationData } from '../../../@types/user-types';
 
-const Identification = () => {
+type IdentificationProps = {
+  onValidChange?: (isValid: boolean) => void;
+  onDataChange?: (data: IdentificationData) => void;
+};
+
+const Identification = ({ onValidChange, onDataChange }: IdentificationProps) => {
   const name = useForm('name');
   const cpf = useForm('cpf');
+
+  React.useEffect(() => {
+    const isValid = name.validate() && cpf.validate();
+    onValidChange?.(isValid);
+
+    onDataChange?.({
+      nome: name.value,
+      cpf: cpf.value,
+      dataNascimento: '',
+      cargo: 'Colaborador'
+    });
+  }, [name.value, cpf.value]);
 
   return (
     <>

@@ -1,7 +1,7 @@
 import React from 'react';
 import Input from '../input/Input';
 import useForm from '../../hooks/useForm';
-import { LoginData } from '../../../services/userService';
+import { LoginData } from '../../../@types/user-types';
 
 type LoginProps = {
   onValidChange?: (isValid: boolean) => void;
@@ -16,7 +16,7 @@ const Login = ({ onValidChange, onDataChange }: LoginProps) => {
     const isValid = email.validate() && password.validate();
     onValidChange?.(isValid);
     
-    onDataChange?.({ email: email.value, password: password.value });
+    onDataChange?.({ email: email.value, senha: password.value });
     localStorage.setItem('email', email.value);
   }, [email.value, password.value]);
 
