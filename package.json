@@ -10,7 +10,9 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:ui": "vitest --ui"
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage",
+    "coverage:ui": "vitest --coverage --ui"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
