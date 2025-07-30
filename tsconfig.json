@@ -45,7 +45,10 @@
       "@models/*": [
         "src/models/*"
       ]
-    }
+    },
+    "types": [
+      "vitest/globals"
+    ]
   },
   "include": [
     "src"
