@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { useState } from 'react';
 import style from './styles/Input.module.css';
 import { useContextTheme } from '../../context/ThemeContext';
 import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
@@ -7,22 +7,19 @@ export type InputProps = {
 	id: string;
 	value: string;
 	type: string;
-	setValue: Dispatch<SetStateAction<string>>;
 	placeholder?: string;
 	error: null | string;
 	onChange: (target: HTMLInputElement) => void;
-	onBlur: (value: string | number) => boolean;
+	onBlur?: (value: string | number) => boolean;
 };
 
 const Input = ({
 	id,
 	value,
 	type,
-	setValue,
 	placeholder,
 	error,
 	onChange,
-	onBlur,
 }: InputProps) => {
 	const { themeMode } = useContextTheme();
 	const [visible, setVisible] = useState(true);
@@ -75,7 +72,6 @@ const Input = ({
 					className={style.input}
 					placeholder={placeholder}
 					onChange={({ target }) => onChange(target)}
-					onBlur={({ target }) => onBlur(target.value)}
 				/>
 				{type === 'password' ? (
 					<a onClick={() => setVisible(!visible)}>{visiblePassword(visible)}</a>

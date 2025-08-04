@@ -36,7 +36,7 @@ const types: typesInput = {
   },
   password_login: {
     regex: /^.{8,}$/,
-    message: 'Senha incorreta, tente novamente',
+    message: 'Senha inválida, tente novamente',
     void: 'Preencha sua senha'
   }
 };

@@ -14,6 +14,7 @@ import { Button } from '../button/Button.tsx';
 import Login from '../login/Login.tsx';
 import { loginUser } from '../../../services/userService.ts';
 import { LoginData } from '../../../@types/user-types.ts';
+import { useFormStore } from '../../store/useFormStore.ts';
 
 const AuthModeSelector = () => {
   const { themeMode } = useContextTheme();
@@ -30,6 +31,8 @@ const AuthModeSelector = () => {
     email: '',
     senha: '',
   });
+
+  const { formData } = useFormStore();
 
   // Função que atualiza os dados do Login quando o usuário digita no formulário
   const handleLoginDataChange = (data: LoginData) => {
@@ -54,6 +57,7 @@ const AuthModeSelector = () => {
     if (!location.pathname.includes('credentials')) {
       navigate('credentials');
     }
+    console.log(formData);
   };
 
   return (
