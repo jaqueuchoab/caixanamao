@@ -64,7 +64,7 @@ const DateInput = () => {
 					}
 				/>
 			</DateInputContainer>
-			{/*error && error?.length !== 0 ? errorConfig(error, themeMode) : null*/}
+			{isEmpty(dateOfBirth) ? true : errorConfig("Preencha todos os campos", themeMode)}
 		</div>
 	);
 };

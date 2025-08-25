@@ -1,7 +1,8 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { registerRoutes } from '../../../routes/register-routes';
 import ProgressIndicator from './ProgressIndicator/ProgressIndicator';
+import Identification from './Identification';
+import Credentials from './Credentials';
 
 
 const SignUpMultiset = () => {
@@ -10,9 +11,8 @@ const SignUpMultiset = () => {
     <>
     <ProgressIndicator />
       <Routes>
-        {registerRoutes.map((route) => {
-          return <Route path={route.path} element={route.element} />;
-        })}
+        <Route path='/' element={<Identification/>}></Route>
+        <Route path='/creadentials' element={<Credentials/>}></Route>
       </Routes>
     </>
   );

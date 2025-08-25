@@ -47,7 +47,7 @@ const AuthModeSelector = () => {
 
       localStorage.setItem('token', response.token);
       navigate('/dashboard');
-    } catch (error: any) {
+    } catch (error: string | any) {
       console.error('Erro ao fazer login:', error.response?.data || error.msg);
     }
   };

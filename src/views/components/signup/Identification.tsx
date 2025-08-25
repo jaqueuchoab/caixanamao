@@ -12,7 +12,7 @@ type IdentificationProps = {
   onDataChange?: (data: IdentificationData) => void;
 };
 
-// quebrou os inputs verificar o que houve e tentar ajustar ao contexto, zustand
+// os inputs estão funcionando mas sem validação, o que é necessário
 
 const Identification = ({ onValidChange, onDataChange }: IdentificationProps) => {
   const name = useForm('name');
@@ -20,16 +20,11 @@ const Identification = ({ onValidChange, onDataChange }: IdentificationProps) =>
   const { formData, setField } = useFormStore();
 
   React.useEffect(() => {
-    const isValid = name.validate() && cpf.validate();
-    onValidChange?.(isValid);
-
-    onDataChange?.({
-      nome: name.value,
-      cpf: cpf.value,
-      dataNascimento: '',
-      cargo: 'Colaborador'
-    });
-  }, [name.value, cpf.value]);
+      const isValid = name.validate() && cpf.validate();
+      onValidChange?.(isValid);
+      
+      onDataChange?.({ nome: name.value, cpf: cpf.value });
+    }, [name.value, cpf.value]);
 
   return (
     <>
@@ -37,7 +32,7 @@ const Identification = ({ onValidChange, onDataChange }: IdentificationProps) =>
         id="nome"
         type="text"
         placeholder="Como devemos te chamar?"
-        value={formData.nome = name.value}
+        value={formData.nome}
         onChange={(e) => setField("nome", e.value)}
         error={name.error}
       />
@@ -45,7 +40,7 @@ const Identification = ({ onValidChange, onDataChange }: IdentificationProps) =>
         id="cpf"
         type="text"
         placeholder="No formato 000.000.000-00"
-        value={formData.cpf = cpf.value}
+        value={formData.cpf}
         onChange={(e) => setField("cpf", e.value)}
         error={cpf.error}
       />
