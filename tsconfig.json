@@ -24,6 +24,9 @@
     "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
+      "@/*": [
+        "src/*"
+      ],
       "@components/*": [
         "src/views/components/*"
       ],

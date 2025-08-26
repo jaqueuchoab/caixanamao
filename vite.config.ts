@@ -8,6 +8,7 @@ export default defineConfig({
 	plugins: [react(), visualizer({ open: true, filename: 'stats.html' })],
 	resolve: {
 		alias: {
+			'@': path.resolve(__dirname, './src'),
 			'@components': path.resolve(__dirname, './src/views/components'),
 			'@assets': path.resolve(__dirname, './src/views/assets'),
 			'@lib': path.resolve(__dirname, './src/lib'),
