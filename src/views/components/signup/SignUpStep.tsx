@@ -12,7 +12,7 @@ const SignUpMultiset = () => {
     <ProgressIndicator />
       <Routes>
         <Route path='/' element={<Identification/>}></Route>
-        <Route path='/creadentials' element={<Credentials/>}></Route>
+        <Route path='/credentials' element={<Credentials/>}></Route>
       </Routes>
     </>
   );

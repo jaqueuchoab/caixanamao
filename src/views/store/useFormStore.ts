@@ -5,7 +5,7 @@ type FormData = {
   nome: string;
   cpf: string;
   nasc: string;
-  cargo: boolean;
+  cargo: "Colaborador" | "Administrador";
   email: string;
   senha: string;
   senha_confirmacao: string;
@@ -24,7 +24,7 @@ export const useFormStore = create<FormStore>((set) => ({
     nome: '',
     cpf: '',
     nasc: '',
-    cargo: false,
+    cargo: "Colaborador",
     email: '',
     senha: '',
     senha_confirmacao: '',
@@ -43,7 +43,7 @@ export const useFormStore = create<FormStore>((set) => ({
         nome: '',
         cpf: '',
         nasc: '',
-        cargo: false,
+        cargo: "Colaborador",
         email: '',
         senha: '',
         senha_confirmacao: '',

@@ -14,7 +14,7 @@ export type LoginData = {
 export type IdentificationData = {
   nome: string;
   cpf: string;
-  dataNascimento: string;
+  nasc: string;
   cargo: 'Colaborador' | 'Administrador';
 }
 

@@ -54,9 +54,7 @@ const AuthModeSelector = () => {
 
   // Função que redireciona o usuário para a página de cadastro, caso ele não esteja lá
   const handleSignUp = () => {
-    if (!location.pathname.includes('credentials')) {
-      navigate('credentials');
-    }
+    navigate('/credentials');
     console.log(formData);
   };
 

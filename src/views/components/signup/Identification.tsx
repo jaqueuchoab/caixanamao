@@ -16,15 +16,19 @@ type IdentificationProps = {
 
 const Identification = ({ onValidChange, onDataChange }: IdentificationProps) => {
   const name = useForm('name');
-  const cpf = useForm('cpf');
+  const cpf_field = useForm('cpf');
   const { formData, setField } = useFormStore();
 
   React.useEffect(() => {
-      const isValid = name.validate() && cpf.validate();
+    // brevemente mudar essa validação com o hook form
+      const isValid = name.value.length > 3 && cpf_field.value.length > 3;
       onValidChange?.(isValid);
+
+      // acho que essa parte pode ser removida nao necessario repassar os dados ja que temos um contexto global
+      const {nome, cpf, nasc, cargo} = formData;
       
-      onDataChange?.({ nome: name.value, cpf: cpf.value });
-    }, [name.value, cpf.value]);
+      onDataChange?.({nome, cpf, nasc, cargo});
+    }, [formData, name, cpf_field]);
 
   return (
     <>
@@ -42,7 +46,7 @@ const Identification = ({ onValidChange, onDataChange }: IdentificationProps) =>
         placeholder="No formato 000.000.000-00"
         value={formData.cpf}
         onChange={(e) => setField("cpf", e.value)}
-        error={cpf.error}
+        error={cpf_field.error}
       />
       <LabelInformation>Data de Nascimento: </LabelInformation>
       <DateInput />

@@ -13,7 +13,7 @@ const Login = ({ onValidChange, onDataChange }: LoginProps) => {
   const password = useForm('password_login');
 
   React.useEffect(() => {
-    const isValid = email.validate() && password.validate();
+    const isValid = email.value.length > 3 && password.value.length > 3;
     onValidChange?.(isValid);
     
     onDataChange?.({ email: email.value, senha: password.value });
