@@ -1,14 +1,18 @@
 import React from 'react';
 import { Dispatch, SetStateAction } from 'react';
-import style from './styles/Radio.module.css';
 import { RadioContainer, RadioInput, RadioLabel } from './RadioInput.style';
 
-type RadioProps = {
-	options: string[];
+// Usando generics baseado em string para permitir diferentes opções
+type RadioProps<T extends string> = {
+	// array de opções
+	options: T[];
+	// valor inicial
+	value: T;
+	// função que atualiza o valor selecionado
+	onChange?: (value: T) => void;
 };
 
-const Radio = ({ options }: RadioProps) => {
-	const [position, setPosition] = React.useState<string>("");
+const Radio = <T extends string>({ options, value, onChange }:  RadioProps<T>) => {
 
 	return (
 		<RadioContainer>
@@ -18,10 +22,8 @@ const Radio = ({ options }: RadioProps) => {
 						<RadioInput
 							type='radio'
 							value={option}
-							checked={position === option}
-							onChange={({ target }) => {
-								setPosition(target.value);
-							}}
+							checked={value === option}
+							onChange={() => onChange?.(option)}
 						/>
 						{option}
 					</RadioLabel>

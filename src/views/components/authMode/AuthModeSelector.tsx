@@ -48,6 +48,7 @@ const AuthModeSelector = () => {
       localStorage.setItem('token', response.token);
       navigate('/dashboard');
     } catch (error: string | unknown) {
+
       // mensagem de erro para o usuário
       console.error('Erro ao fazer login:', error.response?.data || error.msg);
     }
@@ -55,7 +56,7 @@ const AuthModeSelector = () => {
 
   // Função que redireciona o usuário para a página de cadastro, caso ele não esteja lá
   const handleSignUp = () => {
-    navigate('/credentials');
+    navigate('credentials');
     console.log(formData);
   };
 
@@ -78,6 +79,7 @@ const AuthModeSelector = () => {
             <SignUpMultiset />
           )}
         </FormMultiset>
+        {}
       </LoginRegister>
       {isLogin ? (
         <Button

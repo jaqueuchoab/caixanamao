@@ -14,21 +14,24 @@ type IdentificationProps = {
 
 // os inputs estão funcionando mas sem validação, o que é necessário
 
-const Identification = ({ onValidChange, onDataChange }: IdentificationProps) => {
+const Identification = ({
+  onValidChange,
+  onDataChange,
+}: IdentificationProps) => {
   const name = useForm('name');
   const cpf_field = useForm('cpf');
   const { formData, setField } = useFormStore();
 
   React.useEffect(() => {
     // brevemente mudar essa validação com o hook form
-      const isValid = name.value.length > 3 && cpf_field.value.length > 3;
-      onValidChange?.(isValid);
+    const isValid = name.value.length > 3 && cpf_field.value.length > 3;
+    onValidChange?.(isValid);
 
-      // acho que essa parte pode ser removida nao necessario repassar os dados ja que temos um contexto global
-      const {nome, cpf, nasc, cargo} = formData;
-      
-      onDataChange?.({nome, cpf, nasc, cargo});
-    }, [formData, name, cpf_field]);
+    // acho que essa parte pode ser removida nao necessario repassar os dados ja que temos um contexto global
+    const { nome, cpf, nasc, cargo } = formData;
+
+    onDataChange?.({ nome, cpf, nasc, cargo });
+  }, [formData, name, cpf_field]);
 
   return (
     <>
@@ -37,7 +40,7 @@ const Identification = ({ onValidChange, onDataChange }: IdentificationProps) =>
         type="text"
         placeholder="Como devemos te chamar?"
         value={formData.nome}
-        onChange={(e) => setField("nome", e.value)}
+        onChange={(e) => setField('nome', e.value)}
         error={name.error}
       />
       <Input
@@ -45,13 +48,17 @@ const Identification = ({ onValidChange, onDataChange }: IdentificationProps) =>
         type="text"
         placeholder="No formato 000.000.000-00"
         value={formData.cpf}
-        onChange={(e) => setField("cpf", e.value)}
+        onChange={(e) => setField('cpf', e.value)}
         error={cpf_field.error}
       />
       <LabelInformation>Data de Nascimento: </LabelInformation>
       <DateInput />
       <LabelInformation>Cargo atual: </LabelInformation>
-      <Radio options={['Colaborador', 'Administrador']} />
+      <Radio
+        value={formData.cargo}
+        onChange={(value) => setField('cargo', value)}
+        options={['Colaborador', 'Administrador']}
+      />
     </>
   );
 };
