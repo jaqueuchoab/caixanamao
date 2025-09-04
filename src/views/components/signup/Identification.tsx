@@ -4,19 +4,16 @@ import { LabelInformation } from '../authMode/AuthModeSelector.styles';
 import Radio from '../input/Radio';
 import DateInput from '../input/DateInput';
 import useForm from '../../hooks/useForm';
-import { IdentificationData } from '../../../@types/user-types';
 import { useFormStore } from '../../store/useFormStore';
 
 type IdentificationProps = {
   onValidChange?: (isValid: boolean) => void;
-  onDataChange?: (data: IdentificationData) => void;
 };
 
 // os inputs estão funcionando mas sem validação, o que é necessário
 
 const Identification = ({
   onValidChange,
-  onDataChange,
 }: IdentificationProps) => {
   const name = useForm('name');
   const cpf_field = useForm('cpf');
@@ -27,10 +24,6 @@ const Identification = ({
     const isValid = name.value.length > 3 && cpf_field.value.length > 3;
     onValidChange?.(isValid);
 
-    // acho que essa parte pode ser removida nao necessario repassar os dados ja que temos um contexto global
-    const { nome, cpf, nasc, cargo } = formData;
-
-    onDataChange?.({ nome, cpf, nasc, cargo });
   }, [formData, name, cpf_field]);
 
   return (
@@ -52,7 +45,7 @@ const Identification = ({
         error={cpf_field.error}
       />
       <LabelInformation>Data de Nascimento: </LabelInformation>
-      <DateInput />
+      <DateInput value={formData.nasc} onChange={(e) => setField('nasc', e)}/>
       <LabelInformation>Cargo atual: </LabelInformation>
       <Radio
         value={formData.cargo}

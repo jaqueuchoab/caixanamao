@@ -11,9 +11,7 @@ const ProgressIndicator = () => {
   const currentPath = location.pathname;
 
   const isCredentials = currentPath.includes('credentials');
-
-  console.log(`Current path: ${currentPath}, isCredentials: ${isCredentials}`);
-
+  
   return isCredentials ? (
     <Progress>
       <ProgressDot $active={true}>1</ProgressDot>

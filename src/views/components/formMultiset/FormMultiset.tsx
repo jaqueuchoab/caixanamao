@@ -16,15 +16,15 @@ const FormMultiset = ({ children }: FormMultisetProps) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const displayForm: 'login' | 'register' =
-    location.pathname.includes("login") ? 'login' : 'register';
+  const displayForm: 'login' | 'signup' =
+    location.pathname.includes("login") ? 'login' : 'signup';
 
   const handleDisplayLoginForm = () => {
     navigate('/login');
   };
 
-  const handleDisplayRegisterForm = () => {
-    navigate('/register');
+  const handleDisplaySignupForm = () => {
+    navigate('/signup');
   };
   return (
     <MultisetContainer>
@@ -36,8 +36,8 @@ const FormMultiset = ({ children }: FormMultisetProps) => {
           Login
         </ButtonSwitcher>
         <ButtonSwitcher
-          onClick={handleDisplayRegisterForm}
-          active={displayForm === 'register'}
+          onClick={handleDisplaySignupForm}
+          active={displayForm === 'signup'}
         >
           Cadastre-se
         </ButtonSwitcher>
@@ -45,7 +45,7 @@ const FormMultiset = ({ children }: FormMultisetProps) => {
       <InputsContainer>
         {displayForm === 'login' &&
           React.Children.map(children, (childrenInput) => childrenInput)}
-        {displayForm === 'register' &&
+        {displayForm === 'signup' &&
           React.Children.map(children, (childrenInput) => childrenInput)}
       </InputsContainer>
     </MultisetContainer>

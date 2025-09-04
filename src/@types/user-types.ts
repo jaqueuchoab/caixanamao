@@ -3,28 +3,17 @@ export type LoginData = {
   senha: string;
 };
 
-/**export type LoginResponse = {
-  token: string;
-  user: {
-    id: string;
-    email: string;
-  };
-};**/
-
 export type IdentificationData = {
-  nome: string;
+   nome: string;
   cpf: string;
   nasc: string;
-  cargo: 'Colaborador' | 'Administrador';
+  cargo: "Colaborador" | "Administrador";
 }
 
 export type CredentialsData = {
   email: string;
   senha: string;
-  confirmeSenha: string;
+  senha_confirmacao: string;
 }
 
-export type SignUpData = {
-  identificacao: IdentificationData;
-  credenciais: CredentialsData;
-};
+export type SignUpData = IdentificationData & CredentialsData;

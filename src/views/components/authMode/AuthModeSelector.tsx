@@ -12,7 +12,7 @@ import FormMultiset from '../formMultiset/FormMultiset.tsx';
 import SignUpMultiset from '../signup/SignUpStep.tsx';
 import { Button } from '../button/Button.tsx';
 import Login from '../login/Login.tsx';
-import { loginUser } from '../../../services/userService.ts';
+import { loginUser, signUpUser } from '../../../services/userService.ts';
 import { LoginData } from '../../../@types/user-types.ts';
 import { useFormStore } from '../../store/useFormStore.ts';
 
@@ -23,6 +23,8 @@ const AuthModeSelector = () => {
 
   const navigate = useNavigate();
   const isLogin = currentPath === '/login';
+  const isSignUp = currentPath === '/signup';
+  const isCredentials = currentPath.includes('credentials');
 
   // Estados para verificação de prenchimento de Login, para habilitar o botão de Login
   const [loginValid, setLoginValid] = React.useState(false);
@@ -32,7 +34,12 @@ const AuthModeSelector = () => {
     senha: '',
   });
 
-  const { formData } = useFormStore();
+  const {
+    formData,
+    isIdentificationComplete,
+    isCredentialsComplete,
+    isComplete,
+  } = useFormStore();
 
   // Função que atualiza os dados do Login quando o usuário digita no formulário
   const handleLoginDataChange = (data: LoginData) => {
@@ -47,17 +54,24 @@ const AuthModeSelector = () => {
 
       localStorage.setItem('token', response.token);
       navigate('/dashboard');
-    } catch (error: string | unknown) {
-
+    } catch (error: string) {
       // mensagem de erro para o usuário
-      console.error('Erro ao fazer login:', error.response?.data || error.msg);
+      console.error('Erro ao fazer login:', error.msg);
     }
   };
 
   // Função que redireciona o usuário para a página de cadastro, caso ele não esteja lá
-  const handleSignUp = () => {
-    navigate('credentials');
-    console.log(formData);
+  const handleSignUp = async () => {
+    try {
+      if (isComplete()) {
+        const response = await signUpUser(formData);
+        console.log('Cadastro bem-sucedido:', response);
+        navigate('/dashboard');
+      }
+    } catch (error: string) {
+      // mensagem de erro para o usuário
+      console.error('Erro ao fazer cadastro:', error.msg);
+    }
   };
 
   return (
@@ -90,11 +104,28 @@ const AuthModeSelector = () => {
         >
           Entrar
         </Button>
-      ) : (
-        <Button onClick={handleSignUp} fill_width={true} text_align="center">
+      ) : null}
+      {isSignUp ? (
+        <Button
+          onClick={() => navigate('credentials')}
+          fill_width={true}
+          text_align="center"
+          disabled={!isIdentificationComplete()}
+        >
           Continuar
         </Button>
-      )}
+      ) : null}
+
+      {isCredentials ? (
+        <Button
+          onClick={handleSignUp}
+          fill_width={true}
+          text_align="center"
+          disabled={!isCredentialsComplete()}
+        >
+          Confirmar
+        </Button>
+      ) : null}
     </AuthModeSelectorContainer>
   );
 };

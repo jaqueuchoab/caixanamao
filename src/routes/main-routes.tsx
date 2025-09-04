@@ -20,7 +20,7 @@ export const mainRoutes: RouteObject[] = [
 		element: <AuthModeSelector />,
 	},
 	{
-		path: '/register/*',
+		path: '/signup/*',
 		element: <AuthModeSelector />,
 	},
 	{
