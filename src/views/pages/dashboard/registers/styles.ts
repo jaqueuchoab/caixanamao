@@ -29,7 +29,8 @@ export const Title = styled.div`
 export const RelativePopupsContainer = styled.div`
 	width: inherit;
 	position: relative;
-	display: flex;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
 	flex-flow: wrap;
 	gap: 8px;
 	transition: color 0.7s ease;
@@ -39,6 +40,7 @@ export const RelativePopupsContainer = styled.div`
 	}
 
 	@media screen and (width > 768px) {
+		display: flex;
 		& > button {
 			width: fit-content;
 		}
