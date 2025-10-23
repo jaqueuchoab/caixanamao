@@ -8,8 +8,8 @@ export async function fetchRegisters(): Promise<RegisterType[] | []> {
 				resolve([
 					{
 						id: 1,
-						startDate: 1719900000000,
-						endDate: 1719986400000,
+						startDate: new Date(),
+						endDate: new Date(),
 						values: {
 							initial: 150,
 							money: 220,
@@ -20,8 +20,8 @@ export async function fetchRegisters(): Promise<RegisterType[] | []> {
 					},
 					{
 						id: 2,
-						startDate: 1719986400000,
-						endDate: 1720072800000,
+						startDate: new Date(),
+						endDate: new Date(),
 						values: {
 							initial: 0,
 							money: 42,
@@ -32,8 +32,8 @@ export async function fetchRegisters(): Promise<RegisterType[] | []> {
 					},
 					{
 						id: 3,
-						startDate: 1720072800000,
-						endDate: 1720159200000,
+						startDate: new Date(),
+						endDate: new Date(),
 						values: {
 							initial: 50,
 							money: 20,
