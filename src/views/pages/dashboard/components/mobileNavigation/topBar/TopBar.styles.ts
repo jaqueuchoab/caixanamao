@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { motion } from '@lib/motion';
 
 export const TopBarContainer = styled.div`
 	width: 100%;
@@ -12,7 +11,7 @@ export const TopBarContainer = styled.div`
 	color: ${({ theme }) => theme.colors.texts.primary};
 `;
 
-export const TopBarPopupContainer = styled(motion.div)`
+export const TopBarPopupContainer = styled.div`
 	z-index: 1;
 	position: fixed;
 	top: 80px;
@@ -31,5 +30,6 @@ export const TopBarPopupContainer = styled(motion.div)`
 	background: ${({ theme }) => theme.colors.backgrounds.tertiary};
 	color: ${({ theme }) => theme.colors.texts.primary};
 	box-shadow: 0px 81px 23px 0px rgba(0, 0, 0, 0),
-		0px 29px 17px 0px rgba(0, 0, 0, 0.1), 0px 13px 13px 0px rgba(0, 0, 0, 0.2);
+		0px 29px 17px 0px rgba(0, 0, 0, 0.1),
+		0px 13px 13px 0px rgba(0, 0, 0, 0.2);
 `;

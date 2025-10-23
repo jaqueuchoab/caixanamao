@@ -3,7 +3,6 @@ import { TopBarContainer } from './TopBar.styles';
 import { useState } from 'react';
 import { Button } from '@components/ui/button/Button';
 import { TopBarPopUp } from './TopBarPopUp';
-import { AnimatePresence } from '@lib/motion.ts';
 import { Profile } from '../../sidebar/profile/Profile';
 
 export function TopBar() {
@@ -17,11 +16,17 @@ export function TopBar() {
 		<>
 			<TopBarContainer>
 				<Profile />
-				<Button variant='neutral' onClick={togglePopUpState}>
+				<Button
+					variant="neutral"
+					onClick={(e) => {
+						e.stopPropagation();
+						togglePopUpState();
+					}}
+				>
 					{isOpen ? <X size={28} /> : <List size={28} />}
 				</Button>
 			</TopBarContainer>
-			<AnimatePresence mode='wait'>{isOpen && <TopBarPopUp />}</AnimatePresence>
+			{isOpen && <TopBarPopUp key="topbar-popup" />}
 		</>
 	);
 }
