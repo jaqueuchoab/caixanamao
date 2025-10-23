@@ -11,6 +11,7 @@ import Vantagens from './views/pages/Vantagens';
 import Fallback from './views/pages/fallback/Fallback';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GlobalStyles } from './views/styles/GlobalStyles';
+import { Toaster } from './views/components/ui/toaster';
 
 // TODO: refatorar componentes que usam css modules para styled components
 
@@ -23,13 +24,17 @@ function App() {
 					<QueryClientProvider client={queryClient}>
 						<GlobalStyles />
 						<Routes>
-							<Route path='/' element={<Home />} />
-							<Route path='/login/*' element={<Login />} />
-							<Route path='/signup/*' element={<SignUp />} />
-							<Route path='/dashboard/*' element={<DashboardPage />} />
-							<Route path='/benefits' element={<Vantagens />} />
-							<Route path='/fallback?' element={<Fallback />} />
+							<Route path="/" element={<Home />} />
+							<Route path="/login/*" element={<Login />} />
+							<Route path="/signup/*" element={<SignUp />} />
+							<Route
+								path="/dashboard/*"
+								element={<DashboardPage />}
+							/>
+							<Route path="/benefits" element={<Vantagens />} />
+							<Route path="/fallback?" element={<Fallback />} />
 						</Routes>
+						<Toaster />
 					</QueryClientProvider>
 				</ErrorBoundary>
 			</ThemeContextProvider>
