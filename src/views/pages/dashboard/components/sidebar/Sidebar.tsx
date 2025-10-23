@@ -35,15 +35,7 @@ export function Sidebar() {
 	}
 
 	return (
-		<SidebarContainer
-			animate={{ width: isOpen ? 256 : 96 }}
-			transition={{
-				duration: 0.25,
-				ease: 'easeOut',
-				type: 'tween',
-				staggerChildren: 2,
-			}}
-		>
+		<SidebarContainer style={{ width: isOpen ? 256 : 96 }}>
 			<SidebarHeader $is_open={isOpen}>
 				{isOpen && (
 					<CircleHalfIcon

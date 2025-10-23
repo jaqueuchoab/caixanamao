@@ -1,7 +1,6 @@
-import { motion } from '@lib/motion';
 import styled from '@emotion/styled';
 
-export const SidebarContainer = styled(motion.nav)`
+export const SidebarContainer = styled.nav`
 	height: 100dvh;
 	padding: 24px;
 
