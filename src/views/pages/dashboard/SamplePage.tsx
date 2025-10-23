@@ -1,13 +1,12 @@
 import styled from '@emotion/styled';
 import { Icon } from '@phosphor-icons/react';
-import { motion } from '@lib/motion';
 
 interface SamplePageProps {
 	pageTitle: string;
 	Icon: Icon;
 }
 
-export const SamplePageContainer = styled(motion.div)`
+export const SamplePageContainer = styled.div`
 	width: 100%;
 	height: 100%;
 
@@ -20,12 +19,7 @@ export const SamplePageContainer = styled(motion.div)`
 
 export function SamplePage({ pageTitle, Icon }: SamplePageProps) {
 	return (
-		<SamplePageContainer // motion.div com atributos motion
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			exit={{ opacity: 0 }}
-			transition={{ duration: 0.9, ease: 'easeOut', type: 'tween' }}
-		>
+		<SamplePageContainer>
 			<Icon size={81} />
 			<p
 				style={{

@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
-import { motion } from '@lib/motion';
 
-export const Container = styled(motion.div)`
+export const Container = styled.div`
 	width: 100%;
 
 	display: flex;
