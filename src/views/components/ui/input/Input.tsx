@@ -1,39 +1,15 @@
-import { Dispatch, SetStateAction, useState } from 'react';
+import { ComponentProps, useState } from 'react';
 import style from './styles/Input.module.css';
 import { useContextTheme } from '@context/ThemeContext';
 import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
 
 type InputProps = {
-	id: string;
-	value: string;
-	type: string;
-	setValue: Dispatch<SetStateAction<string>>;
-	placeholder?: string;
-	error: null | string;
-	onChange: (target: HTMLInputElement) => void;
-	onBlur: (value: string | number) => boolean;
-};
+	error?: string;
+} & ComponentProps<'input'>;
 
-const Input = ({
-	id,
-	value,
-	type,
-	setValue,
-	placeholder,
-	error,
-	onChange,
-	onBlur,
-}: InputProps) => {
+const Input = ({ error, ...props }: InputProps) => {
 	const { themeMode } = useContextTheme();
 	const [visible, setVisible] = useState(true);
-
-	function errorConfig(error: string, themeMode: string) {
-		return (
-			<span style={{ color: `var(--error-${themeMode})`, marginBottom: '8px' }}>
-				{error}
-			</span>
-		);
-	}
 
 	function visiblePassword(visible: boolean) {
 		const input = document.querySelector<HTMLInputElement>('#password');
@@ -57,33 +33,36 @@ const Input = ({
 	}
 
 	return (
-		<div>
-			<div
-				id={style[themeMode]}
-				className={`containerEmail ${style.inputContainer}`}
+		<div style={{ marginBottom: 8 }}>
+			<input
+				{...props}
+				autoComplete="off"
+				className={style.input}
 				style={
 					error
 						? { border: `1.4px solid var(--error-${themeMode})` }
-						: { border: '' }
+						: {}
 				}
-			>
-				<input
-					id={id}
-					type={type}
-					value={value}
-					autoComplete='off'
-					className={style.input}
-					placeholder={placeholder}
-					onChange={({ target }) => onChange(target)}
-					onBlur={({ target }) => onBlur(target.value)}
-				/>
-				{type === 'password' ? (
-					<a onClick={() => setVisible(!visible)}>{visiblePassword(visible)}</a>
-				) : (
-					''
-				)}
-			</div>
-			{error && error?.length !== 0 ? errorConfig(error, themeMode) : null}
+			/>
+			{props.type === 'password' ? (
+				<a onClick={() => setVisible(!visible)}>
+					{visiblePassword(visible)}
+				</a>
+			) : (
+				''
+			)}
+
+			{error && error?.length !== 0 && (
+				<span
+					style={{
+						color: `var(--error-${themeMode})`,
+						fontSize: 14,
+						marginBottom: '8px',
+					}}
+				>
+					{error}
+				</span>
+			)}
 		</div>
 	);
 };
