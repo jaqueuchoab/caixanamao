@@ -25,6 +25,7 @@ import {
 	Title,
 	TopActions,
 } from './styles';
+import { useNavigate } from '@lib/router';
 
 export function RegistersPage() {
 	const {
@@ -41,12 +42,14 @@ export function RegistersPage() {
 	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
 
 	const [showOrderPopup, setShowOrderPopup] = useState(false);
-	const [currentOrder, setCurrentOrder] = useState(''); // TODO: funcionalidade de ordenar registros
+	const [currentOrder, setCurrentOrder] = useState('');
 	const [showFilterPopup, setShowFilterPopup] = useState(false);
 	const [currentFilter, setCurrentFilter] =
-		useState<RegisterFilter>(emptyFilter); // TODO: funcionalidade de filtrar temporalmente os registros
+		useState<RegisterFilter>(emptyFilter);
 
 	const dropdownRef = useRef<HTMLDivElement>(null);
+
+	const navigate = useNavigate();
 
 	// fecha popup de ordenação ao clicar fora
 	useEffect(() => {
@@ -86,47 +89,89 @@ export function RegistersPage() {
 		>
 			<Title>
 				<h1>Registros</h1>
-				<span className='lastUpdate'>
+				<span className="lastUpdate">
 					Atualizados pela última vez em {lastUpdate}
 				</span>
 			</Title>
 
 			<TopActions>
-				<Button text_align='center'>
-					<PlusIcon weight='bold' size={16} /> Novo
+				<Button
+					onClick={() => navigate('/dashboard/registers/new')}
+					text_align="center"
+				>
+					<PlusIcon weight="bold" size={16} /> Novo
 				</Button>
 
 				<RelativePopupsContainer ref={dropdownRef}>
 					<Button
-						variant='neutral'
-						text_align='center'
+						variant="neutral"
+						text_align="center"
 						className={currentOrder ? 'success' : ''}
 						onClick={handleOrderButtonClick}
 					>
 						{currentOrder ? (
-							<XIcon size={16} onClick={() => setCurrentOrder('')} />
+							<span
+								className="removeCurrentModifier"
+								role="button"
+								aria-label="Remover ordenação"
+								tabIndex={0}
+								style={{
+									display: 'inline-flex',
+									cursor: 'pointer',
+								}}
+								onClick={(e) => {
+									e.stopPropagation();
+									setCurrentOrder('');
+								}}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter' || e.key === ' ') {
+										e.preventDefault();
+										e.stopPropagation();
+										setCurrentOrder('');
+									}
+								}}
+							>
+								<XIcon size={16} weight="bold" />
+							</span>
 						) : (
-							<CaretUpDownIcon weight='bold' size={16} />
+							<CaretUpDownIcon weight="bold" size={16} />
 						)}
 						{currentOrder || 'Ordenar'}
 					</Button>
 
 					<Button
-						variant='neutral'
-						text_align='center'
+						variant="neutral"
+						text_align="center"
 						className={currentFilter.type ? 'success' : ''}
 						onClick={handleFilterButtonClick}
 					>
 						{currentFilter.type ? (
-							<XIcon
-								size={16}
-								weight='bold'
-								onClick={() => setCurrentFilter(emptyFilter)}
-							/>
+							<span
+								className="removeCurrentModifier"
+								onClick={(e) => {
+									e.stopPropagation();
+									setCurrentFilter(emptyFilter);
+								}}
+								role="button"
+								aria-label="Limpar filtro"
+								tabIndex={0}
+								onKeyDown={(e) => {
+									if (e.key === 'Enter' || e.key === ' ') {
+										e.preventDefault();
+										e.stopPropagation();
+										setCurrentFilter(emptyFilter);
+									}
+								}}
+								style={{ display: 'inline-flex' }}
+							>
+								<XIcon size={16} weight="bold" />
+							</span>
 						) : (
-							<FunnelSimpleIcon weight='bold' size={16} />
+							<FunnelSimpleIcon weight="bold" size={16} />
 						)}
-						{currentFilter.type ? filterTypeMap[currentFilter.type] : 'Filtrar'}
+						{currentFilter.type
+							? filterTypeMap[currentFilter.type]
+							: 'Filtrar'}
 					</Button>
 
 					{showOrderPopup && (
@@ -149,12 +194,12 @@ export function RegistersPage() {
 				<Button
 					onClick={() => refetch()}
 					disabled={isFetching}
-					variant='neutral'
-					text_align='center'
+					variant="neutral"
+					text_align="center"
 					style={{ backgroundColor: 'transparent' }}
 				>
 					<ArrowsClockwiseIcon
-						weight='bold'
+						weight="bold"
 						size={16}
 						className={isFetching ? 'animate-spin' : ''}
 					/>
@@ -170,7 +215,6 @@ export function RegistersPage() {
 
 				{!isFetching &&
 					registers &&
-					registers.length > 0 &&
 					registers.map((data, idx) => (
 						<RegisterCard key={idx} register={data} />
 					))}

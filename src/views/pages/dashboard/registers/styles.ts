@@ -21,22 +21,9 @@ export const Title = styled.div`
 	flex-flow: column;
 	gap: 8px;
 
-	h1 {
-		color: ${({ theme }) => theme.colors.texts.primary};
-		font-family: Sora;
-		font-size: 24px;
-		font-weight: 600;
-	}
-
 	span.lastUpdate {
 		font-size: 16px;
 		color: ${({ theme }) => theme.colors.texts.secondary};
-	}
-
-	@media screen and (width > 768px) {
-		h1 {
-			font-size: 32px;
-		}
 	}
 `;
 
@@ -56,6 +43,10 @@ export const RelativePopupsContainer = styled.div`
 		& > button {
 			width: fit-content;
 		}
+	}
+
+	span.removeCurrentModifier:hover {
+		color: ${({ theme }) => theme.colors.buttons.danger.fill};
 	}
 `;
 
