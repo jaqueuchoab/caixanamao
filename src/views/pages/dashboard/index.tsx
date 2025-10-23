@@ -15,6 +15,8 @@ import {
 } from '@phosphor-icons/react';
 import { RegistersPage } from './registers';
 import { Route, Routes, Navigate } from '@lib/router';
+import { NewRegisterPage } from './registers/new';
+import { RegisterStepsContextProvider } from '@/views/context/RegisterStepsContext';
 
 export function DashboardPage() {
 	const size = useWindowSize();
@@ -26,58 +28,86 @@ export function DashboardPage() {
 			{isDeviceMobile ? <BottomBar /> : <Sidebar />}
 
 			<DashboardContent>
-				<AnimatePresence mode='wait'>
+				<AnimatePresence mode="wait">
 					<Routes>
 						<Route
-							path='/'
+							path="/"
 							element={<Navigate to={'home'} replace />}
 							key={'/dashboard/'}
 						/>
 						<Route
-							path='/home'
+							path="/home"
 							element={
-								<SamplePage Icon={HouseIcon} pageTitle='Página Inicial' />
+								<SamplePage
+									Icon={HouseIcon}
+									pageTitle="Página Inicial"
+								/>
 							}
 							key={'/dashboard/home'}
 						/>
 						<Route
-							path='/registers'
+							path="/registers"
 							element={<RegistersPage />}
 							key={'/dashboard/registers'}
 						/>
 						<Route
-							path='/registers'
-							element={<RegistersPage />}
+							path="/registers/new"
+							element={
+								<RegisterStepsContextProvider>
+									<NewRegisterPage />
+								</RegisterStepsContextProvider>
+							}
 							key={'/dashboard/registers/new'}
 						/>
-						{/* TODO: página de novo/editar registro */}
+
 						<Route
-							path='/admin'
+							path="/admin"
 							element={
-								<SamplePage Icon={CastleTurretIcon} pageTitle='Administração' />
+								<SamplePage
+									Icon={CastleTurretIcon}
+									pageTitle="Administração"
+								/>
 							}
 							key={'/dashboard/admin'}
 						/>
 						<Route
-							path='/reports'
+							path="/reports"
 							element={
-								<SamplePage Icon={FileTextIcon} pageTitle='Relatórios' />
+								<SamplePage
+									Icon={FileTextIcon}
+									pageTitle="Relatórios"
+								/>
 							}
 							key={'/dashboard/reports'}
 						/>
 						<Route
-							path='/analysis'
-							element={<SamplePage Icon={ChartBarIcon} pageTitle='Análises' />}
+							path="/analysis"
+							element={
+								<SamplePage
+									Icon={ChartBarIcon}
+									pageTitle="Análises"
+								/>
+							}
 							key={'/dashboard/analysis'}
 						/>
 						<Route
-							path='/help'
-							element={<SamplePage Icon={LifebuoyIcon} pageTitle='Ajuda' />}
+							path="/help"
+							element={
+								<SamplePage
+									Icon={LifebuoyIcon}
+									pageTitle="Ajuda"
+								/>
+							}
 							key={'/dashboard/help'}
 						/>
 						<Route
-							path='/settings'
-							element={<SamplePage Icon={GearIcon} pageTitle='Configurações' />}
+							path="/settings"
+							element={
+								<SamplePage
+									Icon={GearIcon}
+									pageTitle="Configurações"
+								/>
+							}
 							key={'/dashboard/settings'}
 						/>
 					</Routes>
