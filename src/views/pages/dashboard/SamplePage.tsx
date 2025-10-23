@@ -27,7 +27,13 @@ export function SamplePage({ pageTitle, Icon }: SamplePageProps) {
 			transition={{ duration: 0.9, ease: 'easeOut', type: 'tween' }}
 		>
 			<Icon size={81} />
-			<p style={{ maxWidth: 256, textAlign: 'center', fontWeight: 'bold' }}>
+			<p
+				style={{
+					maxWidth: 256,
+					textAlign: 'center',
+					fontWeight: 'bold',
+				}}
+			>
 				{pageTitle}
 			</p>
 		</SamplePageContainer>
