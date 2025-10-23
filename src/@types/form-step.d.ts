@@ -1,7 +1,7 @@
-import { ComponentType } from 'react';
+import { JSX } from 'react';
 
 export type FormStep = {
-	step: ComponentType;
+	step: JSX;
 	number: number;
 	title?: string;
 	description?: string;
