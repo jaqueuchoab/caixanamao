@@ -46,7 +46,11 @@ export function Sidebar() {
 		>
 			<SidebarHeader $is_open={isOpen}>
 				{isOpen && (
-					<CircleHalfIcon weight='fill' size={24} onClick={switchTheme} />
+					<CircleHalfIcon
+						weight="fill"
+						size={24}
+						onClick={switchTheme}
+					/>
 				)}
 				<ListIcon size={24} onClick={handleIsOpen} />
 			</SidebarHeader>
@@ -54,62 +58,77 @@ export function Sidebar() {
 			<SidebarContent>
 				<Profile showInfos={isOpen} />
 
-				<Button variant='primary' fill_width text_align='center'>
+				<Button
+					onClick={() => navigate('/dashboard/registers/new')}
+					variant="primary"
+					fill_width
+					text_align="center"
+				>
 					<PlusIcon size={24} />
 					{isOpen && 'Novo registro'}
 				</Button>
 
 				<SidebarActionsList>
 					<Button
-						variant='neutral'
+						variant="neutral"
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/home')}
-						className={location === '/dashboard/home' ? 'active' : ''}
+						className={
+							location === '/dashboard/home' ? 'active' : ''
+						}
 					>
 						<HouseIcon size={24} />
 						{isOpen && 'Página inicial'}
 					</Button>
 
 					<Button
-						variant='neutral'
+						variant="neutral"
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/registers')}
-						className={location === '/dashboard/registers' ? 'active' : ''}
+						className={
+							location === '/dashboard/registers' ? 'active' : ''
+						}
 					>
 						<NotepadIcon size={24} />
 						{isOpen && 'Registros'}
 					</Button>
 
 					<Button
-						variant='neutral'
+						variant="neutral"
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/admin')}
-						className={location === '/dashboard/admin' ? 'active' : ''}
+						className={
+							location === '/dashboard/admin' ? 'active' : ''
+						}
 					>
 						<CastleTurretIcon size={24} />
 						{isOpen && 'Administração'}
 					</Button>
 
 					<Button
-						variant='neutral'
+						variant="neutral"
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/reports')}
-						className={location === '/dashboard/reports' ? 'active' : ''}
+						className={
+							location === '/dashboard/reports' ? 'active' : ''
+						}
 					>
 						<FileTextIcon size={24} />
 						{isOpen && 'Relatórios'}
 					</Button>
 
 					<Button
-						variant='neutral'
+						variant="neutral"
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/analysis')}
-						className={location === '/dashboard/analysis' ? 'active' : ''}
+						className={
+							location === '/dashboard/analysis' ? 'active' : ''
+						}
 					>
 						<ChartBarIcon size={24} />
 						{isOpen && 'Análises'}
@@ -119,7 +138,7 @@ export function Sidebar() {
 
 			<SidebarBottomActions>
 				<Button
-					variant='neutral'
+					variant="neutral"
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/dashboard/help')}
@@ -129,17 +148,19 @@ export function Sidebar() {
 					{isOpen && 'Ajuda'}
 				</Button>
 				<Button
-					variant='neutral'
+					variant="neutral"
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/dashboard/settings')}
-					className={location === '/dashboard/settings' ? 'active' : ''}
+					className={
+						location === '/dashboard/settings' ? 'active' : ''
+					}
 				>
 					<GearIcon size={24} />
 					{isOpen && 'Configurações'}
 				</Button>
 				<Button
-					variant='neutral'
+					variant="neutral"
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/')}
