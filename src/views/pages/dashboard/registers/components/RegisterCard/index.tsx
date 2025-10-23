@@ -40,44 +40,51 @@ export function RegisterCard({
 	return (
 		<Container style={showTotal ? {} : { paddingBottom: 12 }}>
 			<HeadText>
-				<div className='registerCard__titleContainer'>
-					<span className='registerCard__title'>#{register.id}</span>
-					<Button variant='neutral' title='Editar registro'>
-						<PencilSimpleIcon className='registerCard__editIcon' size={20} />
+				<div className="registerCard__titleContainer">
+					<span className="registerCard__title">#{register.id}</span>
+					<Button variant="neutral" title="Editar registro">
+						<PencilSimpleIcon
+							className="registerCard__editIcon"
+							size={20}
+						/>
 					</Button>
 				</div>
 
-				<div className='registerCard__dateInterval'>
-					<span className='registerCard__startDate'>{startDateFormatted}</span>
+				<div className="registerCard__dateInterval">
+					<span className="registerCard__startDate">
+						{startDateFormatted}
+					</span>
 					até
-					<span className='registerCard__endDate'>{endDateFormatted}</span>
+					<span className="registerCard__endDate">
+						{endDateFormatted}
+					</span>
 				</div>
 			</HeadText>
 
 			<Values>
 				<RegisterItem
 					icon={CashRegisterIcon}
-					name='Inicial'
+					name="Inicial"
 					value={register.values.initial || 0}
 				/>
 				<RegisterItem
 					icon={MoneyIcon}
-					name='Espécie'
+					name="Espécie"
 					value={register.values.money || 0}
 				/>
 				<RegisterItem
 					icon={CreditCardIcon}
-					name='Cartão'
+					name="Cartão"
 					value={register.values.creditCard || 0}
 				/>
 				<RegisterItem
 					icon={PixLogoIcon}
-					name='Pix'
+					name="Pix"
 					value={register.values.pix || 0}
 				/>
 				<RegisterItem
 					icon={ReceiptXIcon}
-					name='Despesas'
+					name="Despesas"
 					value={register.values.expenses || 0}
 				/>
 			</Values>
@@ -85,11 +92,15 @@ export function RegisterCard({
 			{showTotal && (
 				<Total
 					data-category={
-						calculateTotal() > 0 ? 'profit' : calculateTotal() < 0 ? 'loss' : ''
+						calculateTotal() > 0
+							? 'profit'
+							: calculateTotal() < 0
+							? 'loss'
+							: ''
 					}
 				>
 					<RegisterItem
-						name='Total'
+						name="Total"
 						icon={ReceiptIcon}
 						value={calculateTotal() || 0}
 						style={{ border: 'none', fontWeight: 600 }}
