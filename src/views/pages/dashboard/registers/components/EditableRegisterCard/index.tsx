@@ -43,12 +43,6 @@ export function EditableRegisterCard({
 					<span className="registerCard__title">
 						#{register.date.toISOString()}
 					</span>
-					<Button variant="neutral" title="Editar registro">
-						<PencilSimpleIcon
-							className="registerCard__editIcon"
-							size={20}
-						/>
-					</Button>
 				</div>
 
 				<div className="registerCard__dateInterval">
