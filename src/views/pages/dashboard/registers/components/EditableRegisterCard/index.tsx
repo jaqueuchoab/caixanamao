@@ -9,39 +9,40 @@ import {
 } from '@phosphor-icons/react';
 import { RegisterItem } from '../RegisterItem';
 import { Button } from '@components/ui/button/Button';
-import { RegisterType } from 'src/models/registers/register';
 import { Container, HeadText, Total, Values } from '../RegisterCard/styles';
+import { Controller, useFormContext } from 'react-hook-form';
+import { Schema } from '../../new';
+import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 
 interface EditableRegisterCardProps {
+	id: number;
 	showTotal?: boolean;
-	register: RegisterType;
 }
 
 export function EditableRegisterCard({
+	id,
 	showTotal = true,
-	register,
 }: EditableRegisterCardProps) {
-	const startDateFormatted = new Date(register.startDate)
-		.toLocaleString('pt-BR')
-		.split(',')[0];
-	const endDateFormatted = new Date(register.endDate)
-		.toLocaleString('pt-BR')
-		.split(',')[0];
+	const { watch, control } = useFormContext<Schema>();
+	const register = watch(`registers.${id}`);
 
-	function calculateTotal() {
-		const values = register.values;
-		return Object.entries(values).reduce((acc, [key, value]) => {
-			const num = Number(value) || 0;
-			if (key === 'expenses') return acc - num;
-			return acc + value;
-		}, 0);
+	if (!register) {
+		return null;
 	}
 
+	const total = calculateRegisterTotal(register);
+	const startDate = watch('startDate');
+	const endDate = watch('endDate');
+	const startDateFormatted = new Date(startDate).toLocaleDateString('pt-BR');
+	const endDateFormatted = new Date(endDate).toLocaleDateString('pt-BR');
+
 	return (
-		<Container style={showTotal ? {} : { paddingBottom: 12 }}>
+		<Container>
 			<HeadText>
 				<div className="registerCard__titleContainer">
-					<span className="registerCard__title">#{register.id}</span>
+					<span className="registerCard__title">
+						#{register.date.toISOString()}
+					</span>
 					<Button variant="neutral" title="Editar registro">
 						<PencilSimpleIcon
 							className="registerCard__editIcon"
@@ -62,52 +63,89 @@ export function EditableRegisterCard({
 			</HeadText>
 
 			<Values>
-				<RegisterItem
-					editable
-					icon={CashRegisterIcon}
-					name="Inicial"
-					value={register.values.initial || 0}
+				<Controller
+					control={control}
+					name={`registers.${id}.values.initial`}
+					render={({ field }) => (
+						<RegisterItem
+							id={`${id}-initial`}
+							editable
+							icon={CashRegisterIcon}
+							name="Inicial"
+							value={field.value}
+							onChangeValue={field.onChange}
+						/>
+					)}
 				/>
-				<RegisterItem
-					editable
-					icon={MoneyIcon}
-					name="Espécie"
-					value={register.values.money || 0}
+				<Controller
+					control={control}
+					name={`registers.${id}.values.money`}
+					render={({ field }) => (
+						<RegisterItem
+							id={`${id}-money`}
+							editable
+							icon={MoneyIcon}
+							name="Espécie"
+							value={field.value}
+							onChangeValue={field.onChange}
+						/>
+					)}
 				/>
-				<RegisterItem
-					editable
-					icon={CreditCardIcon}
-					name="Cartão"
-					value={register.values.creditCard || 0}
+				<Controller
+					control={control}
+					name={`registers.${id}.values.creditCard`}
+					render={({ field }) => (
+						<RegisterItem
+							id={`${id}-creditCard`}
+							editable
+							icon={CreditCardIcon}
+							name="Cartão"
+							value={field.value}
+							onChangeValue={field.onChange}
+						/>
+					)}
 				/>
-				<RegisterItem
-					editable
-					icon={PixLogoIcon}
-					name="Pix"
-					value={register.values.pix || 0}
+				<Controller
+					control={control}
+					name={`registers.${id}.values.pix`}
+					render={({ field }) => (
+						<RegisterItem
+							id={`${id}-pix`}
+							editable
+							icon={PixLogoIcon}
+							name="Pix"
+							value={field.value}
+							onChangeValue={field.onChange}
+						/>
+					)}
 				/>
-				<RegisterItem
-					editable
-					icon={ReceiptXIcon}
-					name="Despesas"
-					value={register.values.expenses || 0}
+				<Controller
+					control={control}
+					name={`registers.${id}.values.expenses`}
+					render={({ field }) => (
+						<RegisterItem
+							id={`${id}-expenses`}
+							editable
+							icon={ReceiptXIcon}
+							name="Despesas"
+							value={field.value}
+							onChangeValue={field.onChange}
+						/>
+					)}
 				/>
 			</Values>
 
 			{showTotal && (
 				<Total
 					data-category={
-						calculateTotal() > 0
-							? 'profit'
-							: calculateTotal() < 0
-							? 'loss'
-							: ''
+						total > 0 ? 'profit' : total < 0 ? 'loss' : ''
 					}
 				>
 					<RegisterItem
+						id={`${id}-total`}
 						name="Total"
 						icon={ReceiptIcon}
-						value={calculateTotal() || 0}
+						value={total || 0}
 						style={{ border: 'none', fontWeight: 600 }}
 					/>
 				</Total>
