@@ -15,7 +15,6 @@ import {
 import { RegistersPage } from './registers';
 import { Route, Routes, Navigate } from '@lib/router';
 import { NewRegisterPage } from './registers/new';
-import { RegisterStepsContextProvider } from '@/views/context/RegisterStepsContext';
 
 export function DashboardPage() {
 	const size = useWindowSize();
@@ -50,11 +49,7 @@ export function DashboardPage() {
 					/>
 					<Route
 						path="/registers/new"
-						element={
-							<RegisterStepsContextProvider>
-								<NewRegisterPage />
-							</RegisterStepsContextProvider>
-						}
+						element={<NewRegisterPage />}
 						key={'/dashboard/registers/new'}
 					/>
 
