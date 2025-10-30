@@ -211,7 +211,7 @@ export function RegistersPage() {
 				{!isFetching &&
 					registers &&
 					registers.map((data, idx) => (
-						<RegisterCard key={idx} register={data} />
+						<RegisterCard canEdit key={idx} register={data} />
 					))}
 			</RegistersList>
 		</Container>

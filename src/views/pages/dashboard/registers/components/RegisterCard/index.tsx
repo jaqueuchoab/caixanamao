@@ -37,7 +37,11 @@ export function RegisterCard({
 				<div className="registerCard__titleContainer">
 					<span className="registerCard__title">#{register.id}</span>
 					{canEdit && (
-						<Button variant="neutral" title="Editar registro">
+						<Button
+							type="button"
+							variant="neutral"
+							title="Editar registro"
+						>
 							<PencilSimpleIcon
 								className="registerCard__editIcon"
 								size={20}
