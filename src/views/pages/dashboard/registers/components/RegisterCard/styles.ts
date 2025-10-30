@@ -53,11 +53,7 @@ export const HeadText = styled.div`
 		flex-wrap: wrap;
 
 		font-size: 16px;
-
-		& .registerCard__startDate,
-		& .registerCard__endDate {
-			color: ${({ theme }) => theme.colors.texts.secondary};
-		}
+		color: ${({ theme }) => theme.colors.texts.secondary};
 	}
 `;
 

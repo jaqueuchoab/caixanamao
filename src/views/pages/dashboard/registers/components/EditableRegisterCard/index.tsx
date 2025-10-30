@@ -11,6 +11,7 @@ import { Container, HeadText, Total, Values } from '../RegisterCard/styles';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Schema } from '../../new';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
+import { differenceInDays } from 'date-fns';
 
 interface EditableRegisterCardProps {
 	id: number;
@@ -31,26 +32,18 @@ export function EditableRegisterCard({
 	const total = calculateRegisterTotal(register);
 	const startDate = watch('startDate');
 	const endDate = watch('endDate');
-	const startDateFormatted = new Date(startDate).toLocaleDateString('pt-BR');
-	const endDateFormatted = new Date(endDate).toLocaleDateString('pt-BR');
+	const diffInDays = differenceInDays(endDate, startDate) + 1;
 
 	return (
 		<Container>
 			<HeadText>
 				<div className="registerCard__titleContainer">
 					<span className="registerCard__title">
-						#{register.date.toISOString()}
+						{register.date.toLocaleDateString('PT-BR')}
 					</span>
 				</div>
-
 				<div className="registerCard__dateInterval">
-					<span className="registerCard__startDate">
-						{startDateFormatted}
-					</span>
-					até
-					<span className="registerCard__endDate">
-						{endDateFormatted}
-					</span>
+					{id + 1}/{diffInDays} cartões
 				</div>
 			</HeadText>
 
