@@ -102,9 +102,11 @@ export function NewRegisterPage() {
 					/>
 				</Button>
 				<h1>
-					{currentStepIndex === 0
+					{isFirstStep
 						? 'Novo registro'
-						: `${steps[currentStepIndex].title}`}
+						: isLastStep
+						? 'Resumo'
+						: 'Preenchimento'}
 				</h1>
 			</Title>
 
