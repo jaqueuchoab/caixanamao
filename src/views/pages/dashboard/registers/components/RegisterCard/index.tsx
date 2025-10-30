@@ -14,11 +14,13 @@ import { RegisterType } from 'src/models/registers/register';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 
 interface RegisterCardProps {
+	canEdit?: boolean;
 	showTotal?: boolean;
 	register: RegisterType;
 }
 
 export function RegisterCard({
+	canEdit = false,
 	showTotal = true,
 	register,
 }: RegisterCardProps) {
@@ -34,12 +36,14 @@ export function RegisterCard({
 			<HeadText>
 				<div className="registerCard__titleContainer">
 					<span className="registerCard__title">#{register.id}</span>
-					<Button variant="neutral" title="Editar registro">
-						<PencilSimpleIcon
-							className="registerCard__editIcon"
-							size={20}
-						/>
-					</Button>
+					{canEdit && (
+						<Button variant="neutral" title="Editar registro">
+							<PencilSimpleIcon
+								className="registerCard__editIcon"
+								size={20}
+							/>
+						</Button>
+					)}
 				</div>
 
 				<div className="registerCard__dateInterval">
