@@ -43,7 +43,7 @@ export function EditableRegisterCard({
 					</span>
 				</div>
 				<div className="registerCard__dateInterval">
-					{id + 1}/{diffInDays} cartões
+					{id + 1}/{diffInDays} registros
 				</div>
 			</HeadText>
 
