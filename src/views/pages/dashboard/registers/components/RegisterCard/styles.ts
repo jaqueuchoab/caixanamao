@@ -3,11 +3,12 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
 	width: 100%;
 	min-width: 240px;
+	max-width: 430px;
 
 	display: flex;
 	flex-flow: column wrap;
+	justify-content: space-between;
 	gap: 16px;
-	align-self: stretch;
 
 	border-radius: 12px;
 	background-color: ${({ theme }) => theme.colors.register.background}72;
@@ -71,7 +72,8 @@ export const Values = styled.div`
 	gap: 12px;
 
 	& > :not(:last-child) {
-		border-bottom: 1px solid ${({ theme }) => theme.colors.register.itemStroke};
+		border-bottom: 1px solid
+			${({ theme }) => theme.colors.register.itemStroke};
 	}
 `;
 
@@ -81,7 +83,6 @@ export const Total = styled.div`
 	padding: 0 12px;
 	justify-content: space-between;
 	align-items: center;
-	align-self: stretch;
 
 	border-radius: 0px 0px 12px 12px;
 
