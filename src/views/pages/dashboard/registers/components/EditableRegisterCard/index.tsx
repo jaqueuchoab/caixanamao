@@ -2,13 +2,11 @@ import {
 	CashRegisterIcon,
 	CreditCardIcon,
 	MoneyIcon,
-	PencilSimpleIcon,
 	PixLogoIcon,
 	ReceiptIcon,
 	ReceiptXIcon,
 } from '@phosphor-icons/react';
 import { RegisterItem } from '../RegisterItem';
-import { Button } from '@components/ui/button/Button';
 import { Container, HeadText, Total, Values } from '../RegisterCard/styles';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Schema } from '../../new';
