@@ -1,32 +1,37 @@
 import DateInput from '@components/ui/input/DateInput';
 import { InputContainer } from '../styles';
 import { useEffect } from 'react';
-import { useRegisterStepsContext } from '@/views/context/RegisterStepsContext';
-import { differenceInDays } from 'date-fns';
+import { addDays, differenceInDays } from 'date-fns';
 import { Controller, useFormContext } from 'react-hook-form';
 import { Schema } from '..';
 
-// TODO: terminar de implementar seleção de range com react-day-picker
-// TODO: estilizar DateInput para seguir padrão
 export function DateRangeStep() {
-	const { control, watch } = useFormContext<Schema>();
-	const { handleSetDaysDiff } = useRegisterStepsContext();
+	const { control, watch, setValue } = useFormContext<Schema>();
 
 	const startDate = watch('startDate');
 	const endDate = watch('endDate');
-	const diff =
-		startDate && endDate ? differenceInDays(endDate, startDate) : -1;
-	
-	// monitora a diferença de dias
-	useEffect(() => {
-		const updateDiff = () => {
-			handleSetDaysDiff(diff);
-			console.log('daysDiff updated to:', diff);
-		};
+	const diffInDays =
+		startDate && endDate ? differenceInDays(endDate, startDate) + 1 : 0;
 
-		updateDiff();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [diff]);
+	// atualiza comprimento do array de registros conforme diferenca de datas em dias
+	useEffect(() => {
+		if (startDate && endDate && diffInDays > 0) {
+			const registers = Array.from(
+				{ length: diffInDays },
+				(_, index) => ({
+					date: addDays(startDate, index),
+					values: {
+						initial: 0,
+						money: 0,
+						creditCard: 0,
+						pix: 0,
+						expenses: 0,
+					},
+				}),
+			);
+			setValue('registers', registers);
+		}
+	}, [startDate, endDate, diffInDays, setValue]);
 
 	return (
 		<>
@@ -60,8 +65,10 @@ export function DateRangeStep() {
 				></Controller>
 			</InputContainer>
 
-			{diff !== null && (
-				<p className="font-semibold">Diferença: {diff} dias</p>
+			{diffInDays > 0 && (
+				<p className="font-semibold">
+					Você preencherá: {diffInDays} registro(s)
+				</p>
 			)}
 		</>
 	);
