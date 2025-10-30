@@ -1,7 +1,7 @@
 import { Icon } from '@phosphor-icons/react';
 import { Container, Infos, Value } from './styles';
-import { HTMLAttributes, useId } from 'react';
-import Input from '@/views/components/ui/input/Input';
+import { HTMLAttributes } from 'react';
+import MoneyInput from '@/views/components/ui/input/MoneyInput';
 
 interface RegisterItemProps extends HTMLAttributes<HTMLDivElement> {
 	name: string;
@@ -13,6 +13,7 @@ interface RegisterItemProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function RegisterItem({
+	id,
 	name,
 	value,
 	onChangeValue,
@@ -21,7 +22,6 @@ export function RegisterItem({
 	icon: IconComponent,
 	...rest
 }: RegisterItemProps) {
-	const id = useId();
 	return (
 		<Container {...rest}>
 			<Infos>
@@ -31,19 +31,18 @@ export function RegisterItem({
 			<Value>
 				<span className="registerItem__currency">R$</span>
 				{editable ? (
-					<Input
+					<MoneyInput
 						id={id}
-						value={value ?? 0}
-						onChange={(e) =>
-							onChangeValue?.(Number(e.target.value))
-						}
-						inputMode="decimal"
-						type="number"
+						value={value}
+						onChangeValue={onChangeValue}
 						error={error}
 					/>
 				) : (
 					<span className="registerItem__value">
-						{value.toFixed(2).replace('.', ',')}
+						{value?.toLocaleString('pt-BR', {
+							minimumFractionDigits: 2,
+							maximumFractionDigits: 2,
+						})}
 					</span>
 				)}
 			</Value>
