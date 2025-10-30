@@ -65,27 +65,27 @@ export function RegisterCard({
 				<RegisterItem
 					icon={CashRegisterIcon}
 					name="Inicial"
-					value={register.values.initial || 0}
+					value={register.values.initial}
 				/>
 				<RegisterItem
 					icon={MoneyIcon}
 					name="Espécie"
-					value={register.values.money || 0}
+					value={register.values.money}
 				/>
 				<RegisterItem
 					icon={CreditCardIcon}
 					name="Cartão"
-					value={register.values.creditCard || 0}
+					value={register.values.creditCard}
 				/>
 				<RegisterItem
 					icon={PixLogoIcon}
 					name="Pix"
-					value={register.values.pix || 0}
+					value={register.values.pix}
 				/>
 				<RegisterItem
 					icon={ReceiptXIcon}
 					name="Despesas"
-					value={register.values.expenses || 0}
+					value={register.values.expenses}
 				/>
 			</Values>
 
