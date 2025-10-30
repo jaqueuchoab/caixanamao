@@ -41,6 +41,10 @@ export function RegisterCard({
 							type="button"
 							variant="neutral"
 							title="Editar registro"
+							onClick={() =>
+								// TODO: implementar edicao de registro!
+								alert('implementar edicao de registro!')
+							}
 						>
 							<PencilSimpleIcon
 								className="registerCard__editIcon"
