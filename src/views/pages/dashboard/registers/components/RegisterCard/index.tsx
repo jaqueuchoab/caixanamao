@@ -11,6 +11,7 @@ import { RegisterItem } from '../RegisterItem';
 import { Container, HeadText, Total, Values } from './styles';
 import { Button } from '@components/ui/button/Button';
 import { RegisterType } from 'src/models/registers/register';
+import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 
 interface RegisterCardProps {
 	showTotal?: boolean;
@@ -27,15 +28,6 @@ export function RegisterCard({
 	const endDateFormatted = new Date(register.endDate)
 		.toLocaleString('pt-BR')
 		.split(',')[0];
-
-	function calculateTotal() {
-		const values = register.values;
-		return Object.entries(values).reduce((acc, [key, value]) => {
-			const num = Number(value) || 0;
-			if (key === 'expenses') return acc - num;
-			return acc + value;
-		}, 0);
-	}
 
 	return (
 		<Container style={showTotal ? {} : { paddingBottom: 12 }}>
@@ -92,9 +84,9 @@ export function RegisterCard({
 			{showTotal && (
 				<Total
 					data-category={
-						calculateTotal() > 0
+						calculateRegisterTotal(register) > 0
 							? 'profit'
-							: calculateTotal() < 0
+							: calculateRegisterTotal(register) < 0
 							? 'loss'
 							: ''
 					}
@@ -102,7 +94,7 @@ export function RegisterCard({
 					<RegisterItem
 						name="Total"
 						icon={ReceiptIcon}
-						value={calculateTotal() || 0}
+						value={calculateRegisterTotal(register) || 0}
 						style={{ border: 'none', fontWeight: 600 }}
 					/>
 				</Total>
