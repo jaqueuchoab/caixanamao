@@ -18,11 +18,6 @@ export default defineConfig({
 			'@models': path.resolve(__dirname, './src/models'),
 		},
 	},
-	ssr: {
-		// Add npm packages containing invalid code here
-		noExternal: ['some-library'],
-	},
-	build: {
-		sourcemap: true,
-	},
+	build: { sourcemap: true },
+
 });
