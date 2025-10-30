@@ -54,6 +54,7 @@ type Mode = 'day' | 'month' | 'year';
 
 type DateInputProps = {
 	value: Date | undefined;
+	placeholderText?: string;
 	setValue: (value: Date | null) => void;
 	error?: string;
 	mode?: Mode;
@@ -81,7 +82,8 @@ const StyledInput = styled.input`
 	background: transparent;
 	font-size: 16px;
 	border-radius: 12px;
-	text-align: center;
+	padding-left: 12px;
+	text-align: start;
 	cursor: pointer;
 
 	color: ${({ theme }) => theme.colors.texts.primary};
@@ -107,7 +109,12 @@ const CustomInput = forwardRef<HTMLInputElement, any>(
 	),
 );
 
-const DateInput = ({ value, setValue, mode = 'day' }: DateInputProps) => {
+const DateInput = ({
+	value,
+	setValue,
+	placeholderText,
+	mode = 'day',
+}: DateInputProps) => {
 	let dateFormat = 'dd/MM/yyyy';
 	let placeholder = 'dd/mm/aaaa';
 	let pickerProps: Record<string, any> = {};
@@ -130,7 +137,8 @@ const DateInput = ({ value, setValue, mode = 'day' }: DateInputProps) => {
 				selected={value}
 				onChange={setValue}
 				dateFormat={dateFormat}
-				customInput={<CustomInput placeholder={placeholder} />}
+				placeholderText={placeholderText ?? placeholder}
+				customInput={<CustomInput />}
 				{...pickerProps}
 			/>
 		</StyledDatePickerWrapper>
