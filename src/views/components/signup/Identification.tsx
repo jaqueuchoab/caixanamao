@@ -21,7 +21,7 @@ const Identification = ({
 
   React.useEffect(() => {
     // brevemente mudar essa validação com o hook form
-    const isValid = name.value.length > 3 && cpf_field.value.length > 3;
+    const isValid = name.value.length > 3 && cpf_field.value.length >= 14;
     onValidChange?.(isValid);
 
   }, [formData, name, cpf_field]);

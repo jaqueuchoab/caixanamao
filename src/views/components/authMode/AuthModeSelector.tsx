@@ -54,7 +54,7 @@ const AuthModeSelector = () => {
 
       localStorage.setItem('token', response.token);
       navigate('/dashboard');
-    } catch (error: string) {
+    } catch (error: string | any) {
       // mensagem de erro para o usuário
       console.error('Erro ao fazer login:', error.msg);
     }
@@ -68,7 +68,7 @@ const AuthModeSelector = () => {
         console.log('Cadastro bem-sucedido:', response);
         navigate('/dashboard');
       }
-    } catch (error: string) {
+    } catch (error:  string | any) {
       // mensagem de erro para o usuário
       console.error('Erro ao fazer cadastro:', error.msg);
     }
