@@ -1,7 +1,11 @@
 import axios from 'axios';
+const apiUrl = import.meta.env.VITE_API_URL;
+const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
 
 export const api = axios.create({
-	baseURL: 'http://54.146.218.73:3000/',
-	headers: { 'Content-Type': 'application/json' },
-	withCredentials: false, // pode ser alterado no futuro para carregar credenciais de acesso
+	baseURL: apiUrl,
+	headers: {
+		'Content-Type': 'application/json',
+		authorization: `Bearer ${bearerToken}`,
+	},
 });
