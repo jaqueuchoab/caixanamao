@@ -84,7 +84,7 @@ export function RegistersPage() {
 		<Container>
 			<Title>
 				<h1>Registros</h1>
-				<span className="lastUpdate">
+				<span className='lastUpdate'>
 					Atualizados pela última vez em {lastUpdate}
 				</span>
 			</Title>
@@ -92,23 +92,23 @@ export function RegistersPage() {
 			<TopActions>
 				<Button
 					onClick={() => navigate('/dashboard/registers/new')}
-					text_align="center"
+					text_align='center'
 				>
-					<PlusIcon weight="bold" size={16} /> Novo
+					<PlusIcon weight='bold' size={16} /> Novo
 				</Button>
 
 				<RelativePopupsContainer ref={dropdownRef}>
 					<Button
-						variant="neutral"
-						text_align="center"
+						variant='neutral'
+						text_align='center'
 						className={currentOrder ? 'success' : ''}
 						onClick={handleOrderButtonClick}
 					>
 						{currentOrder ? (
 							<span
-								className="removeCurrentModifier"
-								role="button"
-								aria-label="Remover ordenação"
+								className='removeCurrentModifier'
+								role='button'
+								aria-label='Remover ordenação'
 								tabIndex={0}
 								style={{
 									display: 'inline-flex',
@@ -126,29 +126,29 @@ export function RegistersPage() {
 									}
 								}}
 							>
-								<XIcon size={16} weight="bold" />
+								<XIcon size={16} weight='bold' />
 							</span>
 						) : (
-							<CaretUpDownIcon weight="bold" size={16} />
+							<CaretUpDownIcon weight='bold' size={16} />
 						)}
 						{currentOrder || 'Ordenar'}
 					</Button>
 
 					<Button
-						variant="neutral"
-						text_align="center"
+						variant='neutral'
+						text_align='center'
 						className={currentFilter.type ? 'success' : ''}
 						onClick={handleFilterButtonClick}
 					>
 						{currentFilter.type ? (
 							<span
-								className="removeCurrentModifier"
+								className='removeCurrentModifier'
 								onClick={(e) => {
 									e.stopPropagation();
 									setCurrentFilter(emptyFilter);
 								}}
-								role="button"
-								aria-label="Limpar filtro"
+								role='button'
+								aria-label='Limpar filtro'
 								tabIndex={0}
 								onKeyDown={(e) => {
 									if (e.key === 'Enter' || e.key === ' ') {
@@ -159,10 +159,10 @@ export function RegistersPage() {
 								}}
 								style={{ display: 'inline-flex' }}
 							>
-								<XIcon size={16} weight="bold" />
+								<XIcon size={16} weight='bold' />
 							</span>
 						) : (
-							<FunnelSimpleIcon weight="bold" size={16} />
+							<FunnelSimpleIcon weight='bold' size={16} />
 						)}
 						{currentFilter.type
 							? filterTypeMap[currentFilter.type]
@@ -172,12 +172,12 @@ export function RegistersPage() {
 					<Button
 						onClick={() => refetch()}
 						disabled={isFetching}
-						variant="neutral"
-						text_align="center"
+						variant='neutral'
+						text_align='center'
 						style={{ backgroundColor: 'transparent' }}
 					>
 						<ArrowsClockwiseIcon
-							weight="bold"
+							weight='bold'
 							size={16}
 							className={isFetching ? 'animate-spin' : ''}
 						/>
@@ -211,7 +211,12 @@ export function RegistersPage() {
 				{!isFetching &&
 					registers &&
 					registers.map((data, idx) => (
-						<RegisterCard canEdit key={idx} register={data} />
+						<RegisterCard
+							canEdit
+							canDelete
+							key={idx}
+							register={data}
+						/>
 					))}
 			</RegistersList>
 		</Container>
