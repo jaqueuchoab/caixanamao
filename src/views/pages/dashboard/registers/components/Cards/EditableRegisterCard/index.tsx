@@ -9,9 +9,9 @@ import {
 import { RegisterItem } from '../RegisterItem';
 import { Container, HeadText, Total, Values } from '../RegisterCard/styles';
 import { Controller, useFormContext } from 'react-hook-form';
-import { Schema } from '../../new';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { differenceInDays } from 'date-fns';
+import { NewRegisterSchema } from '../../../../../../../schemas/new-register-schema';
 
 interface EditableRegisterCardProps {
 	id: number;
@@ -22,7 +22,7 @@ export function EditableRegisterCard({
 	id,
 	showTotal = true,
 }: EditableRegisterCardProps) {
-	const { watch, control } = useFormContext<Schema>();
+	const { watch, control } = useFormContext<NewRegisterSchema>();
 	const register = watch(`registers.${id}`);
 
 	if (!register) {
@@ -37,12 +37,12 @@ export function EditableRegisterCard({
 	return (
 		<Container>
 			<HeadText>
-				<div className="registerCard__titleContainer">
-					<span className="registerCard__title">
+				<div className='registerCard__titleContainer'>
+					<span className='registerCard__title'>
 						{register.date.toLocaleDateString('PT-BR')}
 					</span>
 				</div>
-				<div className="registerCard__dateInterval">
+				<div className='registerCard__dateInterval'>
 					{id + 1}/{diffInDays} registros
 				</div>
 			</HeadText>
@@ -56,7 +56,7 @@ export function EditableRegisterCard({
 							id={`${id}-initial`}
 							editable
 							icon={CashRegisterIcon}
-							name="Inicial"
+							name='Inicial'
 							value={field.value}
 							onChangeValue={field.onChange}
 						/>
@@ -70,7 +70,7 @@ export function EditableRegisterCard({
 							id={`${id}-money`}
 							editable
 							icon={MoneyIcon}
-							name="Espécie"
+							name='Espécie'
 							value={field.value}
 							onChangeValue={field.onChange}
 						/>
@@ -84,7 +84,7 @@ export function EditableRegisterCard({
 							id={`${id}-creditCard`}
 							editable
 							icon={CreditCardIcon}
-							name="Cartão"
+							name='Cartão'
 							value={field.value}
 							onChangeValue={field.onChange}
 						/>
@@ -98,7 +98,7 @@ export function EditableRegisterCard({
 							id={`${id}-pix`}
 							editable
 							icon={PixLogoIcon}
-							name="Pix"
+							name='Pix'
 							value={field.value}
 							onChangeValue={field.onChange}
 						/>
@@ -112,7 +112,7 @@ export function EditableRegisterCard({
 							id={`${id}-expenses`}
 							editable
 							icon={ReceiptXIcon}
-							name="Despesas"
+							name='Despesas'
 							value={field.value}
 							onChangeValue={field.onChange}
 						/>
@@ -128,7 +128,7 @@ export function EditableRegisterCard({
 				>
 					<RegisterItem
 						id={`${id}-total`}
-						name="Total"
+						name='Total'
 						icon={ReceiptIcon}
 						value={total || 0}
 						style={{ border: 'none', fontWeight: 600 }}

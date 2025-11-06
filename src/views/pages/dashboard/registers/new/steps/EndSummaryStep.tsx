@@ -1,11 +1,11 @@
 import { useFormContext } from 'react-hook-form';
 import { RegisterCard } from '../../components/Cards/RegisterCard';
-import { Schema } from '..';
 import { sumRegisterCategories } from '@/utils/sum-register-categories';
 import { RegisterType } from '@/models/registers/register';
+import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema';
 
 export function EndSummaryStep() {
-	const { watch } = useFormContext<Schema>();
+	const { watch } = useFormContext<NewRegisterSchema>();
 	const registers = watch('registers');
 	const startDate = watch('startDate');
 	const endDate = watch('endDate');

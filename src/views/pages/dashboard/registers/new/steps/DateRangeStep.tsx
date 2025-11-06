@@ -3,10 +3,10 @@ import { InputContainer } from '../styles';
 import { useEffect } from 'react';
 import { addDays, differenceInDays } from 'date-fns';
 import { Controller, useFormContext } from 'react-hook-form';
-import { Schema } from '..';
+import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema';
 
 export function DateRangeStep() {
-	const { control, watch, setValue } = useFormContext<Schema>();
+	const { control, watch, setValue } = useFormContext<NewRegisterSchema>();
 
 	const startDate = watch('startDate');
 	const endDate = watch('endDate');
@@ -39,10 +39,10 @@ export function DateRangeStep() {
 				<label>Data de Início:</label>
 				<Controller
 					control={control}
-					name="startDate"
+					name='startDate'
 					render={({ field: { onChange, value } }) => (
 						<DateInput
-							mode="day"
+							mode='day'
 							value={value}
 							setValue={onChange}
 						/>
@@ -54,10 +54,10 @@ export function DateRangeStep() {
 				<label>Data de Fim:</label>
 				<Controller
 					control={control}
-					name="endDate"
+					name='endDate'
 					render={({ field: { onChange, value } }) => (
 						<DateInput
-							mode="day"
+							mode='day'
 							value={value}
 							setValue={onChange}
 						/>
@@ -66,7 +66,7 @@ export function DateRangeStep() {
 			</InputContainer>
 
 			{diffInDays > 0 && (
-				<p className="font-semibold">
+				<p className='font-semibold'>
 					Você preencherá: {diffInDays} registro(s)
 				</p>
 			)}

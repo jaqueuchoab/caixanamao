@@ -5,7 +5,7 @@ import { Button } from '@components/ui/button/Button';
 import useMultiStepForm from '@/views/hooks/useMultistepForm';
 
 import { FormProvider, useForm } from 'react-hook-form';
-import { z } from 'zod';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { differenceInDays } from 'date-fns';
@@ -17,25 +17,10 @@ import { RegisterInApi } from '@/services/fetchRegisters';
 import { api } from '@/lib/api';
 import { useNavigate } from 'react-router-dom';
 import { useState, useTransition } from 'react';
-
-const schema = z.object({
-	startDate: z.date(),
-	endDate: z.date(),
-	registers: z.array(
-		z.object({
-			date: z.date(),
-			values: z.object({
-				initial: z.number(),
-				money: z.number(),
-				creditCard: z.number(),
-				pix: z.number(),
-				expenses: z.number(),
-			}),
-		}),
-	),
-});
-
-export type Schema = z.infer<typeof schema>;
+import {
+	NewRegisterSchema,
+	newRegisterSchema,
+} from '../../../../../schemas/new-register-schema';
 
 export function NewRegisterPage() {
 	const [isSubmitting, startSubmitTransition] = useTransition();
@@ -44,7 +29,7 @@ export function NewRegisterPage() {
 	const navigate = useNavigate();
 
 	const methods = useForm({
-		resolver: zodResolver(schema),
+		resolver: zodResolver(newRegisterSchema),
 		mode: 'onChange',
 	});
 
@@ -72,7 +57,7 @@ export function NewRegisterPage() {
 		nextStep();
 	};
 
-	const onSubmit = async (data: Schema) => {
+	const onSubmit = async (data: NewRegisterSchema) => {
 		const registerPayload: Omit<RegisterInApi, 'id'> = {
 			iduser: '840b3494-30bb-4111-a59f-6cf41d48055b', // TODO: substituir pelo usuario da sessao
 			data: data.startDate,
