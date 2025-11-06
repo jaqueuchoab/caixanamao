@@ -45,6 +45,10 @@ export const HeadText = styled.div`
 		& .registerCard__editIcon {
 			color: ${({ theme }) => theme.colors.baseColors.blue[500]};
 		}
+
+		& .registerCard__removeIcon {
+			color: ${({ theme }) => theme.colors.buttons.danger.stroke};
+		}
 	}
 
 	& div.registerCard__dateInterval {
@@ -54,6 +58,11 @@ export const HeadText = styled.div`
 
 		font-size: 16px;
 		color: ${({ theme }) => theme.colors.texts.secondary};
+	}
+
+	& div.registerCard__actions {
+		display: flex;
+		gap: 2px;
 	}
 `;
 
