@@ -1,5 +1,9 @@
 import { StyledSpinner } from './Spinner.styles';
 
-export function Spinner() {
-	return <StyledSpinner />;
+type SpinnerProps = {
+	size?: number;
+};
+
+export function Spinner({ size = 48 }: SpinnerProps) {
+	return <StyledSpinner size={size} />;
 }

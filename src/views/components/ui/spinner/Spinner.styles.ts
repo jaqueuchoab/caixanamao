@@ -17,10 +17,10 @@ export const SpinnerOverlay = styled.div`
 	opacity: 0.9;
 `;
 
-export const StyledSpinner = styled.span`
-	width: 48px;
-	height: 48px;
-	border: 5px solid ${({ theme }) => theme.colors.backgrounds.popup};
+export const StyledSpinner = styled.span<{ size: number }>`
+	width: ${({ size }) => size}px;
+	height: ${({ size }) => size}px;
+	border: 3px solid ${({ theme }) => theme.colors.backgrounds.popup};
 	border-bottom-color: ${({ theme }) => theme.colors.texts.highlight};
 	border-radius: 50%;
 	display: inline-block;
