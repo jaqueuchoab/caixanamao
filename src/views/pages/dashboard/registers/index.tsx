@@ -10,16 +10,19 @@ import {
 	CaretUpDownIcon,
 	FunnelSimpleIcon,
 	PlusIcon,
+	RocketIcon,
 	XIcon,
 } from '@phosphor-icons/react';
 import { fetchRegisters } from '@services/fetchRegisters';
 import { useQuery } from '@tanstack/react-query';
 import { useEffect, useRef, useState } from 'react';
-import { RegisterCard } from './components/RegisterCard';
-import { RegisterFilterPopup } from './components/RegisterFilterPopup';
-import { RegisterOrderPopup } from './components/RegisterOrderPopup';
+import { RegisterCard } from './components/Cards/RegisterCard';
+import { RegisterFilterPopup } from './components/Popups/RegisterFilterPopup';
+import { RegisterOrderPopup } from './components/Popups/RegisterOrderPopup';
 import {
 	Container,
+	EmptyRegisterListContainer,
+	RegistersContainer,
 	RegistersList,
 	RelativePopupsContainer,
 	Title,
@@ -37,7 +40,7 @@ export function RegistersPage() {
 	} = useQuery({
 		queryKey: ['registers'],
 		queryFn: fetchRegisters,
-		refetchOnMount: false,
+		refetchOnMount: true,
 	});
 	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
 
@@ -202,23 +205,36 @@ export function RegistersPage() {
 				</RelativePopupsContainer>
 			</TopActions>
 
-			<RegistersList>
-				{(isLoading || isFetching) &&
-					Array.from({ length: 3 }, (_, idx) => (
-						<RegisterCardSkeleton key={idx} />
-					))}
+			<RegistersContainer>
+				{registers?.length !== 0 && (
+					<span id='registers-quantity'>
+						Mostrando {registers?.length} registros
+					</span>
+				)}
+				<RegistersList>
+					{(isLoading || isFetching) &&
+						Array.from({ length: 3 }, (_, idx) => (
+							<RegisterCardSkeleton key={idx} />
+						))}
 
-				{!isFetching &&
-					registers &&
-					registers.map((data, idx) => (
-						<RegisterCard
-							canEdit
-							canDelete
-							key={idx}
-							register={data}
-						/>
-					))}
-			</RegistersList>
+					{!isFetching && registers?.length === 0 ? (
+						<EmptyRegisterListContainer>
+							<RocketIcon size={90} />
+							Nenhum registro para mostrar, que tal criar o
+							primeiro?
+						</EmptyRegisterListContainer>
+					) : (
+						registers?.map((data, idx) => (
+							<RegisterCard
+								canEdit
+								canDelete
+								key={idx}
+								register={data}
+							/>
+						))
+					)}
+				</RegistersList>
+			</RegistersContainer>
 		</Container>
 	);
 }

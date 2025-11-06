@@ -16,6 +16,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.div`
+	width: 100%;
 	display: flex;
 	flex-flow: column;
 	gap: 8px;
@@ -74,12 +75,40 @@ export const TopActions = styled.div`
 	}
 `;
 
+export const RegistersContainer = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-flow: column;
+	gap: 16px;
+
+	#registers-quantity {
+		color: ${({ theme }) => theme.colors.texts.secondary};
+	}
+`;
+
 export const RegistersList = styled.div`
 	width: 100%;
+	height: 100%;
+
 	display: flex;
 	align-items: flex-start;
 	align-content: flex-start;
 	gap: 32px;
-	align-self: stretch;
+
 	flex-wrap: wrap;
+`;
+
+export const EmptyRegisterListContainer = styled.div`
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+
+	color: ${({ theme }) => theme.colors.inputs.placeholder};
 `;
