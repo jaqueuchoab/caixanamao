@@ -11,7 +11,12 @@ import { toast } from 'sonner';
 import { differenceInDays } from 'date-fns';
 import { DateRangeStep } from './steps/DateRangeStep';
 import { EndSummaryStep } from './steps/EndSummaryStep';
-import { EditableRegisterCard } from '../components/EditableRegisterCard';
+import { EditableRegisterCard } from '../components/Cards/EditableRegisterCard';
+import { sumRegisterCategories } from '@/utils/sum-register-categories';
+import { RegisterInApi } from '@/services/fetchRegisters';
+import { api } from '@/lib/api';
+import { useNavigate } from 'react-router-dom';
+import { useState, useTransition } from 'react';
 
 const schema = z.object({
 	startDate: z.date(),
@@ -33,7 +38,10 @@ const schema = z.object({
 export type Schema = z.infer<typeof schema>;
 
 export function NewRegisterPage() {
+	const [isSubmitting, startSubmitTransition] = useTransition();
+	const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
 	const { theme } = useContextTheme();
+	const navigate = useNavigate();
 
 	const methods = useForm({
 		resolver: zodResolver(schema),
@@ -64,21 +72,46 @@ export function NewRegisterPage() {
 		nextStep();
 	};
 
-	const onSubmit = () => {
-		alert('registro criado:\n' + JSON.stringify(methods.getValues()));
+	const onSubmit = async (data: Schema) => {
+		const registerPayload: Omit<RegisterInApi, 'id'> = {
+			iduser: '840b3494-30bb-4111-a59f-6cf41d48055b', // TODO: substituir pelo usuario da sessao
+			data: data.startDate,
+			data_final: data.endDate,
+			valor_cartao: sumRegisterCategories(data.registers).creditCard,
+			valor_despesas: sumRegisterCategories(data.registers).expenses,
+			valor_especie: sumRegisterCategories(data.registers).money,
+			valor_inicial: sumRegisterCategories(data.registers).initial,
+			valor_pix: sumRegisterCategories(data.registers).pix,
+		};
+
+		try {
+			startSubmitTransition(async () => {
+				await api.post('/registers', registerPayload);
+				setIsSubmitted(true);
+				toast.success('Registro criado com sucesso!', {
+					description:
+						'Você será redirecionado para a página de registros em instantes',
+				});
+				setTimeout(() => {
+					navigate('/dashboard/registers');
+				}, 800);
+			});
+		} catch (error) {
+			if (error instanceof Error) toast.error(error.message);
+		}
 	};
 
 	const steps = [
 		{
 			number: 0,
 			title: 'Intervalo de Datas',
-			step: <DateRangeStep key="date-range-step" />,
+			step: <DateRangeStep key='date-range-step' />,
 		},
 		...cardFillSteps,
 		{
 			number: 2,
 			title: 'Resumo da inserção',
-			step: <EndSummaryStep key="end-summary-step" />,
+			step: <EndSummaryStep key='end-summary-step' />,
 		},
 	];
 
@@ -94,10 +127,10 @@ export function NewRegisterPage() {
 	return (
 		<Container>
 			<Title>
-				<Button onClick={() => window.history.back()} variant="neutral">
+				<Button onClick={() => window.history.back()} variant='neutral'>
 					<ArrowLeftIcon
 						size={24}
-						weight="bold"
+						weight='bold'
 						color={theme.colors.iconsColor}
 					/>
 				</Button>
@@ -118,10 +151,10 @@ export function NewRegisterPage() {
 						<FormActions isFirstStep={isFirstStep}>
 							{!isFirstStep && (
 								<Button
-									text_align="center"
+									text_align='center'
 									onClick={previousStep}
-									type="button"
-									variant="neutral"
+									type='button'
+									variant='neutral'
 								>
 									{currentStepIndex === 1
 										? 'Cancelar'
@@ -132,11 +165,8 @@ export function NewRegisterPage() {
 							{!isLastStep && (
 								<Button
 									onClick={handleValidateNextStep}
-									type="button"
-									text_align="center"
-									disabled={
-										false /* desativar se estiver enviando*/
-									}
+									type='button'
+									text_align='center'
 								>
 									Próximo
 								</Button>
@@ -144,14 +174,11 @@ export function NewRegisterPage() {
 
 							{isLastStep && (
 								<Button
-									onClick={handleValidateNextStep}
-									type="submit"
-									text_align="center"
-									disabled={
-										false /* desativar se estiver enviando*/
-									}
+									type='submit'
+									text_align='center'
+									disabled={isSubmitting || isSubmitted}
 								>
-									Enviar
+									{isSubmitted ? 'Enviado' : 'Enviar'}
 								</Button>
 							)}
 
@@ -160,7 +187,7 @@ export function NewRegisterPage() {
 					</Form>
 				</FormProvider>
 
-				<Button text_align="center" fill_width variant="neutral">
+				<Button text_align='center' fill_width variant='neutral'>
 					<QuestionIcon size={24} />
 					Ajuda
 				</Button>
