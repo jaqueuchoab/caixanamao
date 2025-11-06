@@ -1,4 +1,4 @@
-import { EditableRegisterType } from '@/models/registers/register';
+import { EditableRegisterType } from '@/@types/register/register';
 
 export function sumRegisterCategories(registers: EditableRegisterType[]) {
 	return registers.reduce(

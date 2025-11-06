@@ -7,7 +7,7 @@ import {
 } from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
-import { ThemeType } from '../../@types/theme-types';
+import { ThemeType } from '../../@types/theme/theme-types';
 import { ThemeProvider } from '@emotion/react';
 
 type ThemeContextType = {
@@ -48,7 +48,7 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 	const theme = themeMode === 'dark' ? darkTheme : lightTheme;
 
 	document.querySelector(
-		'body'
+		'body',
 	)!.style.background = `${theme.colors.backgrounds.navbar}`;
 
 	/**
@@ -67,6 +67,8 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 export const useContextTheme = () => {
 	const context = useContext(ThemeContext);
 	if (!context)
-		throw new Error('useTheme ser chamado dentro de um ThemeContextProvider');
+		throw new Error(
+			'useTheme ser chamado dentro de um ThemeContextProvider',
+		);
 	return context;
 };

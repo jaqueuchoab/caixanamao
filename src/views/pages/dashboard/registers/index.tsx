@@ -4,7 +4,7 @@ import {
 	emptyFilter,
 	filterTypeMap,
 	RegisterFilter,
-} from '@models/registers/register-filter';
+} from '@/@types/register/register-filter';
 import {
 	ArrowsClockwiseIcon,
 	CaretUpDownIcon,

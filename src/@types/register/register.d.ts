@@ -21,3 +21,15 @@ export type RegisterType = {
 		expenses: number;
 	};
 };
+
+export type RegisterInApiType = {
+	data: Date;
+	data_final: Date;
+	id: string;
+	iduser: string;
+	valor_cartao: number;
+	valor_despesas: number;
+	valor_especie: number;
+	valor_inicial: number;
+	valor_pix: number;
+};

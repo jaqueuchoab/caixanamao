@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FormStep } from 'src/@types/form-step';
+import { FormStep } from '@/@types/form/form-step';
 
 interface UseMultiStepFormProps {
 	steps: FormStep[];

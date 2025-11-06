@@ -1,4 +1,4 @@
-import { BaseColorsType, SizesType } from '../../@types/theme-types';
+import { BaseColorsType, SizesType } from '../../@types/theme/theme-types';
 
 export const baseColorsDefault: BaseColorsType = {
 	neutral: {

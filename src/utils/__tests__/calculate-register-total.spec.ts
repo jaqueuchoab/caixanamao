@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { calculateRegisterTotal } from '../calculate-register-total';
-import { EditableRegisterType } from '@/models/registers/register';
+import { EditableRegisterType } from '@/@types/register/register';
 
 describe('calculateRegisterTotal', () => {
 	it('deve calcular o total corretamente com valores positivos', () => {

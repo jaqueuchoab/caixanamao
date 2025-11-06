@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { sumRegisterCategories } from '../sum-register-categories';
-import { EditableRegisterType } from '@/models/registers/register';
+import { EditableRegisterType } from '@/@types/register/register';
 
 describe('sumRegisterCategories', () => {
 	it('deve retornar zero quando array vazio', () => {
 		const result = sumRegisterCategories([]);
-		
+
 		expect(result).toEqual({
 			initial: 0,
 			money: 0,

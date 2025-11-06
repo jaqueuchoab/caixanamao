@@ -1,7 +1,4 @@
-import {
-	EditableRegisterType,
-	RegisterType,
-} from '@/models/registers/register';
+import { EditableRegisterType, RegisterType } from '@/@types/register/register';
 
 export function calculateRegisterTotal(
 	register: RegisterType | EditableRegisterType,

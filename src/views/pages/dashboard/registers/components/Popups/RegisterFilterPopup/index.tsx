@@ -13,7 +13,7 @@ import DateInput from '@components/ui/input/DateInput';
 import {
 	filterTypeMap,
 	RegisterFilter,
-} from '@models/registers/register-filter';
+} from '@/@types/register/register-filter';
 import { Button } from '@components/ui/button/Button';
 import { PopupTitle } from '../RegisterOrderPopup/styles';
 
@@ -71,12 +71,13 @@ export function RegisterFilterPopup({
 					<Radio
 						options={radioOptions.map((opt) => opt.label)}
 						value={
-							radioOptions.find((opt) => opt.value === currentFilter.type)
-								?.label || ''
+							radioOptions.find(
+								(opt) => opt.value === currentFilter.type,
+							)?.label || ''
 						}
 						setValue={(selectedLabel) => {
 							const selectedValue = radioOptions.find(
-								(opt) => opt.label === selectedLabel
+								(opt) => opt.label === selectedLabel,
 							)?.value as RegisterFilter['type'] | undefined;
 							if (selectedValue) {
 								onChangeCurrentFilter((prev) => ({
@@ -116,7 +117,11 @@ export function RegisterFilterPopup({
 								<DateInput
 									dateType='day'
 									value={
-										currentFilter.date?.end || { day: '', month: '', year: '' }
+										currentFilter.date?.end || {
+											day: '',
+											month: '',
+											year: '',
+										}
 									}
 									setValue={(newEndDate) =>
 										onChangeCurrentFilter((prev) => ({
@@ -131,7 +136,9 @@ export function RegisterFilterPopup({
 							</>
 						) : (
 							<>
-								<label>{filterTypeMap[currentFilter.type]}:</label>
+								<label>
+									{filterTypeMap[currentFilter.type]}:
+								</label>
 								<DateInput
 									dateType={currentFilter.type}
 									value={

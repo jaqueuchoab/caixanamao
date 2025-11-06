@@ -1,7 +1,7 @@
 import { useFormContext } from 'react-hook-form';
 import { RegisterCard } from '../../components/Cards/RegisterCard';
 import { sumRegisterCategories } from '@/utils/sum-register-categories';
-import { RegisterType } from '@/models/registers/register';
+import { RegisterType } from '@/@types/register/register';
 import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema';
 
 export function EndSummaryStep() {

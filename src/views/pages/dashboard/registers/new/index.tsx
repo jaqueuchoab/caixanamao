@@ -13,7 +13,6 @@ import { DateRangeStep } from './steps/DateRangeStep';
 import { EndSummaryStep } from './steps/EndSummaryStep';
 import { EditableRegisterCard } from '../components/Cards/EditableRegisterCard';
 import { sumRegisterCategories } from '@/utils/sum-register-categories';
-import { RegisterInApi } from '@/services/fetchRegisters';
 import { api } from '@/lib/api';
 import { useNavigate } from 'react-router-dom';
 import { useState, useTransition } from 'react';
@@ -21,6 +20,7 @@ import {
 	NewRegisterSchema,
 	newRegisterSchema,
 } from '../../../../../schemas/new-register-schema';
+import { RegisterInApiType } from '@/@types/register/register';
 
 export function NewRegisterPage() {
 	const [isSubmitting, startSubmitTransition] = useTransition();
@@ -58,7 +58,7 @@ export function NewRegisterPage() {
 	};
 
 	const onSubmit = async (data: NewRegisterSchema) => {
-		const registerPayload: Omit<RegisterInApi, 'id'> = {
+		const registerPayload: Omit<RegisterInApiType, 'id'> = {
 			iduser: '840b3494-30bb-4111-a59f-6cf41d48055b', // TODO: substituir pelo usuario da sessao
 			data: data.startDate,
 			data_final: data.endDate,

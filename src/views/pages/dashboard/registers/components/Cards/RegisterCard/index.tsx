@@ -11,7 +11,7 @@ import {
 import { RegisterItem } from '../RegisterItem';
 import { Container, HeadText, Total, Values } from './styles';
 import { Button } from '@components/ui/button/Button';
-import { RegisterType } from 'src/models/registers/register';
+import { RegisterType } from '@/@types/register/register';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { ChoicePopup } from '@components/ui/popup/ChoicePopup';
 import { useState } from 'react';
