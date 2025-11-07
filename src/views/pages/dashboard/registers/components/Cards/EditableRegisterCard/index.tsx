@@ -11,7 +11,7 @@ import { Container, HeadText, Total, Values } from '../RegisterCard/styles';
 import { Controller, useFormContext } from 'react-hook-form';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { differenceInDays } from 'date-fns';
-import { NewRegisterSchema } from '../../../../../../../schemas/new-register-schema';
+import { NewRegisterSchema } from '@/schemas/new-register-schema';
 
 interface EditableRegisterCardProps {
 	id: number;
@@ -50,7 +50,7 @@ export function EditableRegisterCard({
 			<Values>
 				<Controller
 					control={control}
-					name={`registers.${id}.values.initial`}
+					name={`registers.${id}.initial`}
 					render={({ field }) => (
 						<RegisterItem
 							id={`${id}-initial`}
@@ -64,7 +64,7 @@ export function EditableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.values.money`}
+					name={`registers.${id}.money`}
 					render={({ field }) => (
 						<RegisterItem
 							id={`${id}-money`}
@@ -78,7 +78,7 @@ export function EditableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.values.creditCard`}
+					name={`registers.${id}.creditCard`}
 					render={({ field }) => (
 						<RegisterItem
 							id={`${id}-creditCard`}
@@ -92,7 +92,7 @@ export function EditableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.values.pix`}
+					name={`registers.${id}.pix`}
 					render={({ field }) => (
 						<RegisterItem
 							id={`${id}-pix`}
@@ -106,7 +106,7 @@ export function EditableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.values.expenses`}
+					name={`registers.${id}.expenses`}
 					render={({ field }) => (
 						<RegisterItem
 							id={`${id}-expenses`}

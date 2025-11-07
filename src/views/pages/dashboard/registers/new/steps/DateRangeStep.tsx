@@ -20,13 +20,11 @@ export function DateRangeStep() {
 				{ length: diffInDays },
 				(_, index) => ({
 					date: addDays(startDate, index),
-					values: {
-						initial: 0,
-						money: 0,
-						creditCard: 0,
-						pix: 0,
-						expenses: 0,
-					},
+					initial: 0,
+					money: 0,
+					creditCard: 0,
+					pix: 0,
+					expenses: 0,
 				}),
 			);
 			setValue('registers', registers);

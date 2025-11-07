@@ -14,7 +14,7 @@ export function EndSummaryStep() {
 		id: 0,
 		startDate,
 		endDate,
-		values: sumRegisterCategories(registers),
+		...sumRegisterCategories(registers),
 	};
 
 	return <RegisterCard register={superRegister} />;

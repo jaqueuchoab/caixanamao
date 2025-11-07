@@ -3,11 +3,11 @@ import { EditableRegisterType } from '@/@types/register/register';
 export function sumRegisterCategories(registers: EditableRegisterType[]) {
 	return registers.reduce(
 		(acc, r) => {
-			acc.initial += r.values.initial;
-			acc.money += r.values.money;
-			acc.creditCard += r.values.creditCard;
-			acc.pix += r.values.pix;
-			acc.expenses += r.values.expenses;
+			acc.initial += r.initial;
+			acc.money += r.money;
+			acc.creditCard += r.creditCard;
+			acc.pix += r.pix;
+			acc.expenses += r.expenses;
 			return acc;
 		},
 		{

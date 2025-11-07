@@ -6,13 +6,11 @@ export const newRegisterSchema = z.object({
 	registers: z.array(
 		z.object({
 			date: z.date(),
-			values: z.object({
-				initial: z.number(),
-				money: z.number(),
-				creditCard: z.number(),
-				pix: z.number(),
-				expenses: z.number(),
-			}),
+			initial: z.number(),
+			money: z.number(),
+			creditCard: z.number(),
+			pix: z.number(),
+			expenses: z.number(),
 		}),
 	),
 });

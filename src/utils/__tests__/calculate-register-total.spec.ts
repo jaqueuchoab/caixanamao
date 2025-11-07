@@ -5,13 +5,11 @@ import { EditableRegisterType } from '@/@types/register/register';
 describe('calculateRegisterTotal', () => {
 	it('deve calcular o total corretamente com valores positivos', () => {
 		const registro: EditableRegisterType = {
-			values: {
-				initial: 100,
-				money: 50,
-				creditCard: 200,
-				pix: 75,
-				expenses: 30,
-			},
+			initial: 100,
+			money: 50,
+			creditCard: 200,
+			pix: 75,
+			expenses: 30,
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
@@ -22,13 +20,11 @@ describe('calculateRegisterTotal', () => {
 
 	it('deve subtrair despesas corretamente', () => {
 		const registro: EditableRegisterType = {
-			values: {
 				initial: 500,
 				money: 100,
 				creditCard: 300,
 				pix: 200,
 				expenses: 150, // deve ser subtraído
-			},
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
@@ -39,13 +35,11 @@ describe('calculateRegisterTotal', () => {
 
 	it('deve lidar com valores negativos corretamente', () => {
 		const registro: EditableRegisterType = {
-			values: {
 				initial: -100,
 				money: 200,
 				creditCard: -50,
 				pix: 150,
 				expenses: -30, // negativo deve ser somado (subtrair negativo = somar)
-			},
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
@@ -56,13 +50,11 @@ describe('calculateRegisterTotal', () => {
 
 	it('deve retornar zero para registro com todos os valores zerados', () => {
 		const registro: EditableRegisterType = {
-			values: {
 				initial: 0,
 				money: 0,
 				creditCard: 0,
 				pix: 0,
 				expenses: 0,
-			},
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
@@ -71,13 +63,11 @@ describe('calculateRegisterTotal', () => {
 
 	it('deve lidar com valores decimais corretamente', () => {
 		const registro: EditableRegisterType = {
-			values: {
 				initial: 100.5,
 				money: 50.25,
 				creditCard: 200.75,
 				pix: 75.1,
 				expenses: 30.9,
-			},
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
@@ -88,13 +78,11 @@ describe('calculateRegisterTotal', () => {
 
 	it('deve funcionar quando apenas despesas tem valor', () => {
 		const registro: EditableRegisterType = {
-			values: {
 				initial: 0,
 				money: 0,
 				creditCard: 0,
 				pix: 0,
 				expenses: 100,
-			},
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
@@ -104,13 +92,11 @@ describe('calculateRegisterTotal', () => {
 
 	it('deve funcionar quando não há despesas', () => {
 		const registro: EditableRegisterType = {
-			values: {
 				initial: 100,
 				money: 200,
 				creditCard: 300,
 				pix: 400,
 				expenses: 0,
-			},
 		} as EditableRegisterType;
 
 		const resultado = calculateRegisterTotal(registro);

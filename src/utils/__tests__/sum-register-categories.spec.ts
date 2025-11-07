@@ -18,31 +18,25 @@ describe('sumRegisterCategories', () => {
 	it('deve somar valor de multiplos registros corretamente', () => {
 		const mockRegisters: EditableRegisterType[] = [
 			{
-				values: {
-					initial: 100,
-					money: 50,
-					creditCard: 200,
-					pix: 75,
-					expenses: 30,
-				},
+				initial: 100,
+				money: 50,
+				creditCard: 200,
+				pix: 75,
+				expenses: 30,
 			} as EditableRegisterType,
 			{
-				values: {
-					initial: 200,
-					money: 100,
-					creditCard: 300,
-					pix: 125,
-					expenses: 70,
-				},
+				initial: 200,
+				money: 100,
+				creditCard: 300,
+				pix: 125,
+				expenses: 70,
 			} as EditableRegisterType,
 			{
-				values: {
-					initial: 50,
-					money: 25,
-					creditCard: 100,
-					pix: 50,
-					expenses: 20,
-				},
+				initial: 50,
+				money: 25,
+				creditCard: 100,
+				pix: 50,
+				expenses: 20,
 			} as EditableRegisterType,
 		];
 
@@ -60,22 +54,18 @@ describe('sumRegisterCategories', () => {
 	it('deve somar numeros negativos corretamente', () => {
 		const mockRegisters: EditableRegisterType[] = [
 			{
-				values: {
-					initial: -100,
-					money: -50,
-					creditCard: 200,
-					pix: -75,
-					expenses: 30,
-				},
+				initial: -100,
+				money: -50,
+				creditCard: 200,
+				pix: -75,
+				expenses: 30,
 			} as EditableRegisterType,
 			{
-				values: {
-					initial: 200,
-					money: 100,
-					creditCard: -100,
-					pix: 125,
-					expenses: -70,
-				},
+				initial: 200,
+				money: 100,
+				creditCard: -100,
+				pix: 125,
+				expenses: -70,
 			} as EditableRegisterType,
 		];
 
@@ -93,13 +83,11 @@ describe('sumRegisterCategories', () => {
 	it('deve somar um unico registro corretamente', () => {
 		const mockRegisters: EditableRegisterType[] = [
 			{
-				values: {
-					initial: 1000,
-					money: 500,
-					creditCard: 2000,
-					pix: 750,
-					expenses: 300,
-				},
+				initial: 1000,
+				money: 500,
+				creditCard: 2000,
+				pix: 750,
+				expenses: 300,
 			} as EditableRegisterType,
 		];
 
@@ -117,22 +105,18 @@ describe('sumRegisterCategories', () => {
 	it('deve lidar com valores decimais corretamente', () => {
 		const mockRegisters: EditableRegisterType[] = [
 			{
-				values: {
-					initial: 100.5,
-					money: 50.25,
-					creditCard: 200.75,
-					pix: 75.1,
-					expenses: 30.9,
-				},
+				initial: 100.5,
+				money: 50.25,
+				creditCard: 200.75,
+				pix: 75.1,
+				expenses: 30.9,
 			} as EditableRegisterType,
 			{
-				values: {
-					initial: 200.2,
-					money: 100.3,
-					creditCard: 300.4,
-					pix: 125.6,
-					expenses: 70.7,
-				},
+				initial: 200.2,
+				money: 100.3,
+				creditCard: 300.4,
+				pix: 125.6,
+				expenses: 70.7,
 			} as EditableRegisterType,
 		];
 

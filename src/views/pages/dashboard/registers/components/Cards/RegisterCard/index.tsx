@@ -41,6 +41,10 @@ export function RegisterCard({
 		window.location.reload();
 	};
 
+	const handleEditRegister = () => {
+		window.location.href = `/dashboard/registers/edit/${register.id}`;
+	};
+
 	const startDateFormatted = new Date(register.startDate)
 		.toLocaleString('pt-BR')
 		.split(',')[0];
@@ -75,10 +79,7 @@ export function RegisterCard({
 								type='button'
 								variant='neutral'
 								title='Editar registro'
-								onClick={() =>
-									// TODO: implementar edicao de registro!
-									alert('implementar edicao de registro!')
-								}
+								onClick={handleEditRegister}
 							>
 								<PencilSimpleIcon
 									className='registerCard__editIcon'
@@ -117,27 +118,27 @@ export function RegisterCard({
 				<RegisterItem
 					icon={CashRegisterIcon}
 					name='Inicial'
-					value={register.values.initial}
+					value={register.initial}
 				/>
 				<RegisterItem
 					icon={MoneyIcon}
 					name='Espécie'
-					value={register.values.money}
+					value={register.money}
 				/>
 				<RegisterItem
 					icon={CreditCardIcon}
 					name='Cartão'
-					value={register.values.creditCard}
+					value={register.creditCard}
 				/>
 				<RegisterItem
 					icon={PixLogoIcon}
 					name='Pix'
-					value={register.values.pix}
+					value={register.pix}
 				/>
 				<RegisterItem
 					icon={ReceiptXIcon}
 					name='Despesas'
-					value={register.values.expenses}
+					value={register.expenses}
 				/>
 			</Values>
 
