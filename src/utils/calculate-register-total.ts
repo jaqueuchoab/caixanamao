@@ -1,7 +1,7 @@
-import { EditableRegisterType, RegisterType } from '@/@types/register/register';
+import { RegisterType } from '@/@types/register/register';
 
 export function calculateRegisterTotal(
-	register: RegisterType | EditableRegisterType,
+	register: Omit<RegisterType, 'id' | 'startDate' | 'endDate'>,
 ) {
 	const values = {
 		initial: register.initial,
@@ -11,8 +11,8 @@ export function calculateRegisterTotal(
 		expenses: register.expenses,
 	};
 	return Object.entries(values).reduce((acc, [key, value]) => {
-		const num = Number(value) || 0;
+		const num = Number(value);
 		if (key === 'expenses') return acc - num;
-		return acc + value;
+		return acc + num;
 	}, 0);
 }
