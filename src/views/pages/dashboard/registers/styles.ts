@@ -110,5 +110,6 @@ export const EmptyRegisterListContainer = styled.div`
 	justify-content: center;
 	gap: 16px;
 
+	text-align: center;
 	color: ${({ theme }) => theme.colors.inputs.placeholder};
 `;
