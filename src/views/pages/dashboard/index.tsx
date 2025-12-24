@@ -15,6 +15,7 @@ import {
 import { RegistersPage } from './registers';
 import { Route, Routes, Navigate } from '@lib/router';
 import { NewRegisterPage } from './registers/new';
+import { EditRegisterPage } from './registers/edit';
 
 export function DashboardPage() {
 	const size = useWindowSize();
@@ -28,74 +29,79 @@ export function DashboardPage() {
 			<DashboardContent>
 				<Routes>
 					<Route
-						path="/"
+						path='/'
 						element={<Navigate to={'home'} replace />}
 						key={'/dashboard/'}
 					/>
 					<Route
-						path="/home"
+						path='/home'
 						element={
 							<SamplePage
 								Icon={HouseIcon}
-								pageTitle="Página Inicial"
+								pageTitle='Página Inicial'
 							/>
 						}
 						key={'/dashboard/home'}
 					/>
 					<Route
-						path="/registers"
+						path='/registers'
 						element={<RegistersPage />}
 						key={'/dashboard/registers'}
 					/>
 					<Route
-						path="/registers/new"
+						path='/registers/new'
 						element={<NewRegisterPage />}
 						key={'/dashboard/registers/new'}
 					/>
+					<Route
+						path='/registers/edit/:id'
+						element={<EditRegisterPage />}
+						key={'/dashboard/registers/edit/:id'}
+					/>
 
 					<Route
-						path="/admin"
+						path='/admin'
 						element={
 							<SamplePage
 								Icon={CastleTurretIcon}
-								pageTitle="Administração"
+								pageTitle='Administração'
 							/>
 						}
 						key={'/dashboard/admin'}
 					/>
 					<Route
-						path="/reports"
+						path='/reports'
 						element={
 							<SamplePage
 								Icon={FileTextIcon}
-								pageTitle="Relatórios"
+								pageTitle='Relatórios'
 							/>
 						}
 						key={'/dashboard/reports'}
 					/>
 					<Route
-						path="/analysis"
+						path='/analysis'
 						element={
 							<SamplePage
 								Icon={ChartBarIcon}
-								pageTitle="Análises"
+								pageTitle='Análises'
 							/>
 						}
 						key={'/dashboard/analysis'}
 					/>
 					<Route
-						path="/help"
+						path='/help'
 						element={
-							<SamplePage Icon={LifebuoyIcon} pageTitle="Ajuda" />
+							<SamplePage Icon={LifebuoyIcon} pageTitle='Ajuda' />
 						}
 						key={'/dashboard/help'}
 					/>
 					<Route
-						path="/settings"
+						path='/settings'
 						element={
 							<SamplePage
 								Icon={GearIcon}
-								pageTitle="Configurações"
+								pageTitle='Configurações'
 							/>
 						}
 						key={'/dashboard/settings'}
