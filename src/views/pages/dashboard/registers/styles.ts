@@ -84,6 +84,7 @@ export const RegistersContainer = styled.div`
 	gap: 16px;
 
 	#registers-quantity {
+		font-size: 14px;
 		color: ${({ theme }) => theme.colors.texts.secondary};
 	}
 `;
