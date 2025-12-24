@@ -1,13 +1,14 @@
 import { z } from 'zod';
 
 export const editRegisterSchema = z.object({
-	startDate: z.date().optional(),
-	endDate: z.date().optional(),
-	initial: z.number(),
-	money: z.number(),
-	creditCard: z.number(),
-	pix: z.number(),
-	expenses: z.number(),
+	id: z.string(),
+	startDate: z.date(),
+	endDate: z.date(),
+	initial: z.number().optional(),
+	money: z.number().optional(),
+	creditCard: z.number().optional(),
+	pix: z.number().optional(),
+	expenses: z.number().optional(),
 });
 
 export type EditRegisterSchema = z.infer<typeof editRegisterSchema>;

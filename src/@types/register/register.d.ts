@@ -8,15 +8,15 @@ export type EditableRegisterType = {
 };
 
 export type RegisterType = {
-	id: number;
+	id: string;
 	startDate: Date;
 	endDate: Date;
 
-	initial: number;
-	money: number;
-	creditCard: number;
-	pix: number;
-	expenses: number;
+	initial?: number;
+	money?: number;
+	creditCard?: number;
+	pix?: number;
+	expenses?: number;
 };
 
 export type RegisterInApiType = {
