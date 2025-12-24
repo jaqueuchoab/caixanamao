@@ -13,15 +13,15 @@ import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { differenceInDays } from 'date-fns';
 import { NewRegisterSchema } from '@/schemas/new-register-schema';
 
-interface EditableRegisterCardProps {
+interface CreationRegisterCardProps {
 	id: number;
 	showTotal?: boolean;
 }
 
-export function EditableRegisterCard({
+export function CreationRegisterCard({
 	id,
 	showTotal = true,
-}: EditableRegisterCardProps) {
+}: CreationRegisterCardProps) {
 	const { watch, control } = useFormContext<NewRegisterSchema>();
 	const register = watch(`registers.${id}`);
 
