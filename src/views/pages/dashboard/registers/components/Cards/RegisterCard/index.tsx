@@ -72,7 +72,9 @@ export function RegisterCard({
 
 			<HeadText>
 				<div className='registerCard__titleContainer'>
-					<span className='registerCard__title'>#{register.id}</span>
+					<span className='registerCard__title'>
+						Registro #{register.id.split('-')[0]}
+					</span>
 					<div className='registerCard__actions'>
 						{canEdit && (
 							<Button
@@ -118,27 +120,27 @@ export function RegisterCard({
 				<RegisterItem
 					icon={CashRegisterIcon}
 					name='Inicial'
-					value={register.initial}
+					value={register.initial ?? 0}
 				/>
 				<RegisterItem
 					icon={MoneyIcon}
 					name='Espécie'
-					value={register.money}
+					value={register.money ?? 0}
 				/>
 				<RegisterItem
 					icon={CreditCardIcon}
 					name='Cartão'
-					value={register.creditCard}
+					value={register.creditCard ?? 0}
 				/>
 				<RegisterItem
 					icon={PixLogoIcon}
 					name='Pix'
-					value={register.pix}
+					value={register.pix ?? 0}
 				/>
 				<RegisterItem
 					icon={ReceiptXIcon}
 					name='Despesas'
-					value={register.expenses}
+					value={register.expenses ?? 0}
 				/>
 			</Values>
 

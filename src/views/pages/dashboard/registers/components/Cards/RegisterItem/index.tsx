@@ -25,7 +25,7 @@ export function RegisterItem({
 	return (
 		<Container {...rest}>
 			<Infos>
-				<IconComponent size={24} />
+				<IconComponent size={20} />
 				{name}
 			</Infos>
 			<Value>

@@ -37,7 +37,7 @@ export const HeadText = styled.div`
 		justify-content: space-between;
 
 		& .registerCard__title {
-			font-size: 20px;
+			font-size: 18px;
 			font-weight: 600;
 		}
 
@@ -55,7 +55,7 @@ export const HeadText = styled.div`
 		gap: 8px;
 		flex-wrap: wrap;
 
-		font-size: 16px;
+		font-size: 14px;
 		color: ${({ theme }) => theme.colors.texts.secondary};
 	}
 

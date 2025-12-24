@@ -17,6 +17,7 @@ export const Infos = styled.div`
 	align-content: center;
 	gap: 12px;
 	flex: 1 0 0;
+	font-size: 14px;
 `;
 
 export const Value = styled.div`
@@ -24,6 +25,8 @@ export const Value = styled.div`
 	justify-content: center;
 	align-items: center;
 	gap: 4px;
+
+	font-size: 14px;
 
 	& .registerItem__currency {
 		font-weight: 600;
