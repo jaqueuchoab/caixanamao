@@ -6,12 +6,12 @@ import {
 	ReceiptIcon,
 	ReceiptXIcon,
 } from '@phosphor-icons/react';
-import { RegisterItem } from '../RegisterItem';
-import { Container, HeadText, Total, Values } from '../RegisterCard/styles';
 import { Controller, useFormContext } from 'react-hook-form';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { differenceInDays } from 'date-fns';
 import { NewRegisterSchema } from '@/schemas/new-register-schema';
+import { Container, HeadText, Total, Values } from '../../../components/Cards/RegisterCard/styles';
+import { RegisterItem } from '../../../components/Cards/RegisterItem';
 
 interface CreationRegisterCardProps {
 	id: number;
