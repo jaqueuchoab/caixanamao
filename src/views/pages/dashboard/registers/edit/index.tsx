@@ -16,8 +16,8 @@ import {
 	EditRegisterSchema,
 	editRegisterSchema,
 } from '@/schemas/edit-register-schema';
-import { PatchableRegisterCard } from '../components/Cards/PatchableRegisterCard';
-import { PatchSummaryStep } from '../new/steps/PatchSummaryStep';
+import { PatchableRegisterCard } from './components/PatchableRegisterCard';
+import { PatchSummaryStep } from './steps/PatchSummaryStep';
 
 export function EditRegisterPage() {
 	const { id } = useParams();
