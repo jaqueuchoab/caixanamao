@@ -4,7 +4,7 @@ import { sumRegisterCategories } from '@/utils/sum-register-categories';
 import { RegisterType } from '@/@types/register/register';
 import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema';
 
-export function EndSummaryStep() {
+export function CreationSummaryStep() {
 	const { watch } = useFormContext<NewRegisterSchema>();
 	const registers = watch('registers');
 	const startDate = watch('startDate');

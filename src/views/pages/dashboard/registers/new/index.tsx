@@ -10,8 +10,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { differenceInDays } from 'date-fns';
 import { DateRangeStep } from './steps/DateRangeStep';
-import { EndSummaryStep } from './steps/EndSummaryStep';
-import { EditableRegisterCard } from '../components/Cards/EditableRegisterCard';
+import { CreationSummaryStep } from './steps/CreationSummaryStep';
+import { CreationRegisterCard } from './components/CreationRegisterCard';
 import { sumRegisterCategories } from '@/utils/sum-register-categories';
 import { api } from '@/lib/api';
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +42,7 @@ export function NewRegisterPage() {
 		return {
 			number: k + 1,
 			title: 'data ' + k,
-			step: <EditableRegisterCard key={`register-card-${k}`} id={k} />,
+			step: <CreationRegisterCard key={`register-card-${k}`} id={k} />,
 		};
 	});
 
@@ -59,7 +59,7 @@ export function NewRegisterPage() {
 
 	const onSubmit = async (data: NewRegisterSchema) => {
 		const registerPayload: Omit<RegisterInApiType, 'id'> = {
-			iduser: '840b3494-30bb-4111-a59f-6cf41d48055b', // TODO: substituir pelo usuario da sessao
+			iduser: localStorage.getItem('userId') ?? '',
 			data: data.startDate,
 			data_final: data.endDate,
 			valor_cartao: sumRegisterCategories(data.registers).creditCard,
@@ -96,7 +96,7 @@ export function NewRegisterPage() {
 		{
 			number: 2,
 			title: 'Resumo da inserção',
-			step: <EndSummaryStep key='end-summary-step' />,
+			step: <CreationSummaryStep key='end-summary-step' />,
 		},
 	];
 
@@ -166,8 +166,6 @@ export function NewRegisterPage() {
 									{isSubmitted ? 'Enviado' : 'Enviar'}
 								</Button>
 							)}
-
-							{/* botão de submit fica no step EndSummary*/}
 						</FormActions>
 					</Form>
 				</FormProvider>
@@ -175,6 +173,7 @@ export function NewRegisterPage() {
 				<Button text_align='center' fill_width variant='neutral'>
 					<QuestionIcon size={24} />
 					Ajuda
+					{/* TODO: popup de ajuda em novo registro */}
 				</Button>
 			</Content>
 		</Container>
