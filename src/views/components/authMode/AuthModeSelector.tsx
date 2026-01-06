@@ -30,8 +30,8 @@ const AuthModeSelector = () => {
   const [loginValid, setLoginValid] = React.useState(false);
   // Estados para uso dos dados do Login, para enviar ao backend
   const [loginData, setLoginData] = React.useState<LoginData>({
-    email: '',
-    senha: '',
+    email: "",
+    senha: "",
   });
 
   const {

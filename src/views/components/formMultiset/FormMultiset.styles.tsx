@@ -10,7 +10,7 @@ export const MultisetContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   align-self: stretch;
-  border-radius: 16px;
+  border-radius: 17px;
   border: 1.6px solid ${({ theme }) => theme.colors.inputs.stroke};
 `;
 
@@ -20,7 +20,7 @@ export const TabsSwitcher = styled.div`
   align-items: flex-start;
   gap: 10px;
   align-self: stretch;
-  border-radius: 16px 16px 0px 0px;
+  border-radius: 15px 15px 0px 0px;
   background-color: ${({ theme }) => theme.colors.buttons.switcher.fill};
 `;
 

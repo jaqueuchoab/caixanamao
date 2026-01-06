@@ -35,7 +35,8 @@ function parseDate({ day, month, year }: typeDate): string | null {
 }
 
 function errorConfig(error: string, themeMode: string) {
-	return <span style={{ color: `var(--error-${themeMode})` }}>{error}</span>;
+	if (error !== "") 
+		return <span style={{ color: `var(--error-${themeMode})` }}>{error}</span>;
 }
 
 const DateInput = ({value, onChange} : DateInputProps) => {
@@ -45,6 +46,7 @@ const DateInput = ({value, onChange} : DateInputProps) => {
 		month: '',
 		year: '',
 	});
+	const [erro, setErro] = React.useState("");
 
 	React.useEffect(() => {
 		if(isComplete(dateOfBirth) && onChange && dateOfBirth){ 
@@ -52,16 +54,17 @@ const DateInput = ({value, onChange} : DateInputProps) => {
 			if(finalDate)
 				onChange(finalDate);
 		}
-  }, [dateOfBirth]);
+  	}, [dateOfBirth]);
 
 	return (
 		<div>
-			<DateInputContainer onBlur={() => isComplete(dateOfBirth as typeDate)}>
+			<DateInputContainer>
 				<DateInputField
 					type='text'
 					id='day'
 					value={dateOfBirth.day}
 					placeholder='00'
+					onBlur={() => {dateOfBirth.day.length == 2 ? setErro("") : setErro("Preencha corretamente")}}
 					onChange={({ target }) =>
 						setDateOfBirth({ ...dateOfBirth, day: target.value })
 					}
@@ -72,6 +75,7 @@ const DateInput = ({value, onChange} : DateInputProps) => {
 					id='month'
 					value={dateOfBirth.month}
 					placeholder='00'
+					onBlur={() => {dateOfBirth.month.length == 2 ? setErro("") : setErro("Preencha corretamente")}}
 					onChange={({ target }) =>
 						setDateOfBirth({ ...dateOfBirth, month: target.value })
 					}
@@ -82,12 +86,14 @@ const DateInput = ({value, onChange} : DateInputProps) => {
 					id='year'
 					value={dateOfBirth.year}
 					placeholder='0000'
+					onBlur={() => {(isComplete(dateOfBirth as typeDate) && dateOfBirth.year.length == 4) ? setErro("") : setErro("Preencha corretamente")}}
 					onChange={({ target }) =>
 						setDateOfBirth({ ...dateOfBirth, year: target.value })
 					}
 				/>
 			</DateInputContainer>
-			{isComplete(dateOfBirth) ? null : errorConfig("Preencha todos os campos", themeMode)}
+			
+			{errorConfig(erro, themeMode)}
 		</div>
 	);
 };
