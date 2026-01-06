@@ -7,7 +7,7 @@ export type IdentificationData = {
    nome: string;
   cpf: string;
   nasc: string;
-  cargo: "Colaborador" | "Administrador";
+  cargo: number;
 }
 
 export type CredentialsData = {

@@ -70,7 +70,7 @@ const AuthModeSelector = () => {
       }
     } catch (error:  string | any) {
       // mensagem de erro para o usuário
-      console.error('Erro ao fazer cadastro:', error.msg);
+      console.error('Erro ao fazer cadastro:', error.msg, formData);
     }
   };
 

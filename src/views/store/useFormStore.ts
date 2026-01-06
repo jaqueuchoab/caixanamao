@@ -7,7 +7,7 @@ type FormData = IdentificationData & CredentialsData;
 // Definindo tipo da Store
 type FormStore = {
   formData: FormData;
-  setField: (field: keyof FormData, value: string) => void;
+  setField: (field: keyof FormData, value: any) => void;
   resetForm: () => void;
   isIdentificationComplete: () => boolean;
   isCredentialsComplete: () => boolean;
@@ -20,7 +20,7 @@ export const useFormStore = create<FormStore>((set, get) => ({
     nome: '',
     cpf: '',
     nasc: '',
-    cargo: "Colaborador",
+    cargo: 1,
     email: '',
     senha: '',
     senha_confirmacao: '',
@@ -39,7 +39,7 @@ export const useFormStore = create<FormStore>((set, get) => ({
         nome: '',
         cpf: '',
         nasc: '',
-        cargo: "Colaborador",
+        cargo: 1,
         email: '',
         senha: '',
         senha_confirmacao: '',
@@ -53,7 +53,7 @@ export const useFormStore = create<FormStore>((set, get) => ({
       formData.nome.trim() !== "" &&
       formData.cpf.trim() !== "" &&
       formData.nasc.trim() !== "" &&
-      formData.cargo.trim() !== ""
+      formData.cargo == 1 || formData.cargo == 4
     );
   },
   isCredentialsComplete: () => {
@@ -68,6 +68,6 @@ export const useFormStore = create<FormStore>((set, get) => ({
   isComplete: () => {
     const { formData } = get();
     // verifica se todos os campos estão preenchidos
-    return Object.values(formData).every((val) => val.trim() !== "");
+    return Object.values(formData).every((val) => val !== null);
   },
 }));

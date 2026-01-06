@@ -50,7 +50,10 @@ const Identification = ({
       <Radio
         value={formData.cargo}
         onChange={(value) => setField('cargo', value)}
-        options={['Colaborador', 'Administrador']}
+        options={[
+    { label: 'Colaborador', value: 1 },
+    { label: 'Administrador', value: 4 },
+  ]}
       />
     </>
   );
