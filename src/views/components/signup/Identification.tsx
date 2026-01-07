@@ -3,8 +3,8 @@ import Input from '../input/Input';
 import { LabelInformation } from '../authMode/AuthModeSelector.styles';
 import Radio from '../input/Radio';
 import DateInput from '../input/DateInput';
-import useForm from '../../hooks/useForm';
 import { useFormStore } from '../../store/useFormStore';
+import { maskCPF } from '../../../utils/maskCPF';
 
 type IdentificationProps = {
   onValidChange?: (isValid: boolean) => void;
@@ -15,16 +15,14 @@ type IdentificationProps = {
 const Identification = ({
   onValidChange,
 }: IdentificationProps) => {
-  const name = useForm('name');
-  const cpf_field = useForm('cpf');
   const { formData, setField } = useFormStore();
 
   React.useEffect(() => {
     // brevemente mudar essa validação com o hook form
-    const isValid = name.value.length > 3 && cpf_field.value.length >= 14;
+    const isValid = formData.nome.length > 3 && formData.cpf.length >= 14;
     onValidChange?.(isValid);
 
-  }, [formData, name, cpf_field]);
+  }, [formData]);
 
   return (
     <>
@@ -34,15 +32,16 @@ const Identification = ({
         placeholder="Como devemos te chamar?"
         value={formData.nome}
         onChange={(e) => setField('nome', e.value)}
-        error={name.error}
       />
       <Input
         id="cpf"
         type="text"
         placeholder="No formato 000.000.000-00"
-        value={formData.cpf}
-        onChange={(e) => setField('cpf', e.value)}
-        error={cpf_field.error}
+        value={maskCPF(formData.cpf)}
+        onChange={(e) => {
+          setField('cpf', e.value)
+        }}
+        max={14}
       />
       <LabelInformation>Data de Nascimento: </LabelInformation>
       <DateInput value={formData.nasc} onChange={(e) => setField('nasc', e)}/>

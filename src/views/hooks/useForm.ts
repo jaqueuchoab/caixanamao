@@ -42,20 +42,20 @@ const types: typesInput = {
 };
 
 const useForm = (type: string) => {
-  const [value, setValue] = React.useState('');
-  const [error, setError] = React.useState<null | string>(null);
+  const [value, setValue] = React.useState("");
+  const [error, setError] = React.useState<string>("");
 
-  function validate(value: string | number) {
+  function validate(value: string) {
     if (!type) return true;
     if ((typeof value === 'string' && value.length === 0) || !value) {
       setError(types[type].void);
-      return false;
+      return error;
     } else if (types[type] && !types[type].regex.test(value.toString())) {
       setError(types[type].message);
-      return false;
+      return error;
     } else {
-      setError(null);
-      return true;
+      setError("");
+      return "";
     }
   }
 
@@ -69,8 +69,7 @@ const useForm = (type: string) => {
     setValue,
     onChange,
     error,
-    validate: () => validate(value),
-    onBlur: () => validate(value),
+    validate: () => validate(value)
   };
 };
 

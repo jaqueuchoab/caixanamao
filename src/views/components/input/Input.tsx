@@ -14,8 +14,10 @@ export type InputProps = {
   value: string;
   type: string;
   placeholder?: string;
-  error: null | string;
+  error?: null | string;
   onChange: (target: HTMLInputElement) => void;
+  min?: number,
+  max?: number,
 };
 
 const Input = ({
@@ -25,6 +27,8 @@ const Input = ({
   placeholder,
   error,
   onChange,
+  min,
+  max
 }: InputProps) => {
   const { themeMode } = useContextTheme();
   const [visible, setVisible] = useState(false);
@@ -45,6 +49,8 @@ const Input = ({
           autoComplete="off"
           placeholder={placeholder}
           onChange={({ target }) => onChange(target)}
+          minLength={min}
+          maxLength={max}
         />
 
         {isPassword && (
