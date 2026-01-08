@@ -33,6 +33,7 @@ const AuthModeSelector = () => {
     email: "",
     senha: "",
   });
+  const [isLoading, setIsLoading] = React.useState(false);
 
   const {
     formData,
@@ -49,20 +50,24 @@ const AuthModeSelector = () => {
   // Função que realiza o login, enviando os dados para o backend
   const handleLogin = async () => {
     try {
+      setIsLoading(true);
       const response = await loginUser(loginData);
       console.log('Login bem-sucedido:', response);
 
-      localStorage.setItem('token', response.token);
+      localStorage.setItem('token', response.accessToken);
       navigate('/dashboard');
     } catch (error: string | any) {
       // mensagem de erro para o usuário
       console.error('Erro ao fazer login:', error.msg);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   // Função que redireciona o usuário para a página de cadastro, caso ele não esteja lá
   const handleSignUp = async () => {
     try {
+      setIsLoading(true);
       if (isComplete()) {
         const response = await signUpUser(formData);
         console.log('Cadastro bem-sucedido:', response);
@@ -71,6 +76,8 @@ const AuthModeSelector = () => {
     } catch (error:  string | any) {
       // mensagem de erro para o usuário
       console.error('Erro ao fazer cadastro:', error.msg, formData);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -99,6 +106,7 @@ const AuthModeSelector = () => {
         <Button
           disabled={!loginValid}
           onClick={handleLogin}
+          loading={isLoading}
           fill_width={true}
           text_align="center"
         >
@@ -108,6 +116,7 @@ const AuthModeSelector = () => {
       {isSignUp ? (
         <Button
           onClick={() => navigate('credentials')}
+          loading={isLoading}
           fill_width={true}
           text_align="center"
           disabled={!isIdentificationComplete()}
@@ -119,6 +128,7 @@ const AuthModeSelector = () => {
       {isCredentials ? (
         <Button
           onClick={handleSignUp}
+          loading={isLoading}
           fill_width={true}
           text_align="center"
           disabled={!isCredentialsComplete()}
