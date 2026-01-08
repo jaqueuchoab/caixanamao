@@ -1,38 +1,36 @@
-import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import cnm_logohorz_dark from '../../assets/logos/dark-theme-assets/cnm-logohorz-dark.svg';
-import cnm_logohorz_light from '../../assets/logos/light-theme-assets/cnm-logohorz-light.svg';
-import LoginEmail from './LoginEmail.tsx';
-import { useContextTheme } from '../../context/ThemeContext.tsx';
-import style from './styles/Login.module.css';
-import { fetchUsersList } from '../../../services/fetchUsersList.ts';
+import React from 'react';
+import Input from '../input/Input';
+import useForm from '../../hooks/useForm';
+import { LoginData } from '../../../@types/user-types';
 
-/*
-endpoint LOGIN
-email: string;
-senha: string;
-*/
+type LoginProps = {
+  onValidChange?: (isValid: boolean) => void;
+  onDataChange?: (data: LoginData) => void;
+};
 
-const Login = () => {
-	const { themeMode } = useContextTheme();
+const Login = ({ onValidChange, onDataChange }: LoginProps) => {
+  const email = useForm('email');
+  const password = useForm('password_login');
 
-	useEffect(() => {
-		fetchUsersList();
-	}, []);
+  React.useEffect(() => {
+    const isValid = email.value.length > 3 && password.value.length > 3;
+    onValidChange?.(isValid);
+    
+    onDataChange?.({ email: email.value, senha: password.value });
+    localStorage.setItem('email', email.value);
+  }, [email.value, password.value]);
 
-	return (
-		<div className={style.loginRegistration} id={style[themeMode]}>
-			<img
-				src={themeMode === 'light' ? cnm_logohorz_light : cnm_logohorz_dark}
-				alt='cnm_logohorz'
-				style={{ height: 'var(--size-3md)' }}
-			/>
-
-			<Routes>
-				<Route path='/' element={<LoginEmail />}></Route>
-			</Routes>
-		</div>
-	);
+  return (
+    <>
+      <Input id="email" type="text" placeholder="Digite seu email" {...email} />
+      <Input
+        id="password"
+        type="password"
+        placeholder="No mínimo 8 digitos"
+        {...password}
+      />
+    </>
+  );
 };
 
 export default Login;

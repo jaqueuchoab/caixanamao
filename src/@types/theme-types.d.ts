@@ -8,6 +8,9 @@ type ButtonColorsType = {
 	fill: string;
 	hover: string;
 	stroke: string;
+	buttonActive?: string,
+  buttonInactive?: string,
+  buttonHoverActive?: string,
 };
 
 export type ColorFullScaleType = {
@@ -98,6 +101,7 @@ export type ThemeType = {
 			admin: ButtonColorsType;
 			danger: ButtonColorsType;
 			link: ButtonColorsType;
+			switcher: ButtonColorsType;
 		};
 		register: {
 			itemStroke: string;

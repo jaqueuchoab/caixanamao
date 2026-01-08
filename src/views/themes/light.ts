@@ -40,11 +40,11 @@ export const lightTheme: ThemeType = {
 				inactive: baseColorsDefault.blue[300],
 			},
 			progressDot: {
-				active: baseColorsDefault.green[200],
+				active: baseColorsDefault.green[600],
 				inactive: baseColorsDefault.neutral[300],
 			},
 			progressBar: {
-				active: baseColorsDefault.green[300],
+				active: baseColorsDefault.green[600],
 				inactive: baseColorsDefault.neutral[300],
 			},
 		},
@@ -79,6 +79,14 @@ export const lightTheme: ThemeType = {
 				fill: 'transparent',
 				hover: baseColorsDefault.green[900],
 				stroke: '',
+			},
+			switcher: {
+				text: baseColorsDefault.neutral[950],
+				fill: baseColorsDefault.neutral[300],
+				hover: baseColorsDefault.neutral[200],
+				stroke: '',
+				buttonActive: baseColorsDefault.neutral[100],
+				buttonInactive: baseColorsDefault.neutral[300],
 			},
 		},
 		register: {

@@ -1,10 +1,9 @@
 import { RouteObject } from 'react-router-dom';
 import Home from '../views/components/home/Home';
-import Login from '../views/components/login/Login';
-import SignUp from '../views/components/signup/SignUp';
 import { Dashboard } from '../views/components/dashboard/Dashboard';
 import Vantagens from '../views/components/Vantagens';
 import Fallback from '../views/components/fallback/Fallback';
+import AuthModeSelector from '../views/components/authMode/AuthModeSelector';
 
 /**
  * @description Para melhor manutenibilidade, acrescente sempre novas rotas
@@ -17,12 +16,12 @@ export const mainRoutes: RouteObject[] = [
 		element: <Home />,
 	},
 	{
-		path: '/login/*',
-		element: <Login />,
+		path: '/login',
+		element: <AuthModeSelector />,
 	},
 	{
 		path: '/signup/*',
-		element: <SignUp />,
+		element: <AuthModeSelector />,
 	},
 	{
 		path: '/dashboard/*',
