@@ -1,111 +1,60 @@
 import React from 'react';
-import { Button } from '@components/ui/button/Button';
-import style from './styles/Identification.module.css';
-import ProgressIndicator from './components/ProgressIndicator/ProgressIndicator';
-import Input from '@components/ui/input/Input';
-import useForm from '../../hooks/useForm';
-import Radio from '@components/ui/input/Radio';
-import DateInput, { typeDate } from '@components/ui/input/DateInput';
-import { Link } from '@lib/router';
-/*
-endpoint para CREATE_USER
-nome: string;
-cpf: string;
-nasc: string; (year-month-day)
-cargo: boolean;
+import { useFormStore } from '../../store/useFormStore';
+import { maskCPF } from '../../../utils/maskCPF';
+import Input from '@/views/components/input/Input';
+import { LabelInformation } from '@/views/components/authMode/AuthModeSelector.styles';
+import DateInput from '@/views/components/input/DateInput';
+import Radio from '@/views/components/ui/input/Radio';
 
--esses dados serão coletados em outra página-
-email: string;
-senha: string;
-senhaConfirmacao: string;
-*/
+type IdentificationProps = {
+	onValidChange?: (isValid: boolean) => void;
+};
 
-const Identification = () => {
-	const name = useForm('name');
-	const cpf = useForm('cpf');
-	const [position, setPosition] = React.useState('');
-	const [dateOfBirth, setDateOfBirth] = React.useState<typeDate>({
-		day: '',
-		month: '',
-		year: '',
-	});
+// os inputs estão funcionando mas sem validação, o que é necessário
 
-	function isEmpty() {
-		return position.length > 0 &&
-			dateOfBirth.day.length > 0 &&
-			dateOfBirth.month.length > 0 &&
-			dateOfBirth.year.length > 0
-			? true
-			: false;
-	}
+const Identification = ({ onValidChange }: IdentificationProps) => {
+	const { formData, setField } = useFormStore();
 
-	function dateString(dateOfBirth: typeDate): string {
-		return `${dateOfBirth.year}-${dateOfBirth.month}-${dateOfBirth.day}`;
-	}
-
-	function isAdm(position: string) {
-		return position === 'Administrador' ? true : false;
-	}
-
-	// pode ser utilitaria porquê haverá momentos em ue vamos precisar realizar operações com as datas
-	function createDate(dateOfBirth: typeDate) {
-		const date = new Date(
-			Number(dateOfBirth.year),
-			Number(dateOfBirth.month) - 1,
-			Number(dateOfBirth.day)
-		);
-		return date;
-	}
+	React.useEffect(() => {
+		// brevemente mudar essa validação com o hook form
+		const isValid = formData.nome.length > 3 && formData.cpf.length >= 14;
+		onValidChange?.(isValid);
+	}, [formData]);
 
 	return (
-		<section className={style.mainContent}>
-			<section className={style.forms}>
-				<h3>Cadastrar</h3>
-				<p>Insira seus dados e rapidamente acesse a ferramenta.</p>
-				<ProgressIndicator />
-				<form>
-					<fieldset>
-						<label>Nome:</label>
-						<Input
-							id='nome'
-							type='text'
-							placeholder='Como devemos te chamar?'
-							{...name}
-						/>
-					</fieldset>
-					<fieldset>
-						<label>CPF:</label>
-						<Input
-							id='cpf'
-							type='text'
-							placeholder='No formato 000.000.000-00'
-							{...cpf}
-						/>
-					</fieldset>
-					<fieldset>
-						<label>Data de nascimento:</label>
-						<DateInput value={dateOfBirth} setValue={setDateOfBirth} />
-					</fieldset>
-					<fieldset>
-						<label>Cargo atual:</label>
-						<div className={style.radioList}>
-							<Radio
-								options={['Administrador', 'Funcionário']}
-								value={position}
-								setValue={setPosition}
-							/>
-						</div>
-					</fieldset>
-				</form>
-			</section>
-			<Link style={{ width: '100%' }} to={'password'}>
-				{isEmpty() ? (
-					<Button>Continuar</Button>
-				) : (
-					<Button disabled>Continuar</Button>
-				)}
-			</Link>
-		</section>
+		<>
+			<Input
+				id='nome'
+				type='text'
+				placeholder='Como devemos te chamar?'
+				value={formData.nome}
+				onChange={(e) => setField('nome', e.value)}
+			/>
+			<Input
+				id='cpf'
+				type='text'
+				placeholder='No formato 000.000.000-00'
+				value={maskCPF(formData.cpf)}
+				onChange={(e) => {
+					setField('cpf', e.value);
+				}}
+				max={14}
+			/>
+			<LabelInformation>Data de Nascimento: </LabelInformation>
+			<DateInput
+				value={formData.nasc}
+				onChange={(e) => setField('nasc', e)}
+			/>
+			<LabelInformation>Cargo atual: </LabelInformation>
+			<Radio
+				value={formData.cargo}
+				onChange={(value) => setField('cargo', value)}
+				options={[
+					{ label: 'Colaborador', value: 1 },
+					{ label: 'Administrador', value: 4 },
+				]}
+			/>
+		</>
 	);
 };
 

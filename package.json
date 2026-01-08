@@ -34,6 +34,8 @@
     "react-router-dom": "7.6.1",
     "sonner": "^2.0.7",
     "swiper": "11.2.8",
+    "ts-node": "^10.9.2",
+    "zustand": "^5.0.7",
     "use-mask-input": "^3.5.2",
     "zod": "^4.1.3"
   },

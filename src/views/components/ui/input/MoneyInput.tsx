@@ -1,5 +1,4 @@
 import { ComponentProps, useMemo, ChangeEvent } from 'react';
-import style from './styles/Input.module.css';
 import { useContextTheme } from '@context/ThemeContext';
 
 type MoneyInputProps = {
@@ -43,8 +42,7 @@ export default function MoneyInput({
 		<div style={{ marginBottom: 8 }}>
 			<input
 				id={id}
-				className={style.input}
-				autoComplete="off"
+				autoComplete='off'
 				value={formatNumberBR(value)}
 				aria-invalid={Boolean(error) || undefined}
 				aria-describedby={error ? `${id}-error` : undefined}
@@ -58,7 +56,7 @@ export default function MoneyInput({
 					if (parsed === null) return;
 					onChangeValue?.(parsed);
 				}}
-				inputMode="numeric"
+				inputMode='numeric'
 				style={inputStyle}
 				{...props}
 			/>

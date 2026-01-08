@@ -20,6 +20,7 @@ export const ButtonContainer = styled.button<ButtonProps>`
 	padding: 12px 16px;
 	justify-content: ${({ $text_align }) => $text_align || 'center'};
 	align-items: center;
+	font-size: 16px;
 	gap: 8px;
 
 	transition: opacity 0.3s ease;

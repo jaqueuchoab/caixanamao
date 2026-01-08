@@ -1,3 +1,4 @@
+import '@emotion/react';
 import { ThemeType } from './theme-types';
 
 /**
