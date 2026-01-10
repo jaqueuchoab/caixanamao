@@ -3,7 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { LoginSchema, loginSchema } from '@/schemas/login.schema';
 import Input from '@/views/components/ui/input/Input';
 import { postUserLogin } from '@/services/postUserLogin';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/views/components/ui/button/Button';
 import { LoginMainContainer } from './styles';
 import artwork_src from '@assets/FallbackArtwork.png';
@@ -15,11 +15,18 @@ import { Spinner } from '@/views/components/ui/spinner/Spinner';
 import { toast } from 'sonner';
 import { AxiosError } from 'axios';
 import { replaceUserData } from '@/utils/replace-user-data.util';
+import { Location } from 'react-router-dom';
+
+interface LocationState {
+	from: Location;
+}
 
 export function LoginPage() {
 	const navigate = useNavigate();
 	const [isSubmitting, setStartSubmitting] = useTransition();
 	const { themeMode } = useContextTheme();
+	const location = useLocation() as Location<LocationState>;
+	const from = location.state?.from?.pathname || '/dashboard';
 
 	const methods = useForm({
 		resolver: zodResolver(loginSchema),
@@ -34,7 +41,7 @@ export function LoginPage() {
 				replaceUserData(responseData);
 
 				toast.success('Bem vindo(a) de volta!');
-				navigate('/dashboard');
+				navigate(from, { replace: true });
 			} catch (e) {
 				if (e instanceof AxiosError) {
 					console.error(e);
@@ -53,8 +60,7 @@ export function LoginPage() {
 					<a href='/'>
 						<HeaderLogo
 							id='logo'
-							src={(() =>
-								getLogo(themeMode, 769))()}
+							src={(() => getLogo(themeMode, 769))()}
 							alt={`logo-mode-${themeMode}`}
 						/>
 					</a>

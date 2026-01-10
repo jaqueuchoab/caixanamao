@@ -7,59 +7,46 @@ import { Spinner } from '@/views/components/ui/spinner/Spinner';
 
 export function ProtectedRoute() {
 	const { user, setUser } = useFormStore();
-	const accessToken = sessionStorage.getItem('accessToken');
-	const [isRehydrating, setIsRehydrating] = useState(true);
+	const [isLoading, setIsLoading] = useState(!user.iduser);
 	const location = useLocation();
 
 	useEffect(() => {
-		const rehydrate = async () => {
-			const tokenInStorage = sessionStorage.getItem('accessToken');
+		const verifySession = async () => {
+			const hasToken = sessionStorage.getItem('accessToken');
 
-			// Se não tem token no storage e nem no Zustand, não há sessão
-			if (!tokenInStorage && !accessToken) {
-				setIsRehydrating(false);
+			if (user.iduser || !hasToken) {
+				setIsLoading(false);
 				return;
 			}
 
 			try {
-				// Tentamos dar um refresh para pegar dados frescos do usuário
-				// e um novo accessToken. O interceptor cuidará do resto.
 				const { data } = await api.post('/auth/refresh');
-
 				sessionStorage.setItem('accessToken', data.accessToken);
-				sessionStorage.setItem('accesToken', data.accessToken);
 				setUser(data.user);
-			} catch (error) {
-				console.error('Erro ao reidratar sessão:', error);
+			} catch {
 				sessionStorage.removeItem('accessToken');
+				useFormStore.getState().reset();
 			} finally {
-				setIsRehydrating(false);
+				setIsLoading(false);
 			}
 		};
 
-		// Se o usuário já está no Zustand, não precisa reidratar
-		if (user.iduser) {
-			setIsRehydrating(false);
-		} else {
-			rehydrate();
-		}
+		verifySession();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [user.iduser]);
 
-	if (isRehydrating) {
+	if (isLoading) {
 		return (
 			<ProtectedContainer>
 				<Spinner />
-				<p>Carregando sessão...</p>
+				<p>Verificando acesso...</p>
 			</ProtectedContainer>
-		); // Substitua por um Spinner
+		);
 	}
 
-	// Se após a tentativa não temos usuário, manda para o login
-	// Salvamos a rota atual (location) para redirecionar o usuário de volta após o login
-	if (!user.iduser && !isRehydrating) {
-		return <Navigate to='/auth/login' state={{ from: location }} replace />;
-	}
-
-	return <Outlet />; // Renderiza os filhos (Dashboard, etc)
+	return user.iduser ? (
+		<Outlet />
+	) : (
+		<Navigate to='/auth/login' state={{ from: location }} replace />
+	);
 }
