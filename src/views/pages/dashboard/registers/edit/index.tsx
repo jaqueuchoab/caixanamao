@@ -9,7 +9,6 @@ import { toast } from 'sonner';
 import { api } from '@/lib/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useTransition } from 'react';
-import { RegisterInApiType } from '@/@types/register/register';
 import { useQuery } from '@tanstack/react-query';
 import { fetchRegisterById } from '@/services/fetchRegisterById';
 import {
@@ -38,13 +37,13 @@ export function EditRegisterPage() {
 		mode: 'onChange',
 		defaultValues: {
 			id: register?.id,
-			initial: register?.initial,
-			money: register?.money,
-			creditCard: register?.creditCard,
-			pix: register?.pix,
-			expenses: register?.expenses,
-			startDate: register?.startDate,
-			endDate: register?.endDate,
+			valor_inicial: register?.valor_inicial,
+			valor_especie: register?.valor_especie,
+			valor_cartao: register?.valor_cartao,
+			valor_pix: register?.valor_pix,
+			valor_despesas: register?.valor_despesas,
+			data: register?.data,
+			data_final: register?.data_final,
 		},
 	});
 
@@ -54,36 +53,42 @@ export function EditRegisterPage() {
 		if (register) {
 			reset({
 				id: register.id,
-				initial: register.initial,
-				money: register.money,
-				creditCard: register.creditCard,
-				pix: register.pix,
-				expenses: register.expenses,
-				startDate: new Date(register.startDate),
-				endDate: new Date(register.endDate),
+				valor_inicial: register.valor_inicial,
+				valor_especie: register.valor_especie,
+				valor_cartao: register.valor_cartao,
+				valor_pix: register.valor_pix,
+				valor_despesas: register.valor_despesas,
+				data: new Date(register.data),
+				data_final: new Date(register.data_final),
 			});
 		}
 	}, [register, reset]);
 
-	const handleNextStep = () => {
-		nextStep();
+	const handleNextStep = async () => {
+		const isValid = await methods.trigger();
+		if (isValid) {
+			nextStep();
+		}
 	};
 
 	const onSubmit = async (data: EditRegisterSchema) => {
-		const registerPayload: Omit<
-			RegisterInApiType,
-			'iduser' | 'id' | 'data' | 'data_final'
-		> = {
-			valor_cartao: data.creditCard ?? 0,
-			valor_despesas: data.expenses ?? 0,
-			valor_especie: data.money ?? 0,
-			valor_inicial: data.initial ?? 0,
-			valor_pix: data.pix ?? 0,
+		const registerPayload = {
+			valor_cartao: data.valor_cartao ?? 0,
+			valor_despesas: data.valor_despesas ?? 0,
+			valor_especie: data.valor_especie ?? 0,
+			valor_inicial: data.valor_inicial ?? 0,
+			valor_pix: data.valor_pix ?? 0,
 		};
 
 		try {
 			startSubmitTransition(async () => {
-				await api.patch(`/registers/${id}`, registerPayload);
+				await api.patch(`/registers/${id}`, registerPayload, {
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							'token',
+						)}`,
+					},
+				});
 				setIsSubmitted(true);
 				toast.success('Registro editado com sucesso!', {
 					description:
@@ -107,7 +112,7 @@ export function EditRegisterPage() {
 		{
 			number: 1,
 			title: 'Resumo da edição',
-			step: <PatchSummaryStep key='patch-summary-step' />,
+			step: <PatchSummaryStep key='pre-submit-patch-summary-step' />,
 		},
 	];
 
@@ -172,7 +177,7 @@ export function EditRegisterPage() {
 								<Button
 									type='submit'
 									text_align='center'
-									disabled={isSubmitting || isSubmitted}
+									disabled={isSubmitting}
 								>
 									{isSubmitted ? 'Enviado' : 'Enviar'}
 								</Button>

@@ -21,7 +21,7 @@ interface RegisterCardProps {
 	canEdit?: boolean;
 	canDelete?: boolean;
 	showTotal?: boolean;
-	register: RegisterType;
+	register: Omit<RegisterType, 'iduser'>;
 }
 
 export function RegisterCard({
@@ -37,7 +37,11 @@ export function RegisterCard({
 	};
 
 	const handleDeleteRegister = async () => {
-		await api.delete(`/registers/${register.id}`);
+		await api.delete(`/registers/${register.id}`, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		});
 		window.location.reload();
 	};
 
@@ -45,12 +49,9 @@ export function RegisterCard({
 		window.location.href = `/dashboard/registers/edit/${register.id}`;
 	};
 
-	const startDateFormatted = new Date(register.startDate)
-		.toLocaleString('pt-BR')
-		.split(',')[0];
-	const endDateFormatted = new Date(register.endDate)
-		.toLocaleString('pt-BR')
-		.split(',')[0];
+	const registerDateInterval = `${new Date(register.data).toLocaleDateString(
+		'pt-br',
+	)} até ${new Date(register.data_final).toLocaleDateString('pt-br')}`;
 
 	return (
 		<Container style={showTotal ? {} : { paddingBottom: 12 }}>
@@ -73,7 +74,9 @@ export function RegisterCard({
 			<HeadText>
 				<div className='registerCard__titleContainer'>
 					<span className='registerCard__title'>
-						Registro #{register.id.split('-')[0]}
+						{register.id === 'Registro atual'
+							? 'Registro atual'
+							: `Registro #${register.id.split('-')[0]}`}
 					</span>
 					<div className='registerCard__actions'>
 						{canEdit && (
@@ -93,7 +96,7 @@ export function RegisterCard({
 							<Button
 								type='button'
 								variant='neutral'
-								title='Editar registro'
+								title='Remover registro'
 								onClick={toggleDeletePopup}
 							>
 								<TrashIcon
@@ -104,15 +107,8 @@ export function RegisterCard({
 						)}
 					</div>
 				</div>
-
 				<div className='registerCard__dateInterval'>
-					<span className='registerCard__startDate'>
-						{startDateFormatted}
-					</span>
-					até
-					<span className='registerCard__endDate'>
-						{endDateFormatted}
-					</span>
+					{registerDateInterval}
 				</div>
 			</HeadText>
 
@@ -120,27 +116,27 @@ export function RegisterCard({
 				<RegisterItem
 					icon={CashRegisterIcon}
 					name='Inicial'
-					value={register.initial ?? 0}
+					value={register.valor_inicial ?? 0}
 				/>
 				<RegisterItem
 					icon={MoneyIcon}
 					name='Espécie'
-					value={register.money ?? 0}
+					value={register.valor_especie ?? 0}
 				/>
 				<RegisterItem
 					icon={CreditCardIcon}
 					name='Cartão'
-					value={register.creditCard ?? 0}
+					value={register.valor_cartao ?? 0}
 				/>
 				<RegisterItem
 					icon={PixLogoIcon}
 					name='Pix'
-					value={register.pix ?? 0}
+					value={register.valor_pix ?? 0}
 				/>
 				<RegisterItem
 					icon={ReceiptXIcon}
 					name='Despesas'
-					value={register.expenses ?? 0}
+					value={register.valor_despesas ?? 0}
 				/>
 			</Values>
 

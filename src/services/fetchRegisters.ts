@@ -1,6 +1,6 @@
 import { api } from '@/lib/api';
 import { toast } from 'sonner';
-import { RegisterInApiType, RegisterType } from '@/@types/register/register';
+import { RegisterType } from '@/@types/register/register';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function fakeFetch(): Promise<RegisterType[] | []> {
@@ -9,37 +9,40 @@ async function fakeFetch(): Promise<RegisterType[] | []> {
 		setTimeout(() => {
 			resolve([
 				{
-					id: 1,
-					startDate: new Date(),
-					endDate: new Date(),
+					id: '1',
+					iduser: '1',
+					data: new Date(),
+					data_final: new Date(),
 
-					initial: 150,
-					money: 220,
-					creditCard: 0,
-					pix: 120,
-					expenses: 30,
+					valor_inicial: 150,
+					valor_especie: 220,
+					valor_cartao: 0,
+					valor_pix: 120,
+					valor_despesas: 30,
 				},
 				{
-					id: 2,
-					startDate: new Date(),
-					endDate: new Date(),
+					id: '2',
+					iduser: '1',
+					data: new Date(),
+					data_final: new Date(),
 
-					initial: 0,
-					money: 42,
-					creditCard: 94.9,
-					pix: 0,
-					expenses: 200,
+					valor_inicial: 0,
+					valor_especie: 42,
+					valor_cartao: 94.9,
+					valor_pix: 0,
+					valor_despesas: 200,
 				},
 				{
-					id: 3,
-					startDate: new Date(),
-					endDate: new Date(),
-					
-					initial: 50,
-					money: 20,
-					creditCard: 200,
-					pix: 75,
-					expenses: 15,
+					id: '3',
+					iduser: '1',
+					data: new Date(),
+					data_final: new Date(),
+
+					valor_inicial: 50,
+					valor_especie: 20,
+					valor_cartao: 200,
+					valor_pix: 75,
+					valor_despesas: 15,
 				},
 			]);
 		}, 1200);
@@ -50,20 +53,13 @@ async function fakeFetch(): Promise<RegisterType[] | []> {
 
 export async function fetchRegisters(): Promise<RegisterType[] | []> {
 	try {
-		const response = await api.get('/registers');
-		// const data = await fakeFetch();
-		const data = response.data.map((r: RegisterInApiType) => {
-			return {
-				id: r.id,
-				startDate: r.data,
-				endDate: r.data_final,
-				initial: r.valor_inicial,
-				money: r.valor_especie,
-				creditCard: r.valor_cartao,
-				expenses: r.valor_despesas,
-				pix: r.valor_pix,
-			};
+		const response = await api.get('/registers', {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
 		});
+		// const data = await fakeFetch();
+		const data = response.data;
 
 		return data;
 	} catch (error) {

@@ -29,20 +29,12 @@ export async function fetchRegisterById(
 	id: string | null,
 ): Promise<EditRegisterSchema | undefined> {
 	try {
-		const response = await api.get(`/registers/${id}`);
-		// const data = await fakeFetch();
-		const data = {
-			id: response.data.id,
-			startDate: response.data.data,
-			endDate: response.data.data_final,
-
-			initial: response.data.valor_inicial,
-			money: response.data.valor_especie,
-			creditCard: response.data.valor_cartao,
-			expenses: response.data.valor_despesas,
-			pix: response.data.valor_pix,
-		};
-
+		const response = await api.get(`/registers/${id}`, {
+			headers: {
+				Authorization: `Bearer ${localStorage.getItem('token')}`,
+			},
+		});
+		const data: EditRegisterSchema = response.data;
 		return data;
 	} catch (error) {
 		if (error instanceof Error) toast.error(error.message);

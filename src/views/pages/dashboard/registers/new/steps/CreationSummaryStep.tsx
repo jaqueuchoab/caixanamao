@@ -7,13 +7,13 @@ import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema
 export function CreationSummaryStep() {
 	const { watch } = useFormContext<NewRegisterSchema>();
 	const registers = watch('registers');
-	const startDate = watch('startDate');
-	const endDate = watch('endDate');
+	const data = watch('data');
+	const data_final = watch('data_final');
 
-	const superRegister: RegisterType = {
-		id: 0,
-		startDate,
-		endDate,
+	const superRegister: Omit<RegisterType, 'iduser'> = {
+		id: 'Registro atual',
+		data,
+		data_final,
 		...sumRegisterCategories(registers),
 	};
 

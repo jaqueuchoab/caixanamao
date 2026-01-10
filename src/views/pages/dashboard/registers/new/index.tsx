@@ -10,7 +10,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
 import { differenceInDays } from 'date-fns';
 import { DateRangeStep } from './steps/DateRangeStep';
-import { CreationSummaryStep } from './steps/CreationSummaryStep';
 import { CreationRegisterCard } from './components/CreationRegisterCard';
 import { sumRegisterCategories } from '@/utils/sum-register-categories';
 import { api } from '@/lib/api';
@@ -20,7 +19,8 @@ import {
 	NewRegisterSchema,
 	newRegisterSchema,
 } from '../../../../../schemas/new-register-schema';
-import { RegisterInApiType } from '@/@types/register/register';
+import { RegisterType } from '@/@types/register/register';
+import { CreationSummaryStep } from './steps/CreationSummaryStep';
 
 export function NewRegisterPage() {
 	const [isSubmitting, startSubmitTransition] = useTransition();
@@ -33,18 +33,10 @@ export function NewRegisterPage() {
 		mode: 'onChange',
 	});
 
-	const startDate = methods.watch('startDate');
-	const endDate = methods.watch('endDate');
+	const startDate = methods.watch('data');
+	const endDate = methods.watch('data_final');
 	const daysDiff =
 		startDate && endDate ? differenceInDays(endDate, startDate) + 1 : 0;
-
-	const cardFillSteps = Array.from({ length: daysDiff }, (_, k) => {
-		return {
-			number: k + 1,
-			title: 'data ' + k,
-			step: <CreationRegisterCard key={`register-card-${k}`} id={k} />,
-		};
-	});
 
 	const handleValidateNextStep = () => {
 		if (daysDiff <= 0) {
@@ -58,20 +50,27 @@ export function NewRegisterPage() {
 	};
 
 	const onSubmit = async (data: NewRegisterSchema) => {
-		const registerPayload: Omit<RegisterInApiType, 'id'> = {
-			iduser: localStorage.getItem('userId') ?? '',
-			data: data.startDate,
-			data_final: data.endDate,
-			valor_cartao: sumRegisterCategories(data.registers).creditCard,
-			valor_despesas: sumRegisterCategories(data.registers).expenses,
-			valor_especie: sumRegisterCategories(data.registers).money,
-			valor_inicial: sumRegisterCategories(data.registers).initial,
-			valor_pix: sumRegisterCategories(data.registers).pix,
+		const sum = sumRegisterCategories(data.registers);
+		const registerPayload: Omit<RegisterType, 'id'> = {
+			iduser: localStorage.getItem('userId')!,
+			data: data.data,
+			data_final: data.data_final,
+			valor_cartao: sum.valor_cartao,
+			valor_despesas: sum.valor_despesas,
+			valor_especie: sum.valor_especie,
+			valor_inicial: sum.valor_inicial,
+			valor_pix: sum.valor_pix,
 		};
 
 		try {
 			startSubmitTransition(async () => {
-				await api.post('/registers', registerPayload);
+				await api.post('/registers', registerPayload, {
+					headers: {
+						Authorization: `Bearer ${localStorage.getItem(
+							'token',
+						)}`,
+					},
+				});
 				setIsSubmitted(true);
 				toast.success('Registro criado com sucesso!', {
 					description:
@@ -86,6 +85,14 @@ export function NewRegisterPage() {
 		}
 	};
 
+	const cardFillSteps = Array.from({ length: daysDiff }, (_, k) => {
+		return {
+			number: k + 1,
+			title: 'data ' + k,
+			step: <CreationRegisterCard key={`register-card-${k}`} id={k} />,
+		};
+	});
+
 	const steps = [
 		{
 			number: 0,
@@ -96,7 +103,9 @@ export function NewRegisterPage() {
 		{
 			number: 2,
 			title: 'Resumo da inserção',
-			step: <CreationSummaryStep key='end-summary-step' />,
+			step: (
+				<CreationSummaryStep key='pre-submit-creation-summary-step' />
+			),
 		},
 	];
 

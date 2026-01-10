@@ -1,18 +1,21 @@
 import { RegisterType } from '@/@types/register/register';
 
 export function calculateRegisterTotal(
-	register: Omit<RegisterType, 'id' | 'startDate' | 'endDate'>,
+	register: Omit<
+		Partial<RegisterType>,
+		'id' | 'iduser' | 'data' | 'data_final'
+	>,
 ) {
 	const values = {
-		initial: register.initial,
-		money: register.money,
-		creditCard: register.creditCard,
-		pix: register.pix,
-		expenses: register.expenses,
+		valor_inicial: register.valor_inicial,
+		valor_especie: register.valor_especie,
+		valor_cartao: register.valor_cartao,
+		valor_pix: register.valor_pix,
+		valor_despesas: register.valor_despesas,
 	};
 	return Object.entries(values).reduce((acc, [key, value]) => {
 		const num = Number(value);
-		if (key === 'expenses') return acc - num;
+		if (key === 'valor_despesas') return acc - num;
 		return acc + num;
 	}, 0);
 }

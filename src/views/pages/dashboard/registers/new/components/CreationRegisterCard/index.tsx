@@ -10,7 +10,12 @@ import { Controller, useFormContext } from 'react-hook-form';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { differenceInDays } from 'date-fns';
 import { NewRegisterSchema } from '@/schemas/new-register-schema';
-import { Container, HeadText, Total, Values } from '../../../components/Cards/RegisterCard/styles';
+import {
+	Container,
+	HeadText,
+	Total,
+	Values,
+} from '../../../components/Cards/RegisterCard/styles';
 import { RegisterItem } from '../../../components/Cards/RegisterItem';
 
 interface CreationRegisterCardProps {
@@ -30,8 +35,8 @@ export function CreationRegisterCard({
 	}
 
 	const total = calculateRegisterTotal(register);
-	const startDate = watch('startDate');
-	const endDate = watch('endDate');
+	const startDate = watch('data');
+	const endDate = watch('data_final');
 	const diffInDays = differenceInDays(endDate, startDate) + 1;
 
 	return (
@@ -39,7 +44,7 @@ export function CreationRegisterCard({
 			<HeadText>
 				<div className='registerCard__titleContainer'>
 					<span className='registerCard__title'>
-						{register.date.toLocaleDateString('PT-BR')}
+						{register.data.toLocaleDateString('PT-BR')}
 					</span>
 				</div>
 				<div className='registerCard__dateInterval'>
@@ -50,10 +55,10 @@ export function CreationRegisterCard({
 			<Values>
 				<Controller
 					control={control}
-					name={`registers.${id}.initial`}
+					name={`registers.${id}.valor_inicial`}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-initial`}
+							id={`${id}-valor_inicial`}
 							editable
 							icon={CashRegisterIcon}
 							name='Inicial'
@@ -64,10 +69,10 @@ export function CreationRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.money`}
+					name={`registers.${id}.valor_especie`}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-money`}
+							id={`${id}-valor_especie`}
 							editable
 							icon={MoneyIcon}
 							name='Espécie'
@@ -78,10 +83,10 @@ export function CreationRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.creditCard`}
+					name={`registers.${id}.valor_cartao`}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-creditCard`}
+							id={`${id}-valor_cartao`}
 							editable
 							icon={CreditCardIcon}
 							name='Cartão'
@@ -92,10 +97,10 @@ export function CreationRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.pix`}
+					name={`registers.${id}.valor_pix`}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-pix`}
+							id={`${id}-valor_pix`}
 							editable
 							icon={PixLogoIcon}
 							name='Pix'
@@ -106,10 +111,10 @@ export function CreationRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={`registers.${id}.expenses`}
+					name={`registers.${id}.valor_despesas`}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-expenses`}
+							id={`${id}-valor_despesas`}
 							editable
 							icon={ReceiptXIcon}
 							name='Despesas'

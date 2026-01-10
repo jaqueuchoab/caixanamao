@@ -9,7 +9,12 @@ import {
 import { Controller, useFormContext } from 'react-hook-form';
 import { calculateRegisterTotal } from '@/utils/calculate-register-total';
 import { EditRegisterSchema } from '@/schemas/edit-register-schema';
-import { Container, HeadText, Total, Values } from '../../../components/Cards/RegisterCard/styles';
+import {
+	Container,
+	HeadText,
+	Total,
+	Values,
+} from '../../../components/Cards/RegisterCard/styles';
 import { RegisterItem } from '../../../components/Cards/RegisterItem';
 
 interface PatchableRegisterCardProps {
@@ -24,15 +29,15 @@ export function PatchableRegisterCard({
 	const { watch, control } = useFormContext<EditRegisterSchema>();
 	const register = watch();
 
-	if (!register || !register.startDate || !register.endDate) {
+	if (!register || !register.data || !register.data_final) {
 		return null;
 	}
 
-	const { startDate, endDate } = register;
+	const { data, data_final } = register;
 
-	const registerDateInterval = `${new Date(startDate).toLocaleDateString(
+	const registerDateInterval = `${new Date(data).toLocaleDateString(
 		'PT-BR',
-	)} até ${new Date(endDate).toLocaleDateString('PT-BR')}`;
+	)} até ${new Date(data_final).toLocaleDateString('PT-BR')}`;
 
 	const total = calculateRegisterTotal(register);
 
@@ -50,10 +55,10 @@ export function PatchableRegisterCard({
 			<Values>
 				<Controller
 					control={control}
-					name={'initial'}
+					name={'valor_inicial'}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-initial`}
+							id={`${id}-valor_inicial`}
 							editable
 							icon={CashRegisterIcon}
 							name='Inicial'
@@ -64,10 +69,10 @@ export function PatchableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={'money'}
+					name={'valor_especie'}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-money`}
+							id={`${id}-valor_especie`}
 							editable
 							icon={MoneyIcon}
 							name='Espécie'
@@ -78,10 +83,10 @@ export function PatchableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={'creditCard'}
+					name={'valor_cartao'}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-creditCard`}
+							id={`${id}-valor_cartao`}
 							editable
 							icon={CreditCardIcon}
 							name='Cartão'
@@ -92,10 +97,10 @@ export function PatchableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={'pix'}
+					name={'valor_pix'}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-pix`}
+							id={`${id}-valor_pix`}
 							editable
 							icon={PixLogoIcon}
 							name='Pix'
@@ -106,10 +111,10 @@ export function PatchableRegisterCard({
 				/>
 				<Controller
 					control={control}
-					name={'expenses'}
+					name={'valor_despesas'}
 					render={({ field }) => (
 						<RegisterItem
-							id={`${id}-expenses`}
+							id={`${id}-valor_despesas`}
 							editable
 							icon={ReceiptXIcon}
 							name='Despesas'

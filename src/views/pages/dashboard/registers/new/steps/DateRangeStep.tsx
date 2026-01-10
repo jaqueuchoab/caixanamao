@@ -8,8 +8,8 @@ import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema
 export function DateRangeStep() {
 	const { control, watch, setValue } = useFormContext<NewRegisterSchema>();
 
-	const startDate = watch('startDate');
-	const endDate = watch('endDate');
+	const startDate = watch('data');
+	const endDate = watch('data_final');
 	const diffInDays =
 		startDate && endDate ? differenceInDays(endDate, startDate) + 1 : 0;
 
@@ -19,12 +19,12 @@ export function DateRangeStep() {
 			const registers = Array.from(
 				{ length: diffInDays },
 				(_, index) => ({
-					date: addDays(startDate, index),
-					initial: 0,
-					money: 0,
-					creditCard: 0,
-					pix: 0,
-					expenses: 0,
+					data: addDays(startDate, index),
+					valor_inicial: 0,
+					valor_especie: 0,
+					valor_cartao: 0,
+					valor_pix: 0,
+					valor_despesas: 0,
 				}),
 			);
 			setValue('registers', registers);
@@ -37,7 +37,7 @@ export function DateRangeStep() {
 				<label>Data de Início:</label>
 				<Controller
 					control={control}
-					name='startDate'
+					name='data'
 					render={({ field: { onChange, value } }) => (
 						<DateInput
 							mode='day'
@@ -52,7 +52,7 @@ export function DateRangeStep() {
 				<label>Data de Fim:</label>
 				<Controller
 					control={control}
-					name='endDate'
+					name='data_final'
 					render={({ field: { onChange, value } }) => (
 						<DateInput
 							mode='day'

@@ -1,16 +1,16 @@
 import { z } from 'zod';
 
 export const newRegisterSchema = z.object({
-	startDate: z.date(),
-	endDate: z.date(),
+	data: z.date(),
+	data_final: z.date(),
 	registers: z.array(
 		z.object({
-			date: z.date(),
-			initial: z.number(),
-			money: z.number(),
-			creditCard: z.number(),
-			pix: z.number(),
-			expenses: z.number(),
+			data: z.date(),
+			valor_inicial: z.number(),
+			valor_especie: z.number(),
+			valor_cartao: z.number(),
+			valor_pix: z.number(),
+			valor_despesas: z.number(),
 		}),
 	),
 });
