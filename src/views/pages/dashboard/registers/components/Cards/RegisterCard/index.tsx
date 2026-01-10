@@ -82,10 +82,7 @@ export function RegisterCard({
 								title='Editar registro'
 								onClick={handleEditRegister}
 							>
-								<PencilSimpleIcon
-									className='registerCard__editIcon'
-									size={20}
-								/>
+								<PencilSimpleIcon size={18} />
 							</Button>
 						)}
 						{canDelete && (
@@ -95,10 +92,7 @@ export function RegisterCard({
 								title='Remover registro'
 								onClick={toggleDeletePopup}
 							>
-								<TrashIcon
-									className='registerCard__removeIcon'
-									size={20}
-								/>
+								<TrashIcon size={18} />
 							</Button>
 						)}
 					</div>
@@ -150,7 +144,7 @@ export function RegisterCard({
 						name='Total'
 						icon={ReceiptIcon}
 						value={calculateRegisterTotal(register) || 0}
-						style={{ border: 'none', fontWeight: 600 }}
+						style={{ border: 'none' }}
 					/>
 				</Total>
 			)}

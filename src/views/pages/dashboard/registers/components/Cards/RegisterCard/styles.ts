@@ -40,14 +40,6 @@ export const HeadText = styled.div`
 			font-size: 18px;
 			font-weight: 600;
 		}
-
-		& .registerCard__editIcon {
-			color: ${({ theme }) => theme.colors.baseColors.blue[500]};
-		}
-
-		& .registerCard__removeIcon {
-			color: ${({ theme }) => theme.colors.buttons.danger.stroke};
-		}
 	}
 
 	& div.registerCard__dateInterval {
