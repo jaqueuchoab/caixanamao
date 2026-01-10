@@ -1,58 +1,75 @@
 import { ComponentProps, useState } from 'react';
-import style from './styles/Input.module.css';
 import { useContextTheme } from '@context/ThemeContext';
 import { EyeIcon, EyeClosedIcon } from '@phosphor-icons/react';
+import { StyledInput } from './Input.styles';
 
 type InputProps = {
 	error?: string;
 } & ComponentProps<'input'>;
 
-const Input = ({ error, ...props }: InputProps) => {
+const Input = ({ error, type, ...props }: InputProps) => {
 	const { themeMode } = useContextTheme();
-	const [visible, setVisible] = useState(true);
+	const [visible, setVisible] = useState(false);
 
-	function visiblePassword(visible: boolean) {
-		const input = document.querySelector<HTMLInputElement>('#password');
-		if (visible) {
-			input?.setAttribute('type', 'password');
-			return (
-				<EyeIcon
-					size={24}
-					color={`var(--input-${themeMode}-secondary-element)`}
-				/>
-			);
-		} else {
-			input?.setAttribute('type', 'text');
-			return (
-				<EyeClosedIcon
-					size={24}
-					color={`var(--input-${themeMode}-secondary-element)`}
-				/>
-			);
-		}
+	const isPassword = type === 'password';
+
+	function toggleVisible() {
+		setVisible((prev) => !prev);
 	}
 
 	return (
-		<div style={{ marginBottom: 8 }}>
-			<input
-				{...props}
-				autoComplete="off"
-				className={style.input}
-				style={
-					error
-						? { border: `1.4px solid var(--error-${themeMode})` }
-						: {}
-				}
-			/>
-			{props.type === 'password' ? (
-				<a onClick={() => setVisible(!visible)}>
-					{visiblePassword(visible)}
-				</a>
-			) : (
-				''
-			)}
+		<div
+			style={{
+				marginBottom: 8,
+				display: 'flex',
+				gap: 2,
+				flexDirection: 'column',
+			}}
+		>
+			<div style={{ position: 'relative', width: '100%' }}>
+				<StyledInput
+					{...props}
+					type={isPassword ? (visible ? 'text' : 'password') : type}
+					style={
+						error
+							? {
+									border: `1.4px solid var(--error-${themeMode})`,
+							  }
+							: {}
+					}
+				/>
 
-			{error && error?.length !== 0 && (
+				{isPassword && (
+					<button
+						type='button'
+						onClick={toggleVisible}
+						style={{
+							position: 'absolute',
+							top: '50%',
+							right: 16,
+							transform: 'translateY(-50%)',
+							background: 'none',
+							border: 'none',
+							padding: 0,
+							cursor: 'pointer',
+						}}
+					>
+						{visible ? (
+							<EyeClosedIcon
+								size={24}
+								color={`var(--input-${themeMode}-secondary-element)`}
+							/>
+						) : (
+							<EyeIcon
+								size={24}
+								color={`var(--input-${themeMode}-secondary-element)`}
+							/>
+						)}
+					</button>
+				)}
+			</div>
+
+			{error && (
 				<span
 					style={{
 						color: `var(--error-${themeMode})`,

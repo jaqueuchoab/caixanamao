@@ -1,5 +1,6 @@
 import { ComponentProps, useMemo, ChangeEvent } from 'react';
 import { useContextTheme } from '@context/ThemeContext';
+import { InputContainer, StyledInput } from './Input.styles';
 
 type MoneyInputProps = {
 	value?: number;
@@ -40,26 +41,28 @@ export default function MoneyInput({
 
 	return (
 		<div style={{ marginBottom: 8 }}>
-			<input
-				id={id}
-				autoComplete='off'
-				value={formatNumberBR(value)}
-				aria-invalid={Boolean(error) || undefined}
-				aria-describedby={error ? `${id}-error` : undefined}
-				onChange={(e: ChangeEvent<HTMLInputElement>) => {
-					const next = e.target.value;
-					if (!next) {
-						onChangeValue?.(0);
-						return;
-					}
-					const parsed = parseInputToNumber(next);
-					if (parsed === null) return;
-					onChangeValue?.(parsed);
-				}}
-				inputMode='numeric'
-				style={inputStyle}
-				{...props}
-			/>
+			<InputContainer>
+				<StyledInput
+					id={id}
+					autoComplete='off'
+					value={formatNumberBR(value)}
+					aria-invalid={Boolean(error) || undefined}
+					aria-describedby={error ? `${id}-error` : undefined}
+					onChange={(e: ChangeEvent<HTMLInputElement>) => {
+						const next = e.target.value;
+						if (!next) {
+							onChangeValue?.(0);
+							return;
+						}
+						const parsed = parseInputToNumber(next);
+						if (parsed === null) return;
+						onChangeValue?.(parsed);
+					}}
+					inputMode='numeric'
+					style={inputStyle}
+					{...props}
+				/>
+			</InputContainer>
 			{error && error.length > 0 && (
 				<span
 					id={`${id}-error`}
