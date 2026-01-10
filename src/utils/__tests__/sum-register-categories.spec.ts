@@ -1,130 +1,130 @@
 import { describe, it, expect } from 'vitest';
 import { sumRegisterCategories } from '../sum-register-categories';
-import { EditableRegisterType } from '@/@types/register/register';
+import { RegisterType } from '@/@types/register/register';
 
 describe('sumRegisterCategories', () => {
 	it('deve retornar zero quando array vazio', () => {
 		const result = sumRegisterCategories([]);
 
 		expect(result).toEqual({
-			initial: 0,
-			money: 0,
-			creditCard: 0,
-			pix: 0,
-			expenses: 0,
+			valor_inicial: 0,
+			valor_especie: 0,
+			valor_cartao: 0,
+			valor_pix: 0,
+			valor_despesas: 0,
 		});
 	});
 
 	it('deve somar valor de multiplos registros corretamente', () => {
-		const mockRegisters: EditableRegisterType[] = [
+		const mockRegisters: RegisterType[] = [
 			{
-				initial: 100,
-				money: 50,
-				creditCard: 200,
-				pix: 75,
-				expenses: 30,
-			} as EditableRegisterType,
+				valor_inicial: 100,
+				valor_especie: 50,
+				valor_cartao: 200,
+				valor_pix: 75,
+				valor_despesas: 30,
+			} as RegisterType,
 			{
-				initial: 200,
-				money: 100,
-				creditCard: 300,
-				pix: 125,
-				expenses: 70,
-			} as EditableRegisterType,
+				valor_inicial: 200,
+				valor_especie: 100,
+				valor_cartao: 300,
+				valor_pix: 125,
+				valor_despesas: 70,
+			} as RegisterType,
 			{
-				initial: 50,
-				money: 25,
-				creditCard: 100,
-				pix: 50,
-				expenses: 20,
-			} as EditableRegisterType,
+				valor_inicial: 50,
+				valor_especie: 25,
+				valor_cartao: 100,
+				valor_pix: 50,
+				valor_despesas: 20,
+			} as RegisterType,
 		];
 
 		const result = sumRegisterCategories(mockRegisters);
 
 		expect(result).toEqual({
-			initial: 350, // 100 + 200 + 50
-			money: 175, // 50 + 100 + 25
-			creditCard: 600, // 200 + 300 + 100
-			pix: 250, // 75 + 125 + 50
-			expenses: 120, // 30 + 70 + 20
+			valor_inicial: 350, // 100 + 200 + 50
+			valor_especie: 175, // 50 + 100 + 25
+			valor_cartao: 600, // 200 + 300 + 100
+			valor_pix: 250, // 75 + 125 + 50
+			valor_despesas: 120, // 30 + 70 + 20
 		});
 	});
 
 	it('deve somar numeros negativos corretamente', () => {
-		const mockRegisters: EditableRegisterType[] = [
+		const mockRegisters: RegisterType[] = [
 			{
-				initial: -100,
-				money: -50,
-				creditCard: 200,
-				pix: -75,
-				expenses: 30,
-			} as EditableRegisterType,
+				valor_inicial: -100,
+				valor_especie: -50,
+				valor_cartao: 200,
+				valor_pix: -75,
+				valor_despesas: 30,
+			} as RegisterType,
 			{
-				initial: 200,
-				money: 100,
-				creditCard: -100,
-				pix: 125,
-				expenses: -70,
-			} as EditableRegisterType,
+				valor_inicial: 200,
+				valor_especie: 100,
+				valor_cartao: -100,
+				valor_pix: 125,
+				valor_despesas: -70,
+			} as RegisterType,
 		];
 
 		const result = sumRegisterCategories(mockRegisters);
 
 		expect(result).toEqual({
-			initial: 100, // -100 + 200
-			money: 50, // -50 + 100
-			creditCard: 100, // 200 + (-100)
-			pix: 50, // -75 + 125
-			expenses: -40, // 30 + (-70)
+			valor_inicial: 100, // -100 + 200
+			valor_especie: 50, // -50 + 100
+			valor_cartao: 100, // 200 + (-100)
+			valor_pix: 50, // -75 + 125
+			valor_despesas: -40, // 30 + (-70)
 		});
 	});
 
 	it('deve somar um unico registro corretamente', () => {
-		const mockRegisters: EditableRegisterType[] = [
+		const mockRegisters: RegisterType[] = [
 			{
-				initial: 1000,
-				money: 500,
-				creditCard: 2000,
-				pix: 750,
-				expenses: 300,
-			} as EditableRegisterType,
+				valor_inicial: 1000,
+				valor_especie: 500,
+				valor_cartao: 2000,
+				valor_pix: 750,
+				valor_despesas: 300,
+			} as RegisterType,
 		];
 
 		const result = sumRegisterCategories(mockRegisters);
 
 		expect(result).toEqual({
-			initial: 1000,
-			money: 500,
-			creditCard: 2000,
-			pix: 750,
-			expenses: 300,
+			valor_inicial: 1000,
+			valor_especie: 500,
+			valor_cartao: 2000,
+			valor_pix: 750,
+			valor_despesas: 300,
 		});
 	});
 
 	it('deve lidar com valores decimais corretamente', () => {
-		const mockRegisters: EditableRegisterType[] = [
+		const mockRegisters: RegisterType[] = [
 			{
-				initial: 100.5,
-				money: 50.25,
-				creditCard: 200.75,
-				pix: 75.1,
-				expenses: 30.9,
-			} as EditableRegisterType,
+				valor_inicial: 100.5,
+				valor_especie: 50.25,
+				valor_cartao: 200.75,
+				valor_pix: 75.1,
+				valor_despesas: 30.9,
+			} as RegisterType,
 			{
-				initial: 200.2,
-				money: 100.3,
-				creditCard: 300.4,
-				pix: 125.6,
-				expenses: 70.7,
-			} as EditableRegisterType,
+				valor_inicial: 200.2,
+				valor_especie: 100.3,
+				valor_cartao: 300.4,
+				valor_pix: 125.6,
+				valor_despesas: 70.7,
+			} as RegisterType,
 		];
 
 		const result = sumRegisterCategories(mockRegisters);
-		expect(result.initial).toBeCloseTo(300.7); // 100.5 + 200.2
-		expect(result.money).toBeCloseTo(150.55); // 50.25 + 100.3
-		expect(result.creditCard).toBeCloseTo(501.15); // 200.75 + 300.4
-		expect(result.pix).toBeCloseTo(200.7); // 75.1 + 125.6
-		expect(result.expenses).toBeCloseTo(101.6); // 30.9 + 70.7
+		expect(result.valor_inicial).toBeCloseTo(300.7); // 100.5 + 200.2
+		expect(result.valor_especie).toBeCloseTo(150.55); // 50.25 + 100.3
+		expect(result.valor_cartao).toBeCloseTo(501.15); // 200.75 + 300.4
+		expect(result.valor_pix).toBeCloseTo(200.7); // 75.1 + 125.6
+		expect(result.valor_despesas).toBeCloseTo(101.6); // 30.9 + 70.7
 	});
 });

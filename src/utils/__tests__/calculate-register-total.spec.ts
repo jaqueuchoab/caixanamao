@@ -1,16 +1,16 @@
 import { describe, it, expect } from 'vitest';
 import { calculateRegisterTotal } from '../calculate-register-total';
-import { EditableRegisterType } from '@/@types/register/register';
+import { RegisterType } from '@/@types/register/register';
 
 describe('calculateRegisterTotal', () => {
 	it('deve calcular o total corretamente com valores positivos', () => {
-		const registro: EditableRegisterType = {
-			initial: 100,
-			money: 50,
-			creditCard: 200,
-			pix: 75,
-			expenses: 30,
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: 100,
+			valor_especie: 50,
+			valor_cartao: 200,
+			valor_pix: 75,
+			valor_despesas: 30,
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 
@@ -19,13 +19,13 @@ describe('calculateRegisterTotal', () => {
 	});
 
 	it('deve subtrair despesas corretamente', () => {
-		const registro: EditableRegisterType = {
-				initial: 500,
-				money: 100,
-				creditCard: 300,
-				pix: 200,
-				expenses: 150, // deve ser subtraído
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: 500,
+			valor_especie: 100,
+			valor_cartao: 300,
+			valor_pix: 200,
+			valor_despesas: 150, // deve ser subtraído
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 
@@ -34,13 +34,13 @@ describe('calculateRegisterTotal', () => {
 	});
 
 	it('deve lidar com valores negativos corretamente', () => {
-		const registro: EditableRegisterType = {
-				initial: -100,
-				money: 200,
-				creditCard: -50,
-				pix: 150,
-				expenses: -30, // negativo deve ser somado (subtrair negativo = somar)
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: -100,
+			valor_especie: 200,
+			valor_cartao: -50,
+			valor_pix: 150,
+			valor_despesas: -30, // negativo deve ser somado (subtrair negativo = somar)
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 
@@ -49,26 +49,26 @@ describe('calculateRegisterTotal', () => {
 	});
 
 	it('deve retornar zero para registro com todos os valores zerados', () => {
-		const registro: EditableRegisterType = {
-				initial: 0,
-				money: 0,
-				creditCard: 0,
-				pix: 0,
-				expenses: 0,
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: 0,
+			valor_especie: 0,
+			valor_cartao: 0,
+			valor_pix: 0,
+			valor_despesas: 0,
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 		expect(resultado).toBe(0);
 	});
 
 	it('deve lidar com valores decimais corretamente', () => {
-		const registro: EditableRegisterType = {
-				initial: 100.5,
-				money: 50.25,
-				creditCard: 200.75,
-				pix: 75.1,
-				expenses: 30.9,
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: 100.5,
+			valor_especie: 50.25,
+			valor_cartao: 200.75,
+			valor_pix: 75.1,
+			valor_despesas: 30.9,
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 
@@ -77,13 +77,13 @@ describe('calculateRegisterTotal', () => {
 	});
 
 	it('deve funcionar quando apenas despesas tem valor', () => {
-		const registro: EditableRegisterType = {
-				initial: 0,
-				money: 0,
-				creditCard: 0,
-				pix: 0,
-				expenses: 100,
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: 0,
+			valor_especie: 0,
+			valor_cartao: 0,
+			valor_pix: 0,
+			valor_despesas: 100,
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 		// 0 + 0 + 0 + 0 - 100 = -100
@@ -91,13 +91,13 @@ describe('calculateRegisterTotal', () => {
 	});
 
 	it('deve funcionar quando não há despesas', () => {
-		const registro: EditableRegisterType = {
-				initial: 100,
-				money: 200,
-				creditCard: 300,
-				pix: 400,
-				expenses: 0,
-		} as EditableRegisterType;
+		const registro: RegisterType = {
+			valor_inicial: 100,
+			valor_especie: 200,
+			valor_cartao: 300,
+			valor_pix: 400,
+			valor_despesas: 0,
+		} as RegisterType;
 
 		const resultado = calculateRegisterTotal(registro);
 		// 100 + 200 + 300 + 400 - 0 = 1000
