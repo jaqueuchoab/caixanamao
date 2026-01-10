@@ -25,12 +25,19 @@ import { useContextTheme } from '@context/ThemeContext';
 import { Profile } from './profile/Profile';
 import { toast } from 'sonner';
 import { postSignOut } from '@/services/postSignOut';
+import { ChoicePopup } from '@/views/components/ui/popup/ChoicePopup';
 
 export function Sidebar() {
 	const navigate = useNavigate();
 	const { switchTheme } = useContextTheme();
 	const [isOpen, setIsOpen] = useState<boolean>(true);
 	const { pathname: location } = useLocation();
+	const [isSignOutPopupOpen, setIsSignOutPopupOpen] =
+		useState<boolean>(false);
+
+	const toggleSignOutPopup = () => {
+		setIsSignOutPopupOpen((prev) => !prev);
+	};
 
 	function handleIsOpen() {
 		setIsOpen((prev) => !prev);
@@ -45,132 +52,214 @@ export function Sidebar() {
 	}
 
 	return (
-		<SidebarContainer style={{ width: isOpen ? 256 : 96 }}>
-			<SidebarHeader $is_open={isOpen}>
-				{isOpen && (
-					<CircleHalfIcon
-						weight='fill'
-						size={24}
-						onClick={switchTheme}
-					/>
-				)}
-				<ListIcon size={24} onClick={handleIsOpen} />
-			</SidebarHeader>
+		<>
+			{isSignOutPopupOpen && (
+				<ChoicePopup
+					title='Tem certeza que deseja sair?'
+					onClose={toggleSignOutPopup}
+					confirm={{
+						text: 'Sair',
+						onConfirm: handleSignOut,
+					}}
+					refuse={{
+						text: 'Voltar',
+						onRefuse: toggleSignOutPopup,
+					}}
+				/>
+			)}
 
-			<SidebarContent>
-				<Profile showInfos={isOpen} />
+			<SidebarContainer style={{ width: isOpen ? 256 : 96 }}>
+				<SidebarHeader $is_open={isOpen}>
+					{isOpen && (
+						<CircleHalfIcon
+							weight='fill'
+							size={20}
+							onClick={switchTheme}
+						/>
+					)}
+					<ListIcon size={20} onClick={handleIsOpen} />
+				</SidebarHeader>
 
-				<Button
-					onClick={() => navigate('/dashboard/registers/new')}
-					variant='primary'
-					fill_width
-					text_align='center'
-				>
-					<PlusIcon size={24} />
-					{isOpen && 'Novo registro'}
-				</Button>
+				<SidebarContent>
+					<Profile showInfos={isOpen} />
 
-				<SidebarActionsList>
 					<Button
+						onClick={() => navigate('/dashboard/registers/new')}
+						variant='primary'
+						fill_width
+						text_align='center'
+					>
+						<PlusIcon size={16} />
+						{isOpen && 'Novo registro'}
+					</Button>
+
+					<SidebarActionsList>
+						<Button
+							style={{ padding: '12px 0' }}
+							variant='neutral'
+							fill_width
+							text_align={isOpen ? 'left' : 'center'}
+							onClick={() => navigate('/dashboard/home')}
+							className={
+								location === '/dashboard/home' ? 'active' : ''
+							}
+						>
+							<HouseIcon
+								weight={
+									location === '/dashboard/home'
+										? 'fill'
+										: 'regular'
+								}
+								size={20}
+							/>
+							{isOpen && 'Página inicial'}
+						</Button>
+
+						<Button
+							style={{ padding: '12px 0' }}
+							variant='neutral'
+							fill_width
+							text_align={isOpen ? 'left' : 'center'}
+							onClick={() => navigate('/dashboard/registers')}
+							className={
+								location === '/dashboard/registers'
+									? 'active'
+									: ''
+							}
+						>
+							<NotepadIcon
+								weight={
+									location === '/dashboard/registers'
+										? 'fill'
+										: 'regular'
+								}
+								size={20}
+							/>
+							{isOpen && 'Registros'}
+						</Button>
+
+						<Button
+							style={{ padding: '12px 0' }}
+							variant='neutral'
+							fill_width
+							text_align={isOpen ? 'left' : 'center'}
+							onClick={() => navigate('/dashboard/admin')}
+							className={
+								location === '/dashboard/admin' ? 'active' : ''
+							}
+						>
+							<CastleTurretIcon
+								weight={
+									location === '/dashboard/admin'
+										? 'fill'
+										: 'regular'
+								}
+								size={20}
+							/>
+							{isOpen && 'Administração'}
+						</Button>
+
+						<Button
+							style={{ padding: '12px 0' }}
+							variant='neutral'
+							fill_width
+							text_align={isOpen ? 'left' : 'center'}
+							onClick={() => navigate('/dashboard/reports')}
+							className={
+								location === '/dashboard/reports'
+									? 'active'
+									: ''
+							}
+						>
+							<FileTextIcon
+								weight={
+									location === '/dashboard/reports'
+										? 'fill'
+										: 'regular'
+								}
+								size={20}
+							/>
+							{isOpen && 'Relatórios'}
+						</Button>
+
+						<Button
+							style={{ padding: '12px 0' }}
+							variant='neutral'
+							fill_width
+							text_align={isOpen ? 'left' : 'center'}
+							onClick={() => navigate('/dashboard/analysis')}
+							className={
+								location === '/dashboard/analysis'
+									? 'active'
+									: ''
+							}
+						>
+							<ChartBarIcon
+								weight={
+									location === '/dashboard/analysis'
+										? 'fill'
+										: 'regular'
+								}
+								size={20}
+							/>
+							{isOpen && 'Análises'}
+						</Button>
+					</SidebarActionsList>
+				</SidebarContent>
+
+				<SidebarBottomActions>
+					<Button
+						style={{ padding: '12px 0' }}
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
-						onClick={() => navigate('/dashboard/home')}
+						onClick={() => navigate('/dashboard/help')}
 						className={
-							location === '/dashboard/home' ? 'active' : ''
+							location === '/dashboard/help' ? 'active' : ''
 						}
 					>
-						<HouseIcon size={24} />
-						{isOpen && 'Página inicial'}
+						<LifebuoyIcon
+							weight={
+								location === '/dashboard/help'
+									? 'fill'
+									: 'regular'
+							}
+							size={20}
+						/>
+						{isOpen && 'Ajuda'}
 					</Button>
-
 					<Button
+						style={{ padding: '12px 0' }}
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
-						onClick={() => navigate('/dashboard/registers')}
+						onClick={() => navigate('/dashboard/settings')}
 						className={
-							location === '/dashboard/registers' ? 'active' : ''
+							location === '/dashboard/settings' ? 'active' : ''
 						}
 					>
-						<NotepadIcon size={24} />
-						{isOpen && 'Registros'}
+						<GearIcon
+							weight={
+								location === '/dashboard/settings'
+									? 'fill'
+									: 'regular'
+							}
+							size={20}
+						/>
+						{isOpen && 'Configurações'}
 					</Button>
-
 					<Button
+						style={{ padding: '12px 0' }}
 						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
-						onClick={() => navigate('/dashboard/admin')}
-						className={
-							location === '/dashboard/admin' ? 'active' : ''
-						}
+						onClick={toggleSignOutPopup}
 					>
-						<CastleTurretIcon size={24} />
-						{isOpen && 'Administração'}
+						<SignOutIcon size={20} />
+						{isOpen && 'Sair'}
 					</Button>
-
-					<Button
-						variant='neutral'
-						fill_width
-						text_align={isOpen ? 'left' : 'center'}
-						onClick={() => navigate('/dashboard/reports')}
-						className={
-							location === '/dashboard/reports' ? 'active' : ''
-						}
-					>
-						<FileTextIcon size={24} />
-						{isOpen && 'Relatórios'}
-					</Button>
-
-					<Button
-						variant='neutral'
-						fill_width
-						text_align={isOpen ? 'left' : 'center'}
-						onClick={() => navigate('/dashboard/analysis')}
-						className={
-							location === '/dashboard/analysis' ? 'active' : ''
-						}
-					>
-						<ChartBarIcon size={24} />
-						{isOpen && 'Análises'}
-					</Button>
-				</SidebarActionsList>
-			</SidebarContent>
-
-			<SidebarBottomActions>
-				<Button
-					variant='neutral'
-					fill_width
-					text_align={isOpen ? 'left' : 'center'}
-					onClick={() => navigate('/dashboard/help')}
-					className={location === '/dashboard/help' ? 'active' : ''}
-				>
-					<LifebuoyIcon size={24} />
-					{isOpen && 'Ajuda'}
-				</Button>
-				<Button
-					variant='neutral'
-					fill_width
-					text_align={isOpen ? 'left' : 'center'}
-					onClick={() => navigate('/dashboard/settings')}
-					className={
-						location === '/dashboard/settings' ? 'active' : ''
-					}
-				>
-					<GearIcon size={24} />
-					{isOpen && 'Configurações'}
-				</Button>
-				<Button
-					variant='neutral'
-					fill_width
-					text_align={isOpen ? 'left' : 'center'}
-					onClick={handleSignOut}
-				>
-					<SignOutIcon size={24} />
-					{isOpen && 'Sair'}
-				</Button>
-			</SidebarBottomActions>
-		</SidebarContainer>
+				</SidebarBottomActions>
+			</SidebarContainer>
+		</>
 	);
 }
