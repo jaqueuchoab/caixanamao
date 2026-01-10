@@ -1,10 +1,8 @@
 import axios from 'axios';
-const bearerToken = import.meta.env.VITE_BEARER_TOKEN;
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const api = axios.create({
-	baseURL: 'https://caixanamao-api.onrender.com/api',
-	headers: { 
-		'Content-Type': 'application/json', 
-		authorization: `Bearer ${bearerToken}`,
-	}
+	baseURL: API_URL,
+	headers: { 'Content-Type': 'application/json' },
 });
