@@ -1,17 +1,22 @@
-export function maskCPF(value: string) {
-  let masked = value.replace(/\D/g, '');
+export function maskCPF(value?: string) {
+	if (!value) return undefined;
 
-  if (masked.length > 3) {
-    masked = masked.replace(/^(\d{3})(\d)/, '$1.$2');
-  }
+	let masked = value.replace(/\D/g, '');
 
-  if (masked.length > 7) {
-    masked = masked.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
-  }
+	if (masked.length > 3) {
+		masked = masked.replace(/^(\d{3})(\d)/, '$1.$2');
+	}
 
-  if (masked.length > 11) {
-    masked = masked.replace(/^(\d{3})\.(\d{3})\.(\d{3})(\d)/, '$1.$2.$3-$4');
-  }
+	if (masked.length > 7) {
+		masked = masked.replace(/^(\d{3})\.(\d{3})(\d)/, '$1.$2.$3');
+	}
 
-  return masked;
+	if (masked.length > 11) {
+		masked = masked.replace(
+			/^(\d{3})\.(\d{3})\.(\d{3})(\d)/,
+			'$1.$2.$3-$4',
+		);
+	}
+
+	return masked;
 }

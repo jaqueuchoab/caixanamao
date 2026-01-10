@@ -6,12 +6,12 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { CalendarIcon } from '@phosphor-icons/react';
 
 import 'react-datepicker/dist/react-datepicker.css';
+import { useContextTheme } from '@/views/context/ThemeContext';
 
 // Sobrescreve estilos do calendário popup
 const StyledDatePickerWrapper = styled.div`
 	.react-datepicker {
 		border-radius: 12px;
-		border: 1px solid ${({ theme }) => theme.colors.inputs.stroke};
 		font-family: inherit;
 		color: ${({ theme }) => theme.colors.texts.primary};
 		background: ${({ theme }) => theme.colors.inputs.background};
@@ -48,6 +48,10 @@ const StyledDatePickerWrapper = styled.div`
 		font-weight: 600;
 		margin-bottom: 4px;
 	}
+
+	svg {
+		color: ${({ theme }) => theme.colors.texts.secondary};
+	}
 `;
 
 type Mode = 'day' | 'month' | 'year';
@@ -67,7 +71,7 @@ const InputWrapper = styled.div`
 	height: 48px;
 	width: 100%;
 	border-radius: 12px;
-	border: 1.4px solid ${({ theme }) => theme.colors.inputs.placeholder};
+	border: 1px solid ${({ theme }) => theme.colors.inputs.placeholder};
 	margin-bottom: 8px;
 	padding: 0 12px;
 	cursor: pointer;
@@ -113,8 +117,11 @@ const DateInput = ({
 	value,
 	setValue,
 	placeholderText,
+	error,
 	mode = 'day',
 }: DateInputProps) => {
+	const { themeMode } = useContextTheme();
+
 	let dateFormat = 'dd/MM/yyyy';
 	let placeholder = 'dd/mm/aaaa';
 	let pickerProps: Record<string, any> = {};
@@ -132,16 +139,30 @@ const DateInput = ({
 	}
 
 	return (
-		<StyledDatePickerWrapper>
-			<DatePicker
-				selected={value}
-				onChange={setValue}
-				dateFormat={dateFormat}
-				placeholderText={placeholderText ?? placeholder}
-				customInput={<CustomInput />}
-				{...pickerProps}
-			/>
-		</StyledDatePickerWrapper>
+		<div>
+			<StyledDatePickerWrapper>
+				<DatePicker
+					selected={value}
+					onChange={setValue}
+					dateFormat={dateFormat}
+					placeholderText={placeholderText ?? placeholder}
+					customInput={<CustomInput />}
+					{...pickerProps}
+				/>
+			</StyledDatePickerWrapper>
+
+			{error && (
+				<span
+					style={{
+						color: `var(--error-${themeMode})`,
+						fontSize: 14,
+						marginBottom: '8px',
+					}}
+				>
+					{error}
+				</span>
+			)}
+		</div>
 	);
 };
 

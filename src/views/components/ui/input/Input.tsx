@@ -74,7 +74,7 @@ const Input = ({ error, type, ...props }: InputProps) => {
 					style={{
 						color: `var(--error-${themeMode})`,
 						fontSize: 14,
-						marginBottom: '8px',
+						marginTop: '8px',
 					}}
 				>
 					{error}

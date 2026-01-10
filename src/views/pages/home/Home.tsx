@@ -27,12 +27,21 @@ const Home = () => {
 				]}
 				options={{ autoplay: { enabled: true, delay: 2500 } }}
 			/>
-			<section className={style.sectionContent + ' ' + style.sectionDivisorOne}>
+			<section
+				className={style.sectionContent + ' ' + style.sectionDivisorOne}
+			>
 				<TextContent
 					titulo='Facilitamos o fechamento de caixa e descomplicamos as tarefas financeiras do seu negócio.'
 					texto='Gestão financeira com foco na acessibilidade para pequenas empresas.'
 				/>
-				<Button>Quero experimentar</Button>
+				<Link
+					style={{ width: '100%', marginTop: 'var(--size-md)' }}
+					to={'/auth/login'}
+				>
+					<Button text_align='center' fill_width>
+						Quero experimentar
+					</Button>
+				</Link>
 			</section>
 
 			<section className={style.sectionDivisorTwo}>
@@ -50,11 +59,16 @@ const Home = () => {
 						cnm_test_carousel,
 						cnm_test_carousel,
 					]}
-					options={{ hasDots: true, autoplay: { enabled: true, delay: 2500 } }}
+					options={{
+						hasDots: true,
+						autoplay: { enabled: true, delay: 2500 },
+					}}
 				/>
 			</section>
 			<section
-				className={style.sectionContent + ' ' + style.sectionDivisorThree}
+				className={
+					style.sectionContent + ' ' + style.sectionDivisorThree
+				}
 			>
 				<div>
 					<img
@@ -70,7 +84,7 @@ const Home = () => {
 
 				<Link
 					style={{ width: '100%', marginTop: 'var(--size-md)' }}
-					to={'/login'}
+					to={'/auth/login'}
 				>
 					<Button>Login / Cadastro</Button>
 				</Link>

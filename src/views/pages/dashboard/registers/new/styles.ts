@@ -50,7 +50,6 @@ export const Content = styled.div`
 
 export const FormActions = styled.div<{ isFirstStep: boolean }>`
 	width: 100%;
-	max-width: 360px;
 
 	display: flex;
 	flex-flow: column-reverse;

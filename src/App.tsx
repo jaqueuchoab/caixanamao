@@ -9,10 +9,8 @@ import Fallback from './views/pages/fallback/Fallback';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GlobalStyles } from './views/styles/GlobalStyles';
 import { Toaster } from './views/components/ui/toaster';
-import AuthModeSelector from './views/pages/auth/login/AuthModeSelector';
 import { LoginPage } from './views/pages/auth/login';
-
-// TODO: refatorar componentes que usam css modules para styled components
+import { SignupPage } from './views/pages/auth/signup';
 
 function App() {
 	const queryClient = new QueryClient();
@@ -26,8 +24,8 @@ function App() {
 							<Route path='/' element={<Home />} />
 							<Route path='/auth/login' element={<LoginPage />} />
 							<Route
-								path='/signup/*'
-								element={<AuthModeSelector />}
+								path='/auth/signup'
+								element={<SignupPage />}
 							/>
 							<Route
 								path='/dashboard/*'
