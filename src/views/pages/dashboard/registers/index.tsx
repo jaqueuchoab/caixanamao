@@ -208,7 +208,7 @@ export function RegistersPage() {
 			<RegistersContainer>
 				{registers?.length !== 0 && (
 					<span id='registers-quantity'>
-						Mostrando {registers?.length} registros
+						Mostrando {registers?.length} registro(s)
 					</span>
 				)}
 				<RegistersList>

@@ -21,8 +21,12 @@ export const Title = styled.div`
 	flex-flow: column;
 	gap: 8px;
 
+	h1 {
+		font-size: clamp(20px, 10vw, 24px);
+	}
+
 	span.lastUpdate {
-		font-size: 16px;
+		font-size: clamp(14px, 10vw, 16px);
 		color: ${({ theme }) => theme.colors.texts.secondary};
 	}
 `;

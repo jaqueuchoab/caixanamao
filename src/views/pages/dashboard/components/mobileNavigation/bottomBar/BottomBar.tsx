@@ -7,10 +7,11 @@ import {
 } from '@phosphor-icons/react';
 import { Button } from '@components/ui/button/Button';
 import { BottomBarContainer } from './BottomBar.styles';
-import { useNavigate } from '@lib/router';
+import { useLocation, useNavigate } from '@lib/router';
 
 export function BottomBar() {
 	const navigate = useNavigate();
+	const { pathname: location } = useLocation();
 
 	return (
 		<BottomBarContainer>
@@ -20,7 +21,10 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/home')}
 			>
-				<HouseIcon size={28} />
+				<HouseIcon
+					weight={location === '/dashboard/home' ? 'fill' : 'regular'}
+					size={24}
+				/>
 			</Button>
 			<Button
 				variant='neutral'
@@ -28,10 +32,20 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/registers')}
 			>
-				<NotepadIcon size={28} />
+				<NotepadIcon
+					weight={
+						location === '/dashboard/registers' ? 'fill' : 'regular'
+					}
+					size={24}
+				/>
 			</Button>
-			<Button variant='primary' fill_width text_align='center'>
-				<PlusIcon size={28} />
+			<Button
+				variant='primary'
+				fill_width
+				text_align='center'
+				onClick={() => navigate('/dashboard/registers/new')}
+			>
+				<PlusIcon size={24} />
 			</Button>
 			<Button
 				variant='neutral'
@@ -39,7 +53,12 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/reports')}
 			>
-				<FileTextIcon size={28} />
+				<FileTextIcon
+					weight={
+						location === '/dashboard/reports' ? 'fill' : 'regular'
+					}
+					size={24}
+				/>
 			</Button>
 			<Button
 				variant='neutral'
@@ -47,7 +66,12 @@ export function BottomBar() {
 				text_align='center'
 				onClick={() => navigate('/dashboard/analysis')}
 			>
-				<ChartBarIcon size={28} />
+				<ChartBarIcon
+					weight={
+						location === '/dashboard/analysis' ? 'fill' : 'regular'
+					}
+					size={24}
+				/>
 			</Button>
 		</BottomBarContainer>
 	);

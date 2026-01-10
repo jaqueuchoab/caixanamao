@@ -25,7 +25,7 @@ export const PopupContainer = styled.div`
 	display: flex;
 	flex-flow: column;
 	justify-content: space-between;
-	gap: 8px;
+	gap: 2px;
 
 	border-radius: 10px;
 	background-color: ${({ theme }) => theme.colors.register.background};
@@ -47,10 +47,12 @@ export const PopupTitle = styled.span`
 	display: flex;
 	justify-content: space-between;
 
-	font-weight: 600;
+	font-weight: 500;
+	font-size: 16px;
 	color: ${({ theme }) => theme.colors.texts.primary};
 
 	& .closeIcon {
+		cursor: pointer;
 		color: ${({ theme }) => theme.colors.texts.secondary};
 		&:hover {
 			opacity: 0.64;

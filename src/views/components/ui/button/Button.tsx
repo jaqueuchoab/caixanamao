@@ -25,7 +25,7 @@ export function Button({
 			disabled={disabled || loading}
 			{...props}
 		>
-			{loading ? <Spinner size={20} color='#101910' /> : props.children}
+			{loading ? <Spinner size={20} /> : props.children}
 		</ButtonContainer>
 	);
 }

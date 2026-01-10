@@ -18,7 +18,6 @@ export const SidebarContainer = styled.nav`
 	}
 
 	& .active {
-		font-weight: 600;
 		color: ${({ theme }) => theme.colors.texts.highlight};
 	}
 `;
@@ -35,7 +34,7 @@ export const SidebarContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 36px;
+	gap: 24px;
 	align-self: stretch;
 
 	button {
@@ -50,7 +49,7 @@ export const SidebarActionsList = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	gap: 12px;
+	gap: 6px;
 	align-self: stretch;
 `;
 
@@ -59,6 +58,6 @@ export const SidebarBottomActions = styled.div`
 	flex-direction: column;
 	justify-content: flex-end;
 	align-items: flex-start;
-	gap: 12px;
 	align-self: stretch;
+	gap: 6px;
 `;

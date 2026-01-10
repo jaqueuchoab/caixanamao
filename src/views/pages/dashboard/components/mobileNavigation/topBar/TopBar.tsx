@@ -23,7 +23,7 @@ export function TopBar() {
 						togglePopUpState();
 					}}
 				>
-					{isOpen ? <X size={28} /> : <List size={28} />}
+					{isOpen ? <X size={24} /> : <List size={24} />}
 				</Button>
 			</TopBarContainer>
 			{isOpen && <TopBarPopUp key="topbar-popup" />}
