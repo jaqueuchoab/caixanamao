@@ -11,7 +11,6 @@ type ProgressIndicatorProps = {
 export function ProgressIndicator({
 	currentStepIndex,
 }: ProgressIndicatorProps) {
-	console.log(currentStepIndex);
 	return currentStepIndex === 0 ? (
 		<Progress>
 			<ProgressDot $active={true}>1</ProgressDot>

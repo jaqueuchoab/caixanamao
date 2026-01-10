@@ -37,7 +37,6 @@ export function LoginPage() {
 		setStartSubmitting(async () => {
 			try {
 				const responseData = await postUserLogin(data);
-				console.log('Login bem-sucedido:', responseData);
 				replaceUserData(responseData);
 
 				toast.success('Bem vindo(a) de volta!');
