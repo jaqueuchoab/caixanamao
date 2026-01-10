@@ -21,6 +21,7 @@ import {
 } from '../../../../../schemas/new-register-schema';
 import { RegisterType } from '@/@types/register/register';
 import { CreationSummaryStep } from './steps/CreationSummaryStep';
+import { useFormStore } from '@/views/store/user.store';
 
 export function NewRegisterPage() {
 	const [isSubmitting, startSubmitTransition] = useTransition();
@@ -49,10 +50,11 @@ export function NewRegisterPage() {
 		nextStep();
 	};
 
+	const { user } = useFormStore();
 	const onSubmit = async (data: NewRegisterSchema) => {
 		const sum = sumRegisterCategories(data.registers);
 		const registerPayload: Omit<RegisterType, 'id'> = {
-			iduser: localStorage.getItem('userId')!,
+			iduser: user.iduser,
 			data: data.data,
 			data_final: data.data_final,
 			valor_cartao: sum.valor_cartao,
@@ -64,13 +66,7 @@ export function NewRegisterPage() {
 
 		try {
 			startSubmitTransition(async () => {
-				await api.post('/registers', registerPayload, {
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							'token',
-						)}`,
-					},
-				});
+				await api.post('/registers', registerPayload);
 				setIsSubmitted(true);
 				toast.success('Registro criado com sucesso!', {
 					description:

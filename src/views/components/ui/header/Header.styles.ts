@@ -16,6 +16,10 @@ export const HeaderLogo = styled.img`
 			height: 32px;
 		}
 	}
+
+	&:hover {
+		opacity: 0.64;
+	}
 `;
 
 export const HeaderNav = styled.nav`

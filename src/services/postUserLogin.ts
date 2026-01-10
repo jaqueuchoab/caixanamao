@@ -4,7 +4,6 @@ import { api } from '../lib/api';
 
 export async function postUserLogin(data: LoginData): Promise<{
 	accessToken: string;
-	refreshToken: string;
 	user: Omit<User, 'senha'>;
 }> {
 	const response = await api.post('/auth/login', data);
@@ -13,7 +12,6 @@ export async function postUserLogin(data: LoginData): Promise<{
 
 export async function postUserSignup(data: SignUpData): Promise<{
 	accessToken: string;
-	refreshToken: string;
 	user: Omit<User, 'senha'>;
 }> {
 	const response = await api.post('/auth/register', data);

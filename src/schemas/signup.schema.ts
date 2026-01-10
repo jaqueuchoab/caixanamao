@@ -6,7 +6,7 @@ export const signupSchema = z
 		cpf: z
 			.string()
 			.regex(/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/, 'CPF inválido'),
-		nasc: z.date(),
+		nasc: z.date('Escolha uma data válida'),
 		cargo: z.number().min(1, 'Cargo inválido').max(4, 'Cargo inválido'),
 		email: z.email('E-mail inválido'),
 		senha: z.string().min(8, 'Deve ter pelo menos 8 caracteres'),

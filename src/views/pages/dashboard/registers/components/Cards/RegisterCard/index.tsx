@@ -37,11 +37,7 @@ export function RegisterCard({
 	};
 
 	const handleDeleteRegister = async () => {
-		await api.delete(`/registers/${register.id}`, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-		});
+		await api.delete(`/registers/${register.id}`);
 		window.location.reload();
 	};
 

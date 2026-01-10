@@ -46,13 +46,11 @@ export function IdentificationStep() {
 				)}
 			/>
 
-			{/* TODO: melhorar campo de data, é muito difícil pegar uma data muito antiga */}
 			<Controller
 				control={control}
 				name='nasc'
 				render={({ field }) => (
 					<DateInput
-						mode='day'
 						value={field.value}
 						setValue={field.onChange}
 						placeholderText='Sua data de nascimento'

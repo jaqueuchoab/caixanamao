@@ -23,6 +23,8 @@ import { useState } from 'react';
 import { useLocation, useNavigate } from '@lib/router';
 import { useContextTheme } from '@context/ThemeContext';
 import { Profile } from './profile/Profile';
+import { toast } from 'sonner';
+import { postSignOut } from '@/services/postSignOut';
 
 export function Sidebar() {
 	const navigate = useNavigate();
@@ -34,12 +36,20 @@ export function Sidebar() {
 		setIsOpen((prev) => !prev);
 	}
 
+	async function handleSignOut() {
+		await postSignOut();
+		navigate('/auth/login');
+		toast.success('Até mais!', {
+			description: 'Você foi deslogado com segurança',
+		});
+	}
+
 	return (
 		<SidebarContainer style={{ width: isOpen ? 256 : 96 }}>
 			<SidebarHeader $is_open={isOpen}>
 				{isOpen && (
 					<CircleHalfIcon
-						weight="fill"
+						weight='fill'
 						size={24}
 						onClick={switchTheme}
 					/>
@@ -52,9 +62,9 @@ export function Sidebar() {
 
 				<Button
 					onClick={() => navigate('/dashboard/registers/new')}
-					variant="primary"
+					variant='primary'
 					fill_width
-					text_align="center"
+					text_align='center'
 				>
 					<PlusIcon size={24} />
 					{isOpen && 'Novo registro'}
@@ -62,7 +72,7 @@ export function Sidebar() {
 
 				<SidebarActionsList>
 					<Button
-						variant="neutral"
+						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/home')}
@@ -75,7 +85,7 @@ export function Sidebar() {
 					</Button>
 
 					<Button
-						variant="neutral"
+						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/registers')}
@@ -88,7 +98,7 @@ export function Sidebar() {
 					</Button>
 
 					<Button
-						variant="neutral"
+						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/admin')}
@@ -101,7 +111,7 @@ export function Sidebar() {
 					</Button>
 
 					<Button
-						variant="neutral"
+						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/reports')}
@@ -114,7 +124,7 @@ export function Sidebar() {
 					</Button>
 
 					<Button
-						variant="neutral"
+						variant='neutral'
 						fill_width
 						text_align={isOpen ? 'left' : 'center'}
 						onClick={() => navigate('/dashboard/analysis')}
@@ -130,7 +140,7 @@ export function Sidebar() {
 
 			<SidebarBottomActions>
 				<Button
-					variant="neutral"
+					variant='neutral'
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/dashboard/help')}
@@ -140,7 +150,7 @@ export function Sidebar() {
 					{isOpen && 'Ajuda'}
 				</Button>
 				<Button
-					variant="neutral"
+					variant='neutral'
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
 					onClick={() => navigate('/dashboard/settings')}
@@ -152,10 +162,10 @@ export function Sidebar() {
 					{isOpen && 'Configurações'}
 				</Button>
 				<Button
-					variant="neutral"
+					variant='neutral'
 					fill_width
 					text_align={isOpen ? 'left' : 'center'}
-					onClick={() => navigate('/')}
+					onClick={handleSignOut}
 				>
 					<SignOutIcon size={24} />
 					{isOpen && 'Sair'}

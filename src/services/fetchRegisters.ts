@@ -53,11 +53,7 @@ async function fakeFetch(): Promise<RegisterType[] | []> {
 
 export async function fetchRegisters(): Promise<RegisterType[] | []> {
 	try {
-		const response = await api.get('/registers', {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-		});
+		const response = await api.get('/registers');
 		// const data = await fakeFetch();
 		const data = response.data;
 

@@ -11,6 +11,7 @@ import { GlobalStyles } from './views/styles/GlobalStyles';
 import { Toaster } from './views/components/ui/toaster';
 import { LoginPage } from './views/pages/auth/login';
 import { SignupPage } from './views/pages/auth/signup';
+import { ProtectedRoute } from './views/pages/auth/ProtectedRoute';
 
 function App() {
 	const queryClient = new QueryClient();
@@ -27,10 +28,12 @@ function App() {
 								path='/auth/signup'
 								element={<SignupPage />}
 							/>
-							<Route
-								path='/dashboard/*'
-								element={<DashboardPage />}
-							/>
+							<Route element={<ProtectedRoute />}>
+								<Route
+									path='/dashboard/*'
+									element={<DashboardPage />}
+								/>
+							</Route>
 							<Route path='/fallback?' element={<Fallback />} />
 						</Routes>
 						<Toaster />

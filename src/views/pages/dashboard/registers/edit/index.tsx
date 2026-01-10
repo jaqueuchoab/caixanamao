@@ -6,7 +6,6 @@ import useMultiStepForm from '@/views/hooks/useMultistepForm';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-import { api } from '@/lib/api';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useTransition } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -17,6 +16,7 @@ import {
 } from '@/schemas/edit-register-schema';
 import { PatchableRegisterCard } from './components/PatchableRegisterCard';
 import { PatchSummaryStep } from './steps/PatchSummaryStep';
+import { patchRegisterById } from '@/services/patchRegisterById';
 
 export function EditRegisterPage() {
 	const { id } = useParams();
@@ -72,34 +72,33 @@ export function EditRegisterPage() {
 	};
 
 	const onSubmit = async (data: EditRegisterSchema) => {
-		const registerPayload = {
-			valor_cartao: data.valor_cartao ?? 0,
-			valor_despesas: data.valor_despesas ?? 0,
-			valor_especie: data.valor_especie ?? 0,
-			valor_inicial: data.valor_inicial ?? 0,
-			valor_pix: data.valor_pix ?? 0,
-		};
+		if (register) {
+			const registerPayload: Omit<
+				EditRegisterSchema,
+				'id' | 'data' | 'data_final'
+			> = {
+				valor_cartao: data.valor_cartao ?? 0,
+				valor_despesas: data.valor_despesas ?? 0,
+				valor_especie: data.valor_especie ?? 0,
+				valor_inicial: data.valor_inicial ?? 0,
+				valor_pix: data.valor_pix ?? 0,
+			};
 
-		try {
-			startSubmitTransition(async () => {
-				await api.patch(`/registers/${id}`, registerPayload, {
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem(
-							'token',
-						)}`,
-					},
+			try {
+				startSubmitTransition(async () => {
+					await patchRegisterById(id!, registerPayload);
+					setIsSubmitted(true);
+					toast.success('Registro editado com sucesso!', {
+						description:
+							'Você será redirecionado para a página de registros em instantes',
+					});
+					setTimeout(() => {
+						navigate('/dashboard/registers');
+					}, 800);
 				});
-				setIsSubmitted(true);
-				toast.success('Registro editado com sucesso!', {
-					description:
-						'Você será redirecionado para a página de registros em instantes',
-				});
-				setTimeout(() => {
-					navigate('/dashboard/registers');
-				}, 800);
-			});
-		} catch (error) {
-			if (error instanceof Error) toast.error(error.message);
+			} catch (error) {
+				if (error instanceof Error) toast.error(error.message);
+			}
 		}
 	};
 

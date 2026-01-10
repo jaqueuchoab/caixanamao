@@ -97,14 +97,16 @@ export function SignupPage() {
 
 	return (
 		<LoginMainContainer>
-			{/* TODO: remover componentes nao utilizados em views/components fora de /ui */}
 			<div id='content'>
 				<div id='heading'>
-					<HeaderLogo
-						id='logo'
-						src={(() => getLogo(themeMode, window.innerWidth))()}
-						alt={`logo-mode-${themeMode}`}
-					/>
+					<a href='/'>
+						<HeaderLogo
+							id='logo'
+							src={(() =>
+								getLogo(themeMode, 769))()}
+							alt={`logo-mode-${themeMode}`}
+						/>
+					</a>
 
 					<h1>Cadastrar-se</h1>
 					<p>Vamos criar sua conta em dois rápidos passos</p>

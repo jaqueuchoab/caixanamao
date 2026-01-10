@@ -9,15 +9,16 @@ async function fakeFetch(): Promise<RegisterType> {
 	const data = await new Promise<RegisterType>((resolve) => {
 		setTimeout(() => {
 			resolve({
-				id: '1',
-				startDate: new Date(),
-				endDate: new Date(),
+				id: 'um-id',
+				iduser: '1',
+				data: new Date(),
+				data_final: new Date(),
 
-				initial: 150,
-				money: 220,
-				creditCard: 0,
-				pix: 120,
-				expenses: 30,
+				valor_inicial: 150,
+				valor_especie: 220,
+				valor_cartao: 0,
+				valor_pix: 120,
+				valor_despesas: 30,
 			});
 		}, 1200);
 	});
@@ -29,11 +30,7 @@ export async function fetchRegisterById(
 	id: string | null,
 ): Promise<EditRegisterSchema | undefined> {
 	try {
-		const response = await api.get(`/registers/${id}`, {
-			headers: {
-				Authorization: `Bearer ${localStorage.getItem('token')}`,
-			},
-		});
+		const response = await api.get(`/registers/${id}`);
 		const data: EditRegisterSchema = response.data;
 		return data;
 	} catch (error) {

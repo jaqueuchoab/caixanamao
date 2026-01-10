@@ -1,58 +1,7 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { forwardRef } from 'react';
-import DatePicker from 'react-datepicker';
+import { useState } from 'react';
 import styled from '@emotion/styled';
-import 'react-datepicker/dist/react-datepicker.css';
 import { CalendarIcon } from '@phosphor-icons/react';
-
-import 'react-datepicker/dist/react-datepicker.css';
 import { useContextTheme } from '@/views/context/ThemeContext';
-
-// Sobrescreve estilos do calendário popup
-const StyledDatePickerWrapper = styled.div`
-	.react-datepicker {
-		border-radius: 12px;
-		font-family: inherit;
-		color: ${({ theme }) => theme.colors.texts.primary};
-		background: ${({ theme }) => theme.colors.inputs.background};
-		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-	}
-
-	.react-datepicker__header {
-		background: ${({ theme }) => theme.colors.inputs.background};
-		border-bottom: none;
-		padding-top: 8px;
-		border-radius: 12px 12px 0 0;
-	}
-
-	.react-datepicker__day {
-		color: ${({ theme }) => theme.colors.texts.primary};
-	}
-
-	.react-datepicker__day-name {
-		color: ${({ theme }) => theme.colors.texts.secondary};
-	}
-
-	.react-datepicker__day--selected,
-	.react-datepicker__day--keyboard-selected {
-		background: ${({ theme }) => theme.colors.texts.highlight};
-		color: ${({ theme }) => theme.colors.backgrounds.primary};
-	}
-
-	.react-datepicker__day:hover {
-		background: ${({ theme }) => theme.colors.texts.highlight}48;
-	}
-
-	.react-datepicker__current-month {
-		color: ${({ theme }) => theme.colors.texts.primary};
-		font-weight: 600;
-		margin-bottom: 4px;
-	}
-
-	svg {
-		color: ${({ theme }) => theme.colors.texts.secondary};
-	}
-`;
 
 type Mode = 'day' | 'month' | 'year';
 
@@ -62,101 +11,146 @@ type DateInputProps = {
 	setValue: (value: Date | null) => void;
 	error?: string;
 	mode?: Mode;
+	onBlur?: () => void;
 };
 
-const InputWrapper = styled.div`
+const InputWrapper = styled.div<{ hasError: boolean }>`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	position: relative; /* Necessário para o posicionamento absoluto */
 	height: 48px;
 	width: 100%;
-	border-radius: 12px;
-	border: 1px solid ${({ theme }) => theme.colors.inputs.placeholder};
+	border-radius: 8px;
+	border: 1px solid
+		${({ theme, hasError }) => {
+			return hasError
+				? theme.colors.inputs.error
+				: theme.colors.inputs.stroke;
+		}};
 	margin-bottom: 8px;
 	padding: 0 12px;
-	cursor: pointer;
 	background: ${({ theme }) => theme.colors.inputs.background};
 `;
 
-const StyledInput = styled.input`
+// Texto do Placeholder que fica "flutuando"
+const PlaceholderText = styled.span`
+	position: absolute;
+	left: 42px; /* Espaço para o ícone (12px padding + 18px icon + gap) */
+	top: 50%;
+	transform: translateY(-50%);
+	color: ${({ theme }) => theme.colors.inputs.placeholder};
+	font-size: var(--size-sm);
+	pointer-events: none; /* O PULO DO GATO: O clique atravessa este texto e vai para o input */
+	user-select: none;
+	z-index: 1;
+`;
+
+const StyledInput = styled.input<{ isEmpty: boolean }>`
 	height: 100%;
 	width: 100%;
 	border: none;
 	outline: none;
 	background: transparent;
 	font-size: 16px;
-	border-radius: 12px;
+	border-radius: 8px;
 	padding-left: 12px;
-	text-align: start;
-	cursor: pointer;
+	z-index: 2; /* Garante que o input fique acima do placeholder visualmente se tiver cor */
 
-	color: ${({ theme }) => theme.colors.texts.primary};
-	background: ${({ theme }) => theme.colors.inputs.background};
+	/* Controla a cor do texto */
+	color: ${({ theme, isEmpty }) =>
+		isEmpty ? 'transparent' : theme.colors.texts.primary};
 
-	&::placeholder {
-		font-size: var(--size-sm);
+	/* Ao focar, a máscara dd/mm/aaaa deve aparecer (cor normal) */
+	&:focus {
+		color: ${({ theme }) => theme.colors.texts.primary};
+	}
+
+	&::-webkit-calendar-picker-indicator {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		cursor: pointer;
 	}
 `;
 
-const CustomInput = forwardRef<HTMLInputElement, any>(
-	({ value, onClick, placeholder, ...props }, ref) => (
-		<InputWrapper onClick={onClick}>
-			<CalendarIcon size={18} strokeWidth={1.6} />
-			<StyledInput
-				ref={ref}
-				value={value}
-				placeholder={placeholder}
-				readOnly
-				{...props}
-			/>
-		</InputWrapper>
-	),
-);
-
-const DateInput = ({
+export default function DateInput({
 	value,
 	setValue,
 	placeholderText,
 	error,
 	mode = 'day',
-}: DateInputProps) => {
-	const { themeMode } = useContextTheme();
+	onBlur,
+}: DateInputProps) {
+	const { themeMode, theme } = useContextTheme();
+	const [isFocused, setIsFocused] = useState(false);
 
-	let dateFormat = 'dd/MM/yyyy';
-	let placeholder = 'dd/mm/aaaa';
-	let pickerProps: Record<string, any> = {};
+	const formatNative = (date: Date | undefined) => {
+		if (!date) return '';
+		const d = date;
+		if (mode === 'year') return d.getFullYear().toString();
+		if (mode === 'month') return d.toISOString().slice(0, 7);
+		return d.toISOString().slice(0, 10);
+	};
 
-	if (mode === 'month') {
-		dateFormat = 'MM/yyyy';
-		placeholder = 'mm/aaaa';
-		pickerProps.showMonthYearPicker = true;
-	}
+	const parseNative = (val: string) => {
+		if (!val) return null;
+		if (mode === 'year') return new Date(Number(val), 0, 1);
+		if (mode === 'month') {
+			const [y, m] = val.split('-').map(Number);
+			return new Date(y, m - 1, 1);
+		}
+		return new Date(val);
+	};
 
-	if (mode === 'year') {
-		dateFormat = 'yyyy';
-		placeholder = 'aaaa';
-		pickerProps.showYearPicker = true;
-	}
+	const inputType =
+		mode === 'year' ? 'number' : mode === 'month' ? 'month' : 'date';
+
+	// Verifica se está "vazio" (sem valor E sem foco)
+	// Se tiver foco, consideramos que NÃO está vazio para mostrar a máscara dd/mm/aaaa
+	const showPlaceholder = !value && !isFocused;
 
 	return (
 		<div>
-			<StyledDatePickerWrapper>
-				<DatePicker
-					selected={value}
-					onChange={setValue}
-					dateFormat={dateFormat}
-					placeholderText={placeholderText ?? placeholder}
-					customInput={<CustomInput />}
-					{...pickerProps}
+			<InputWrapper hasError={!!error}>
+				<CalendarIcon
+					color={theme.colors.inputs.secondaryElement}
+					size={18}
+					strokeWidth={1.6}
+					style={{ minWidth: '18px' }}
 				/>
-			</StyledDatePickerWrapper>
+
+				{/* Renderiza o texto do placeholder sobre o input se necessário */}
+				{showPlaceholder && (
+					<PlaceholderText>{placeholderText}</PlaceholderText>
+				)}
+
+				<StyledInput
+					type={inputType}
+					value={formatNative(value)}
+					onChange={(e) => setValue(parseNative(e.target.value))}
+					onFocus={() => setIsFocused(true)}
+					onBlur={() => {
+						setIsFocused(false);
+						if (onBlur) onBlur();
+					}}
+					isEmpty={!value} // Passamos para o styled component controlar a transparência
+					min={mode === 'year' ? '1900' : undefined}
+					max={mode === 'year' ? '2100' : undefined}
+				/>
+			</InputWrapper>
 
 			{error && (
 				<span
 					style={{
 						color: `var(--error-${themeMode})`,
 						fontSize: 14,
-						marginBottom: '8px',
+						marginTop: '4px',
+						display: 'block',
 					}}
 				>
 					{error}
@@ -164,6 +158,4 @@ const DateInput = ({
 			)}
 		</div>
 	);
-};
-
-export default DateInput;
+}

@@ -36,7 +36,7 @@ const Home = () => {
 				/>
 				<Link
 					style={{ width: '100%', marginTop: 'var(--size-md)' }}
-					to={'/auth/login'}
+					to={'/dashboard'}
 				>
 					<Button text_align='center' fill_width>
 						Quero experimentar
@@ -84,7 +84,7 @@ const Home = () => {
 
 				<Link
 					style={{ width: '100%', marginTop: 'var(--size-md)' }}
-					to={'/auth/login'}
+					to={'/dashboard'}
 				>
 					<Button>Login / Cadastro</Button>
 				</Link>

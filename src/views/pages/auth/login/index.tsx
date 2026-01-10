@@ -50,11 +50,14 @@ export function LoginPage() {
 		<LoginMainContainer>
 			<div id='content'>
 				<div id='heading'>
-					<HeaderLogo
-						id='logo'
-						src={(() => getLogo(themeMode, window.innerWidth))()}
-						alt={`logo-mode-${themeMode}`}
-					/>
+					<a href='/'>
+						<HeaderLogo
+							id='logo'
+							src={(() =>
+								getLogo(themeMode, 769))()}
+							alt={`logo-mode-${themeMode}`}
+						/>
+					</a>
 
 					<h1>Entrar</h1>
 					<p>Digite suas credenciais para entrar.</p>
