@@ -29,7 +29,7 @@ export function RegisterItem({
 				{name}
 			</Infos>
 			<Value>
-				<span className="registerItem__currency">R$</span>
+				<span>R$</span>
 				{editable ? (
 					<MoneyInput
 						id={id}
@@ -38,7 +38,7 @@ export function RegisterItem({
 						error={error}
 					/>
 				) : (
-					<span className="registerItem__value">
+					<span className='registerItem__value'>
 						{value?.toLocaleString('pt-BR', {
 							minimumFractionDigits: 2,
 							maximumFractionDigits: 2,
