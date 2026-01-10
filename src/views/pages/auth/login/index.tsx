@@ -14,6 +14,7 @@ import { getLogo } from '@/views/components/ui/header/Header';
 import { Spinner } from '@/views/components/ui/spinner/Spinner';
 import { toast } from 'sonner';
 import { AxiosError } from 'axios';
+import { replaceUserData } from '@/utils/replace-user-data.util';
 
 export function LoginPage() {
 	const navigate = useNavigate();
@@ -28,13 +29,9 @@ export function LoginPage() {
 	const handleLogin = async (data: LoginSchema) => {
 		setStartSubmitting(async () => {
 			try {
-				const response = await postUserLogin(data);
-				console.log('Login bem-sucedido:', response);
-
-				localStorage.removeItem('token');
-				localStorage.removeItem('userId');
-				localStorage.setItem('token', response.accessToken);
-				localStorage.setItem('userId', response.userId);
+				const responseData = await postUserLogin(data);
+				console.log('Login bem-sucedido:', responseData);
+				replaceUserData(responseData);
 
 				toast.success('Bem vindo(a) de volta!');
 				navigate('/dashboard');

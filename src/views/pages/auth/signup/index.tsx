@@ -18,6 +18,7 @@ import { CredentialsStep } from './CredentialsStep';
 import useMultiStepForm from '@/views/hooks/useMultistepForm';
 import { FormActions } from '../../dashboard/registers/new/styles';
 import { ProgressIndicator } from './ProgressIndicator/ProgressIndicator';
+import { replaceUserData } from '@/utils/replace-user-data.util';
 
 export function SignupPage() {
 	const { themeMode } = useContextTheme();
@@ -46,7 +47,7 @@ export function SignupPage() {
 	const onSubmit = async (data: SignupSchema) => {
 		setStartSubmitting(async () => {
 			try {
-				await postUserSignup({
+				const responseData = await postUserSignup({
 					nome: data.nome,
 					cpf: data.cpf,
 					nasc: data.nasc.toISOString(),
@@ -55,6 +56,8 @@ export function SignupPage() {
 					senha: data.senha,
 					senha_confirmacao: data.senha_confirmacao,
 				});
+				replaceUserData(responseData);
+
 				toast.success('Conta criada com sucesso!', {
 					description: `Bem vindo(a), ${data.nome.split(' ')[0]}!`,
 				});
