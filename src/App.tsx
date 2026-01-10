@@ -5,12 +5,12 @@ import { ThemeContextProvider } from './views/context/ThemeContext';
 
 import Home from './views/pages/home/Home';
 import { DashboardPage } from './views/pages/dashboard';
-import Vantagens from './views/pages/Vantagens';
 import Fallback from './views/pages/fallback/Fallback';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GlobalStyles } from './views/styles/GlobalStyles';
 import { Toaster } from './views/components/ui/toaster';
-import AuthModeSelector from './views/components/authMode/AuthModeSelector';
+import AuthModeSelector from './views/pages/auth/login/AuthModeSelector';
+import { LoginPage } from './views/pages/auth/login';
 
 // TODO: refatorar componentes que usam css modules para styled components
 
@@ -23,15 +23,17 @@ function App() {
 					<QueryClientProvider client={queryClient}>
 						<GlobalStyles />
 						<Routes>
-							<Route path="/" element={<Home />} />
-							<Route path="/login/*" element={<AuthModeSelector />} />
-							<Route path="/signup/*" element={<AuthModeSelector />} />
+							<Route path='/' element={<Home />} />
+							<Route path='/auth/login' element={<LoginPage />} />
 							<Route
-								path="/dashboard/*"
+								path='/signup/*'
+								element={<AuthModeSelector />}
+							/>
+							<Route
+								path='/dashboard/*'
 								element={<DashboardPage />}
 							/>
-							<Route path="/benefits" element={<Vantagens />} />
-							<Route path="/fallback?" element={<Fallback />} />
+							<Route path='/fallback?' element={<Fallback />} />
 						</Routes>
 						<Toaster />
 					</QueryClientProvider>

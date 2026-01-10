@@ -9,7 +9,7 @@ import { useContextTheme } from '@context/ThemeContext';
 import { HeaderContainer, HeaderLogo, HeaderNav } from './Header.styles';
 import { Button } from '@components/ui/button/Button';
 
-function getLogo(mode: string, width: number | null) {
+export function getLogo(mode: string, width: number | null) {
 	if (width && width > 768) {
 		return mode === 'light' ? cnm_logohorz_light : cnm_logohorz_dark;
 	}
