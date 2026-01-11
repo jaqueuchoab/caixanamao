@@ -13,7 +13,7 @@ import { Link } from '@lib/router.ts';
 
 const Home = () => {
 	const { themeMode } = useContextTheme();
-
+	// TODO: igualar com o protótipo no Figma + melhorar header
 	return (
 		<div className={style.mainContent} id={style[themeMode]}>
 			<Header />
