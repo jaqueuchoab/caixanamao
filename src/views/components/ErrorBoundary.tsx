@@ -1,5 +1,5 @@
 import { Component, ErrorInfo, ReactNode } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from '@lib/router';
 
 interface ErrorBoundaryProps {
 	children: ReactNode;
@@ -11,10 +11,7 @@ interface ErrorBoundaryState {
 	errorInfo?: ErrorInfo;
 }
 
-class ErrorBoundary extends Component<
-	ErrorBoundaryProps,
-	ErrorBoundaryState
-> {
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
 	constructor(props: ErrorBoundaryProps) {
 		super(props);
 		this.state = { hasError: false };

@@ -1,0 +1,42 @@
+import styled from '@emotion/styled';
+
+export const Container = styled.div`
+	min-width: 208px;
+	padding: 12px 8px;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex: 1;
+	gap: 12px;
+`;
+
+export const Infos = styled.div`
+	display: flex;
+	align-items: center;
+	align-content: center;
+	gap: 12px;
+	flex: 1 0 0;
+	font-size: 14px;
+`;
+
+export const Value = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 4px;
+
+	font-size: 14px;
+
+	& .registerItem__currency {
+		font-weight: 600;
+	}
+
+	.registerItem__value.profit {
+		color: ${({ theme }) => theme.colors.texts.highlight};
+	}
+
+	.registerItem__value.loss {
+		color: ${({ theme }) => theme.colors.inputs.error};
+	}
+`;

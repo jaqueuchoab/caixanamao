@@ -1,4 +1,4 @@
-import { ThemeType } from '../../@types/theme-types';
+import { ThemeType } from '../../@types/theme/theme-types';
 import { baseColorsDefault, sizesDefault } from './defaults';
 
 export const lightTheme: ThemeType = {

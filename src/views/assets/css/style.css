@@ -3,11 +3,23 @@
 
 * {
 	font-family: Sora;
-	transition: background-color 0.2s ease, color 0.2s ease, fill 0.2s ease; /* para transicoes suaves na troca de tema */
 }
 
 *:focus-visible {
 	outline: 2.4px solid #00c318;
+}
+
+.animate-spin {
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 /*variáveis*/
