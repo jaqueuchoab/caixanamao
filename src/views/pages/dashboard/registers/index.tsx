@@ -83,7 +83,12 @@ export function RegistersPage() {
 						</EmptyRegisterListContainer>
 					) : (
 						registers?.map((data, idx) => (
-							<RegisterCard key={idx} register={data} />
+							<RegisterCard
+								canEdit
+								canDelete
+								key={idx}
+								register={data}
+							/>
 						))
 					)}
 				</RegistersList>
