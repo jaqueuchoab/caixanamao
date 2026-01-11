@@ -16,10 +16,18 @@ import { RegistersPage } from './registers';
 import { Route, Routes, Navigate } from '@lib/router';
 import { NewRegisterPage } from './registers/new';
 import { EditRegisterPage } from './registers/edit';
+import { useEffect, useState } from 'react';
 
 export function DashboardPage() {
 	const size = useWindowSize();
-	const isDeviceMobile = size.width! < 768;
+	const [isDeviceMobile, setIsDeviceMobile] = useState(size.width! < 768);
+
+	useEffect(() => {
+		const timer = setTimeout(() => {
+			setIsDeviceMobile(size.width! < 768);
+		}, 100);
+		return () => clearTimeout(timer);
+	}, [size.width]);
 
 	return (
 		<DashboardContainer>
