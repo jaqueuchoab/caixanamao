@@ -1,9 +1,7 @@
 import {
 	createContext,
 	PropsWithChildren,
-	useContext,
-	useEffect,
-	useState,
+	useContext, useState
 } from 'react';
 import { darkTheme } from '../themes/dark';
 import { lightTheme } from '../themes/light';
@@ -19,21 +17,15 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | null>(null);
 
 export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
-	const [themeMode, setThemeMode] = useState<'light' | 'dark'>('light');
-
-	useEffect(() => {
+	const [themeMode, setThemeMode] = useState<'light' | 'dark'>(() => {
 		const storedMode = localStorage.getItem('mode');
+		if (storedMode === 'light' || storedMode === 'dark') {
+			return storedMode;
+		}
+		localStorage.setItem('mode', 'light');
+		return 'light';
+	});
 
-		if (!storedMode || (storedMode !== 'light' && storedMode !== 'dark'))
-			localStorage.setItem('mode', 'light');
-		else setThemeMode(storedMode);
-	}, []);
-	// obtem constantemente o valor atualizado do localStorage ou define para 'light' como padrao
-
-	/**
-	 * alterna entre 'light' e 'dark' com base no estado anterior
-	 * @returns 'light' | 'dark'
-	 */
 	const switchTheme = () => {
 		setThemeMode((prev) => {
 			const newMode = prev === 'light' ? 'dark' : 'light';
@@ -42,21 +34,12 @@ export const ThemeContextProvider = ({ children }: PropsWithChildren) => {
 		});
 	};
 
-	/**
-	 * @description retorna a definição do tema correspondendo ao estado
-	 */
 	const theme = themeMode === 'dark' ? darkTheme : lightTheme;
 
 	document.querySelector(
 		'body',
 	)!.style.background = `${theme.colors.backgrounds.navbar}`;
 
-	/**
-	 * @description retorna o theme provider customizado e o theme provider do emotion, que permite recuperar o tema como prop de cada 
-			styled component inves de usar passagem de prop via hook useTheme (voce ainda pode recuperar
-			o tema via hook para casos mais especificos do uso de tema na pagina, como coloracao
-			de icones!)
-	 */
 	return (
 		<ThemeContext.Provider value={{ themeMode, theme, switchTheme }}>
 			<ThemeProvider theme={theme}>{children}</ThemeProvider>
