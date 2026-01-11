@@ -33,7 +33,7 @@ export function ProtectedRoute() {
 
 		verifySession();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [user.iduser]);
+	}, []);
 
 	if (isLoading) {
 		return (
