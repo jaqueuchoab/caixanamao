@@ -36,7 +36,7 @@ const Header = () => {
 								? 'var(--color-neutral-950)'
 								: 'var(--color-neutral-100)'
 						}
-						size={32}
+						size={24}
 						weight='fill'
 					/>
 				</Button>
