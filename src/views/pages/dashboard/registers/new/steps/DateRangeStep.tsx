@@ -1,35 +1,46 @@
 import DateInput from '@components/ui/input/DateInput';
 import { InputContainer } from '../styles';
 import { useEffect } from 'react';
-import { addDays, differenceInDays } from 'date-fns';
-import { Controller, useFormContext } from 'react-hook-form';
-import { NewRegisterSchema } from '../../../../../../schemas/new-register-schema';
+import { differenceInDays } from 'date-fns';
+import {
+	Controller,
+	FieldValues,
+	UseFormSetValue,
+	Path,
+	useFormContext,
+} from 'react-hook-form';
 
-export function DateRangeStep() {
-	const { control, watch, setValue } = useFormContext<NewRegisterSchema>();
+type DateRangeStepProps<TFormValues extends FieldValues> = {
+	startField?: Path<TFormValues>;
+	endField?: Path<TFormValues>;
+	resource?: 'registers' | 'reports';
+	onDateRangeChange?: (
+		start: Date,
+		end: Date,
+		diffInDays: number,
+		setValue: UseFormSetValue<TFormValues>,
+	) => void;
+};
 
-	const startDate = watch('data');
-	const endDate = watch('data_final');
+export function DateRangeStep<TFormValues extends FieldValues>({
+	startField = 'data' as Path<TFormValues>,
+	endField = 'data_final' as Path<TFormValues>,
+	resource = 'registers',
+	onDateRangeChange,
+}: DateRangeStepProps<TFormValues>) {
+	const { control, watch, setValue } = useFormContext<TFormValues>();
+
+	const startDate = watch(startField);
+	const endDate = watch(endField);
+
 	const diffInDays =
 		startDate && endDate ? differenceInDays(endDate, startDate) + 1 : 0;
 
-	// atualiza comprimento do array de registros conforme diferenca de datas em dias
 	useEffect(() => {
 		if (startDate && endDate && diffInDays > 0) {
-			const registers = Array.from(
-				{ length: diffInDays },
-				(_, index) => ({
-					data: addDays(startDate, index),
-					valor_inicial: 0,
-					valor_especie: 0,
-					valor_cartao: 0,
-					valor_pix: 0,
-					valor_despesas: 0,
-				}),
-			);
-			setValue('registers', registers);
+			onDateRangeChange?.(startDate, endDate, diffInDays, setValue);
 		}
-	}, [startDate, endDate, diffInDays, setValue]);
+	}, [startDate, endDate, diffInDays, onDateRangeChange, setValue]);
 
 	return (
 		<>
@@ -37,33 +48,33 @@ export function DateRangeStep() {
 				<label>Data de Início:</label>
 				<Controller
 					control={control}
-					name='data'
-					render={({ field: { onChange, value } }) => (
+					name={startField}
+					render={({ field }) => (
 						<DateInput
 							mode='day'
-							value={value}
-							setValue={onChange}
+							value={field.value}
+							setValue={field.onChange}
 						/>
 					)}
-				></Controller>
+				/>
 			</InputContainer>
 
 			<InputContainer>
 				<label>Data de Fim:</label>
 				<Controller
 					control={control}
-					name='data_final'
-					render={({ field: { onChange, value } }) => (
+					name={endField}
+					render={({ field }) => (
 						<DateInput
 							mode='day'
-							value={value}
-							setValue={onChange}
+							value={field.value}
+							setValue={field.onChange}
 						/>
 					)}
-				></Controller>
+				/>
 			</InputContainer>
 
-			{diffInDays > 0 && (
+			{resource === 'registers' && diffInDays > 0 && (
 				<p className='font-semibold'>
 					Você preencherá: {diffInDays} registro(s)
 				</p>
