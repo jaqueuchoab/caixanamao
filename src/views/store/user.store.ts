@@ -23,7 +23,7 @@ type UserStore = {
 	reset: () => void;
 };
 
-export const useFormStore = create<UserStore>()((set) => ({
+export const useUserStore = create<UserStore>()((set) => ({
 	user: initialUser,
 
 	setUserField: (field, value) =>

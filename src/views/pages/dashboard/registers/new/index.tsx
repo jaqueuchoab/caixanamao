@@ -8,7 +8,7 @@ import { FormProvider, useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { toast } from 'sonner';
-import { differenceInDays } from 'date-fns';
+import { addDays, differenceInDays } from 'date-fns';
 import { DateRangeStep } from './steps/DateRangeStep';
 import { CreationRegisterCard } from './components/CreationRegisterCard';
 import { sumRegisterCategories } from '@/utils/sum-register-categories';
@@ -21,7 +21,7 @@ import {
 } from '../../../../../schemas/new-register-schema';
 import { RegisterType } from '@/@types/register/register';
 import { CreationSummaryStep } from './steps/CreationSummaryStep';
-import { useFormStore } from '@/views/store/user.store';
+import { useUserStore } from '@/views/store/user.store';
 
 export function NewRegisterPage() {
 	const [isSubmitting, startSubmitTransition] = useTransition();
@@ -50,7 +50,7 @@ export function NewRegisterPage() {
 		nextStep();
 	};
 
-	const { user } = useFormStore();
+	const { user } = useUserStore();
 	const onSubmit = async (data: NewRegisterSchema) => {
 		const sum = sumRegisterCategories(data.registers);
 		const registerPayload: Omit<RegisterType, 'id'> = {
@@ -93,7 +93,25 @@ export function NewRegisterPage() {
 		{
 			number: 0,
 			title: 'Intervalo de Datas',
-			step: <DateRangeStep key='date-range-step' />,
+			step: (
+				<DateRangeStep<NewRegisterSchema>
+					key='date-range-step'
+					onDateRangeChange={(start, end, diff, setValue) => {
+						const registers = Array.from(
+							{ length: diff },
+							(_, i) => ({
+								data: addDays(start, i),
+								valor_inicial: 0,
+								valor_especie: 0,
+								valor_cartao: 0,
+								valor_pix: 0,
+								valor_despesas: 0,
+							}),
+						);
+						setValue('registers', registers);
+					}}
+				/>
+			),
 		},
 		...cardFillSteps,
 		{
