@@ -34,20 +34,19 @@ export function TopBarPopUp() {
 
 	return (
 		<>
-			{isSignOutPopupOpen && (
-				<ChoicePopup
-					title='Tem certeza que deseja sair?'
-					onClose={toggleSignOutPopup}
-					confirm={{
-						text: 'Sair',
-						onConfirm: handleSignOut,
-					}}
-					refuse={{
-						text: 'Voltar',
-						onRefuse: toggleSignOutPopup,
-					}}
-				/>
-			)}
+			<ChoicePopup
+				isOpen={isSignOutPopupOpen}
+				title='Tem certeza que deseja sair?'
+				onClose={toggleSignOutPopup}
+				confirm={{
+					text: 'Sair',
+					onConfirm: handleSignOut,
+				}}
+				refuse={{
+					text: 'Voltar',
+					onRefuse: toggleSignOutPopup,
+				}}
+			/>
 
 			<TopBarPopupContainer>
 				<Button variant='neutral' fill_width onClick={switchTheme}>
