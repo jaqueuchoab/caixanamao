@@ -1,6 +1,7 @@
 import { Button } from '@components/ui/button/Button';
 import { RegisterCardSkeleton } from '@components/ui/skeleton/styles';
 import {
+	ArrowsClockwiseIcon,
 	FunnelIcon,
 	PlusIcon,
 	RocketIcon,
@@ -24,11 +25,12 @@ export function RegistersPage() {
 		data: registers,
 		isLoading,
 		isFetching,
+		isRefetching,
 		dataUpdatedAt,
+		refetch,
 	} = useQuery({
 		queryKey: ['registers'],
 		queryFn: fetchRegisters,
-		refetchOnMount: true,
 	});
 
 	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
@@ -66,6 +68,16 @@ export function RegistersPage() {
 					variant='neutral'
 				>
 					<SortAscendingIcon weight='bold' size={16} /> Ordenar
+				</Button>
+
+				<Button
+					style={{ fontSize: 12 }}
+					text_align='center'
+					variant='neutral'
+					disabled={isRefetching}
+					onClick={() => refetch()}
+				>
+					<ArrowsClockwiseIcon weight='bold' size={16} /> Atualizar
 				</Button>
 			</TopActions>
 
