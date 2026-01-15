@@ -19,13 +19,14 @@ import {
 	SidebarContent,
 	SidebarHeader,
 } from './Sidebar.styles';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from '@lib/router';
 import { useContextTheme } from '@context/ThemeContext';
 import { Profile } from './profile/Profile';
 import { toast } from 'sonner';
 import { postSignOut } from '@/services/postSignOut';
 import { ChoicePopup } from '@/views/components/ui/popup/ChoicePopup';
+import gsap from 'gsap';
 
 export function Sidebar() {
 	const navigate = useNavigate();
@@ -34,6 +35,8 @@ export function Sidebar() {
 	const { pathname: location } = useLocation();
 	const [isSignOutPopupOpen, setIsSignOutPopupOpen] =
 		useState<boolean>(false);
+
+	const sidebarRef = useRef<HTMLDivElement>(null);
 
 	const toggleSignOutPopup = () => {
 		setIsSignOutPopupOpen((prev) => !prev);
@@ -51,24 +54,40 @@ export function Sidebar() {
 		});
 	}
 
+	useEffect(() => {
+		if (!sidebarRef.current) return;
+		const labels = sidebarRef.current.querySelectorAll('span');
+
+		gsap.to(sidebarRef.current, {
+			width: isOpen ? 256 : 96,
+			duration: 0.25,
+			ease: 'power2.out',
+		});
+
+		gsap.to(labels, {
+			opacity: isOpen ? 1 : 0,
+			duration: 0.4,
+			ease: 'power1.out',
+		});
+	}, [isOpen]);
+
 	return (
 		<>
-			{isSignOutPopupOpen && (
-				<ChoicePopup
-					title='Tem certeza que deseja sair?'
-					onClose={toggleSignOutPopup}
-					confirm={{
-						text: 'Sair',
-						onConfirm: handleSignOut,
-					}}
-					refuse={{
-						text: 'Voltar',
-						onRefuse: toggleSignOutPopup,
-					}}
-				/>
-			)}
+			<ChoicePopup
+				isOpen={isSignOutPopupOpen}
+				title='Tem certeza que deseja sair?'
+				onClose={toggleSignOutPopup}
+				confirm={{
+					text: 'Sair',
+					onConfirm: handleSignOut,
+				}}
+				refuse={{
+					text: 'Voltar',
+					onRefuse: toggleSignOutPopup,
+				}}
+			/>
 
-			<SidebarContainer style={{ width: isOpen ? 256 : 96 }}>
+			<SidebarContainer ref={sidebarRef}>
 				<SidebarHeader $is_open={isOpen}>
 					{isOpen && (
 						<CircleHalfIcon
@@ -90,7 +109,7 @@ export function Sidebar() {
 						text_align='center'
 					>
 						<PlusIcon size={16} />
-						{isOpen && 'Novo registro'}
+						<span>{isOpen && 'Novo registro'}</span>
 					</Button>
 
 					<SidebarActionsList>
@@ -112,7 +131,7 @@ export function Sidebar() {
 								}
 								size={20}
 							/>
-							{isOpen && 'Página inicial'}
+							<span>{isOpen && 'Página inicial'}</span>
 						</Button>
 
 						<Button
@@ -135,7 +154,7 @@ export function Sidebar() {
 								}
 								size={20}
 							/>
-							{isOpen && 'Registros'}
+							<span>{isOpen && 'Registros'}</span>
 						</Button>
 
 						<Button
@@ -156,7 +175,7 @@ export function Sidebar() {
 								}
 								size={20}
 							/>
-							{isOpen && 'Administração'}
+							<span>{isOpen && 'Administração'}</span>
 						</Button>
 
 						<Button
@@ -179,7 +198,7 @@ export function Sidebar() {
 								}
 								size={20}
 							/>
-							{isOpen && 'Relatórios'}
+							<span>{isOpen && 'Relatórios'}</span>
 						</Button>
 
 						<Button
@@ -202,7 +221,7 @@ export function Sidebar() {
 								}
 								size={20}
 							/>
-							{isOpen && 'Análises'}
+							<span>{isOpen && 'Análises'}</span>
 						</Button>
 					</SidebarActionsList>
 				</SidebarContent>
@@ -226,7 +245,7 @@ export function Sidebar() {
 							}
 							size={20}
 						/>
-						{isOpen && 'Ajuda'}
+						<span>{isOpen && 'Ajuda'}</span>
 					</Button>
 					<Button
 						style={{ padding: '12px 0' }}
@@ -246,7 +265,7 @@ export function Sidebar() {
 							}
 							size={20}
 						/>
-						{isOpen && 'Configurações'}
+						<span>{isOpen && 'Configurações'}</span>
 					</Button>
 					<Button
 						style={{ padding: '12px 0' }}
@@ -256,7 +275,7 @@ export function Sidebar() {
 						onClick={toggleSignOutPopup}
 					>
 						<SignOutIcon size={20} />
-						{isOpen && 'Sair'}
+						<span>{isOpen && 'Sair'}</span>
 					</Button>
 				</SidebarBottomActions>
 			</SidebarContainer>
