@@ -13,8 +13,7 @@ export const FullPageOverlay = styled.div`
 	justify-content: center;
 	align-items: center;
 
-	background-color: #00000040;
-	backdrop-filter: blur(2px);
+	background-color: #00000099;
 `;
 
 export const PopupContainer = styled.div`
@@ -46,6 +45,7 @@ export const PopupTitle = styled.span`
 	width: 100%;
 	display: flex;
 	justify-content: space-between;
+	gap: 16px;
 
 	font-weight: 500;
 	font-size: 16px;

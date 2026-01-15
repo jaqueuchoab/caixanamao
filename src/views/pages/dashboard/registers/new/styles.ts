@@ -26,10 +26,6 @@ export const Form = styled.form`
 	justify-content: center;
 	align-items: center;
 	gap: 32px;
-
-	@media screen and (width >= 768px) {
-		width: fit-content;
-	}
 `;
 
 export const Content = styled.div`
@@ -64,11 +60,13 @@ export const FormActions = styled.div<{ isFirstStep: boolean }>`
 
 	@media screen and (width >= 768px) {
 		flex-flow: row;
-		max-width: 100%;
+		max-width: 300px;
 	}
 `;
 
-export const InputContainer = styled.span`
+export const InputContainer = styled.div`
+	width: 100%;
+
 	display: flex;
 	flex-flow: column;
 	align-items: start;
@@ -77,5 +75,9 @@ export const InputContainer = styled.span`
 	& label {
 		font-size: 16px;
 		font-weight: bold;
+	}
+
+	@media screen and (width > 768px) {
+		max-width: 300px;
 	}
 `;

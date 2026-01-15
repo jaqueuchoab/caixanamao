@@ -38,7 +38,8 @@ export const ButtonContainer = styled.button<ButtonProps>`
 	}
 
 	&:disabled {
-		background-color: ${({ theme }) => theme.colors.buttons.disabledColor}64;
+		background-color: ${({ theme }) =>
+			theme.colors.buttons.disabledColor}64;
 		color: ${({ theme }) => theme.colors.texts.primary};
 	}
 
