@@ -1,8 +1,8 @@
 import { api } from '@/lib/api';
-import { useFormStore } from '@/views/store/user.store';
+import { useUserStore } from '@/views/store/user.store';
 
 export async function postSignOut() {
-	const resetUserData = useFormStore.getState().reset;
+	const resetUserData = useUserStore.getState().reset;
 
 	try {
 		sessionStorage.removeItem('accessToken');

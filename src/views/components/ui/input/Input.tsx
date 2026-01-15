@@ -20,6 +20,7 @@ const Input = ({ error, type, ...props }: InputProps) => {
 	return (
 		<div
 			style={{
+				width: '100%',
 				marginBottom: 8,
 				display: 'flex',
 				gap: 2,

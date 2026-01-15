@@ -51,21 +51,20 @@ export function RegisterCard({
 
 	return (
 		<Container style={showTotal ? {} : { paddingBottom: 12 }}>
-			{isDeletePopupOpen && (
-				<ChoicePopup
-					title='Tem certeza que deseja excluir o registro?'
-					description='Isso apagará para sempre'
-					onClose={toggleDeletePopup}
-					confirm={{
-						text: 'Apagar',
-						onConfirm: handleDeleteRegister,
-					}}
-					refuse={{
-						text: 'Cancelar',
-						onRefuse: toggleDeletePopup,
-					}}
-				/>
-			)}
+			<ChoicePopup
+				isOpen={isDeletePopupOpen}
+				title='Tem certeza que deseja excluir o registro?'
+				description='Isso apagará para sempre'
+				onClose={toggleDeletePopup}
+				confirm={{
+					text: 'Apagar',
+					onConfirm: handleDeleteRegister,
+				}}
+				refuse={{
+					text: 'Cancelar',
+					onRefuse: toggleDeletePopup,
+				}}
+			/>
 
 			<HeadText>
 				<div className='registerCard__titleContainer'>
@@ -80,6 +79,7 @@ export function RegisterCard({
 								type='button'
 								variant='neutral'
 								title='Editar registro'
+								style={{ padding: 0 }}
 								onClick={handleEditRegister}
 							>
 								<PencilSimpleIcon size={18} />
@@ -90,6 +90,7 @@ export function RegisterCard({
 								type='button'
 								variant='neutral'
 								title='Remover registro'
+								style={{ padding: 0 }}
 								onClick={toggleDeletePopup}
 							>
 								<TrashIcon size={18} />

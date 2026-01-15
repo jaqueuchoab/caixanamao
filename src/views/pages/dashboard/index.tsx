@@ -6,7 +6,6 @@ import { TopBar } from './components/mobileNavigation/topBar/TopBar';
 import { SamplePage } from './SamplePage';
 import {
 	CastleTurretIcon,
-	FileTextIcon,
 	ChartBarIcon,
 	LifebuoyIcon,
 	GearIcon,
@@ -17,6 +16,8 @@ import { Route, Routes, Navigate } from '@lib/router';
 import { NewRegisterPage } from './registers/new';
 import { EditRegisterPage } from './registers/edit';
 import { useEffect, useState } from 'react';
+import { ReportsPage } from './reports';
+import { NewReportPage } from './reports/new';
 
 export function DashboardPage() {
 	const size = useWindowSize();
@@ -79,13 +80,13 @@ export function DashboardPage() {
 					/>
 					<Route
 						path='/reports'
-						element={
-							<SamplePage
-								Icon={FileTextIcon}
-								pageTitle='Relatórios'
-							/>
-						}
+						element={<ReportsPage />}
 						key={'/dashboard/reports'}
+					/>
+					<Route
+						path='/reports/new'
+						element={<NewReportPage />}
+						key={'/dashboard/reports/new'}
 					/>
 					<Route
 						path='/analysis'

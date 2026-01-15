@@ -7,9 +7,7 @@ import {
 	RocketIcon,
 	SortAscendingIcon,
 } from '@phosphor-icons/react';
-import { fetchRegisters } from '@services/fetchRegisters';
 import { useQuery } from '@tanstack/react-query';
-import { RegisterCard } from './components/Cards/RegisterCard';
 import {
 	Container,
 	EmptyRegisterListContainer,
@@ -17,20 +15,22 @@ import {
 	RegistersList,
 	Title,
 	TopActions,
-} from './styles';
+} from '../registers/styles';
 import { useNavigate } from '@lib/router';
+import { fetchReports } from '@/services/fetchReports';
+import { ReportCard } from './components/ReportCard';
 
-export function RegistersPage() {
+export function ReportsPage() {
 	const {
-		data: registers,
+		data: reports,
 		isLoading,
 		isFetching,
 		isRefetching,
-		dataUpdatedAt,
 		refetch,
+		dataUpdatedAt,
 	} = useQuery({
-		queryKey: ['registers'],
-		queryFn: fetchRegisters,
+		queryKey: ['reports'],
+		queryFn: fetchReports,
 	});
 
 	const lastUpdate = new Date(dataUpdatedAt).toLocaleString('pt-BR');
@@ -39,7 +39,7 @@ export function RegistersPage() {
 	return (
 		<Container>
 			<Title>
-				<h1>Registros</h1>
+				<h1>Relatórios</h1>
 				<span className='lastUpdate'>
 					Atualizados pela última vez em {lastUpdate}
 				</span>
@@ -48,7 +48,7 @@ export function RegistersPage() {
 			<TopActions>
 				<Button
 					style={{ fontSize: 12 }}
-					onClick={() => navigate('/dashboard/registers/new')}
+					onClick={() => navigate('/dashboard/reports/new')}
 					text_align='center'
 				>
 					<PlusIcon weight='bold' size={16} /> Novo
@@ -88,19 +88,14 @@ export function RegistersPage() {
 							<RegisterCardSkeleton key={idx} />
 						))}
 
-					{!isFetching && registers?.length === 0 ? (
+					{!isFetching && reports?.length === 0 ? (
 						<EmptyRegisterListContainer>
 							<RocketIcon size={90} />
-							Nenhum registro para mostrar.
+							Nenhum relatório para mostrar.
 						</EmptyRegisterListContainer>
 					) : (
-						registers?.map((data, idx) => (
-							<RegisterCard
-								canEdit
-								canDelete
-								key={idx}
-								register={data}
-							/>
+						reports?.map((report) => (
+							<ReportCard key={report.id} report={report} />
 						))
 					)}
 				</RegistersList>

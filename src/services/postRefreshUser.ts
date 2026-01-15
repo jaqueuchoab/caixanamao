@@ -1,9 +1,9 @@
 import { api } from '@/lib/api';
 import { User } from '@/models/user.model';
-import { useFormStore } from '@/views/store/user.store';
+import { useUserStore } from '@/views/store/user.store';
 
 export async function postRefreshUser() {
-	const setUser = useFormStore.getState().setUser;
+	const setUser = useUserStore.getState().setUser;
 
 	try {
 		const { data } = await api.post<{

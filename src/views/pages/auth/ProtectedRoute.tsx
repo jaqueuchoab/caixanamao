@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { useFormStore } from '@/views/store/user.store';
+import { useUserStore } from '@/views/store/user.store';
 import { api } from '@/lib/api';
 import { ProtectedContainer } from './styles/ProtectedRoute.styles';
 import { Spinner } from '@/views/components/ui/spinner/Spinner';
 
 export function ProtectedRoute() {
-	const { user, setUser } = useFormStore();
+	const { user, setUser } = useUserStore();
 	const [isLoading, setIsLoading] = useState(!user.iduser);
 	const location = useLocation();
 
@@ -25,7 +25,7 @@ export function ProtectedRoute() {
 				setUser(data.user);
 			} catch {
 				sessionStorage.removeItem('accessToken');
-				useFormStore.getState().reset();
+				useUserStore.getState().reset();
 			} finally {
 				setIsLoading(false);
 			}

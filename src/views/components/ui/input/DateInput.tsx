@@ -115,7 +115,7 @@ export default function DateInput({
 	const showPlaceholder = !value && !isFocused;
 
 	return (
-		<div>
+		<div style={{ width: '100%' }}>
 			<InputWrapper hasError={!!error}>
 				<CalendarIcon
 					color={theme.colors.inputs.secondaryElement}

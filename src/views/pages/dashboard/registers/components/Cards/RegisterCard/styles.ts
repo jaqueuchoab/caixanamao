@@ -21,13 +21,13 @@ export const Container = styled.div`
 `;
 
 export const HeadText = styled.div`
-	padding: 12px 12px 0px 12px;
+	padding: 16px 16px 0px 16px;
 
 	display: flex;
 	flex-flow: column wrap;
 	justify-content: space-between;
 	align-items: baseline;
-	gap: 8px;
+	gap: 4px;
 
 	.registerCard__titleContainer {
 		width: 100%;
@@ -53,7 +53,7 @@ export const HeadText = styled.div`
 
 	& div.registerCard__actions {
 		display: flex;
-		gap: 2px;
+		gap: 12px;
 	}
 `;
 

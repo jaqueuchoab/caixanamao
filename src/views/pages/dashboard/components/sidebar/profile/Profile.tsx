@@ -1,4 +1,4 @@
-import { useFormStore } from '@/views/store/user.store';
+import { useUserStore } from '@/views/store/user.store';
 import { ProfileContainer, ProfileInfos } from './Profile.styles';
 import { getRoleById } from '@/utils/get-role-by-id.util';
 
@@ -8,7 +8,7 @@ interface ProfileProps {
 }
 
 export function Profile({ showInfos = true }: ProfileProps) {
-	const user = useFormStore((state) => state.user);
+	const user = useUserStore((state) => state.user);
 
 	return (
 		<ProfileContainer>
