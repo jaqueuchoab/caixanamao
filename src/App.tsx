@@ -1,28 +1,43 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from '@lib/router';
 import './views/assets/css/style.css';
 import ErrorBoundary from './views/components/ErrorBoundary';
 import { ThemeContextProvider } from './views/context/ThemeContext';
 
-import { mainRoutes } from './routes/main-routes';
-
-// TODO: refatorar componentes que usam css modules para styled components
+import Home from './views/pages/home/Home';
+import { DashboardPage } from './views/pages/dashboard';
+import Fallback from './views/pages/fallback/Fallback';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { GlobalStyles } from './views/styles/GlobalStyles';
+import { Toaster } from './views/components/ui/toaster';
+import { LoginPage } from './views/pages/auth/login';
+import { SignupPage } from './views/pages/auth/signup';
+import { ProtectedRoute } from './views/pages/auth/ProtectedRoute';
 
 function App() {
+	const queryClient = new QueryClient();
 	return (
 		<BrowserRouter>
 			<ThemeContextProvider>
 				<ErrorBoundary>
-					<Routes>
-						{mainRoutes.map((route) => {
-							return (
+					<QueryClientProvider client={queryClient}>
+						<GlobalStyles />
+						<Routes>
+							<Route path='/' element={<Home />} />
+							<Route path='/auth/login' element={<LoginPage />} />
+							<Route
+								path='/auth/signup'
+								element={<SignupPage />}
+							/>
+							<Route element={<ProtectedRoute />}>
 								<Route
-									path={route.path}
-									element={route.element}
-									key={route.path}
+									path='/dashboard/*'
+									element={<DashboardPage />}
 								/>
-							);
-						})}
-					</Routes>
+							</Route>
+							<Route path='/fallback?' element={<Fallback />} />
+						</Routes>
+						<Toaster />
+					</QueryClientProvider>
 				</ErrorBoundary>
 			</ThemeContextProvider>
 		</BrowserRouter>

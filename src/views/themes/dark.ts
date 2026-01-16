@@ -1,4 +1,4 @@
-import { ThemeType } from '../../@types/theme-types';
+import { ThemeType } from '../../@types/theme/theme-types';
 import { baseColorsDefault, sizesDefault } from './defaults';
 
 export const darkTheme: ThemeType = {
@@ -79,6 +79,14 @@ export const darkTheme: ThemeType = {
 				fill: 'transparent',
 				hover: baseColorsDefault.green[600],
 				stroke: '',
+			},
+			switcher: {
+				text: baseColorsDefault.neutral[100],
+				fill: baseColorsDefault.neutral[600],
+				hover: baseColorsDefault.neutral[400],
+				stroke: '',
+				buttonActive: baseColorsDefault.neutral[900],
+				buttonInactive: baseColorsDefault.neutral[600],
 			},
 		},
 		register: {
