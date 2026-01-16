@@ -6,7 +6,7 @@ import { HeaderLogo } from '@/views/components/ui/header/Header.styles';
 import { getLogo } from '@/views/components/ui/header/Header';
 import { useContextTheme } from '@/views/context/ThemeContext';
 import { postUserSignup } from '@/services/postUserLogin';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { toast } from 'sonner';
 import { Button } from '@/views/components/ui/button/Button';
@@ -102,8 +102,7 @@ export function SignupPage() {
 					<a href='/'>
 						<HeaderLogo
 							id='logo'
-							src={(() =>
-								getLogo(themeMode, 769))()}
+							src={(() => getLogo(themeMode, 769))()}
 							alt={`logo-mode-${themeMode}`}
 						/>
 					</a>
@@ -128,6 +127,7 @@ export function SignupPage() {
 									text_align='center'
 									onClick={previousStep}
 									type='button'
+									fill_width
 									variant='neutral'
 								>
 									{currentStepIndex === 1
@@ -140,6 +140,7 @@ export function SignupPage() {
 								<Button
 									onClick={handleValidateNextStep}
 									type='button'
+									fill_width
 									text_align='center'
 								>
 									Próximo
@@ -149,6 +150,7 @@ export function SignupPage() {
 							{isLastStep && (
 								<Button
 									type='submit'
+									fill_width
 									text_align='center'
 									disabled={isSubmitting}
 								>
@@ -166,13 +168,13 @@ export function SignupPage() {
 					</form>
 				</FormProvider>
 
-				<a
+				<Link
 					style={{ display: isSubmitting ? 'none' : 'inline-block' }}
 					id='signup-link'
-					href='/auth/login'
+					to='/auth/login'
 				>
 					Já tenho conta
-				</a>
+				</Link>
 			</div>
 
 			<div id='artwork'>
